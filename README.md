@@ -128,6 +128,85 @@ For example, in `Content/Mods/ShortNights/BP_MapLoad`, if the player changes the
 
 It simply checks if the returned `OptionId` is the one used by the mod, and if it is, then the user has changed that option value.
 
+## Packaging your mod
+
+In this project, we use pak chunks to package your mod files into `.pak` mods.
+
+In the editor, first select all the assets in your mod's folder (shift click or ctrl click, standard stuff works), then right click the highlighted assets and hover over `Asset Actions` -> `Assign to Chunk...` and click on it.
+
+![Paking-Step-1](Docs/Images/Paking-Step-1.png)
+
+Enter a number between `1` and `999` in this chunk Id field and press Ok. **Do not enter 0 for the Id!**
+
+> [!IMPORTANT]
+> Each mod must use a seperate pak chunk number to get packaged seperately from each other! Take note of each pak chunk Id you are assigning to files in each mod.
+
+![Paking-Step-2](Docs/Images/Paking-Step-2.png)
+
+> [!NOTE]
+> You only have to do this chunk Id assignment once, but you do need to assign newly added assets in the mod folder, or if you rename existing assets (I am working on better workflow for this).
+
+Now do `Ctrl` + `S` to save.
+
+Simply click on to `Platforms` -> `Windows` -> `Package Project`:
+
+![Paking-Step-3](Docs/Images/Paking-Step-3.png)
+
+Now select the output folder location. It doesn't matter much where you put it, so I always just put it into the template project folder. It will create a `Windows` folder. You don't need to delete this folder between packages.
+
+![Paking-Step-4](Docs/Images/Paking-Step-4.png)
+
+The first time you package it might take a while, as it will likely need to compile some shaders.
+
+Once it is done, you will hear a noise and it will say Packaging complete.
+
+Now navigate to the `Windows/Whiskerwood/Content/Paks` folder, you should see al pakchunk files here. There will always be a `pakchunk0` which contains all other packaged editor assets, and it is quite large, so this is why you mustn't set your chunkId to 0.
+
+![Paking-Step-5](Docs/Images/Paking-Step-5.png)
+
+## Installing the packaged mod
+
+First copy the pakchunk id file, for the number you entered for your mod files. E.g. you set your id to 42, so copy `pakchunk42-Windows.pak`. 
+
+Navigate to `%localappdata\Whiskerwood\Saved\mods\` and create a folder for your mod. It should have the same name as the mod folder in the unreal engine project. 
+
+Now paste your `.pak` file into the mod folder.
+
+Rename the `.pak` file to the same name as the mod folder, keeping the `.pak` extension.
+
+Now your mod is installed! You should also make a `.uplugin` file (you could copy one from one of the example mods) and fill in the details, but this is not strictly necessary right now.
+
+## Automating the installation
+
+The above steps are too manual, so let's make a windows .bat script to automate the above (ish - an editor plugin to automate packaging and install of mod will be made eventually so you can do it all from inside the editor).
+
+Let's say your mod is pakchunk-42 and your mod name is `DemoMod`. 
+
+Replace `%localappdata%` and `%pathtoyourtemplateproject%` with the relevant full paths if needs be or make it even better!
+
+```bat
+@echo off
+mkdir "%localappdata%\Whiskerwood\Saved\mods\DemoMod" 2>nul
+
+copy /Y "%pathtoyourtemplateproject%\Whiskerwood\Windows\Whiskerwood\Content\Paks\pakchunk42-Windows.pak" "%localappdata%\Whiskerwood\Saved\mods\DemoMod\DemoMod.pak"
+
+echo Copy completed.
+start "" "steam://rungameid/2489330"
+```
+
+To explain:
+1. It makes the directory if it doesn't exist yet
+2. It copies the pakchunk file to the mods folder while simultaneously renaming it to the mod name
+3. It loads the game from steam (if you don't have the game on steam remove this part)
+
+You can add as many as you like here, though if you don't want to run the game with certain mods, you might want to comment out those lines temporarily.
+
+This is my batch script now:
+
+![Automation-1](Docs/Images/Automation-1.png)
+
+So when packaging the mod is done, I run the bat and the game launches with all the mod paks installed!
+
 ## Some notes
 
 If you want to run the same or similar logic in both `BP_Startup` and `BP_MapLoad`, it is recommended to create a third blueprint which the first two can spawn. 
