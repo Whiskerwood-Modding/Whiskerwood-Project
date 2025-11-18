@@ -181,7 +181,7 @@ To follow standard UE naming conventions, call it `PAL_yourmodname` e.g. `PAL_De
 
 ![Paking-Step-2](Docs/Images/Paking-Step-2.png)
 
-Open the asset and check `Apply Recursively` and `Label Assets in My Directory`, like so.
+Open the asset, set `Cook Rule` to `Always Cook`, and check `Label Assets in My Directory`, like so.
 
 ![Paking-Step-3](Docs/Images/Paking-Step-3.png)
 
