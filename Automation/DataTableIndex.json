@@ -1,7 +1,7 @@
 {
-  "ExportDate": "2026-03-20 10:00:27",
+  "ExportDate": "2026-03-28 08:12:01",
   "TotalTables": 62,
-  "TotalUniqueValues": 41363,
+  "TotalUniqueValues": 41403,
   "Tables": {
     "Whiskerwood/Content/Data/AchievementsTables": {
       "ACH.010.EMBARK": {
@@ -3604,7 +3604,7 @@
         "cost4": "None",
         "ct4": "0",
         "unlockPrerequisite": "unlock.stonestairs",
-        "toolbarGroup": "traversible_longstairs",
+        "toolbarGroup": "None",
         "toolbarGroupSort": "20",
         "useCustomIcon": "False",
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-stairs-64_1_.icons8-stairs-64_1_'",
@@ -11146,8 +11146,8 @@
         "cost4": "None",
         "ct4": "0",
         "unlockPrerequisite": "unlock.smallplanter",
-        "toolbarGroup": "cheat_buildings",
-        "toolbarGroupSort": "20",
+        "toolbarGroup": "decor",
+        "toolbarGroupSort": "21",
         "useCustomIcon": "False",
         "Icon": "0",
         "detailCue": "SoundCue'Whiskerwood/Content/Audio/misc/wavs/cicadas_Cue.cicadas_Cue'",
@@ -11194,7 +11194,7 @@
         "ct4": "0",
         "unlockPrerequisite": "unlock.smallplanter",
         "toolbarGroup": "None",
-        "toolbarGroupSort": "20",
+        "toolbarGroupSort": "0",
         "useCustomIcon": "False",
         "Icon": "0",
         "detailCue": "SoundCue'Whiskerwood/Content/Audio/misc/wavs/cicadas_Cue.cicadas_Cue'",
@@ -11282,7 +11282,7 @@
         "ct4": "0",
         "unlockPrerequisite": "unlock.smallplanter",
         "toolbarGroup": "None",
-        "toolbarGroupSort": "20",
+        "toolbarGroupSort": "0",
         "useCustomIcon": "False",
         "Icon": "0",
         "detailCue": "SoundCue'Whiskerwood/Content/Audio/misc/wavs/cicadas_Cue.cicadas_Cue'",
@@ -11311,6 +11311,52 @@
         "refundRule": "fullrefund",
         "Quality": "1",
         "Variants": []
+      },
+      "stonestairs_variant1": {
+        "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/basicMeshSet/StoneStairs_variant1.StoneStairs_variant1_C'",
+        "stringKey": "building.stonestairs",
+        "Description": "building.stonestairs.desc",
+        "cost1": "bricks",
+        "ct1": "2",
+        "cost2": "None",
+        "ct2": "0",
+        "cost3": "None",
+        "ct3": "0",
+        "cost4": "None",
+        "ct4": "0",
+        "unlockPrerequisite": "unlock.stonestairs",
+        "toolbarGroup": "traversible_longstairs",
+        "toolbarGroupSort": "20",
+        "useCustomIcon": "False",
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-stairs-64_1_.icons8-stairs-64_1_'",
+        "detailCue": "0",
+        "SupportedImprovements": [],
+        "structureType": "Travel",
+        "maxAgents_contextual": "0",
+        "asHouseTier": "0",
+        "asIndustryDef": "None",
+        "supportedIndustryRecipes": [],
+        "minMaintenanceInterval": "0",
+        "workerColor": "FFFFFF (FColor)",
+        "limitOne": "False",
+        "customBuildCue": "0",
+        "requiresConstruction": "False",
+        "decorType": "None",
+        "guildSpecialty": "None",
+        "hardLabor": "False",
+        "industrialLabor": "False",
+        "TooltipTags": [
+          "tag.fastTravelSpeed"
+        ],
+        "constructionTime": "10",
+        "catalyst": "None",
+        "norefund": "False",
+        "randomlyRotate": "False",
+        "refundRule": "fullrefund",
+        "Quality": "0",
+        "Variants": [
+          "stonestairs"
+        ]
       }
     },
     "Whiskerwood/Content/Data/HarvestCampResourceGroups": {
@@ -12266,6 +12312,12 @@
         "decorativeActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/slottableDecoratives/minentrance.minentrance_C'",
         "desiredSubSlot": "EDecorativeSlotPos::OUTER_EDGE",
         "pathingEffect": "ENodeBoundary::OPEN"
+      },
+      "decorslot_stonwallTall": {
+        "LocKey": "slotdecorative.stoneWall",
+        "decorativeActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/slottableDecoratives/decorSlot_stoneWallTall.decorSlot_stoneWallTall_C'",
+        "desiredSubSlot": "EDecorativeSlotPos::OUTER_EDGE",
+        "pathingEffect": "ENodeBoundary::BLOCKED"
       }
     },
     "Whiskerwood/Content/Data/SystemTunes": {
@@ -13892,7 +13944,7 @@
             "hotkeyStr": "",
             "showInWheel": "True",
             "customTooltip": "None",
-            "associatedShortcutVerb": "EArco_PlayerVerb::INVALID"
+            "associatedShortcutVerb": "EArco_PlayerVerb::HOTKEY_TERRAFORMTOOL"
           }
         ]
       },
@@ -17158,6 +17210,15 @@
       },
       "raftspawn": {
         "Sound": "SoundCue'Whiskerwood/Content/Audio/misc/UltimateSfxLib/Pirate_Sounds_Pro/Cannon_hitting_water/small_RaftSpawnSplash.small_RaftSpawnSplash'"
+      },
+      "copy": {
+        "Sound": "SoundCue'Whiskerwood/Content/Audio/misc/UltimateSfxLib/Copy_Cue.Copy_Cue'"
+      },
+      "paste": {
+        "Sound": "SoundCue'Whiskerwood/Content/Audio/misc/UltimateSfxLib/UI_Clicks/Paste_Cue.Paste_Cue'"
+      },
+      "copyFailed": {
+        "Sound": "SoundCue'Whiskerwood/Content/Audio/misc/UltimateSfxLib/Cannot.Cannot'"
       }
     },
     "Whiskerwood/Content/Data/AssetLookups/CommonIcons": {
@@ -17727,6 +17788,22 @@
       },
       "sea": {
         "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-sail-boat-100.icons8-sail-boat-100'",
+        "defaultColor": "FFFFFF (FColor)"
+      },
+      "whiskerActivity.service.bathing": {
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-water-96-tinted.icons8-water-96-tinted'",
+        "defaultColor": "FFFFFF (FColor)"
+      },
+      "copy": {
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-copy-96.icons8-copy-96'",
+        "defaultColor": "FFFFFF (FColor)"
+      },
+      "paste": {
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-paste-96.icons8-paste-96'",
+        "defaultColor": "FFFFFF (FColor)"
+      },
+      "pasteFail": {
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-no-entry-100.icons8-no-entry-100'",
         "defaultColor": "FFFFFF (FColor)"
       }
     },
@@ -18862,7 +18939,7 @@
         "out3": "None",
         "outCt3": "0",
         "RequiredUnlock": "unlock.bakery",
-        "pollutionPerSecond": "20000",
+        "pollutionPerSecond": "10000",
         "hideUnlessUnlocked": "False"
       },
       "recipe.advancedResearch": {
@@ -19526,7 +19603,7 @@
         "hideUnlessUnlocked": "False"
       },
       "recipe.fishingnet": {
-        "recipeTime": "233",
+        "recipeTime": "377",
         "powerPerWorker": "0",
         "outputMode": "None",
         "in1": "rope",
@@ -22667,6 +22744,21 @@
         "questItem": "False",
         "SortOrder": "0",
         "oceanFishNutrients": "0"
+      },
+      "bathed": {
+        "stringKey": "resource.bathed",
+        "descriptionKey": "resource.desc.bathed",
+        "Category": "None",
+        "subCategory": "None",
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-water-96-tinted.icons8-water-96-tinted'",
+        "haulMesh": "0",
+        "stackingHeight": "10",
+        "storageVisualWidth": "1",
+        "isNonPhysical": "True",
+        "baseTradeValue": "1",
+        "questItem": "False",
+        "SortOrder": "0",
+        "oceanFishNutrients": "0"
       }
     },
     "Whiskerwood/Content/Data/AssetLookups/Scenarios": {
@@ -23588,7 +23680,7 @@
         "researchTier": "1",
         "unlockedByDefault": "False",
         "childUnlocks": [],
-        "associatedGridActor": "stonestairs",
+        "associatedGridActor": "stonestairs_variant1",
         "prerequisiteUnlocks": [],
         "tierSortOrder": "10",
         "associatedRecipe": "None",
@@ -27983,6 +28075,9 @@
       },
       "decor_bush": {
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/bush.bush'"
+      },
+      "stonestairs_variant1": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/stonestairs_variant1.stonestairs_variant1'"
       }
     },
     "Whiskerwood/Content/Data/Icons/Icons_InputIcons": {
@@ -41952,6 +42047,48 @@
       },
       "slotdecorative.stoneWall": {
         "Value": "Stone Wall"
+      },
+      "resource.bathed": {
+        "Value": "Bath"
+      },
+      "resource.bathed.desc": {
+        "Value": "Squeaky clean whisker"
+      },
+      "resource.desc.bathed": {
+        "Value": "Squeaky clean whisker"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Terraform Tool"
+      },
+      "msg.settingsCopied": {
+        "Value": "Settings copied"
+      },
+      "msg.settingsPasted": {
+        "Value": "Settings pasted"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Nothing to paste"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Incompatible paste"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Copy Settings"
+      },
+      "copyTooltip.title": {
+        "Value": "Copy Settings"
+      },
+      "copytooltip.desc": {
+        "Value": "Save off this building's settings to clipboard"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Paste Settings"
+      },
+      "pasteTooltip.title": {
+        "Value": "Paste Settings"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Paste saved settings to this building"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_En": {
@@ -109977,7 +110114,7 @@
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Root": {
       "meta.version": {
-        "Value": "0.6.186.0"
+        "Value": "0.6.187.0"
       },
       "UI.MONEY": {
         "Value": "¥"
