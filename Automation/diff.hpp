@@ -1572,7 +1572,7 @@ struct FEQSParametrizedQueryExecutionRequest {
     /* 0x0000 */ UEnvQuery* QueryTemplate;
     /* 0x0008 */ TArray<FAIDynamicParam> QueryConfig;
     /* 0x0018 */ FBlackboardKeySelector EQSQueryBlackboardKey;
-    /* 0x0040 */ uint8_t RunMode;
+    /* 0x0040 */ uint8_t runMode;
     /* 0x0044 */ bool bUseBBKeyForQueryTemplate;
 };
 
@@ -1849,7 +1849,7 @@ class UEnvQueryManager : public UAISubsystem {
     /* 0x0148 */ double HandlingResultTimeWarningSeconds;
     /* 0x0150 */ double GenerationTimeWarningSeconds;
 
-    static UEnvQueryInstanceBlueprintWrapper* RunEQSQuery(UObject* WorldContextObject, UEnvQuery* QueryTemplate, UObject* Querier, uint8_t RunMode, UClass* WrapperClass);
+    static UEnvQueryInstanceBlueprintWrapper* RunEQSQuery(UObject* WorldContextObject, UEnvQuery* QueryTemplate, UObject* Querier, uint8_t runMode, UClass* WrapperClass);
 };
 
 // Size: 0x30
@@ -3715,6 +3715,47 @@ struct FSplineIKCachedBoneData {
 struct FWarpingVectorValue {
     /* 0x0000 */ EWarpingVectorMode Mode;
     /* 0x0008 */ FVector Value;
+};
+
+// Size: 0x58
+struct FAnimationBudgetAllocatorParameters {
+    /* 0x0000 */ float BudgetInMs;
+    /* 0x0004 */ float MinQuality;
+    /* 0x0008 */ int32_t MaxTickRate;
+    /* 0x000c */ float WorkUnitSmoothingSpeed;
+    /* 0x0010 */ float AlwaysTickFalloffAggression;
+    /* 0x0014 */ float InterpolationFalloffAggression;
+    /* 0x0018 */ int32_t InterpolationMaxRate;
+    /* 0x001c */ int32_t MaxInterpolatedComponents;
+    /* 0x0020 */ float InterpolationTickMultiplier;
+    /* 0x0024 */ float InitialEstimatedWorkUnitTimeMs;
+    /* 0x0028 */ int32_t MaxTickedOffsreenComponents;
+    /* 0x002c */ int32_t StateChangeThrottleInFrames;
+    /* 0x0030 */ float BudgetFactorBeforeReducedWork;
+    /* 0x0034 */ float BudgetFactorBeforeReducedWorkEpsilon;
+    /* 0x0038 */ float BudgetPressureSmoothingSpeed;
+    /* 0x003c */ int32_t ReducedWorkThrottleMinInFrames;
+    /* 0x0040 */ int32_t ReducedWorkThrottleMaxInFrames;
+    /* 0x0044 */ float BudgetFactorBeforeAggressiveReducedWork;
+    /* 0x0048 */ int32_t ReducedWorkThrottleMaxPerFrame;
+    /* 0x004c */ float BudgetPressureBeforeEmergencyReducedWork;
+    /* 0x0050 */ float AutoCalculatedSignificanceMaxDistance;
+};
+
+// Size: 0x28
+class UAnimationBudgetBlueprintLibrary : public UBlueprintFunctionLibrary {
+
+    static void EnableAnimationBudget(UObject* WorldContextObject, bool bEnabled);
+    static void SetAnimationBudgetParameters(UObject* WorldContextObject, const FAnimationBudgetAllocatorParameters& InParameters);
+};
+
+// Size: 0x1000
+class USkeletalMeshComponentBudgeted : public USkeletalMeshComponent {
+    /* 0x0ff8 */ bool bAutoRegisterWithBudgetAllocator;
+    /* 0x0ff8 */ bool bAutoCalculateSignificance;
+    /* 0x0ff8 */ bool bShouldUseActorRenderedFlag;
+
+    void SetAutoRegisterWithBudgetAllocator(bool bInAutoRegisterWithBudgetAllocator);
 };
 
 // Size: 0x70
@@ -79729,18 +79770,23 @@ class UAgentOverviewPanel : public UArcoView {
     void ShiftUiForPickup(bool Hide);
 };
 
-// Size: 0x478
+// Size: 0x4a0
 class UAgentSelector : public UArcoWidgetBase {
-    /* 0x0438 */ EAgentFilter m_filter;
-    /* 0x043c */ FName m_guildFilter;
-    /* 0x0444 */ FName m_teacherGuild;
-    /* 0x044c */ EAgentEducation m_educationFilter;
-    /* 0x044d */ bool m_student;
-    /* 0x044e */ EAgentSortOrder m_sortOrder;
-    /* 0x0450 */ TArray<FName> m_workFilter;
-    /* 0x0460 */ FName m_recipeFilter;
-    /* 0x0468 */ bool m_includeUnassignChoice;
-    /* 0x046c */ int32_t m_unassignChoice_agentId;
+    /* 0x0428 */ UListView* WhiskerListView;
+    /* 0x0430 */ UListView* whiskerListView_OverviewStyle;
+    /* 0x0438 */ bool m_isOverviewMode;
+    /* 0x0440 */ FAgentSelectorState m_cachedState;
+    /* 0x0450 */ EAgentFilter m_filter;
+    /* 0x0454 */ FName m_guildFilter;
+    /* 0x045c */ FName m_teacherGuild;
+    /* 0x0464 */ EAgentEducation m_educationFilter;
+    /* 0x0465 */ bool m_student;
+    /* 0x0466 */ EAgentSortOrder m_sortOrder;
+    /* 0x0468 */ TArray<FName> m_workFilter;
+    /* 0x0478 */ FName m_recipeFilter;
+    /* 0x0480 */ bool m_includeUnassignChoice;
+    /* 0x0484 */ int32_t m_unassignChoice_agentId;
+    /* 0x0490 */ TArray<UAgentSummary_ListViewEntryData*> m_agentListViewDataObjects;
 
     FAgentSelectorState CalcState();
     void EducationFilterUpdated();
@@ -79813,6 +79859,21 @@ struct FAgentState_Climber {
 // Size: 0x40
 struct FAgentState_Passer {
     /* 0x0000 */ APrototype_Agent* Agent;
+};
+
+// Size: 0x430
+class UAgentSummary_ListViewEntry : public UArcoWidgetBase {
+
+    void OnItemDataSet(UAgentSummary_ListViewEntryData* Item);
+};
+
+// Size: 0x40
+class UAgentSummary_ListViewEntryData : public UObject {
+    /* 0x0028 */ bool IsHovered;
+    /* 0x0029 */ bool isWorkHovered;
+    /* 0x002a */ bool isHomeHovered;
+    /* 0x0030 */ APrototype_Agent* agentRef;
+    /* 0x0038 */ UArcoWidgetBase* parentArcoWidget;
 };
 
 // Size: 0x438
@@ -79954,6 +80015,7 @@ class UAimMachine : public UActorComponent {
     /* 0x01a4 */ bool teleportUsesRoundRobin;
     /* 0x01a5 */ bool teleportLastSent;
     /* 0x01a6 */ bool teleportOnlyFilterMatches;
+    /* 0x01a7 */ bool filterAllowOverflow;
     /* 0x01a8 */ TSet<FName> teleportFilterItemTypes;
     /* 0x01f8 */ float anime_syncSpeed;
     /* 0x01fc */ float anime_rotationSpeed;
@@ -80320,7 +80382,7 @@ struct FArcoSystemConfig {
     /* 0x0028 */ EDayPhase embarkDayPhase;
 };
 
-// Size: 0x38a8
+// Size: 0x3928
 class AArcoSystems : public AActor {
     /* 0x02b0 */ FNewMapInitParams m_newMapParams;
     /* 0x03e8 */ FArcoSystemConfig config;
@@ -80333,99 +80395,101 @@ class AArcoSystems : public AActor {
     /* 0x06d8 */ UClass* m_canonballClass;
     /* 0x06f0 */ UClass* agentClass;
     /* 0x06f8 */ UClass* constructionSiteTemplate;
-    /* 0x0730 */ UClass* m_infoBlipsClass;
-    /* 0x0738 */ AInfoBlips* m_infoBlips;
-    /* 0x0740 */ UPlayerBank* m_playerBank;
-    /* 0x0748 */ UClass* m_worldTimeClass;
-    /* 0x0750 */ AWorldTime* m_worldTime;
-    /* 0x0758 */ UClass* m_eventsTimelineClass;
-    /* 0x0760 */ UEventTimeline* m_eventsTimeline;
-    /* 0x0768 */ UWorldEffects* m_worldEffects;
-    /* 0x0770 */ UClass* m_scaffoldClass;
-    /* 0x0778 */ AScaffoldRenderer* m_scaffoldRenderer;
-    /* 0x0780 */ UClass* m_radiusRendererClass;
-    /* 0x0788 */ ARadiusOfEffectRenderer* m_radiusRenderer;
-    /* 0x0790 */ UClass* m_ambientAudioClass;
-    /* 0x0798 */ AAmbientAudio* m_ambientAudio;
-    /* 0x07a0 */ UClass* m_railSystemClass;
-    /* 0x07a8 */ ARailSystem* m_railSystem;
-    /* 0x07b0 */ FWorldMeta m_worldMeta;
-    /* 0x25a8 */ UClass* m_questTrackerClass;
-    /* 0x25b0 */ UQuestTracker* m_questTracker;
-    /* 0x25b8 */ UStatisticsTracker* m_statistics;
-    /* 0x25c0 */ UClass* m_policiesClass;
-    /* 0x25c8 */ UPolicies* m_policies;
-    /* 0x25d0 */ UJobSystem* m_jobSystem;
-    /* 0x25d8 */ UClass* m_giftPoolCalculatorClass;
-    /* 0x25e0 */ UGiftPools* m_giftPoolCalculator;
-    /* 0x25e8 */ FTiledTerrainData m_terrain;
-    /* 0x2fd0 */ UClass* m_tiledTerrainClass;
-    /* 0x2fd8 */ UClass* m_tiledTerrainConfigMule;
-    /* 0x2fe0 */ ATiledBlockTerrain* m_tiledTerrain;
-    /* 0x2fe8 */ UTerrainGenerator* m_terrainGenerator;
-    /* 0x2ff0 */ UClass* m_terrainGeneratorConfig;
-    /* 0x2ff8 */ UOreDistributor* m_oreDistributor;
-    /* 0x3000 */ UClass* m_oreDistributorConfig;
-    /* 0x3008 */ UHeatSystem* m_heatSystem;
-    /* 0x3010 */ UClass* m_heatSystemConfigMule;
-    /* 0x3018 */ UClass* m_farmCropConfigMule;
-    /* 0x3020 */ UExpectationSystem* m_expectationSystem;
-    /* 0x3028 */ UClass* m_expectationSystemConfigMule;
-    /* 0x3030 */ UAimSystem* m_aimSystem;
-    /* 0x3038 */ UNavySystem* m_navySystem;
-    /* 0x3040 */ UClass* m_mineVizClass;
-    /* 0x3048 */ UMineViz* m_mineViz;
-    /* 0x3050 */ UClass* m_farmVizClass;
-    /* 0x3058 */ UFarmViz* m_farmViz;
-    /* 0x3060 */ UClass* m_resourceMarkingVizClass;
-    /* 0x3068 */ UResourceMarkingViz* m_resourceMarkingViz;
-    /* 0x3070 */ UClass* m_terraformVizClass;
-    /* 0x3078 */ UTerraformViz* m_terraformViz;
-    /* 0x3080 */ UClass* m_problemIndicatorClass;
-    /* 0x3088 */ AProblemIndicator* m_problemIndicator;
-    /* 0x3090 */ UNotificationSystem* m_notificationSystem;
-    /* 0x3098 */ UColonyProblemsSummary* m_colonyProblemsSummary;
-    /* 0x30a0 */ UClass* m_elevatorSystemClass;
-    /* 0x30a8 */ AElevatorSystem* m_elevatorSystem;
-    /* 0x30b0 */ UClass* m_pipeSystemClass;
-    /* 0x30b8 */ APipeSystem* m_pipeSystem;
-    /* 0x30c0 */ UClass* m_doorwayRendererClass;
-    /* 0x30c8 */ AStructureDoorwayRenderer* m_doorwayRenderer;
-    /* 0x30d0 */ AResourceFling* m_resourceFlinger;
-    /* 0x30d8 */ UClass* m_roofSystemClass;
-    /* 0x30e0 */ ARoofSystem* m_roofSystem;
-    /* 0x30e8 */ UEventQueue* m_eventQueue;
-    /* 0x30f0 */ UClass* m_musicControllerClass;
-    /* 0x30f8 */ AArcoMusicController* m_musicController;
-    /* 0x3100 */ UClass* m_raftRouteAssignmentsClass;
-    /* 0x3108 */ URaftRouteAssignments* m_raftRouteAssignments;
-    /* 0x3110 */ TSet<FName> m_enabledUnlocks;
-    /* 0x3160 */ FUnlockTree m_unlockTree;
-    /* 0x31b0 */ bool m_allUnlocksCheat;
-    /* 0x31b8 */ FResearchState m_researchState;
-    /* 0x3280 */ TMap<int32_t, FColor> m_heatToUiColorLookup;
-    /* 0x32d0 */ FString m_associatedSave;
-    /* 0x32e0 */ FArcoScenario m_scenarioData;
-    /* 0x3368 */ int32_t m_mealRationingCount;
-    /* 0x336c */ int32_t m_drinkRationingCount;
-    /* 0x3370 */ bool m_mealRationing_rawOnly;
-    /* 0x3371 */ bool m_mealRationing_preparedOnly;
-    /* 0x3372 */ bool m_assertSavesEnabled;
-    /* 0x3398 */ TArray<FName> m_derivedResearchableTech;
-    /* 0x33a8 */ TArray<FMealDefTierGroup> m_mealDefsQualitySorted_descendingGroups;
-    /* 0x33b8 */ TArray<FMealDefTierGroup> m_drinkDefsQualitySorted_descendingGroups;
-    /* 0x3440 */ UClass* embarkBoatClass;
-    /* 0x3448 */ AEmbarkBoat* embarkBoatInstance;
-    /* 0x3450 */ int32_t m_totalActions;
-    /* 0x3454 */ int32_t m_totalAssertSaves;
-    /* 0x3458 */ int32_t m_maxAllowedSavesPerRun;
-    /* 0x3460 */ TSet<FName> m_miscEventFlags;
-    /* 0x34e8 */ TArray<FReportedDeath> m_recentDeaths;
-    /* 0x34f8 */ TArray<FReportedDeath> m_deathsPendingGraves;
-    /* 0x3508 */ TArray<FMailStyleNotif> m_pendingMailNotifs;
-    /* 0x3518 */ FPathfinderCallCounts m_pathfinderCallCountsForFrame;
-    /* 0x3648 */ TMap<FName, UClass*> m_workshipActorLookup;
-    /* 0x3738 */ FAutoExportState m_autoExportState;
+    /* 0x0738 */ UClass* m_infoBlipsClass;
+    /* 0x0740 */ AInfoBlips* m_infoBlips;
+    /* 0x0748 */ UPlayerBank* m_playerBank;
+    /* 0x0750 */ UClass* m_worldTimeClass;
+    /* 0x0758 */ AWorldTime* m_worldTime;
+    /* 0x0760 */ UClass* m_eventsTimelineClass;
+    /* 0x0768 */ UEventTimeline* m_eventsTimeline;
+    /* 0x0770 */ UWorldEffects* m_worldEffects;
+    /* 0x0778 */ UClass* m_scaffoldClass;
+    /* 0x0780 */ AScaffoldRenderer* m_scaffoldRenderer;
+    /* 0x0788 */ UClass* m_radiusRendererClass;
+    /* 0x0790 */ ARadiusOfEffectRenderer* m_radiusRenderer;
+    /* 0x0798 */ UClass* m_ambientAudioClass;
+    /* 0x07a0 */ AAmbientAudio* m_ambientAudio;
+    /* 0x07a8 */ UClass* m_railSystemClass;
+    /* 0x07b0 */ ARailSystem* m_railSystem;
+    /* 0x07b8 */ FWorldMeta m_worldMeta;
+    /* 0x2610 */ UClass* m_questTrackerClass;
+    /* 0x2618 */ UQuestTracker* m_questTracker;
+    /* 0x2620 */ UStatisticsTracker* m_statistics;
+    /* 0x2628 */ UClass* m_policiesClass;
+    /* 0x2630 */ UPolicies* m_policies;
+    /* 0x2638 */ UJobSystem* m_jobSystem;
+    /* 0x2640 */ UClass* m_giftPoolCalculatorClass;
+    /* 0x2648 */ UGiftPools* m_giftPoolCalculator;
+    /* 0x2650 */ FTiledTerrainData m_terrain;
+    /* 0x3040 */ UClass* m_tiledTerrainClass;
+    /* 0x3048 */ UClass* m_tiledTerrainConfigMule;
+    /* 0x3050 */ ATiledBlockTerrain* m_tiledTerrain;
+    /* 0x3058 */ UTerrainGenerator* m_terrainGenerator;
+    /* 0x3060 */ UClass* m_terrainGeneratorConfig;
+    /* 0x3068 */ UOreDistributor* m_oreDistributor;
+    /* 0x3070 */ UClass* m_oreDistributorConfig;
+    /* 0x3078 */ UHeatSystem* m_heatSystem;
+    /* 0x3080 */ UClass* m_heatSystemConfigMule;
+    /* 0x3088 */ UClass* m_farmCropConfigMule;
+    /* 0x3090 */ UExpectationSystem* m_expectationSystem;
+    /* 0x3098 */ UClass* m_expectationSystemConfigMule;
+    /* 0x30a0 */ UAimSystem* m_aimSystem;
+    /* 0x30a8 */ UNavySystem* m_navySystem;
+    /* 0x30b0 */ UClass* m_mineVizClass;
+    /* 0x30b8 */ UMineViz* m_mineViz;
+    /* 0x30c0 */ UClass* m_farmVizClass;
+    /* 0x30c8 */ UFarmViz* m_farmViz;
+    /* 0x30d0 */ UClass* m_resourceMarkingVizClass;
+    /* 0x30d8 */ UResourceMarkingViz* m_resourceMarkingViz;
+    /* 0x30e0 */ UClass* m_terraformVizClass;
+    /* 0x30e8 */ UTerraformViz* m_terraformViz;
+    /* 0x30f0 */ UClass* m_problemIndicatorClass;
+    /* 0x30f8 */ AProblemIndicator* m_problemIndicator;
+    /* 0x3100 */ UNotificationSystem* m_notificationSystem;
+    /* 0x3108 */ UColonyProblemsSummary* m_colonyProblemsSummary;
+    /* 0x3110 */ UClass* m_elevatorSystemClass;
+    /* 0x3118 */ AElevatorSystem* m_elevatorSystem;
+    /* 0x3120 */ UClass* m_pipeSystemClass;
+    /* 0x3128 */ APipeSystem* m_pipeSystem;
+    /* 0x3130 */ UClass* m_doorwayRendererClass;
+    /* 0x3138 */ AStructureDoorwayRenderer* m_doorwayRenderer;
+    /* 0x3140 */ AResourceFling* m_resourceFlinger;
+    /* 0x3148 */ UClass* m_roofSystemClass;
+    /* 0x3150 */ ARoofSystem* m_roofSystem;
+    /* 0x3158 */ UEventQueue* m_eventQueue;
+    /* 0x3160 */ UClass* m_musicControllerClass;
+    /* 0x3168 */ AArcoMusicController* m_musicController;
+    /* 0x3170 */ UClass* m_raftRouteAssignmentsClass;
+    /* 0x3178 */ URaftRouteAssignments* m_raftRouteAssignments;
+    /* 0x3180 */ TSet<FName> m_enabledUnlocks;
+    /* 0x31d0 */ FUnlockTree m_unlockTree;
+    /* 0x3220 */ bool m_allUnlocksCheat;
+    /* 0x3228 */ FResearchState m_researchState;
+    /* 0x32f0 */ TMap<int32_t, FColor> m_heatToUiColorLookup;
+    /* 0x3340 */ FString m_associatedSave;
+    /* 0x3350 */ FArcoScenario m_scenarioData;
+    /* 0x33d8 */ int32_t m_mealRationingCount;
+    /* 0x33dc */ int32_t m_drinkRationingCount;
+    /* 0x33e0 */ bool m_mealRationing_rawOnly;
+    /* 0x33e1 */ bool m_mealRationing_preparedOnly;
+    /* 0x33e2 */ bool m_assertSavesEnabled;
+    /* 0x33e4 */ float cullDistanceSquared;
+    /* 0x33e8 */ int32_t MaxRenderedAgents;
+    /* 0x3418 */ TArray<FName> m_derivedResearchableTech;
+    /* 0x3428 */ TArray<FMealDefTierGroup> m_mealDefsQualitySorted_descendingGroups;
+    /* 0x3438 */ TArray<FMealDefTierGroup> m_drinkDefsQualitySorted_descendingGroups;
+    /* 0x34c0 */ UClass* embarkBoatClass;
+    /* 0x34c8 */ AEmbarkBoat* embarkBoatInstance;
+    /* 0x34d0 */ int32_t m_totalActions;
+    /* 0x34d4 */ int32_t m_totalAssertSaves;
+    /* 0x34d8 */ int32_t m_maxAllowedSavesPerRun;
+    /* 0x34e0 */ TSet<FName> m_miscEventFlags;
+    /* 0x3568 */ TArray<FReportedDeath> m_recentDeaths;
+    /* 0x3578 */ TArray<FReportedDeath> m_deathsPendingGraves;
+    /* 0x3588 */ TArray<FMailStyleNotif> m_pendingMailNotifs;
+    /* 0x3598 */ FPathfinderCallCounts m_pathfinderCallCountsForFrame;
+    /* 0x36c8 */ TMap<FName, UClass*> m_workshipActorLookup;
+    /* 0x37b8 */ FAutoExportState m_autoExportState;
 
     bool CalcAffordabilityOfChoice(FEventChoiceV2 choice);
     bool CalcAffordabilityOfResult(FActionResult Result);
@@ -80447,6 +80511,7 @@ class AArcoSystems : public AActor {
     FHeatDebugInfo GetHeatDebugInfo(int32_t day);
     TArray<FName> GetMissingPrerequisites(const FName& Name) const;
     FPopulationSummary_UI GetPopulationSummaryInfo() const;
+    int32_t GetPopulationTotal() const;
     AActor* GetPrimaryDockActor() const;
     FResearchSummaryState GetResearchInfo() const;
     float GetResearchPercentage() const;
@@ -80457,6 +80522,7 @@ class AArcoSystems : public AActor {
     int32_t GetTotalDebt() const;
     double GetTotalPlaySeconds();
     double GetUnixTimestamp();
+    bool HasResearchLabs() const;
     bool HasUnlock(const FName& Name) const;
     FColor HeatToUiColor(uint8_t heat);
     bool IsGridActorUnderground(AGridActor* GridActor);
@@ -80853,7 +80919,7 @@ class UConstructionSite : public USceneComponent {
 class UContextualHoverWidgetComponent : public UWidgetComponent {
 };
 
-// Size: 0x188
+// Size: 0x190
 struct FContiguousRail {
     /* 0x0000 */ FSimpleSpline railSpline;
 };
@@ -80987,14 +81053,14 @@ struct FDebugCfg {
     /* 0x0009 */ bool drawOceanReachabilityOverlay;
 };
 
-// Size: 0x4c0
+// Size: 0x4a8
 class ADebugTool : public AActor {
-    /* 0x02f0 */ UClass* m_controlWidgetClass;
-    /* 0x0404 */ EDebugMode m_currentMode;
-    /* 0x0408 */ FPathfinderDebug m_pathfinderDebugState;
-    /* 0x0428 */ FPathfinderSearchParamArgs m_searchArgs;
-    /* 0x0440 */ FPathfinderDebugResults m_debugResults;
-    /* 0x04b0 */ bool isDebugEnabled;
+    /* 0x02d8 */ UClass* m_controlWidgetClass;
+    /* 0x03ec */ EDebugMode m_currentMode;
+    /* 0x03f0 */ FPathfinderDebug m_pathfinderDebugState;
+    /* 0x0410 */ FPathfinderSearchParamArgs m_searchArgs;
+    /* 0x0428 */ FPathfinderDebugResults m_debugResults;
+    /* 0x0498 */ bool isDebugEnabled;
 
     void CycleFloodParam(bool Positive);
     FString GetCurrentFloodFlagString();
@@ -81682,6 +81748,13 @@ enum class EHaulVisualPos {
     ANCHOR_MAX = 2,
 };
 
+enum class EHeaterRunMode {
+    PLAYER_PAUSED = 0,
+    PLAYER_ENABLED = 1,
+    PLAYER_OVERDRIVE = 2,
+    PLAYER_MAX = 3,
+};
+
 enum class EHeaterState {
     IDLE = 0,
     PAUSED_BY_PLAYER = 1,
@@ -82110,8 +82183,10 @@ enum class ESimAction {
     OCEAN_DUMP_ASSIGN_RESOURCES = 146,
     ATTEMPT_ROUTE_FIX = 147,
     TOGGLE_MISC_FLAG = 148,
-    FINAL_ACTION = 149,
-    ESimAction_MAX = 150,
+    SET_HEATER_AUTOPAUSE_LIMIT = 149,
+    SET_OVERFLOW_FILTER = 150,
+    FINAL_ACTION = 151,
+    ESimAction_MAX = 152,
 };
 
 enum class ESimPauseReason {
@@ -82534,13 +82609,17 @@ struct FFactionExportSummary_Hud {
     /* 0x0010 */ int32_t refinedDystrumStored;
 };
 
-// Size: 0x298
+// Size: 0x2a0
 class UFarmBuilding : public UActorComponent {
     /* 0x0100 */ FWorkerAssignment m_workers;
     /* 0x0120 */ UWorkerViz* m_workerViz;
     /* 0x0128 */ FStockpile m_storageStockpile;
     /* 0x0180 */ FStockpile m_fertilizerStockpile;
     /* 0x0248 */ UServiceRange* m_serviceRange;
+    /* 0x0250 */ float m_agentRelaseTestCooldown;
+    /* 0x0254 */ float m_forceDeliveryCooldown;
+    /* 0x0258 */ float m_regularDeliveryCooldown;
+    /* 0x025c */ float m_farmingCooldown;
 };
 
 // Size: 0x24
@@ -82801,7 +82880,7 @@ class UFueledHeater : public UActorComponent {
     void PolicyStateChanged(FName policy, bool Active);
 };
 
-// Size: 0x48
+// Size: 0x58
 struct FFueledHeaterHudInfo {
     /* 0x0000 */ EHeaterState heaterState;
     /* 0x0004 */ int32_t fuelRate;
@@ -82818,6 +82897,10 @@ struct FFueledHeaterHudInfo {
     /* 0x003c */ int32_t pollution;
     /* 0x0040 */ EFuelSource fuelTypeEnum;
     /* 0x0044 */ int32_t fuelPerCycle;
+    /* 0x0048 */ int32_t maxTempToEnable;
+    /* 0x004c */ int32_t maxTempToEnable_playerUnits;
+    /* 0x0050 */ EHeaterRunMode runMode;
+    /* 0x0051 */ bool allowReset;
 };
 
 // Size: 0x18
@@ -82998,13 +83081,12 @@ struct FHeatDebugInfo {
     /* 0x0040 */ int32_t difficulty;
 };
 
-// Size: 0x2f0
+// Size: 0x300
 class UHeightVisualizer : public USceneComponent {
     /* 0x0240 */ UMaterialInstance* m_heightMat;
     /* 0x0248 */ UStaticMesh* m_heightFooter;
     /* 0x0250 */ UStaticMesh* m_heightMid;
     /* 0x0258 */ UStaticMesh* m_heightTop;
-    /* 0x0260 */ TArray<UStaticMeshComponent*> m_heightMeshes;
 };
 
 // Size: 0x228
@@ -83744,14 +83826,22 @@ struct FMsgBlipData {
     /* 0x0048 */ FColor TintColor;
 };
 
-// Size: 0x18
+// Size: 0x28
 struct FMusicPool {
     /* 0x0000 */ TArray<USoundBase*> music;
+    /* 0x0010 */ TArray<FMusicRule> ruleMusic;
 };
 
 // Size: 0x50
 struct FMusicPool_WeatherOverride {
     /* 0x0000 */ TMap<EDayPhase, FMusicPool> musicPools_ByDayPhase;
+};
+
+// Size: 0x10
+struct FMusicRule {
+    /* 0x0000 */ int32_t populationMin;
+    /* 0x0004 */ int32_t populationMax;
+    /* 0x0008 */ USoundBase* music;
 };
 
 // Size: 0x468
@@ -84677,7 +84767,7 @@ class APropTool : public AActor {
     void HandleSimSpeedChanged(int32_t simSpeed);
 };
 
-// Size: 0xb30
+// Size: 0xb40
 class APrototype_Agent : public AActor {
     /* 0x02a8 */ float cullDistanceSquared;
     /* 0x02b0 */ FVector haul_rootPos;
@@ -84692,8 +84782,8 @@ class APrototype_Agent : public AActor {
     /* 0x0798 */ FAgentCharacteristics m_characteristics;
     /* 0x08d0 */ TArray<EBehaviorType> m_behaviorTypesDebug;
     /* 0x08f8 */ TMap<FName, int32_t> m_activeNotifications;
-    /* 0x0948 */ UStaticMeshComponent* m_model;
-    /* 0x0950 */ USkeletalMeshComponent* m_skeletalMesh;
+    /* 0x0948 */ USceneComponent* m_model;
+    /* 0x0950 */ USkeletalMeshComponentBudgeted* m_skeletalMesh;
     /* 0x0958 */ UStaticMeshComponent* m_cartMesh;
     /* 0x0960 */ USceneComponent* m_cartResourceAnchor;
     /* 0x0968 */ UInstancedStaticMeshComponent* m_instancedHaulMesh;
@@ -84706,7 +84796,7 @@ class APrototype_Agent : public AActor {
     /* 0x09a0 */ UMaterialInstanceDynamic* m_meshMatInstance;
     /* 0x09c0 */ UHeatRecipientComponent* m_heatComponent;
     /* 0x09c8 */ FResourceCollection m_currentlyRenderedResources;
-    /* 0x0a68 */ float m_pollutionMeterResposiveness;
+    /* 0x0a78 */ float m_pollutionMeterResposiveness;
 
     void BreakOnNextTick();
     bool CanPickupAgent();
@@ -85659,10 +85749,11 @@ struct FSmugglerTraderShip_UiState {
     /* 0x0228 */ bool canShip;
 };
 
-// Size: 0xa0
+// Size: 0xa8
 struct FSorterHudData {
     /* 0x0000 */ TMap<FName, FResourceStockpileSubcategory> stockpileData;
     /* 0x0050 */ TSet<FName> whitelist;
+    /* 0x00a0 */ bool allowOverflow;
 };
 
 // Size: 0x10
@@ -85729,7 +85820,7 @@ struct FStaticMeshLookupRow : public FTableRowBase {
     /* 0x0008 */ UStaticMesh* Mesh;
 };
 
-// Size: 0x20
+// Size: 0x28
 struct FStationNode {
 };
 
@@ -85787,6 +85878,7 @@ struct FStockpileLinkerUiStruct {
 // Size: 0x2c0
 class UStockpileRender : public USceneComponent {
     /* 0x0240 */ bool alwaysRenderOnAssign;
+    /* 0x0241 */ bool allowShadows;
     /* 0x029c */ int32_t nSlotsX;
     /* 0x02a0 */ int32_t nSlotsY;
     /* 0x02a4 */ int32_t nSlotsZ;
@@ -86304,7 +86396,7 @@ struct FTooltipTag : public FTableRowBase {
     /* 0x001c */ FColor iconTint;
 };
 
-// Size: 0x330
+// Size: 0x3c0
 class ATowerGrid : public AActor {
 };
 
@@ -87016,19 +87108,17 @@ class UWorkerViz : public USceneComponent {
     /* 0x0250 */ TSet<APrototype_Agent*> m_overflowHiddenAgents;
 };
 
-// Size: 0x270
+// Size: 0x260
 class UWorkerVizPos : public USceneComponent {
     /* 0x0240 */ FName associatedAnimationKey;
     /* 0x0248 */ FName associatedHandToolMesh;
     /* 0x0250 */ bool offHand;
     /* 0x0254 */ FName associatedWorkerIntent;
-    /* 0x0260 */ USkeletalMeshComponent* dev_preview;
 };
 
-// Size: 0x10
+// Size: 0x58
 struct FWorkerVizPosState {
-    /* 0x0000 */ UWorkerVizPos* vizPosComponent;
-    /* 0x0008 */ APrototype_Agent* occupyingAgent;
+    /* 0x0050 */ APrototype_Agent* occupyingAgent;
 };
 
 // Size: 0x38
@@ -87075,7 +87165,7 @@ class UWorldEffects : public UObject {
     /* 0x0078 */ TSet<FName> m_effectFlags;
 };
 
-// Size: 0x1df8
+// Size: 0x1e58
 struct FWorldMeta {
     /* 0x0050 */ TSet<AGridActor*> constructions;
     /* 0x00a0 */ TSet<AGridActor*> houses;
@@ -87115,42 +87205,43 @@ struct FWorldMeta {
     /* 0x0aa8 */ TSet<AGridActor*> m_farmBuildings;
     /* 0x0af8 */ TSet<AGridActor*> m_farmLand;
     /* 0x0b48 */ TSet<UFarmland*> m_farmland_components;
-    /* 0x0b98 */ TSet<AGridActor*> m_townHalls;
-    /* 0x0be8 */ TSet<AGridActor*> m_signPosts;
-    /* 0x0c38 */ TSet<AGridActor*> m_aimMachines;
-    /* 0x0c88 */ TSet<UAimAutoReplacementListener*> m_aimReplacementListeners;
-    /* 0x0cd8 */ TSet<AGridActor*> m_aimStockpileInterfaces;
-    /* 0x0d28 */ TSet<AGridActor*> m_generators;
-    /* 0x0d78 */ TSet<AGridActor*> m_fueledHeaters;
-    /* 0x0dc8 */ TSet<AGridActor*> m_deliveryBuildings;
-    /* 0x0e18 */ TSet<AGridActor*> m_logisticsBuilding;
-    /* 0x0e68 */ TSet<AGridActor*> m_waterFountains;
-    /* 0x0eb8 */ TSet<AGridActor*> m_boilers;
-    /* 0x0f08 */ TSet<AGridActor*> m_bathhouses;
-    /* 0x0f58 */ TSet<AGridActor*> m_triageBuildings;
-    /* 0x0fa8 */ TSet<AGridActor*> m_tradePorts;
-    /* 0x0ff8 */ TSet<AGridActor*> m_offices;
-    /* 0x1048 */ TSet<AGridActor*> m_elevatorSegments;
-    /* 0x1098 */ TSet<AGridActor*> m_infiniteResourceSourceOrDrains;
-    /* 0x10e8 */ TSet<Ucoordinationoffice*> m_coordinationOffices;
-    /* 0x1138 */ TSet<UDecorativeSlot*> m_decorativeSlots;
-    /* 0x1188 */ TSet<AGridActor*> m_decoratives;
-    /* 0x11d8 */ TSet<Uoceanvoid*> m_oceanVoids;
-    /* 0x1228 */ TSet<UTerraformBuilding*> m_stoneDumps;
-    /* 0x1278 */ TSet<Uterraformcamp*> m_terraformCamps;
-    /* 0x12c8 */ TSet<UTerraformCell*> m_terraformCells;
-    /* 0x1318 */ TSet<UTaxOffice*> m_taxOffices;
-    /* 0x1368 */ TSet<UAimExtractor*> m_aimExtractors;
-    /* 0x13b8 */ TSet<UraftDock*> m_raftDocks;
-    /* 0x1408 */ TSet<UPhysicalOceanDump*> m_physicalOceanDumps;
-    /* 0x1458 */ TSet<UDecorative*> m_tickableDecorativeComponents;
-    /* 0x14a8 */ TSet<AGridActor*> m_fluidValves;
-    /* 0x14f8 */ TSet<AGridActor*> m_railBoosters;
-    /* 0x1908 */ FPopulation Population;
-    /* 0x1d90 */ int32_t maxPopulation;
-    /* 0x1d94 */ int32_t sessionLoadTimestamp;
-    /* 0x1d98 */ int32_t historicPlayPeriodSeconds;
-    /* 0x1df0 */ UGranaryResourceBuilding* primaryWarehouse;
+    /* 0x0b98 */ TSet<UFarmland*> m_ticking_farmland_components;
+    /* 0x0be8 */ TSet<AGridActor*> m_townHalls;
+    /* 0x0c38 */ TSet<AGridActor*> m_signPosts;
+    /* 0x0c88 */ TSet<AGridActor*> m_aimMachines;
+    /* 0x0cd8 */ TSet<UAimAutoReplacementListener*> m_aimReplacementListeners;
+    /* 0x0d28 */ TSet<AGridActor*> m_aimStockpileInterfaces;
+    /* 0x0d78 */ TSet<AGridActor*> m_generators;
+    /* 0x0dc8 */ TSet<AGridActor*> m_fueledHeaters;
+    /* 0x0e18 */ TSet<AGridActor*> m_deliveryBuildings;
+    /* 0x0e68 */ TSet<AGridActor*> m_logisticsBuilding;
+    /* 0x0eb8 */ TSet<AGridActor*> m_waterFountains;
+    /* 0x0f08 */ TSet<AGridActor*> m_boilers;
+    /* 0x0f58 */ TSet<AGridActor*> m_bathhouses;
+    /* 0x0fa8 */ TSet<AGridActor*> m_triageBuildings;
+    /* 0x0ff8 */ TSet<AGridActor*> m_tradePorts;
+    /* 0x1048 */ TSet<AGridActor*> m_offices;
+    /* 0x1098 */ TSet<AGridActor*> m_elevatorSegments;
+    /* 0x10e8 */ TSet<AGridActor*> m_infiniteResourceSourceOrDrains;
+    /* 0x1138 */ TSet<Ucoordinationoffice*> m_coordinationOffices;
+    /* 0x1188 */ TSet<UDecorativeSlot*> m_decorativeSlots;
+    /* 0x11d8 */ TSet<AGridActor*> m_decoratives;
+    /* 0x1228 */ TSet<Uoceanvoid*> m_oceanVoids;
+    /* 0x1278 */ TSet<UTerraformBuilding*> m_stoneDumps;
+    /* 0x12c8 */ TSet<Uterraformcamp*> m_terraformCamps;
+    /* 0x1318 */ TSet<UTerraformCell*> m_terraformCells;
+    /* 0x1368 */ TSet<UTaxOffice*> m_taxOffices;
+    /* 0x13b8 */ TSet<UAimExtractor*> m_aimExtractors;
+    /* 0x1408 */ TSet<UraftDock*> m_raftDocks;
+    /* 0x1458 */ TSet<UPhysicalOceanDump*> m_physicalOceanDumps;
+    /* 0x14a8 */ TSet<UDecorative*> m_tickableDecorativeComponents;
+    /* 0x14f8 */ TSet<AGridActor*> m_fluidValves;
+    /* 0x1548 */ TSet<AGridActor*> m_railBoosters;
+    /* 0x1968 */ FPopulation Population;
+    /* 0x1df0 */ int32_t maxPopulation;
+    /* 0x1df4 */ int32_t sessionLoadTimestamp;
+    /* 0x1df8 */ int32_t historicPlayPeriodSeconds;
+    /* 0x1e50 */ UGranaryResourceBuilding* primaryWarehouse;
 };
 
 // Size: 0x420
@@ -97714,6 +97805,13 @@ class AFootprintMaker : public AActor {
     void ClearAll();
 };
 
+// Size: 0x10
+struct FFriendGameData {
+    /* 0x0000 */ FName Name;
+    /* 0x0008 */ int32_t ID;
+    /* 0x000c */ int32_t Weighting;
+};
+
 // Size: 0x1f0
 class UGenericSaveGame : public USaveGame {
     /* 0x0028 */ uint32_t UserIndex;
@@ -98810,17 +98908,18 @@ class UModAPI : public UObject {
 struct FModApiState {
 };
 
-// Size: 0x80
+// Size: 0xd0
 class UModManager : public UObject {
     /* 0x0028 */ UBackbone* Backbone;
     /* 0x0030 */ FModState State;
 
+    void CheckLateModDownloadsDuringMainMenu(UObject* WorldContext);
     static void TriggerMapLeave(UObject* WorldContext);
     void TriggerMapMods(UObject* WorldContext);
     void TriggerStartupMods(UObject* WorldContext);
 };
 
-// Size: 0x50
+// Size: 0xa0
 struct FModState {
 };
 
@@ -100435,14 +100534,17 @@ class UStaticStageConfig : public UBlueprintFunctionLibrary {
     static int32_t FindUserIndex();
     static int32_t GetDlc1StoreId();
     static FString GetDlc1StorePageUrl();
+    static FFriendGameData GetFriendGameDetails();
     static int32_t GetWhisketwoodStoreId();
     static FString GetWhisketwoodStorePageUrl();
+    static bool IsFriendGameSystemActive();
     static FName MainMenu();
     static FName MapEditor();
     static FName MovieWorld();
     static void OpenDiscordInvite(const UObject* WorldContext);
     static void OpenDiscussionPage(const UObject* WorldContext);
     static void OpenDlc1StorePage(const UObject* WorldContext);
+    static void OpenFriendGamePage();
     static void OpenLegalAgreement(const UObject* WorldContext);
     static void OpenNewsletterPage(const UObject* WorldContext);
     static void OpenRedditPage(const UObject* WorldContext);
@@ -100465,6 +100567,7 @@ class UStaticStageConfig : public UBlueprintFunctionLibrary {
     static void PlayTheatre(const UObject* WorldContext, FString playId);
     static FName PlayWorld();
     static void QuitGame(const UObject* WorldContext);
+    static void RerollFriendGame();
     static FName Sandbox();
     static void ShowLoadCover(const UObject* WorldContext);
     static FName StoryEnd();
@@ -100711,7 +100814,7 @@ struct FTerrainBlockLocation {
     /* 0x0008 */ int32_t Index;
 };
 
-// Size: 0x24
+// Size: 0x1c
 struct FTerrainCell {
     /* 0x0000 */ uint8_t TypesAndFlags;
     /* 0x0001 */ uint8_t Health;
@@ -100725,11 +100828,9 @@ struct FTerrainCell {
     /* 0x0014 */ uint16_t CumulativeHeat;
     /* 0x0016 */ uint8_t EffectiveHeatOrVerticalDepth;
     /* 0x0017 */ uint8_t LightOrStraightDepth;
-    /* 0x0018 */ float WindStrength;
-    /* 0x001c */ float FanPressure;
-    /* 0x0020 */ ETerrainBlockage Blockage;
-    /* 0x0021 */ uint8_t WaterHeight;
-    /* 0x0022 */ int16_t DeltaHeat;
+    /* 0x0018 */ ETerrainBlockage Blockage;
+    /* 0x0019 */ uint8_t WaterHeight;
+    /* 0x001a */ int16_t DeltaHeat;
 };
 
 // Size: 0x14
@@ -100898,11 +100999,12 @@ struct FTerrainGeneratorIslandParameters {
 struct FTerrainGeneratorMeta {
 };
 
-// Size: 0x14
+// Size: 0x18
 struct FTerrainHeatAnimationCell {
     /* 0x0000 */ FIntVector DataLocation;
     /* 0x000c */ int32_t CellIndex;
-    /* 0x0010 */ float Timer;
+    /* 0x0010 */ int32_t TimeStampSeconds;
+    /* 0x0014 */ float TimeStampFraction;
 };
 
 // Size: 0x80
@@ -101131,7 +101233,7 @@ class UTiledTerrainConfigMule : public UObject {
     /* 0x0028 */ FTiledTerrainConfig config;
 };
 
-// Size: 0x9e0
+// Size: 0x9e8
 struct FTiledTerrainData {
     /* 0x0000 */ FIntVector Origin;
     /* 0x000c */ FIntVector Extent;
@@ -101143,49 +101245,50 @@ struct FTiledTerrainData {
     /* 0x0060 */ TArray<FTerrainCell2D> OriginalCells2D;
     /* 0x0070 */ FTerrainCellTypeLibrary TypeLibrary;
     /* 0x01d0 */ TArray<FName> Ores;
-    /* 0x01e0 */ float FarmTickTimer;
-    /* 0x01e4 */ int32_t LastFarmCellIndex;
-    /* 0x01e8 */ TArray<FTerrainFarmCell> FarmCells;
-    /* 0x01f8 */ TArray<FTerrainFarmField> FarmFields;
-    /* 0x0208 */ FFarmCropConfig FarmCropConfig;
-    /* 0x0258 */ float ExternalCropGrowthModifier;
-    /* 0x025c */ float ExternalCropYieldModifier;
-    /* 0x0260 */ float PollutionTickTimer;
-    /* 0x0264 */ bool bPollutionApplication;
-    /* 0x0268 */ int32_t LastPollutionCellIndex;
-    /* 0x0270 */ TArray<FTerrainPollutionCell> PollutionCells;
-    /* 0x0280 */ float DecayTickTimer;
-    /* 0x0284 */ int32_t LastDecayCellIndex;
-    /* 0x0288 */ TArray<FTerrainDecayCell> DecayCells;
-    /* 0x0298 */ float HeatAnimationTickTimer;
-    /* 0x029c */ int32_t LastHeatAnimationCellIndex;
-    /* 0x02a0 */ TArray<FTerrainHeatAnimationCell> HeatAnimationCells;
-    /* 0x02b0 */ float FishRecoveryTickTimer;
-    /* 0x02b4 */ int32_t LastFishRecoveryCellIndex;
-    /* 0x02b8 */ TArray<FTerrainFishRecoveryCell> FishRecoveryCells;
-    /* 0x02c8 */ float DesalinationTickTimer;
-    /* 0x02cc */ int32_t LastDesalinationCellIndex;
-    /* 0x02d0 */ TArray<FTerrainDesalinationCell> DesalinationCells;
-    /* 0x02e0 */ TArray<FTerrainWaterEnclosure> WaterEnclosures;
-    /* 0x02f0 */ int32_t WaterDrainIncrement;
-    /* 0x02f4 */ float WaterEvaporationPerSecond;
-    /* 0x02f8 */ float WaterEvaporationMultiplier;
-    /* 0x0300 */ TArray<float> TraceDistances;
-    /* 0x0310 */ FIntVector ShipPosition;
-    /* 0x031c */ float SecondsPerYear;
-    /* 0x0320 */ float GlobalCropYieldFactor;
-    /* 0x0324 */ float MineAgeDecayPeriod;
-    /* 0x0328 */ float OceanFloorDryingPeriod;
-    /* 0x032c */ uint8_t GlobalHeat;
-    /* 0x032d */ bool bTemperatureFalling;
-    /* 0x0330 */ int32_t SeaFloorHeight;
-    /* 0x0334 */ uint8_t NewTerrainHealth;
-    /* 0x0335 */ bool bRequiresNavigationUpdate;
-    /* 0x0338 */ float NutrientDifficultyModifier;
-    /* 0x0340 */ TArray<int32_t> HarvestPriorities;
-    /* 0x0350 */ TArray<int32_t> EarlyHarvestPriorities;
-    /* 0x0360 */ UGridNavMesh* NavigationMesh;
-    /* 0x0368 */ bool bNavigationMeshDirty;
+    /* 0x01e0 */ int32_t SimTimeSeconds;
+    /* 0x01e4 */ float SimTimeFraction;
+    /* 0x01e8 */ float FarmTickTimer;
+    /* 0x01ec */ int32_t LastFarmCellIndex;
+    /* 0x01f0 */ TArray<FTerrainFarmCell> FarmCells;
+    /* 0x0200 */ TArray<FTerrainFarmField> FarmFields;
+    /* 0x0210 */ FFarmCropConfig FarmCropConfig;
+    /* 0x0260 */ float ExternalCropGrowthModifier;
+    /* 0x0264 */ float ExternalCropYieldModifier;
+    /* 0x0268 */ float PollutionTickTimer;
+    /* 0x026c */ bool bPollutionApplication;
+    /* 0x0270 */ int32_t LastPollutionCellIndex;
+    /* 0x0278 */ TArray<FTerrainPollutionCell> PollutionCells;
+    /* 0x0288 */ float DecayTickTimer;
+    /* 0x028c */ int32_t LastDecayCellIndex;
+    /* 0x0290 */ TArray<FTerrainDecayCell> DecayCells;
+    /* 0x02a0 */ int32_t LastHeatAnimationCellIndex;
+    /* 0x02a8 */ TArray<FTerrainHeatAnimationCell> HeatAnimationCells;
+    /* 0x02b8 */ float FishRecoveryTickTimer;
+    /* 0x02bc */ int32_t LastFishRecoveryCellIndex;
+    /* 0x02c0 */ TArray<FTerrainFishRecoveryCell> FishRecoveryCells;
+    /* 0x02d0 */ float DesalinationTickTimer;
+    /* 0x02d4 */ int32_t LastDesalinationCellIndex;
+    /* 0x02d8 */ TArray<FTerrainDesalinationCell> DesalinationCells;
+    /* 0x02e8 */ TArray<FTerrainWaterEnclosure> WaterEnclosures;
+    /* 0x02f8 */ int32_t WaterDrainIncrement;
+    /* 0x02fc */ float WaterEvaporationPerSecond;
+    /* 0x0300 */ float WaterEvaporationMultiplier;
+    /* 0x0308 */ TArray<float> TraceDistances;
+    /* 0x0318 */ FIntVector ShipPosition;
+    /* 0x0324 */ float SecondsPerYear;
+    /* 0x0328 */ float GlobalCropYieldFactor;
+    /* 0x032c */ float MineAgeDecayPeriod;
+    /* 0x0330 */ float OceanFloorDryingPeriod;
+    /* 0x0334 */ uint8_t GlobalHeat;
+    /* 0x0335 */ bool bTemperatureFalling;
+    /* 0x0338 */ int32_t SeaFloorHeight;
+    /* 0x033c */ uint8_t NewTerrainHealth;
+    /* 0x033d */ bool bRequiresNavigationUpdate;
+    /* 0x0340 */ float NutrientDifficultyModifier;
+    /* 0x0348 */ TArray<int32_t> HarvestPriorities;
+    /* 0x0358 */ TArray<int32_t> EarlyHarvestPriorities;
+    /* 0x0368 */ UGridNavMesh* NavigationMesh;
+    /* 0x0370 */ bool bNavigationMeshDirty;
 };
 
 // Size: 0x50

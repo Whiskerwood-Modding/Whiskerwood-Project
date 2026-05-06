@@ -1,7 +1,7 @@
 {
-  "ExportDate": "2026-03-28 08:12:01",
+  "ExportDate": "2026-05-06 13:28:16",
   "TotalTables": 62,
-  "TotalUniqueValues": 41403,
+  "TotalUniqueValues": 41707,
   "Tables": {
     "Whiskerwood/Content/Data/AchievementsTables": {
       "ACH.010.EMBARK": {
@@ -1039,8 +1039,8 @@
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-wrench-64.icons8-wrench-64'",
         "DisplayName": "policy.title.rapidconstruction",
         "Description": "policy.desc.rapidconstruction",
-        "productivityMod": "0",
-        "speedMod": "50",
+        "productivityMod": "40",
+        "speedMod": "40",
         "carryMod": "0",
         "additionalStacks": "0",
         "canStack": "False",
@@ -1721,6 +1721,36 @@
         "canStack": "False",
         "expires": "False",
         "Category": "None",
+        "severity_mastersync": "None",
+        "useResourceData": "False",
+        "hiddenMod": "False"
+      },
+      "mod.soaked": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-storm-100.icons8-storm-100'",
+        "DisplayName": "mod.soaked",
+        "Description": "mod.desc.soaked",
+        "productivityMod": "0",
+        "speedMod": "-25",
+        "carryMod": "0",
+        "additionalStacks": "0",
+        "canStack": "False",
+        "expires": "True",
+        "Category": "world",
+        "severity_mastersync": "None",
+        "useResourceData": "False",
+        "hiddenMod": "False"
+      },
+      "mod.constructionyardWorker": {
+        "Icon": "0",
+        "DisplayName": "mod.constructionYardWorker",
+        "Description": "mod.constructionYardWorker.desc",
+        "productivityMod": "25",
+        "speedMod": "10",
+        "carryMod": "0",
+        "additionalStacks": "0",
+        "canStack": "False",
+        "expires": "False",
+        "Category": "world",
         "severity_mastersync": "None",
         "useResourceData": "False",
         "hiddenMod": "False"
@@ -7987,7 +8017,8 @@
         "refundRule": "fullrefund",
         "Quality": "0",
         "Variants": [
-          "rail_steambooster_variant1"
+          "rail_steambooster_variant1",
+          "rail_steambooster_variant2"
         ]
       },
       "rail.straight": {
@@ -11357,6 +11388,48 @@
         "Variants": [
           "stonestairs"
         ]
+      },
+      "rail_steambooster_variant2": {
+        "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/aim/Rail_SteamBooster_variant2.Rail_SteamBooster_variant2_C'",
+        "stringKey": "building.rail_steambooster",
+        "Description": "building.rail_steambooster.desc",
+        "cost1": "planks",
+        "ct1": "3",
+        "cost2": "ironbar",
+        "ct2": "8",
+        "cost3": "None",
+        "ct3": "0",
+        "cost4": "None",
+        "ct4": "0",
+        "unlockPrerequisite": "unlock.rail_steambooster",
+        "toolbarGroup": "None",
+        "toolbarGroupSort": "0",
+        "useCustomIcon": "False",
+        "Icon": "0",
+        "detailCue": "0",
+        "SupportedImprovements": [],
+        "structureType": "Travel",
+        "maxAgents_contextual": "0",
+        "asHouseTier": "0",
+        "asIndustryDef": "None",
+        "supportedIndustryRecipes": [],
+        "minMaintenanceInterval": "0",
+        "workerColor": "FFFFFF (FColor)",
+        "limitOne": "False",
+        "customBuildCue": "0",
+        "requiresConstruction": "False",
+        "decorType": "None",
+        "guildSpecialty": "None",
+        "hardLabor": "False",
+        "industrialLabor": "False",
+        "TooltipTags": [],
+        "constructionTime": "10",
+        "catalyst": "None",
+        "norefund": "False",
+        "randomlyRotate": "False",
+        "refundRule": "fullrefund",
+        "Quality": "0",
+        "Variants": []
       }
     },
     "Whiskerwood/Content/Data/HarvestCampResourceGroups": {
@@ -18471,7 +18544,7 @@
         "in4": "None",
         "inCt4": "0",
         "out1": "rawfish",
-        "outCt1": "2",
+        "outCt1": "1",
         "out2": "None",
         "outCt2": "0",
         "out3": "None",
@@ -26675,7 +26748,7 @@
         "useGridActorForLoc": "True",
         "Title": "",
         "Description": "",
-        "demoLocked": "False",
+        "demoLocked": "True",
         "isHidden": "False",
         "faction": "home",
         "subCategory": "",
@@ -26811,6 +26884,28 @@
         "prerequisiteUnlocks": [
           "unlock.flaxspinner"
         ],
+        "tierSortOrder": "50",
+        "associatedRecipe": "None",
+        "isQuestRelated": "False"
+      },
+      "unlock.constructionyard": {
+        "useGridActorForLoc": "True",
+        "Title": "",
+        "Description": "",
+        "demoLocked": "True",
+        "isHidden": "False",
+        "faction": "home",
+        "subCategory": "techCategory.Utilities",
+        "giftableInDemo": "False",
+        "giftable": "True",
+        "giftPool": "2",
+        "researchable": "True",
+        "scienceCost": "34",
+        "researchTier": "1",
+        "unlockedByDefault": "False",
+        "childUnlocks": [],
+        "associatedGridActor": "constructionyard",
+        "prerequisiteUnlocks": [],
         "tierSortOrder": "50",
         "associatedRecipe": "None",
         "isQuestRelated": "False"
@@ -35200,6 +35295,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "Za každé vyplutí lodě"
+      },
+      "building.bush": {
+        "Value": "Keřík"
+      },
+      "building.bush.desc": {
+        "Value": "Různé keře a kapradí"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Zatopení"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Kamenná zeď"
+      },
+      "resource.bathed": {
+        "Value": "Koupel"
+      },
+      "resource.desc.bathed": {
+        "Value": "Zářivě čistý Fousek"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Terraformační nástroj"
+      },
+      "msg.settingsCopied": {
+        "Value": "Nastavení je zkopírované"
+      },
+      "msg.settingsPasted": {
+        "Value": "Nastavení je vložené"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Není co kopírovat"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Nekompatibilní vložení"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Kopírovat nastavení"
+      },
+      "copyTooltip.title": {
+        "Value": "Kopírovat nastavení"
+      },
+      "copytooltip.desc": {
+        "Value": "Uloží nastavení této budovy do schránky"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Vložit nastavení"
+      },
+      "pasteTooltip.title": {
+        "Value": "Vložit nastavení"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Použije uložené nastavení na tuto budovu"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Zapnout při:"
+      },
+      "mod.soaked": {
+        "Value": "Liják"
+      },
+      "mod.desc.soaked": {
+        "Value": "Zpomalení po lijáku bez střechy nad hlavou"
+      },
+      "logistics.allowOverflow": {
+        "Value": "Povolit přebytek"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_De": {
@@ -41939,7 +42097,7 @@
         "Value": "Fischansicht ein/aus"
       },
       "tooltip.fish.desc": {
-        "Value": "Zeigt Fischbestände an. Ein Overlay, das die Fischbestände im Meer anzeigt."
+        "Value": "Zeigt Fischbestände an. Ein Overlay, das die Fischpopulation des Meeres anzeigt."
       },
       "inputBinding.fishView": {
         "Value": "Fischansicht"
@@ -42033,62 +42191,98 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "Pro Schiffsabfahrt"
+      },
+      "building.bush": {
+        "Value": "Kleiner Busch"
+      },
+      "building.bush.desc": {
+        "Value": "Verschiedene Büsche und Farne"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Kontrolliertes Überfluten"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Steinmauer"
+      },
+      "resource.bathed": {
+        "Value": "Bad"
+      },
+      "resource.desc.bathed": {
+        "Value": "Quietschsauberer Fiepser"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Geländewerkzeug"
+      },
+      "msg.settingsCopied": {
+        "Value": "Einstellungen kopiert"
+      },
+      "msg.settingsPasted": {
+        "Value": "Einstellungen eingefügt"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Nichts zum Einfügen"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Einfügen nicht kompatibel"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Einstellungen kopieren"
+      },
+      "copyTooltip.title": {
+        "Value": "Einstellungen kopieren"
+      },
+      "copytooltip.desc": {
+        "Value": "Die Einstellungen für dieses Gebäude in der Zwischenablage speichern"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Einstellungen einfügen"
+      },
+      "pasteTooltip.title": {
+        "Value": "Einstellungen einfügen"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Die gespeicherten Einstellungen für dieses Gebäude einfügen"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Einschalten bei:"
+      },
+      "mod.soaked": {
+        "Value": "Durchnässender Regen"
+      },
+      "mod.desc.soaked": {
+        "Value": "Durch schweren Regen ohne Schutz verlangsamt"
+      },
+      "logistics.allowOverflow": {
+        "Value": "Überlauf zulassen"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Dev": {
-      "building.bush": {
-        "Value": "Small Bush"
+      "building.constructionyard": {
+        "Value": "Construction Yard"
       },
-      "building.bush.desc": {
-        "Value": "Varous bushes and ferns"
+      "building.constructionyard.desc": {
+        "Value": "Foreman coordinates carts and tools to quickly construct nearby buildings"
       },
-      "unlock.plannedFlooding": {
-        "Value": "Controlled Flooding"
+      "hint.constructionYard": {
+        "Value": "Workers efficiently cart supplies and build constructions within radius"
       },
-      "slotdecorative.stoneWall": {
-        "Value": "Stone Wall"
+      "mod.constructionYardWorker": {
+        "Value": "Construction Yard Worker"
       },
-      "resource.bathed": {
-        "Value": "Bath"
+      "problem.idleyard": {
+        "Value": "Idle Construction Yard"
       },
-      "resource.bathed.desc": {
-        "Value": "Squeaky clean whisker"
+      "problem.idleyard.desc": {
+        "Value": "Construction yard has no construction sites in range"
       },
-      "resource.desc.bathed": {
-        "Value": "Squeaky clean whisker"
+      "policy.desc.rapidConstruction": {
+        "Value": "Builders gain greatly increased build and movement speed"
       },
-      "settings.keybind.terraformTool": {
-        "Value": "Terraform Tool"
+      "logistics.allowOverflow.desc": {
+        "Value": "If lower belt backs up, allow filtered items to overflow onto top belt"
       },
-      "msg.settingsCopied": {
-        "Value": "Settings copied"
-      },
-      "msg.settingsPasted": {
-        "Value": "Settings pasted"
-      },
-      "msg.nothingToPaste": {
-        "Value": "Nothing to paste"
-      },
-      "msg.pastedSettingsIncompatible": {
-        "Value": "Incompatible paste"
-      },
-      "settings.keybind.copySettings": {
-        "Value": "Copy Settings"
-      },
-      "copyTooltip.title": {
-        "Value": "Copy Settings"
-      },
-      "copytooltip.desc": {
-        "Value": "Save off this building's settings to clipboard"
-      },
-      "settings.keybind.pasteSettings": {
-        "Value": "Paste Settings"
-      },
-      "pasteTooltip.title": {
-        "Value": "Paste Settings"
-      },
-      "pasteTooltip.desc": {
-        "Value": "Paste saved settings to this building"
+      "mod.constructionYardWorker.desc": {
+        "Value": "Improved construction due to coordination construction foreman"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_En": {
@@ -48922,6 +49116,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "Per ship departure"
+      },
+      "building.bush": {
+        "Value": "Small Bush"
+      },
+      "building.bush.desc": {
+        "Value": "Varous bushes and ferns"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Controlled Flooding"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Stone Wall"
+      },
+      "resource.bathed": {
+        "Value": "Bath"
+      },
+      "resource.desc.bathed": {
+        "Value": "Squeaky clean whisker"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Terraform Tool"
+      },
+      "msg.settingsCopied": {
+        "Value": "Settings copied"
+      },
+      "msg.settingsPasted": {
+        "Value": "Settings pasted"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Nothing to paste"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Incompatible paste"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Copy Settings"
+      },
+      "copyTooltip.title": {
+        "Value": "Copy Settings"
+      },
+      "copytooltip.desc": {
+        "Value": "Save off this building's settings to clipboard"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Paste Settings"
+      },
+      "pasteTooltip.title": {
+        "Value": "Paste Settings"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Paste saved settings to this building"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Turn on at:"
+      },
+      "mod.soaked": {
+        "Value": "Soaking Rain"
+      },
+      "mod.desc.soaked": {
+        "Value": "Slowed by heavy rainfall with no cover overhead"
+      },
+      "logistics.allowOverflow": {
+        "Value": "Allow Overflow"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Es-Mx": {
@@ -55480,7 +55737,7 @@
         "Value": "Prioridad de tala"
       },
       "toolbar.priorityTool.harvest": {
-        "Value": "Prioridad de la recolección"
+        "Value": "Prioridad de recolección"
       },
       "toolbar.farmTool": {
         "Value": "Herramientas de granja"
@@ -55534,7 +55791,7 @@
         "Value": "Flotas y barcos"
       },
       "toolbar.harvesttool": {
-        "Value": "Prioridad de la recolección"
+        "Value": "Prioridad de recolección"
       },
       "toolbar.trains": {
         "Value": "Ferrocarril"
@@ -57130,13 +57387,13 @@
         "Value": "Solo alta mar"
       },
       "embark.choice.boosted": {
-        "Value": "Multiplicadas"
+        "Value": "Multiplicados"
       },
       "embark.choice.natural": {
         "Value": "Naturales"
       },
       "embark.choice.reduced": {
-        "Value": "Reducidas"
+        "Value": "Reducidos"
       },
       "embark.choice.dangerous": {
         "Value": "Peligrosas"
@@ -57748,7 +58005,7 @@
         "Value": "+1 a la capacidad de carga"
       },
       "tag.guildtrait.extraeat": {
-        "Value": "+1 alimento por comida"
+        "Value": "+1 comida cada vez que come."
       },
       "tag.guildtrait.reducedwear": {
         "Value": "La maquinaria industrial que utiliza se deteriora más lento"
@@ -59368,7 +59625,7 @@
         "Value": "Sufrió condiciones muy frías."
       },
       "thought.desc.newArrival": {
-        "Value": "Es nuevo en la colonia y guarda una actitud muy optimista."
+        "Value": "Acaba de llegar a la colonia y aún guarda una actitud muy optimista."
       },
       "thought.desc.sleep_tier0": {
         "Value": "Durmió en lo que difícilmente podría llamarse un hogar."
@@ -60379,25 +60636,25 @@
         "Value": "Asigna el origen de los productos entrantes"
       },
       "overlayHint.selectHome": {
-        "Value": "Asigna bigotines a un hogar"
+        "Value": "Asignar bigotines a un hogar"
       },
       "overlayHint.selectWorkplace": {
         "Value": "Asigna a un bigotín a un lugar de trabajo"
       },
       "overlayHint.markResource": {
-        "Value": "Marca recursos que priorizar más"
+        "Value": "Marca recursos que priorizar más."
       },
       "overlayHint.markResource.detail": {
         "Value": "Se priorizarán los recursos marcados"
       },
       "overlayHint.markMining": {
-        "Value": "Marca tierra para la minería"
+        "Value": "Marca tierra para la minería."
       },
       "overlayHint.markMining.detail": {
-        "Value": "Marca otra vez para cancelar o eliminar los andamios utilizados"
+        "Value": "Marca otra vez para cancelar o eliminar los andamios utilizados."
       },
       "overlayHint.markFarming": {
-        "Value": "Marca tierra para el cultivo"
+        "Value": "Marca tierra para el cultivo."
       },
       "vending.workerHint": {
         "Value": "Almacena las cantidades solicitadas."
@@ -61468,19 +61725,19 @@
         "Value": "Lugar para rellenar las zonas marcadas con tierra."
       },
       "embark.param.whiskerFickleness": {
-        "Value": "Volubilidad de los bigotines"
+        "Value": "Volubilidades de los bigotines"
       },
       "embark.param.researchCost": {
-        "Value": "Coste de investigación"
+        "Value": "Cuotas de investigación"
       },
       "embark.choice.low": {
-        "Value": "Baja"
+        "Value": "Bajas"
       },
       "embark.choice.high": {
-        "Value": "Alta"
+        "Value": "Altas"
       },
       "embark.choice.veryhigh": {
-        "Value": "Muy alta"
+        "Value": "Muy altas"
       },
       "expectation.expectations": {
         "Value": "Expectativa"
@@ -61561,19 +61818,19 @@
         "Value": "Deleite culinario"
       },
       "thought.food.elated.desc": {
-        "Value": "Alborozado por haber comido un plato de alta calidad."
+        "Value": "Se alboroza por haber comido un plato de alta calidad."
       },
       "thought.clothing.disappointed": {
         "Value": "Ropa mediocre"
       },
       "thought.clothing.disappointed.desc": {
-        "Value": "Descontento con la calidad de la ropa."
+        "Value": "Siente descontento a causa de la calidad de la ropa."
       },
       "thought.clothing.elated": {
         "Value": "A la última moda"
       },
       "thought.clothing.elated.desc": {
-        "Value": "Maravillado por que la ropa haya superado sus expectativas."
+        "Value": "Le ha impresionado que la ropa haya superado sus expectativas."
       },
       "thought.bathing.disappointed": {
         "Value": "Baño insatisfactorio"
@@ -61597,7 +61854,7 @@
         "Value": "Comedor moderno"
       },
       "thought.dining.elated.desc": {
-        "Value": "Contento con la experiencia de comer en el comedor."
+        "Value": "Le satisface la experiencia de comer en el comedor."
       },
       "thought.supplies.disappointed": {
         "Value": "Falta de suministros diarios"
@@ -61642,7 +61899,7 @@
         "Value": "Seleccionar objetivo de formación"
       },
       "action.selectEducation.desc": {
-        "Value": "Selecciona la habilidad que deseas que aprendan tus estudiantes. Se necesita un profesor que ya haya adquirido ese nivel de educación."
+        "Value": "Selecciona la habilidad que deseas que aprendan tus estudiantes. Se necesita un docente que ya haya adquirido ese nivel de educación."
       },
       "building.school": {
         "Value": "Centro educativo"
@@ -61651,13 +61908,13 @@
         "Value": "Institución en la que los bigotines pueden enseñar y aprender habilidades."
       },
       "education.noteacher": {
-        "Value": "Sin profesor"
+        "Value": "Sin docente"
       },
       "education.assignteacher": {
-        "Value": "Asignar profesor"
+        "Value": "Asignar docente"
       },
       "education.reassignteacher": {
-        "Value": "Reasignar profesor"
+        "Value": "Reasignar docente"
       },
       "education.nostudent": {
         "Value": "Sin estudiantes"
@@ -61675,7 +61932,7 @@
         "Value": "Minerales y cosechas"
       },
       "embark.choice.poor": {
-        "Value": "Pobre"
+        "Value": "Pobres"
       },
       "rating.bathingQuality": {
         "Value": "Calidad de baño"
@@ -61708,19 +61965,19 @@
         "Value": "Bigotín sin fuerza para llevar cargas pesadas."
       },
       "trait.slow": {
-        "Value": "Lento"
+        "Value": "Paso pausado"
       },
       "trait.slow.desc": {
         "Value": "Bigotín que no puede caminar muy rápido."
       },
       "trait.teacher": {
-        "Value": "Profesor talentoso"
+        "Value": "Docente con talento"
       },
       "trait.teacher.desc": {
         "Value": "Bigotín con capacidad para enseñar más rápido."
       },
       "trait.mypace": {
-        "Value": "Sereno"
+        "Value": "Ritmo relajado"
       },
       "trait.mypace.desc": {
         "Value": "Bigotín que trabaja a su ritmo."
@@ -61738,13 +61995,13 @@
         "Value": "Bigotín con un cerebro que no para de pensar. Tiene más probabilidades de tener pensamientos positivos y negativos."
       },
       "trait.considerate": {
-        "Value": "Considerado"
+        "Value": "Deferente"
       },
       "trait.considerate.desc": {
         "Value": "No se ofende por comentarios maleducados."
       },
       "trait.inquisitive": {
-        "Value": "Inquisitivo"
+        "Value": "Mente inquisitiva"
       },
       "trait.inquisitive.desc": {
         "Value": "Bigotín preguntón. Aprende más rápido en el centro educativo."
@@ -61762,7 +62019,7 @@
         "Value": "Lo importan los demás, pero a veces hace preguntas maleducadas."
       },
       "trait.greedy": {
-        "Value": "Avaricioso"
+        "Value": "Tendencia avariciosa"
       },
       "trait.greedy.desc": {
         "Value": "Siempre espera más de la vida."
@@ -61909,7 +62166,7 @@
         "Value": "Demoler"
       },
       "inputBinding.height": {
-        "Value": "Desplazamiento vertical"
+        "Value": "Despl. vertical"
       },
       "whiskerActivity.terraforming": {
         "Value": "Rellenando el terreno"
@@ -62264,6 +62521,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "Por salida de barco"
+      },
+      "building.bush": {
+        "Value": "Seto pequeño"
+      },
+      "building.bush.desc": {
+        "Value": "Combinación de arbustos y helechos."
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Inundación controlada"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Pared de piedra"
+      },
+      "resource.bathed": {
+        "Value": "Baño"
+      },
+      "resource.desc.bathed": {
+        "Value": "Bigotín limpio y reluciente."
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Herramienta Terraformación"
+      },
+      "msg.settingsCopied": {
+        "Value": "Ajustes copiados"
+      },
+      "msg.settingsPasted": {
+        "Value": "Ajustes pegados"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Nada que pegar"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Incompatible para pegar"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Copiar ajustes"
+      },
+      "copyTooltip.title": {
+        "Value": "Copiar ajustes"
+      },
+      "copytooltip.desc": {
+        "Value": "Guardar los ajustes de esta construcción en el portapapeles"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Pegar ajustes"
+      },
+      "pasteTooltip.title": {
+        "Value": "Pegar ajustes"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Pegar ajustes guardados en esta construcción"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Encender al alcanzar:"
+      },
+      "mod.soaked": {
+        "Value": "Empapamiento pluvial"
+      },
+      "mod.desc.soaked": {
+        "Value": "No está a cubierto y la lluvia ralentiza sus esfuerzos."
+      },
+      "logistics.allowOverflow": {
+        "Value": "Permitir exceso"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Fr": {
@@ -69097,6 +69417,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "Par départ d’embarcation"
+      },
+      "building.bush": {
+        "Value": "Petit buisson"
+      },
+      "building.bush.desc": {
+        "Value": "Assortiment de buissons et de fougères."
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Inondation contrôlée"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Mur de pierre"
+      },
+      "resource.bathed": {
+        "Value": "Bain"
+      },
+      "resource.desc.bathed": {
+        "Value": "Une Moustache propre des pieds aux oreilles."
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Outil Terraformation"
+      },
+      "msg.settingsCopied": {
+        "Value": "Paramètres copiés"
+      },
+      "msg.settingsPasted": {
+        "Value": "Paramètres collés"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Rien à coller"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Valeurs incompatibles"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Copier les paramètres"
+      },
+      "copyTooltip.title": {
+        "Value": "Copier les paramètres"
+      },
+      "copytooltip.desc": {
+        "Value": "Copier les paramètres de ce bâtiment vers le presse-papier."
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Coller les paramètres"
+      },
+      "pasteTooltip.title": {
+        "Value": "Coller les paramètres"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Coller les paramètres copiés sur ce bâtiment."
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Allumer sous\u00A0:"
+      },
+      "mod.soaked": {
+        "Value": "Pluie torrentielle"
+      },
+      "mod.desc.soaked": {
+        "Value": "Est ralentie par une pluie torrentielle contre laquelle elle ne peut pas s’abriter."
+      },
+      "logistics.allowOverflow": {
+        "Value": "Ne pas interrompre le tapis"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Hu": {
@@ -75740,7 +76123,7 @@
         "Value": "Munkahatósugár"
       },
       "setting.workRange.desc": {
-        "Value": "A dolgozók csak ezen a térségen belül fognak munkát keresni.\n \nEz nem vonatkozik a nyersanyagok gyűjtésére vagy tárolására."
+        "Value": "A dolgozók csak ezen a térségen belül fognak munkát keresni.\n\n Ez nem vonatkozik a nyersanyagok gyűjtésére vagy tárolására."
       },
       "triage.freezing": {
         "Value": "Fagyos! A beteg felépülése leállt."
@@ -75927,6 +76310,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "Hajóindulásonként"
+      },
+      "building.bush": {
+        "Value": "Kis bokor"
+      },
+      "building.bush.desc": {
+        "Value": "Különböző bokrok és páfrányok"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Ellenőrzött elárasztás"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Kőfal"
+      },
+      "resource.bathed": {
+        "Value": "Fürdő"
+      },
+      "resource.desc.bathed": {
+        "Value": "Habtiszta bajszos"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Terraformáló eszköz"
+      },
+      "msg.settingsCopied": {
+        "Value": "Beállítások másolva"
+      },
+      "msg.settingsPasted": {
+        "Value": "Beállítások beillesztve"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Nincs mit beilleszteni"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Inkompatibilis beillesztés"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Beállítások másolása"
+      },
+      "copyTooltip.title": {
+        "Value": "Beállítások másolása"
+      },
+      "copytooltip.desc": {
+        "Value": "Mentsd el az épület beállításait a vágólapra"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Beállítások beillesztése"
+      },
+      "pasteTooltip.title": {
+        "Value": "Beállítások beillesztése"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Mentett beállítások beillesztése erre az épületre"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Bekapcsolás ekkor:"
+      },
+      "mod.soaked": {
+        "Value": "Áztató eső"
+      },
+      "mod.desc.soaked": {
+        "Value": "Heves esőzések lassítják, mivel nincs fedél, ami megvédje"
+      },
+      "logistics.allowOverflow": {
+        "Value": "Túlcsordulás engedélyezése"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_It": {
@@ -82760,6 +83206,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "Per ogni partenza di una nave"
+      },
+      "building.bush": {
+        "Value": "Piccolo cespuglio"
+      },
+      "building.bush.desc": {
+        "Value": "Diversi arbusti e felci"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Inondazione controllata"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Muro di pietra"
+      },
+      "resource.bathed": {
+        "Value": "Bagno"
+      },
+      "resource.desc.bathed": {
+        "Value": "Baffo pulitissimo"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Strumento Terraformazione"
+      },
+      "msg.settingsCopied": {
+        "Value": "Impostazioni copiate"
+      },
+      "msg.settingsPasted": {
+        "Value": "Impostazioni incollate"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Non c'è nulla da incollare"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Incollaggio non compatibile"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Copia impostazioni"
+      },
+      "copyTooltip.title": {
+        "Value": "Copia impostazioni"
+      },
+      "copytooltip.desc": {
+        "Value": "Salva le impostazioni di questo edificio negli appunti"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Incolla impostazioni"
+      },
+      "pasteTooltip.title": {
+        "Value": "Incolla impostazioni"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Incolla le impostazioni salvate su questo edificio"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Si accende a:"
+      },
+      "mod.soaked": {
+        "Value": "Pioggia a catinelle"
+      },
+      "mod.desc.soaked": {
+        "Value": "Va più piano per la forte piogga ed è senza un riparo"
+      },
+      "logistics.allowOverflow": {
+        "Value": "Consenti eccedenza"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Ja": {
@@ -89593,6 +90102,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "船の出発ごとに"
+      },
+      "building.bush": {
+        "Value": "小さな茂み"
+      },
+      "building.bush.desc": {
+        "Value": "様々な茂みとシダの集まり"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "意図的な洪水"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "石壁"
+      },
+      "resource.bathed": {
+        "Value": "入浴"
+      },
+      "resource.desc.bathed": {
+        "Value": "ぴかぴかの髭の民"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "地形改造ツール"
+      },
+      "msg.settingsCopied": {
+        "Value": "設定をコピー"
+      },
+      "msg.settingsPasted": {
+        "Value": "設定を貼り付け"
+      },
+      "msg.nothingToPaste": {
+        "Value": "貼り付けられるものがない"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "形式の違いにより貼り付け不能"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "設定のコピー"
+      },
+      "copyTooltip.title": {
+        "Value": "設定のコピー"
+      },
+      "copytooltip.desc": {
+        "Value": "この建物の設定をクリップボードにコピーする"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "設定の貼り付け"
+      },
+      "pasteTooltip.title": {
+        "Value": "設定の貼り付け"
+      },
+      "pasteTooltip.desc": {
+        "Value": "コピーされた設定をこの建物に貼り付け、適用する"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "以下の場所よりオン:"
+      },
+      "mod.soaked": {
+        "Value": "ずぶ濡れ"
+      },
+      "mod.desc.soaked": {
+        "Value": "頭上に遮るものがない状態で激しい雨に見舞われ、足取りが重くなっている"
+      },
+      "logistics.allowOverflow": {
+        "Value": "オーバーフローを許可"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Ko": {
@@ -90074,7 +90646,7 @@
         "Value": "석재 문"
       },
       "building.stonedec_arch": {
-        "Value": "석조 아치"
+        "Value": "석재 아치형 입구"
       },
       "building.stonedec_platform": {
         "Value": "석재 발판"
@@ -90590,7 +91162,7 @@
         "Value": "기름칠된 수레"
       },
       "policy.desc.betterlogistics": {
-        "Value": "창고 일꾼 운반력 +4, AIM 설비 20% 속도 증가"
+        "Value": "창고 일꾼 운반력 +4, 컨베이어 벨트 20% 속도 증가"
       },
       "policy.title.stripmine": {
         "Value": "노천 채굴"
@@ -90626,7 +91198,7 @@
         "Value": "쓰레기 연료"
       },
       "policy.desc.dirtyfuel": {
-        "Value": "연료 지속 증가, 대신 오염 2배"
+        "Value": "연료 효율 증가, 대신 오염 2배"
       },
       "policy.title.movespeed": {
         "Value": "잽싼 발걸음"
@@ -90638,7 +91210,7 @@
         "Value": "그루터기 수집"
       },
       "policy.desc.extrawood": {
-        "Value": "나무 그루터기 채집 시 통나무 +1"
+        "Value": "나무 그루터기 채집 시 통나무 획득 확률 추가"
       },
       "policy.title.directtax": {
         "Value": "직접 과세"
@@ -90776,13 +91348,13 @@
         "Value": "위스커우드는 저희의 꿈이며, 완성을 향해 계속 개발할 예정입니다. 일부 시스템은 개발 중이라 버그나 미완성 요소가 있을 수 있습니다. 발견 시 이메일이나 디스코드로 의견을 주세요. 감사합니다."
       },
       "welcome.warwarning": {
-        "Value": "\"전쟁… 전쟁은 결코 변하지 않는다. (단, 앞서 해보기 기간 동안은 다릅니다.) 전쟁 시스템은 아직 완성되지 않았으며, 저장 호환성이 유지되지 않을 수 있습니다. 전쟁은 식민지를 파괴할 수 있으니, 충분한 경제력과 해군을 확보한 뒤 진행하세요.\""
+        "Value": "전쟁... 전쟁은 결코 변하지 않습니다.\n\n...우리 얼리 액세스 기간 동안만큼은 예외지만요. 전쟁 메커니즘은 아직 완성된 상태가 아니며, 개발이 진행됨에 따라 전쟁 방식은 계속해서 개선될 예정입니다. 세이브 파일의 호환성을 최대한 유지하려 노력하겠지만, 전쟁 시스템의 모든 요소에 대해 이를 보장하기는 어려울 수 있습니다. 전쟁을 시작하면 식민지가 완전히 파괴될 수도 있으며, 밀려드는 맹공격에 미처 대비하지 못할 수도 있습니다. 전쟁을 수행하기 전, 반드시 탄탄한 경제와 강력한 해군력을 갖추었는지 확인해 주시기 바랍니다."
       },
       "welcome.demowarning": {
         "Value": "위스커우드 데모를 즐겨주셔서 감사합니다. 이 프로젝트는 저희의 꿈이며, 완성을 향해 계속 개발할 예정입니다. 데모에서는 철도와 컨베이어 벨트를 포함한 일부 초반 설계도를 해금할 수 있습니다. 전체판에서는 더 많은 설계도가 제공됩니다. 일부 게임 메커니즘은 개발 중이므로 버그나 오류가 있을 수 있습니다. 발견 시 이메일(devdaniel@minakatadynamics.co.jp)이나 디스코드로 알려주세요. 감사합니다."
       },
       "welcome.byline": {
-        "Value": "\"다니엘, 프로그래머\""
+        "Value": "다니엘, \n프로그래머"
       },
       "welcome.verb": {
         "Value": "계속하기"
@@ -91073,7 +91645,7 @@
         "Value": "균형"
       },
       "aa.quality.quality": {
-        "Value": "화질"
+        "Value": "품질"
       },
       "aa.quality.ultraquality": {
         "Value": "울트라 화질"
@@ -91523,7 +92095,7 @@
         "Value": "노출된 물탱크에 물 충전"
       },
       "worldeffect.desc.weather_heavyrain": {
-        "Value": "\"• 젖으면 이동 속도 느려짐 • 노출된 물탱크에 물 충전\""
+        "Value": "• 젖으면 이동 속도 느려짐 \n• 노출된 물탱크에 물 충전"
       },
       "worldeffect.desc.weather_fog": {
         "Value": "짙은 안개 (효과 없음)"
@@ -91535,10 +92107,10 @@
         "Value": "난방 없는 땅에서 이동 속도 큰 감소"
       },
       "worldeffect.desc.warmSeasonEffect": {
-        "Value": "\"• 작물 정상 성장 • 안전한 온도 • 바다 항해 안전\""
+        "Value": "• 작물 정상 성장 \n• 안전한 온도 \n• 바다 항해 안전"
       },
       "worldeffect.desc.coldSeasonEffect": {
-        "Value": "\"• 작물 부패 시작 • 위험한 한파 • 바다 항해 불가\""
+        "Value": "• 작물 부패 시작 \n• 위험한 한파 \n• 바다 항해 불가"
       },
       "worldeffect.desc.badfoodproduction": {
         "Value": "식품 산업이 생산 실패 확률 20%"
@@ -92180,10 +92752,10 @@
         "Value": "암염을 가공해 식염 생산"
       },
       "unlock.potashProcessing.title": {
-        "Value": "가성칼리 비료"
+        "Value": "가성칼륨 비료"
       },
       "unlock.potashProcessing.desc": {
-        "Value": "가성칼리 가공해 비료 생산 가능"
+        "Value": "가성칼륨 가공하여 비료 생산 가능"
       },
       "unlock.valves.title": {
         "Value": "유체 제어"
@@ -92678,58 +93250,58 @@
         "Value": "총책임자님께,"
       },
       "story.common.outro1": {
-        "Value": "\"국왕의 은혜로운 통치 아래, 미칼리코 공작 왕실 전권위원\""
+        "Value": "국왕의 은혜로운 통치 아래, \n미칼리코 공작\n왕실 전권위원"
       },
       "story.common.outro2": {
         "Value": "동료 식민자"
       },
       "story.tut1": {
-        "Value": "\"왕실 정찰선이 귀하의 군도를 새로운 식민지 후보로 지정했습니다. 가장 중요한 건 교역 부두입니다. 세금을 상환하려면 반드시 필요합니다. 나무와 베리가 많은 곳에 부두를 세우세요.\""
+        "Value": "왕실의 가호 아래 모두의 안전한 여정을 기원합니다.\n\n왕실 정찰선은 1681년 왕실 정찰 위원회 활동의 일환으로 귀하에게 배정된 군도를 잠재적 식민지로 확인했습니다. 용맹한 발톱 일족의 노력 덕분에 이미 72개의 식민지가 성공적으로 건설되었습니다. 국왕님의 은혜로운 인도에 따라 귀하의 식민지 또한 73번째 식민지가 될 수 있습니다.\n\n가장 중요한 건물은 무역 선착장입니다. 이것 없이는 식민지의 부채를 상환할 수 없습니다. 그러니 부디 섬을 선택하고 선착장을 건설해 주십시오. 근처에 나무와 베리 덤불이 풍부한 곳을 찾아보시기 바랍니다."
       },
       "story.tut2": {
-        "Value": "\"창고는 세금 납부 물자의 가치를 보존하는 데 필수적입니다.\n용량이 한정되어 있으니 가치 없는 물품으로 공간을 낭비하지 마세요.\n목재, 돌, 광석을 우선 보관하고, 교역 부두 근처에 중앙 창고를 세우는 것이 좋습니다.\""
+        "Value": "창고는 납부할 세금의 가치를 보존하는 데 필수적입니다. 각 창고는 용량이 한정되어 있으니, 가치 없는 물건들로 공간을 낭비하지 않도록 주의하세요. 통나무나 목화, 광석처럼 왕국에 도움이 될 자원을 보관하는 데 집중해야 합니다.\n\n이런 물자들은 긴 항해 중에도 상태가 잘 유지되며, 왕실 공장에서 일하는 위스커들에게 소중한 일감이 될 거예요. 운반 거리를 줄이려면, 함께 드린 중앙 창고 설계도를 무역 선착장 근처에 건설하는 것이 좋습니다."
       },
       "story.tut3": {
-        "Value": "\"축하합니다. 국왕의 위임에 따라 이 식민지 헌장을 드립니다. 당신과 동료 위스커들은 왕국에 충성을 다하며, 이 섬들을 번영으로 이끌 의무가 있습니다. 세금을 통해 왕국의 평화가 유지될 것입니다.\""
+        "Value": "귀하와 동료 개척민 여러분께 축하를 전합니다. 국왕님의 위임에 따라, 이 식민지 헌장을 수여하게 된 것을 영광으로 생각합니다.\n\n여러분은 가장 위대한 위스커들에게나 어울리는 숭고한 사명을 시작하는 것이며, 모든 동족이 여러분의 노고에 감사하게 될 것입니다. 이 거친 땅을 일구고 세금을 납부하며, 여러분은 이전의 그 어떤 위스커보다도 값진 일을 해내고 있어요. 여러분이 흘린 땀방울은 부지런한 위스커들이 안전을 누릴 수 있는 든든한 기반이 될 겁니다.\n\n국왕님을 충실히 섬기십시오. 그러면 이 섬들에 그분의 평화가 영원히 깃들 것입니다."
       },
       "title.quest.survive": {
         "Value": "식량 확보"
       },
       "story.quest.survive": {
-        "Value": "\"저장고는 빈약합니다. 이 배급은 이틀도 못 버틸 겁니다. 세금선이 오기 전에 음식을 확보하고 살아남아야 합니다.\""
+        "Value": "비축한 식량이 아주 부족합니다. 지금 남은 배급 식량으로는 이틀도 못 버틸 겁니다. 식민지 선박에는 왕실 설계대로 선착장과 창고를 지을 자재만 가득했고, 정작 우리에게 필요한 물자는 쥐꼬리만큼뿐이었습니다. \n\n살아남으려면 당장 식량 공급원을 찾아야 합니다.. 곧 도착할 세금 징수선에 낼 세금도 어떻게든 마련해야 합니다."
       },
       "title.quest.housing": {
         "Value": "우리의 마을"
       },
       "story.quest.housing": {
-        "Value": "\"주택은 사치가 아닙니다. 몇몇 위스커들은 이미 임시 천막에 의지하고 있습니다. 겨울이 오면 불만으로는 추위를 막을 수 없습니다. 집은 우리의 유일한 방어 수단입니다.\""
+        "Value": "주택은 사치가 아닙니다. 몇몇 위스커들은 이미 임시 천막에 의지하고 있습니다. \n\n겨울이 오면 불만으로는 추위를 막을 수 없습니다. 집은 우리의 유일한 방어 수단입니다."
       },
       "title.quest.resources": {
         "Value": "땅속의 보물"
       },
       "story.quest.resources": {
-        "Value": "\"세금 납부는 왕국에 대한 첫 번째 의무입니다. 대부분 광물로 세금을 냅니다. 구리가 가장 가치 있고, 석탄은 풍부합니다. 절망적이라면 목재를 보내십시오. 채굴소를 짓고 일꾼 2명을 배치하세요.\""
+        "Value": "세금 납부는 왕국에 대한 첫 번째 의무입니다. 대부분 광물로 세금을 냅니다. 구리가 가장 가치 있고, 석탄은 풍부합니다. 절망적이라면 목재를 보내십시오. \n\n채굴소를 짓고 일꾼 2명을 배치하세요."
       },
       "title.quest.pop1": {
         "Value": "인구 증가 목표"
       },
       "story.quest.pop1": {
-        "Value": "\"동료 위스커들이 당신을 지도자로 선택했습니다. 이는 최고의 영예입니다. 본토의 위스커들은 이런 식민지에서 살기를 원합니다. 21명의 위스커로 식민지를 키워 세금을 납부하세요.\""
+        "Value": "동료 위스커들이 당신을 지도자로 선택했습니다. 이는 최고의 영예입니다. 본토의 위스커들은 이런 식민지에서 살기를 원합니다.\n\n 21명의 위스커로 식민지를 키워 세금을 납부하세요."
       },
       "title.quest.pirateattack": {
         "Value": "해적과 협상하지 않는다"
       },
       "story.quest.pirateattack": {
-        "Value": "“해적들이 몸값을 요구했다는 보고가 있었습니다.\n그들의 협박에 절대 굴복하거나 타협하지 마십시오.\n만약 생존한다면, 그들의 수법을 상세히 보고하십시오.”"
+        "Value": "해적들이 몸값을 요구했다는 보고가 있었습니다. 그들의 협박에 절대 굴복하거나 타협하지 마십시오.\n\n만약 생존한다면, 그들의 수법을 상세히 보고하십시오."
       },
       "title.quest.pestcontrol": {
         "Value": "해충 구제"
       },
       "story.quest.mousetraps": {
-        "Value": "\"바퀴벌레가 중앙 창고를 점령했습니다! 다른 창고에도 퍼질 수 있습니다. 제재소를 개조해 덫을 만들 수 있습니다. 덫 13개면 충분할 겁니다.\""
+        "Value": "바퀴벌레입니다! 중앙 창고가 바퀴벌레 소굴이 되었습니다! 다른 창고에도 숨어 있을지 모릅니다. 이 더러운 놈들이 분당 거의 2단위의 식량을 먹어 치우고 있습니다!\n\n저희 중 몇 명이 제재소를 개조해 덫을 만드는 방법을 알아냈습니다. 아무 제재소에서나 제작법을 변경해 덫을 생산해 주세요. 덫 13개를 비축하면 이 위협을 제거하기에 충분합니다."
       },
       "story.quest.mousetraps.failure": {
-        "Value": "\"제때 충분한 덫을 확보하지 못했습니다. 이제 감염이 생산 시설까지 퍼졌습니다! 며칠 안에 정리해 보겠습니다…\""
+        "Value": "제때 충분한 덫을 확보하지 못했습니다. 이제 감염이 생산 시설까지 퍼졌습니다! \n\n\n며칠 안에 정리해 보겠습니다…"
       },
       "story.quest.mousetraps.success": {
         "Value": "제공된 덫으로 해충을 제압했습니다! 시기적절한 도움에 감사드립니다."
@@ -92744,7 +93316,7 @@
         "Value": "붕괴됨"
       },
       "dialog.lose": {
-        "Value": "\"곧 발톱 일족이 텅 빈 항구에 도착했습니다. 조사단이 파견되었지만, 생존의 흔적은 어디에도 없었습니다. 안타까운 일입니다...\""
+        "Value": "곧 발톱 일족이 텅 빈 항구에 도착했습니다. \n\n조사단이 파견되었지만, 생존의 흔적은 어디에도 없었습니다. \n\n안타까운 일입니다…"
       },
       "stat.daysSurvived": {
         "Value": "생존 일수"
@@ -93956,7 +94528,7 @@
         "Value": "당신의 위스커들이 땅에 발을 딛기를 간절히 기다립니다"
       },
       "dockedship.whiskers.flavorquote": {
-        "Value": "\"이곳이 더 나은 곳이길 바랍니다...\""
+        "Value": "이곳이 더 나은 곳이길 바랍니다..."
       },
       "dockedship.whiskers.shipname": {
         "Value": "위스커선"
@@ -93968,7 +94540,7 @@
         "Value": "해적을 달래기 위해 자원을 배에 실으세요"
       },
       "dockedship.pirates.flavorquote": {
-        "Value": "\"합의에 이르지 못한다면 안타까운 일이 될 겁니다...\""
+        "Value": "합의에 이르지 못한다면 안타까운 일이 될 겁니다..."
       },
       "dockedship.pirates.retaliationwarning": {
         "Value": "해적들이 보복할 것입니다!"
@@ -93989,7 +94561,7 @@
         "Value": "보급 상자를 선택하세요"
       },
       "dockedship.supplier.flavorquote": {
-        "Value": "\"자비로운 발톱 일족이 보급품을 제공합니다\""
+        "Value": "자비로운 발톱 일족이 보급품을 제공합니다"
       },
       "dockedship.supplier.debtwarning": {
         "Value": "새로운 부채"
@@ -94010,7 +94582,7 @@
         "Value": "출항까지:"
       },
       "dockedship.tax.flavorquote": {
-        "Value": "\"오늘은 무엇을 가져왔는지 볼까요...\""
+        "Value": "오늘은 무엇을 가져왔는지 볼까요…"
       },
       "dockedship.tax.shipname": {
         "Value": "세금 징수선"
@@ -94247,7 +94819,7 @@
         "Value": "반항적"
       },
       "trait.rebellious.desc": {
-        "Value": "본래 발톱 일족에 반항적임"
+        "Value": "반항적인 말을 하거나 근거 없는 소문을 퍼뜨릴 확률이 높음"
       },
       "rating.housingQuality": {
         "Value": "주거 품질"
@@ -94745,61 +95317,61 @@
         "Value": "낮은 기온"
       },
       "event.tutorialHint.firstChillyDay.msg": {
-        "Value": "\"기온이 쌀쌀해지고 있습니다. 위험 수준은 아니지만, 충분한 난방은 위스커들의 기분과 효율을 높여줍니다.\""
+        "Value": "기온이 쌀쌀해지고 있습니다. \n\n위험 수준은 아니지만, 충분한 난방은 위스커들의 기분과 효율을 높여줍니다."
       },
       "event.tutorialHint.firstFreezingDay.title": {
         "Value": "위험한 추위"
       },
       "event.tutorialHint.firstFreezingDay.msg": {
-        "Value": "\"기온이 위험할 정도로 추워지고 있습니다! 특히 주택에는 충분한 난방을 확보하세요. 그렇지 않으면 병과 죽음을 초래할 수 있습니다!\""
+        "Value": "기온이 위험할 정도로 추워지고 있습니다! \n\n특히 주택에는 충분한 난방을 확보하세요. 그렇지 않으면 병과 죽음을 초래할 수 있습니다!"
       },
       "event.tutorialHint.firstInjury.title": {
         "Value": "부상 또는 질병"
       },
       "event.tutorialHint.firstInjury.msg": {
-        "Value": "\"한 위스커가 심각한 부상이나 질병을 겪고 있습니다! 치료소에서 치료해야 하며, 치료가 늦으면 사망할 수 있습니다.\""
+        "Value": "한 위스커가 심각한 부상이나 질병을 겪고 있습니다! \n\n치료소에서 치료해야 하며, 치료가 늦으면 사망할 수 있습니다."
       },
       "event.tutorialHint.firstStarvation.title": {
         "Value": "굶주린 위스커!"
       },
       "event.tutorialHint.firstStarvation.msg": {
-        "Value": "\"한 위스커가 굶주리고 있습니다! 며칠 내에 음식을 찾지 못하면 죽을 위험이 큽니다.\""
+        "Value": "한 위스커가 굶주리고 있습니다! \n\n며칠 내에 음식을 찾지 못하면 죽을 위험이 큽니다."
       },
       "event.tutorialHint.highApproval.title": {
         "Value": "높은 지지"
       },
       "event.tutorialHint.highApproval.msg": {
-        "Value": "\"당신은 위스커들에게서 높은 신뢰도를 얻었습니다. 마을 회관을 건설하면 초과하는 신뢰도를 강력한 정책에 사용할 수 있습니다.\""
+        "Value": "당신은 위스커들에게서 높은 신뢰도를 얻었습니다. \n\n마을 회관을 건설하면 초과하는 신뢰도를 강력한 정책에 사용할 수 있습니다."
       },
       "event.tutorialHint.maintenance.title": {
         "Value": "설비 고장!"
       },
       "event.tutorialHint.maintenance.msg": {
-        "Value": "\"산업 시설의 설비가 마모되어 교체 부품을 찾을 수 없습니다! 설비를 수입하거나, 고장 난 상태로 강제로 돌려야 합니다.\""
+        "Value": "산업 시설의 설비가 마모되어 교체 부품을 찾을 수 없습니다! \n\n설비를 수입하거나, 고장 난 상태로 강제로 돌려야 합니다."
       },
       "event.tutorialHint.lowTrust.title": {
         "Value": "발톱 일족이 성급해짐"
       },
       "event.tutorialHint.lowTrust.msg": {
-        "Value": "\"발톱 일족이 식민지의 신뢰를 잃고 있습니다. 세금 미납이 계속되면 가혹한 조치가 가해질 수 있습니다!\""
+        "Value": "발톱 일족이 식민지의 신뢰를 잃고 있습니다. \n\n세금 미납이 계속되면 가혹한 조치가 가해질 수 있습니다!"
       },
       "event.tutorialHint.aboutToLose.title": {
         "Value": "발톱 일족이 분노했습니다!"
       },
       "event.tutorialHint.aboutToLose.msg": {
-        "Value": "\"세금을 반복해서 내지 않으면 식민지가 회수될 위험에 처합니다! 다음 세금을 내지 않으면 당신과 위스커들은 소환될 것입니다!\""
+        "Value": "세금을 반복해서 내지 않으면 식민지가 회수될 위험에 처합니다! \n\n다음 세금을 내지 않으면 당신과 위스커들은 처벌 받을 것입니다!"
       },
       "event.tutorialHint.taxIncreases.title": {
         "Value": "향후 세금"
       },
       "event.tutorialHint.taxIncreases.msg": {
-        "Value": "\"첫 세금 납부를 완료했습니다. 앞으로는 더 높은 세금이 기대됩니다.\""
+        "Value": "첫 세금 납부를 완료했습니다. 잘 하셨습니다.\n\n앞으로는 더 높은 세금이 기대됩니다."
       },
       "event.tutorialHint.failedFirstTax.title": {
         "Value": "향후 세금"
       },
       "event.tutorialHint.failedFirstTax.msg": {
-        "Value": "\"첫 세금 납부를 완료하지 못했습니다. 괜찮습니다—다음 선박으로 이월되며, 물론 이자가 붙습니다.\""
+        "Value": "첫 세금 납부를 완료하지 못했습니다. \n\n괜찮습니다 — 다음 선박으로 이월되며, 물론 이자가 붙습니다."
       },
       "event.tutorialHint.obituary.title": {
         "Value": "사망 보고"
@@ -94949,7 +95521,7 @@
         "Value": "겨울이 왔습니다"
       },
       "event.tutorialHint.firstWinter.desc": {
-        "Value": "\"혹독한 겨울은 여행을 어렵게 만듭니다. 따라서 왕은 대부분의 식민지 방문을 중단할 것입니다. 충분히 대비했다고 믿으며, 봄에 다시 돌아오겠습니다.\""
+        "Value": "혹독한 겨울은 여행을 어렵게 만듭니다. \n\n따라서 왕은 대부분의 식민지 방문을 중단할 것입니다. 충분히 대비했다고 믿으며, 봄에 다시 돌아오겠습니다."
       },
       "industrystate.noactiveresearch": {
         "Value": "진행 중인 연구 없음"
@@ -95201,67 +95773,67 @@
         "Value": "드레드 선장"
       },
       "story.common.outro4": {
-        "Value": "\"국왕의 은혜로운 통치 아래, 타마 선장 보급부\""
+        "Value": "국왕의 은혜로운 통치 아래, \n타마 선장\n보급부"
       },
       "story.common.outro5": {
         "Value": "반항적인 식민자"
       },
       "story.quest.campfires.body": {
-        "Value": "\"황야에서 바람에 시달리며 얼어붙고 있습니다. 기본적인 모닥불만 있어도 큰 도움이 될 겁니다. 집 근처와 멀리 떨어진 채집꾼들을 위해 5개의 모닥불을 지어주세요. 다만 모닥불은 연기를 내뿜으니, 작물이나 밀폐된 공간 근처에는 설치하지 마세요.\""
+        "Value": "우리는 지금 황량한 벌판에 나와 있습니다. 거센 바람과 추위가 몰아치고 있군요. 기본적인 모닥불만 있어도 큰 도움이 될 것 같습니다.\n\n모닥불 5개를 건설해 주세요. 몇 개는 집 근처에, 한두 개는 멀리 떨어진 곳에서 일하는 채집꾼들을 위해 설치해 주시기 바랍니다. 모닥불은 연기을 많이 내뿜으므로, 작물 근처나 밀폐된 구역에 설치하는 것은 피해 주세요."
       },
       "story.quest.campfires.title": {
         "Value": "겨울을 위한 모닥불"
       },
       "story.quest.conveyors.body": {
-        "Value": "\"짐이 날로 무겁게 느껴집니다. 어제는 바위를 들다 허리를 다칠 뻔했습니다. 짐을 덜기 위해 컨베이어 벨트가 필요합니다. 물건만 애더 박스에 넣으면 컨베이어가 나머지를 처리해줍니다. 그러면 우리는 다시 일에 집중할 수 있습니다.\""
+        "Value": "짐이 날로 무겁게 느껴집니다. 어제는 바위를 들다 허리를 다칠 뻔했습니다. 짐을 덜기 위해 컨베이어 벨트가 필요합니다. \n\n물건만 애더 박스에 넣으면 컨베이어가 나머지를 처리해줍니다. 그러면 우리는 다시 일에 집중할 수 있습니다."
       },
       "story.quest.conveyors.title": {
         "Value": "컨베이어"
       },
       "story.quest.cotton.body": {
-        "Value": "\"남부 식민지의 가뭄으로 목화 수확이 망가졌습니다. 왕국은 추가 공급을 필요로 합니다. 요청된 수량을 채우는 식민지에는 후한 보상이 주어질 것입니다. 목화 34그루를 심고 수확하세요. 씨앗은 이 꾸러미에 동봉되어 있습니다.\""
+        "Value": "남부 식민지의 가뭄으로 목화 수확이 망가졌습니다. 왕국은 추가 공급을 필요로 합니다. 요청된 수량을 채우는 식민지에는 후한 보상이 주어질 것입니다. \n\n목화 34그루를 심고 수확하세요. 씨앗은 이 꾸러미에 동봉되어 있습니다."
       },
       "story.quest.cotton.title": {
         "Value": "목화 농장"
       },
       "story.quest.decorations.body": {
-        "Value": "\"어려운 시기이지만 마을을 꾸미지 않을 이유는 없습니다. 길을 장식하고 동상을 세우면 모두의 기분이 좋아질 겁니다. 발톱 일족도 이런 사치를 부정하지는 못할 겁니다. 길 8구간 이상을 장식해 주세요.\""
+        "Value": "어려운 시기이지만 마을을 꾸미지 않을 이유는 없습니다. 길을 장식하고 동상을 세우면 모두의 기분이 좋아질 겁니다. 발톱 일족도 이런 사치를 부정하지는 못할 겁니다. \n\n길 8구간 이상을 장식해 주세요. 이정도는 할 수 있잖아요, 그쵸?"
       },
       "story.quest.decorations.title": {
         "Value": "기분을 살리는 장식"
       },
       "story.quest.extratax.body": {
-        "Value": "\"국왕께서 특별한 자원 보상 축제를 선포하셨습니다. 각 식민지는 자발적으로 추가 세금을 납부할 수 있습니다. 귀하의 식민지에는 877골드의 자발적 세금이 배정되었습니다. 다음 세금 선적 때 꼭 납부하세요.\""
+        "Value": "국왕께서 특별한 자원 보상 축제를 선포하셨습니다. 각 식민지는 자발적으로 추가 세금을 납부할 수 있습니다. \n\n귀하의 식민지에는 877골드의 자발적 세금이 배정되었습니다. 다음 세금 선적 때 꼭 납부하세요."
       },
       "story.quest.extratax.title": {
         "Value": "추가 세금 자원자 모집"
       },
       "story.quest.findanother.body": {
-        "Value": "\"우리는 오래도록 발톱 일족의 압제에 시달려 왔습니다! 이제 기회가 왔습니다. 우리만의 배를 가지고 다른 식민지나 심지어 다른 나라와도 접촉할 수 있습니다!\""
+        "Value": "우리는 오래도록 발톱 일족의 압제에 시달려 왔습니다! 이제 기회가 왔습니다. 우리만의 배를 가지고 다른 식민지나 심지어 다른 나라와도 접촉할 수 있습니다!"
       },
       "story.quest.findanother.title": {
         "Value": "다른 식민지 찾기"
       },
       "story.quest.fishingfleet.body": {
-        "Value": "\"이제 왕의 은혜에 보답할 때입니다. 새 조선소를 이용해 어선 함대를 건조하세요. 최소한 어선 1척이면 충분합니다. 절대로 밀수 목적으로 사용해서는 안 됩니다. 적발되면 가차 없는 처벌이 있을 것입니다.\""
+        "Value": "이제 왕의 은혜에 보답할 때입니다. 새 조선소를 이용해 어선 함대를 건조하세요. \n\n최소한 어선 1척이면 충분합니다. 절대로 밀수 목적으로 사용해서는 안 됩니다. 적발되면 가차 없는 처벌이 있을 것입니다."
       },
       "story.quest.fishingfleet.title": {
         "Value": "어선 함대"
       },
       "story.quest.freezingtemps.body": {
-        "Value": "\"산에서 내려온 눈이 해안까지 덮였습니다. 물통은 얼어붙고, 위스커들이 밖에서 얼어 죽을까 두렵습니다. 노숙자가 없도록 충분한 집을 지어 주세요. 이제 야외 수면은 곧 죽음을 의미합니다.\""
+        "Value": "산에서 내려온 눈이 해안까지 덮였습니다. 물통은 얼어붙고, 위스커들이 밖에서 얼어 죽을까 두렵습니다. 노숙자가 없도록 충분한 집을 지어 주세요. 이제 야외 수면은 곧 죽음을 의미합니다."
       },
       "story.quest.freezingtemps.title": {
         "Value": "혹한의 날씨"
       },
       "story.quest.goldtrade.body": {
-        "Value": "\"산업 제품을 금으로 교환하면 세금 부담을 줄일 수 있습니다. 다른 섬들은 우리의 완제품을 원자재와 바꿀 것입니다. 발톱 일족은 이를 밀수라 부르지만, 우리 땀까지 빼앗을 수는 없습니다! 무역로를 확보해 세금을 금으로 납부하세요.\""
+        "Value": "산업 제품을 금으로 교환하면 세금 부담을 줄일 수 있습니다. 다른 섬들은 우리의 완제품을 원자재와 바꿀 것입니다. 발톱 일족은 이를 밀수라 부르지만, 우리 땀까지 빼앗을 수는 없습니다! \n\n무역로를 확보해 세금을 금으로 납부하세요."
       },
       "story.quest.goldtrade.title": {
         "Value": "무역으로 금 확보"
       },
       "story.quest.humblerequest.body": {
-        "Value": "\"우리는 왕국의 족쇄를 벗어던진 겸손한 항해자들입니다. 과거 현명하고 관대한 위스커 식민지들이 우리를 도왔습니다. 당신도 그들을 본받아 신속히 도와야 합니다. 탐욕스러운 식민지는 멸망할 뿐입니다.\""
+        "Value": "우리는 왕국의 족쇄를 벗어던진 겸손한 항해자들입니다. 과거 현명하고 관대한 위스커 식민지들이 우리를 도왔습니다. \n\n당신도 그들을 본받아 신속히 도와야 합니다. 탐욕스러운 식민지는 멸망할 뿐입니다."
       },
       "story.quest.humblerequest.title": {
         "Value": "겸손한 요청"
@@ -95273,46 +95845,46 @@
         "Value": "굶주림"
       },
       "story.quest.needwork.body": {
-        "Value": "\"기록에 따르면, 식민지의 위스커 수가 일자리보다 많습니다. 빈둥거림은 위험한 생각을 낳습니다. 실업률을 줄이세요.\""
+        "Value": "기록에 따르면, 식민지의 위스커 수가 일자리보다 많습니다. \n\n명심하세요: 빈둥거림은 위험한 생각을 낳습니다. 실업률을 줄이세요."
       },
       "story.quest.needwork.title": {
         "Value": "일자리 필요한 위스커"
       },
       "story.quest.nicehouses.body": {
-        "Value": "\"제발, 더 나은 집을 지어주세요. 처음에는 새 섬이 신났지만 지금은 눅눅한 집 냄새로 하루를 시작합니다. 이대로는 집이 아니라 감옥일 뿐입니다.\""
+        "Value": "제발, 더 나은 주거 환경을 마련해 주시면 안 될까요? 이 새로운 섬에 처음 왔을 때는 잠시 설레기도 했지만, 이제 그 설렘도 다 가셔버렸습니다. 매일 아침 눅눅한 습기 냄새를 맡으며 잠에서 깨고 있어요.\n\n거처가 개선되지 않는다면, 이 섬은 영영 저희에게 진정한 집이 될 수 없을 겁니다."
       },
       "story.quest.nicehouses.title": {
         "Value": "살 만한 집"
       },
       "story.quest.nonegotiate.body": {
-        "Value": "“해적들이 몸값을 요구했다는 보고가 있었습니다.\n그들의 협박에 절대 굴복하거나 타협하지 마십시오.\n만약 생존한다면, 그들의 수법을 상세히 보고하십시오.”"
+        "Value": "해적들이 몸값을 요구했다는 보고가 있었습니다. 그들의 협박에 절대 굴복하거나 타협하지 마십시오.\n\n만약 생존한다면, 그들의 수법을 상세히 보고하십시오."
       },
       "story.quest.nonegotiate.title": {
         "Value": "해적과 협상하지 않는다"
       },
       "story.quest.pathproductivity.body": {
-        "Value": "\"짐을 나르든 출퇴근하든 위스커는 좋은 길을 원합니다. 완벽한 길은 어디든 데려다 줍니다. 길을 더 깔아 주세요.\""
+        "Value": "화물을 나르든 일터로 출근하든, 제대로 된 좋은 길은 모든 위스커에게 큰 힘이 됩니다. 정말이지 그보다 더 좋은 건 없죠. 제가 어떤 방향으로 가기 시작했을 때, 마치 누군가 제 목적지를 미리 알고 있었다는 듯이 완벽한 길이 짠 하고 나타나 저를 이끌어줄 때면 정말 기분이 좋습니다.\n\n좋은 길이 조금 더 있으면 좋겠어요."
       },
       "story.quest.pathproductivity.title": {
         "Value": "생산성을 높이는 길"
       },
       "story.quest.piraterepair.body": {
-        "Value": "\"우발적인 포탄 한 방에 우리 배의 돛대가 산산조각 났다. 이건 네 발톱 주인들의 부주의 탓이니, 보상은 당연하다.\n판재를 내놔라, 그래야 수리를 하지. 3일 안에 못 내놓으면… 네 식민지를 포탄으로 장식해주마!\""
+        "Value": "우발적인 포탄 한 방에 우리 배의 돛대가 산산조각 났다. 이건 네 발톱 주인들의 부주의 탓이니, 보상은 당연하다.\n\n이 피해는 네놈들의 상전인 발톱 주인들의 부주의로 발생한 것이니, 마땅히 네놈들에게 보상을 요구해야겠구나. 배를 수리할 수 있도록 충분한 판재를 내놓아라. 3일의 시간을 주지. 만약 거부한다면, 네놈들의 식민지를 포격하는 수밖에 없다."
       },
       "story.quest.piraterepair.title": {
         "Value": "해적의 긴급 요구"
       },
       "story.quest.pop2.body": {
-        "Value": "\"식민지가 너무 작습니다. 세금이 예상 성장 속도를 따라가지 못했습니다. 84명의 위스커로 식민지를 키워 기록을 바로잡으세요. 사망자는 집계되지 않습니다.\""
+        "Value": "식민지가 너무 작습니다. 세금이 예상 성장 속도를 따라가지 못했습니다. \n\n84명의 위스커로 식민지를 키워 기록을 바로잡으세요. 사망자는 집계되지 않습니다."
       },
       "story.quest.respect.body": {
-        "Value": "\"발톱 일족은 겸손한 종족입니다. 하지만 왕국은 존중을 요구합니다. 귀하의 식민지는 불명예 목록에 올랐습니다. 마지막 경고입니다. 위스커들의 은혜에 걸맞은 발톱 동상 8개를 세우세요.\""
+        "Value": "발톱 일족은 겸손한 종족입니다. 하지만 왕국은 존중을 요구합니다. \n\n귀하의 식민지는 불명예 목록에 올랐습니다. 마지막 경고입니다. 위스커들의 은혜에 걸맞은 발톱 동상 8개를 세우세요."
       },
       "story.quest.respect.title": {
         "Value": "존경과 동상"
       },
       "story.quest.shipyard.body": {
-        "Value": "\"준비하세요. 국왕의 은혜로운 소식입니다. 귀하의 식민지에 조선소 설계도가 하사됩니다. 왕실 조선소만큼 크지는 않겠지만, 어선을 지어 왕국에 더 봉사할 수 있습니다.\""
+        "Value": "준비하세요. 국왕님의 크나큰 자비의 징표입니다. 이 소식을 영광으로 여기고 소중히 간직하세요. 여러분의 식민지 역사에서 오늘을 꼭 기억하시길 바랍니다.\n\n국왕님께서 여러분의 식민지에 조선소 설계도를 하사하기로 결정하셨습니다. 이것은 발톱 일족의 기술자들이 수 세기에 걸쳐 연마해 온 기술입니다. 우리 왕실 조선소는 거친 파도를 잠재우고 해적이 들끓는 바다에 평화를 가져올 일급함을 건조할 수 있지요.\n\n여러분의 식민지 조선소가 왕실 조선소만큼 웅장하지는 않겠지만, 국왕님을 더 잘 섬길 수 있도록 어선을 만들기에는 충분할 거예요."
       },
       "story.quest.shipyard.title": {
         "Value": "조선소"
@@ -95321,19 +95893,19 @@
         "Value": "봄은 파종의 계절"
       },
       "story.quest.survivewinter.body": {
-        "Value": "\"겨울은 혹독한 시기입니다. 준비 없는 식민지는 추위와 흉작으로 절망에 빠집니다. 구조선은 오지 않습니다. 어떤 대가를 치르더라도 겨울을 버티십시오.\""
+        "Value": "겨울은 일부 위스커 식민지들에게 매우 혹독한 시기입니다. 충분히 대비하지 못한 식민지는 추위와 작물 성장 부족으로 절망에 빠지게 될 섭니다. 안타깝게도, 그들이 보내는 구조 요청은 본부에 너무 늦게 도착해 공식적인 답변조차 받지 못합니다.\n\n그러니 이 사전 통지를 꼭 확인하세요. 어떤 대가를 치르더라도 반드시 겨울을 살아남아야 합니다. 구조선은 오지 않습니다. 다른 선택지는 없습니다. 이 식민지를 헛되이 낭비하지 마십시오."
       },
       "story.quest.survivewinter.title": {
         "Value": "겨울 생존"
       },
       "story.quest.winterclothing.body": {
-        "Value": "\"우리의 털만으로는 겨울바람을 막을 수 없습니다. 망토를 마련해 13명의 위스커를 보호하세요. 모닥불도 전략적으로 설치하세요.\""
+        "Value": "우리의 털만으로는 겨울바람을 막기에 부족합니다. 망토는 모닥불의 온기를 더 오래 유지해주고 동상이 걸리는 걸 늦춰줄 거예요.\n\n적어도 13명의 위스커를 위해 망토를 충분히 제작하거나 거래해 주세요. 더 많으면 더 좋고요. 그리고 전략적인 위치에 모닥불을 배치하는 것도 잊지 마세요."
       },
       "story.quest.winterclothing.title": {
         "Value": "겨울 의복"
       },
       "story.quest.winterstocks.body": {
-        "Value": "\"게으른 고양이와 부지런한 비버의 우화를 아십니까? 고양이는 겨울 준비를 게을리하다가 굶어 죽었습니다. 우리는 부지런한 비버처럼 식량을 비축해야 합니다. 겨울이 다가옵니다.\""
+        "Value": "게으른 고양이와 부지런한 비버들에 관한 우화를 기억하시나요? 게으른 고양이가 비버들의 조언을 무시하고 겨울을 대비해 식량을 전혀 비축하지 않았던 이야기 말입니다. 부지런히 저축하는 대신 햇볕 아래에서 잠이나 자는 편안함만을 쫓았었죠…\n\n겨울이 오고 있습니다. 우리도 저 부지런한 비버들처럼 식량을 미리 비축해 두어야 합니다."
       },
       "story.quest.winterstocks.title": {
         "Value": "겨울 비축품"
@@ -95456,7 +96028,7 @@
         "Value": "더 큰 미래를 위한 성장"
       },
       "story.quest.spring.body": {
-        "Value": "\"봄이 되어 곤충들이 깨어났습니다. 이제 씨를 뿌리고 농장을 확장할 시간입니다. 여름의 따뜻함 속에서 작물이 빠르게 자랄 테니, 봄은 경작의 계절입니다.\""
+        "Value": "봄이 되어 곤충들이 깨어났습니다. 이제 씨를 뿌리고 농장을 확장할 시간입니다. 여름의 따뜻함 속에서 작물이 빠르게 자랄 테니, 봄은 경작의 계절입니다."
       },
       "tooltip.lockhousing": {
         "Value": "주거 고정"
@@ -95474,7 +96046,7 @@
         "Value": "다른 이름으로 저장"
       },
       "welcome.wrongbranch": {
-        "Value": "\"죄송합니다, 잘못된 베타 브랜치를 실행하셨습니다.이메일을 확인하여 올바른 베타 브랜치 비밀번호를 입력해 주세요.지금 실행 중인 빌드는 곧 종료됩니다.저희 게임에 관심 가져주셔서 감사합니다 :)\""
+        "Value": "죄송합니다, 잘못된 베타 브랜치를 실행하셨습니다.\n\n이메일을 확인하여 올바른 베타 브랜치 비밀번호를 입력해 주세요.\n\n지금 실행 중인 빌드는 곧 종료됩니다.\n\n저희 게임에 관심 가져주셔서 감사합니다 :)"
       },
       "welcome.wrongtitle": {
         "Value": "잘못된 베타 브랜치"
@@ -95636,7 +96208,7 @@
         "Value": "표시된 구역을 흙으로 메워 지형을 다집니다."
       },
       "embark.param.whiskerFickleness": {
-        "Value": "위스커의 변덕 — 위스커의 지지를 얻기 쉬운 정도"
+        "Value": "위스커의 지지"
       },
       "embark.param.researchCost": {
         "Value": "연구 비용"
@@ -95843,7 +96415,7 @@
         "Value": "광물 및 비옥도"
       },
       "embark.choice.poor": {
-        "Value": "빈약함 — 광물은 드물고 비옥도 회복이 느립니다."
+        "Value": "척박"
       },
       "rating.bathingQuality": {
         "Value": "목욕 품질"
@@ -96432,6 +97004,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "선박 출항당"
+      },
+      "building.bush": {
+        "Value": "작은 덤불"
+      },
+      "building.bush.desc": {
+        "Value": "다양한 덤불과 고사리류"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "계획적 침수"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "석재 벽"
+      },
+      "resource.bathed": {
+        "Value": "목욕"
+      },
+      "resource.desc.bathed": {
+        "Value": "뽀득뽀득 씻은 위스커"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "지형 편집 도구"
+      },
+      "msg.settingsCopied": {
+        "Value": "설정이 복사되었습니다"
+      },
+      "msg.settingsPasted": {
+        "Value": "설정이 붙여넣기 되었습니다"
+      },
+      "msg.nothingToPaste": {
+        "Value": "붙여넣을 내용이 없습니다"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "호환되지 않는 설정입니다"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "설정 복사"
+      },
+      "copyTooltip.title": {
+        "Value": "설정 복사"
+      },
+      "copytooltip.desc": {
+        "Value": "이 건물의 설정을 클립보드에 저장합니다."
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "설정 붙여넣기"
+      },
+      "pasteTooltip.title": {
+        "Value": "설정 붙여넣기"
+      },
+      "pasteTooltip.desc": {
+        "Value": "저장된 설정을 이 건물에 붙여넣습니다."
+      },
+      "heater.turnOnThreshold": {
+        "Value": "작동 온도:"
+      },
+      "mod.soaked": {
+        "Value": "흠뻑 젖는 비"
+      },
+      "mod.desc.soaked": {
+        "Value": "지붕이 없는 곳에서 폭우를 맞아 이동 속도가 느려짐"
+      },
+      "logistics.allowOverflow": {
+        "Value": "초과분 허용"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Pl": {
@@ -103271,6 +103906,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "Na odpłynięcie statku"
+      },
+      "building.bush": {
+        "Value": "Mały krzak"
+      },
+      "building.bush.desc": {
+        "Value": "Różne krzaki i paprocie"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Kontrolowane zalanie"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Kamienny mur"
+      },
+      "resource.bathed": {
+        "Value": "Kąpiel"
+      },
+      "resource.desc.bathed": {
+        "Value": "Czyściutki wąs"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Narzędzie terraformujące"
+      },
+      "msg.settingsCopied": {
+        "Value": "Skopiowano ustawienia"
+      },
+      "msg.settingsPasted": {
+        "Value": "Wklejono ustawienia"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Schowek pusty"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Niekompatybilne wklejenie"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Kopiuj ustawienia"
+      },
+      "copyTooltip.title": {
+        "Value": "Kopiuj ustawienia"
+      },
+      "copytooltip.desc": {
+        "Value": "Zapisz ustawienia tego budynku w schowku"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Wklej ustawienia"
+      },
+      "pasteTooltip.title": {
+        "Value": "Wklej ustawienia"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Wklej zapisane ustawienia do tego budynku"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Włącz o:"
+      },
+      "mod.soaked": {
+        "Value": "Leje jak z cebra"
+      },
+      "mod.desc.soaked": {
+        "Value": "Spowolniony przez silną ulewę i brak osłony"
+      },
+      "logistics.allowOverflow": {
+        "Value": "Zezwól na przepełnienie"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Pt": {
@@ -105762,37 +106460,37 @@
         "Value": "Pré-requisito em falta"
       },
       "unlock.farming.title": {
-        "Value": "Agricultura básica"
+        "Value": "Agricultura Básica"
       },
       "unlock.farming.desc": {
         "Value": "Diagramas da fazenda e da ferramenta fazenda.\n\nÉ possível designar plantações ao solo de fazenda, elas crescerão com base nas condições do solo."
       },
       "unlock.mushroom.title": {
-        "Value": "Cultivo de cogumelos"
+        "Value": "Cultivo de Cogumelos"
       },
       "unlock.mushroom.desc": {
         "Value": "Permite que fazendeiros cultivem cogumelos em solo de fazenda.\n\nOs cogumelos crescem em locais escuros no subsolo."
       },
       "unlock.wheat.title": {
-        "Value": "Cultivo de trigo"
+        "Value": "Cultivo de Trigo"
       },
       "unlock.wheat.desc": {
         "Value": "Permite que fazendeiros cultivem trigo em solo de fazenda.\n\nO trigo pode oferecer colheitas fartas, mas precisa ser processado antes de ser consumido e é mais sensível à fertilidade do solo do que plantações nativas."
       },
       "unlock.advancedCooking.title": {
-        "Value": "Culinária treinada"
+        "Value": "Culinária Treinada"
       },
       "unlock.advancedCooking.desc": {
         "Value": "Culinária profissional que permite a preparação de comida de maior qualidade na defumadora, na soparia e na padaria. Uma melhoria da culinária amadora."
       },
       "unlock.spice.title": {
-        "Value": "Cultivo de especiarias"
+        "Value": "Cultivo de Especiarias"
       },
       "unlock.spice.desc": {
         "Value": "Permite que fazendeiros cultivem pimentas em solo de fazenda\n\nEsta plantação exótica não cresce sem fertilizante, mas sua recompensa são as melhores experiências culinárias."
       },
       "unlock.tea.title": {
-        "Value": "Cultivo de chá"
+        "Value": "Cultivo de Chá"
       },
       "unlock.tea.desc": {
         "Value": "Permite que fazendeiros cultivem chá em solo de fazenda.\n\nChá cultivado em casa facilita sua independência, mas exige fertilizante para crescer bem."
@@ -105804,13 +106502,13 @@
         "Value": "Transporte vertical rápido.\n\nPoços e entradas podem ser empilhados para formar os elevadores."
       },
       "unlock.waterPumping.title": {
-        "Value": "Bombeamento de água"
+        "Value": "Bombeamento de Água"
       },
       "unlock.waterPumping.desc": {
         "Value": "Bombas de água salgada podem abastecer serviços associados e indústrias com água através de encanamento."
       },
       "unlock.steam.title": {
-        "Value": "Energia a vapor"
+        "Value": "Energia a Vapor"
       },
       "unlock.steam.desc": {
         "Value": "Caldeiras a vapor liberam o vapor em uma rede especializada de canos. O gás pressurizado pode levar energia e calor a maquinários pesados.\n\nExige uma distribuidora de calor para mantê-lo abastecido com combustível."
@@ -105822,7 +106520,7 @@
         "Value": "Move recursos pelas esteiras a partir das tremonhas até os galpões.\n\nAs indústrias podem designar tremonhas como local de saída."
       },
       "unlock.housingTier1.title": {
-        "Value": "Moradia de tábua"
+        "Value": "Moradia de Tábua"
       },
       "unlock.housingTier1.desc": {
         "Value": "Moradias de qualidade média, disponíveis em uma variedade de tamanhos."
@@ -105834,7 +106532,7 @@
         "Value": "Moradias de alta qualidade, disponíveis em uma variedade de tamanhos."
       },
       "unlock.housingTier3.title": {
-        "Value": "Moradia elegante"
+        "Value": "Moradia Elegante"
       },
       "unlock.housingTier3.desc": {
         "Value": "Moradias de altíssima qualidade graças ao encanamento, mas exigem acesso à água encanada."
@@ -105846,7 +106544,7 @@
         "Value": "#VALUE!"
       },
       "unlock.luxuries.title": {
-        "Value": "Entregas de luxo"
+        "Value": "Entregas de Luxo"
       },
       "unlock.luxuries.desc": {
         "Value": "Disponibiliza o fornecedor de luxos, que distribui produtos como mobília às casas de Bigodes próximas.\n\nPermite a fabricação de mobílias como produtos de luxo na carpintaria."
@@ -105858,19 +106556,19 @@
         "Value": "Habilidade de processar sal de rocha para obter sal de mesa na torre de peneiração."
       },
       "unlock.potashProcessing.title": {
-        "Value": "Fertilizante de potassa"
+        "Value": "Fertilizante de Potassa"
       },
       "unlock.potashProcessing.desc": {
         "Value": "Habilidade de processar potassa para obter fertilizante na torre de peneiração."
       },
       "unlock.valves.title": {
-        "Value": "Controles de fluidos"
+        "Value": "Controles de Fluidos"
       },
       "unlock.valves.desc": {
         "Value": "As válvulas disponibilizam um controle mais avançado da rotação dos fluidos.\n\nPodem ser controladas manualmente ou configuradas com limites de ativação."
       },
       "unlock.railTech.title": {
-        "Value": "Trilho de passageiros"
+        "Value": "Trilho de Passageiros"
       },
       "unlock.railTech.desc": {
         "Value": "Um transporte rápido para longas distâncias.\n\nOs Bigodes entram e descem dos carrinhos nas plataformas de estação, que lançam carrinhos não energizados."
@@ -105882,25 +106580,25 @@
         "Value": "#VALUE!"
       },
       "unlock.recipe.steelsmelting.title": {
-        "Value": "Fundição de aço"
+        "Value": "Fundição de Aço"
       },
       "unlock.recipe.steelsmelting.desc": {
         "Value": "Diagrama de fundição para produzir lingotes de aço a partir de aço e carvão no alto forno."
       },
       "unlock.recipe.goldsmelter.title": {
-        "Value": "Fundição de ouro"
+        "Value": "Fundição de Ouro"
       },
       "unlock.recipe.goldsmelter.desc": {
         "Value": "Diagrama de fundição para transformar minério de ouro em lingotes na fornalha de minérios."
       },
       "unlock.recipe.bronzesmelter.title": {
-        "Value": "Fundição de bronze"
+        "Value": "Fundição de Bronze"
       },
       "unlock.recipe.bronzesmelter.desc": {
         "Value": "Diagrama de fundição para produzir lingotes de bronze a partir de cobre e estanho na fornalha de minérios."
       },
       "unlock.steelcannons.title": {
-        "Value": "Canhões de aço"
+        "Value": "Canhões de Aço"
       },
       "unlock.steelcannons.desc": {
         "Value": "Diagrama de produção de canhões de aço para a fundição de canhões."
@@ -108624,7 +109322,7 @@
         "Value": "Voltar ao menu principal"
       },
       "unlock.seafaring.title": {
-        "Value": "Construção de navios"
+        "Value": "Construção de Navios"
       },
       "unlock.seafaring.desc": {
         "Value": "Produza navios dignos e explore os mares.\n\nOs navios precisam ser designados a uma doca de trabalho para receberem tripulação."
@@ -109044,19 +109742,19 @@
         "Value": "Moradias da mais alta qualidade graças com aquecimento central, mas exigem acesso a água e vapor encanados."
       },
       "unlock.housingTier4.title": {
-        "Value": "Moradia extravagante"
+        "Value": "Moradia Extravagante"
       },
       "unlock.nails.desc": {
         "Value": "Diagrama de criação de pregos de bronze para a oficina de cobre."
       },
       "unlock.newCrop": {
-        "Value": "Nova plantação"
+        "Value": "Nova Plantação"
       },
       "unlock.organizedHeating.desc": {
         "Value": "Fontes de calor mais potentes e com instalação permanente.\n\nExige uma distribuidora de calor para manter o abastecimento de combustível."
       },
       "unlock.organizedHeating.title": {
-        "Value": "Aquecimento organizado"
+        "Value": "Aquecimento Organizado"
       },
       "unlock.precisionscales.desc": {
         "Value": "Diagrama de criação de balanças de precisão para o ferreiro."
@@ -109968,7 +110666,7 @@
         "Value": "Usa motores para levantar os itens na vertical, com uma abertura dupla para direcioná-los para trás."
       },
       "unlock.aimAdvanced": {
-        "Value": "Esteiras avançadas"
+        "Value": "Esteiras Avançadas"
       },
       "unlock.aimAdvanced.desc": {
         "Value": "Mais máquinas para extrair, levantar, dividir e filtrar itens nas esteiras.\n\nOs itens podem ser coletados dos galpões para então serem divididos e filtrados para abastecer as indústrias usando as esteiras locais dos galpões."
@@ -110110,11 +110808,74 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "Por partida de navio"
+      },
+      "building.bush": {
+        "Value": "Arbusto Pequeno"
+      },
+      "building.bush.desc": {
+        "Value": "Uma variedade de arbustos e gramas."
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Inundação Controlada"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Parede de Pedra"
+      },
+      "resource.bathed": {
+        "Value": "Banho"
+      },
+      "resource.desc.bathed": {
+        "Value": "Um Bigode bem limpinho."
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Ferramenta de terraplenagem"
+      },
+      "msg.settingsCopied": {
+        "Value": "Configurações copiadas"
+      },
+      "msg.settingsPasted": {
+        "Value": "Configurações coladas"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Nada para colar"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Ação de colar incompatível"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Copiar configurações"
+      },
+      "copyTooltip.title": {
+        "Value": "Copiar configurações"
+      },
+      "copytooltip.desc": {
+        "Value": "Salve as configurações deste edifício na área de transferência."
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Colar configurações"
+      },
+      "pasteTooltip.title": {
+        "Value": "Colar configurações"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Cole as configurações salvas neste edifícios."
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Ligar com:"
+      },
+      "mod.soaked": {
+        "Value": "Encharcado de chuva"
+      },
+      "mod.desc.soaked": {
+        "Value": "Lentidão pela chuva pesada e falta de cobertura."
+      },
+      "logistics.allowOverflow": {
+        "Value": "Permitir transbordamento"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Root": {
       "meta.version": {
-        "Value": "0.6.187.0"
+        "Value": "0.6.192.0"
       },
       "UI.MONEY": {
         "Value": "¥"
@@ -111958,7 +112719,7 @@
         "Value": "Умеренно"
       },
       "value.tax.due": {
-        "Value": "Налог"
+        "Value": "Срок"
       },
       "value.tax.storage": {
         "Value": "Хранение"
@@ -115168,7 +115929,7 @@
         "Value": "Постройте хотя бы один склад, чтобы открыть управление логистикой"
       },
       "statue.intimidationCounter": {
-        "Value": "Напуганные хвостики"
+        "Value": "Напугано хвостиков"
       },
       "steamEngine.connections": {
         "Value": "Соединения"
@@ -116830,7 +117591,7 @@
         "Value": "Доверие когтей"
       },
       "ui.losingtrustdesc": {
-        "Value": "Полная утрата доверия может привести к ответным мерам."
+        "Value": "Полная утрата доверия может привести к ответным мерам"
       },
       "ui.worldbonus": {
         "Value": "Мировой бонус"
@@ -116917,7 +117678,7 @@
         "Value": "Глобально отключать по умолчанию"
       },
       "action.disableAllInputs_global.desc": {
-        "Value": "Все новые склады будут отключать прием ресурсов после завершения строительства."
+        "Value": "Все новые склады будут отключать прием ресурсов после завершения строительства"
       },
       "toolbar.workoverview": {
         "Value": "Обзор работ"
@@ -117083,6 +117844,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "За одно отправление судна"
+      },
+      "building.bush": {
+        "Value": "Маленький куст"
+      },
+      "building.bush.desc": {
+        "Value": "Различные кустарники и папоротники."
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Контролируемое затопление"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Каменная стена"
+      },
+      "resource.bathed": {
+        "Value": "Ванна"
+      },
+      "resource.desc.bathed": {
+        "Value": "Идеально чистый хвостик"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Инструмент терраформирования"
+      },
+      "msg.settingsCopied": {
+        "Value": "Настройки скопированы"
+      },
+      "msg.settingsPasted": {
+        "Value": "Настройки вставлены"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Нечего вставить"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Несовместимая вставка"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Копировать настройки"
+      },
+      "copyTooltip.title": {
+        "Value": "Копировать настройки"
+      },
+      "copytooltip.desc": {
+        "Value": "Сохранить настройки этого здания в буфер обмена"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Вставить настройки"
+      },
+      "pasteTooltip.title": {
+        "Value": "Вставить настройки"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Вставить сохраненные настройки для этого здания"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Включается при:"
+      },
+      "mod.soaked": {
+        "Value": "Проливной дождь"
+      },
+      "mod.desc.soaked": {
+        "Value": "Замедление из-за сильных дождей и отсутствия укрытия"
+      },
+      "logistics.allowOverflow": {
+        "Value": "Разрешить избыток"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Tr": {
@@ -123922,6 +124746,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "Kalkan gemi başına"
+      },
+      "building.bush": {
+        "Value": "Küçük Çalı"
+      },
+      "building.bush.desc": {
+        "Value": "Çeşitli çalı ve otlar"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Kontrollü Taşkın"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Taş Duvar"
+      },
+      "resource.bathed": {
+        "Value": "Banyo"
+      },
+      "resource.desc.bathed": {
+        "Value": "Pırıl pırıl Bıyıklı"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Arazi Düzenleme Aracı"
+      },
+      "msg.settingsCopied": {
+        "Value": "Ayarlar kopyalandı"
+      },
+      "msg.settingsPasted": {
+        "Value": "Ayarlar yapıştırıldı"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Yapıştırılacak bir şey yok"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Uyumsuz içerik"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Ayarları Kopyala"
+      },
+      "copyTooltip.title": {
+        "Value": "Ayarları Kopyala"
+      },
+      "copytooltip.desc": {
+        "Value": "Bu yapının ayarlarını panoya kopyala"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Ayarları Yapıştır"
+      },
+      "pasteTooltip.title": {
+        "Value": "Ayarları Yapıştır"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Panodaki ayarları bu yapıya yapıştır"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Şu sıcaklıkta açılır:"
+      },
+      "mod.soaked": {
+        "Value": "Sırılsıklam"
+      },
+      "mod.desc.soaked": {
+        "Value": "Yağmurdan korunacak bir şeyi olmadığından yavaş yürüyor"
+      },
+      "logistics.allowOverflow": {
+        "Value": "Birikmeye İzin Ver"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Ua": {
@@ -130761,6 +131648,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "На відправлення корабля"
+      },
+      "building.bush": {
+        "Value": "Малий кущ"
+      },
+      "building.bush.desc": {
+        "Value": "Різні кущі й види папороті"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "Контрольоване затоплення"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "Кам'яна стіна"
+      },
+      "resource.bathed": {
+        "Value": "Ванна"
+      },
+      "resource.desc.bathed": {
+        "Value": "Блискуче чистий вусик"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "Тераформувальний інструмент"
+      },
+      "msg.settingsCopied": {
+        "Value": "Налаштування скопійовані"
+      },
+      "msg.settingsPasted": {
+        "Value": "Налаштування вставлені"
+      },
+      "msg.nothingToPaste": {
+        "Value": "Вставляти нічого"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "Несумісне вставлення"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "Скопіювати налаштування"
+      },
+      "copyTooltip.title": {
+        "Value": "Скопіювати налаштування"
+      },
+      "copytooltip.desc": {
+        "Value": "Збережіть налаштування цієї будівлі до буфера обміну"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "Вставити налаштування"
+      },
+      "pasteTooltip.title": {
+        "Value": "Вставити налаштування"
+      },
+      "pasteTooltip.desc": {
+        "Value": "Вставте збережені налаштування для цієї будівлі"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "Вмикати, коли:"
+      },
+      "mod.soaked": {
+        "Value": "Проливний дощ"
+      },
+      "mod.desc.soaked": {
+        "Value": "Сповільнюється важкою зливою без прикриття над головою"
+      },
+      "logistics.allowOverflow": {
+        "Value": "Дозволити переповнення"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Zh-Tw": {
@@ -132190,7 +133140,7 @@
         "Value": "切換剖面視圖"
       },
       "settings.keybind.toggleHeatOverlay": {
-        "Value": "切換熱力視圖"
+        "Value": "切換熱量視圖"
       },
       "settings.keybind.rotCW": {
         "Value": "鏡頭順時針旋轉"
@@ -137401,7 +138351,7 @@
         "Value": "大型石拱支架，可作為上方建築的基礎。"
       },
       "tooltip.heat.desc": {
-        "Value": "啟用熱能視圖查看溫度，藍色區域代表溫度已低至危險程度。 "
+        "Value": "啟用熱量視圖查看溫度，藍色區域代表溫度已低至危險程度。 "
       },
       "tooltip.pollution.desc": {
         "Value": "啟用汙染檢視器查看汙染度。污染度高於 10% 時，鼠鼠會開始抱怨。汙染度過高將導致負面效果。"
@@ -137600,6 +138550,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "每艘出航船隻"
+      },
+      "building.bush": {
+        "Value": "小型灌木叢"
+      },
+      "building.bush.desc": {
+        "Value": "各種灌木與蕨類"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "受控淹水"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "石牆"
+      },
+      "resource.bathed": {
+        "Value": "沐浴"
+      },
+      "resource.desc.bathed": {
+        "Value": "吱吱乾淨的鼠鼠"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "地形改造工具"
+      },
+      "msg.settingsCopied": {
+        "Value": "已複製設定"
+      },
+      "msg.settingsPasted": {
+        "Value": "已貼上設定"
+      },
+      "msg.nothingToPaste": {
+        "Value": "無可貼上內容"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "貼上不相容"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "複製設定"
+      },
+      "copyTooltip.title": {
+        "Value": "複製設定"
+      },
+      "copytooltip.desc": {
+        "Value": "複製此建築的設定至剪貼簿"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "貼上設定"
+      },
+      "pasteTooltip.title": {
+        "Value": "貼上設定"
+      },
+      "pasteTooltip.desc": {
+        "Value": "將已儲存設定貼上至此建築"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "開啟溫度："
+      },
+      "mod.soaked": {
+        "Value": "滂沱大雨"
+      },
+      "mod.desc.soaked": {
+        "Value": "頭頂沒有遮蔽物，鼠鼠被大雨拖慢"
+      },
+      "logistics.allowOverflow": {
+        "Value": "允許繼續輸送"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Zh": {
@@ -144439,6 +145452,69 @@
       },
       "policy.costUnit.perShipDeparted": {
         "Value": "每次船只出航"
+      },
+      "building.bush": {
+        "Value": "小灌木"
+      },
+      "building.bush.desc": {
+        "Value": "各式灌木与蕨类"
+      },
+      "unlock.plannedFlooding": {
+        "Value": "可控淹没"
+      },
+      "slotdecorative.stoneWall": {
+        "Value": "石墙"
+      },
+      "resource.bathed": {
+        "Value": "洗澡"
+      },
+      "resource.desc.bathed": {
+        "Value": "干干净净的鼠鼠"
+      },
+      "settings.keybind.terraformTool": {
+        "Value": "地形改造工具"
+      },
+      "msg.settingsCopied": {
+        "Value": "设置已复制"
+      },
+      "msg.settingsPasted": {
+        "Value": "设置已粘贴"
+      },
+      "msg.nothingToPaste": {
+        "Value": "没有可粘贴的内容"
+      },
+      "msg.pastedSettingsIncompatible": {
+        "Value": "粘贴不兼容"
+      },
+      "settings.keybind.copySettings": {
+        "Value": "复制设置"
+      },
+      "copyTooltip.title": {
+        "Value": "复制设置"
+      },
+      "copytooltip.desc": {
+        "Value": "将这座建筑的设置保存到剪贴板"
+      },
+      "settings.keybind.pasteSettings": {
+        "Value": "粘贴设置"
+      },
+      "pasteTooltip.title": {
+        "Value": "粘贴设置"
+      },
+      "pasteTooltip.desc": {
+        "Value": "将已保存的设置粘贴到这座建筑"
+      },
+      "heater.turnOnThreshold": {
+        "Value": "开启条件："
+      },
+      "mod.soaked": {
+        "Value": "倾盆大雨"
+      },
+      "mod.desc.soaked": {
+        "Value": "上方没有遮蔽时，会因暴雨而放慢速度"
+      },
+      "logistics.allowOverflow": {
+        "Value": "允许过载"
       }
     },
     "Whiskerwood/Content/ThirdParty/Chameleon/DataTables/LOOK_Presets": {
