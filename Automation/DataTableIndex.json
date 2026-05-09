@@ -1,7 +1,7 @@
 {
-  "ExportDate": "2026-05-06 13:28:16",
+  "ExportDate": "2026-05-09 11:30:27",
   "TotalTables": 62,
-  "TotalUniqueValues": 41707,
+  "TotalUniqueValues": 41717,
   "Tables": {
     "Whiskerwood/Content/Data/AchievementsTables": {
       "ACH.010.EMBARK": {
@@ -1741,7 +1741,7 @@
         "hiddenMod": "False"
       },
       "mod.constructionyardWorker": {
-        "Icon": "0",
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-construction-carpenter-ruler-64.icons8-construction-carpenter-ruler-64'",
         "DisplayName": "mod.constructionYardWorker",
         "Description": "mod.constructionYardWorker.desc",
         "productivityMod": "25",
@@ -5056,7 +5056,7 @@
         "ct4": "0",
         "unlockPrerequisite": "unlock.logistics",
         "toolbarGroup": "logistics",
-        "toolbarGroupSort": "0",
+        "toolbarGroupSort": "10",
         "useCustomIcon": "False",
         "Icon": "0",
         "detailCue": "0",
@@ -11430,6 +11430,48 @@
         "refundRule": "fullrefund",
         "Quality": "0",
         "Variants": []
+      },
+      "constructionyard": {
+        "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/ConstructionYard.ConstructionYard_C'",
+        "stringKey": "building.constructionyard",
+        "Description": "building.constructionyard.desc",
+        "cost1": "planks",
+        "ct1": "6",
+        "cost2": "rope",
+        "ct2": "4",
+        "cost3": "None",
+        "ct3": "0",
+        "cost4": "None",
+        "ct4": "0",
+        "unlockPrerequisite": "unlock.constructionyard",
+        "toolbarGroup": "logistics",
+        "toolbarGroupSort": "20",
+        "useCustomIcon": "False",
+        "Icon": "0",
+        "detailCue": "0",
+        "SupportedImprovements": [],
+        "structureType": "Other",
+        "maxAgents_contextual": "0",
+        "asHouseTier": "0",
+        "asIndustryDef": "None",
+        "supportedIndustryRecipes": [],
+        "minMaintenanceInterval": "0",
+        "workerColor": "FFFFFF (FColor)",
+        "limitOne": "False",
+        "customBuildCue": "0",
+        "requiresConstruction": "False",
+        "decorType": "None",
+        "guildSpecialty": "None",
+        "hardLabor": "False",
+        "industrialLabor": "False",
+        "TooltipTags": [],
+        "constructionTime": "10",
+        "catalyst": "None",
+        "norefund": "False",
+        "randomlyRotate": "False",
+        "refundRule": "None",
+        "Quality": "0",
+        "Variants": []
       }
     },
     "Whiskerwood/Content/Data/HarvestCampResourceGroups": {
@@ -12217,6 +12259,16 @@
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-danger-90.icons8-danger-90'",
         "TintColor": "D34149 (FColor)",
         "detailString": "hovernotif.dockBlocked"
+      },
+      "idleConstructionYard": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-construction-carpenter-ruler-64.icons8-construction-carpenter-ruler-64'",
+        "TintColor": "FFFFFF (FColor)",
+        "detailString": "problem.idleYard"
+      },
+      "notrain": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-minecart-96.icons8-minecart-96'",
+        "TintColor": "7F7C6C (FColor)",
+        "detailString": "problem.noMineCart"
       }
     },
     "Whiskerwood/Content/Data/ResourceCategoryInfo": {
@@ -12828,6 +12880,9 @@
       },
       "raftPolicyMaxSpeedMult": {
         "FloatValue": "1.35"
+      },
+      "debt_cannonballReimbursement": {
+        "FloatValue": "25"
       }
     },
     "Whiskerwood/Content/Data/TaxPaymentThresholds": {
@@ -17878,6 +17933,14 @@
       "pasteFail": {
         "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-no-entry-100.icons8-no-entry-100'",
         "defaultColor": "FFFFFF (FColor)"
+      },
+      "cart": {
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-cart-66.icons8-cart-66'",
+        "defaultColor": "FFFFFF (FColor)"
+      },
+      "construction": {
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-hammer-100.icons8-hammer-100'",
+        "defaultColor": "FFFFFF (FColor)"
       }
     },
     "Whiskerwood/Content/Data/AssetLookups/CommonMaterials": {
@@ -18440,17 +18503,6 @@
         "associatedSystemFlag": "None",
         "informExpired": "False",
         "negative": "True"
-      },
-      "policy.lateconstruction": {
-        "nDays": "0",
-        "Name": "",
-        "Description": "",
-        "iconTexture": "0",
-        "EffectType": "Policy",
-        "associatedModifier": "None",
-        "associatedSystemFlag": "None",
-        "informExpired": "False",
-        "negative": "False"
       },
       "policy.intimidatingStatues": {
         "nDays": "0",
@@ -20363,17 +20415,6 @@
         "costUnit": "policy.costUnit.perConstructionTask",
         "unlockCost": "0"
       },
-      "policy.lateconstruction": {
-        "nameKey": "policy.title.lateconstruction",
-        "descKey": "policy.desc.lateconstruction",
-        "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-hammer-100.icons8-hammer-100'",
-        "baseCost": "2",
-        "popCostMultiplier": "0",
-        "RequiredUnlock": "unlock.policy.lateconstruction",
-        "policyGroup": "policygroup_weasels",
-        "costUnit": "policy.costUnit.perConstructionTask",
-        "unlockCost": "100"
-      },
       "policy.stripmine": {
         "nameKey": "policy.title.stripmine",
         "descKey": "policy.desc.stripmine",
@@ -20436,7 +20477,7 @@
         "baseCost": "0",
         "popCostMultiplier": "0",
         "RequiredUnlock": "unlock.policy.extrarations",
-        "policyGroup": "policygroup_whiskers_DISABLED",
+        "policyGroup": "policygroup_whiskers_Disabled",
         "costUnit": "",
         "unlockCost": "150"
       },
@@ -28173,6 +28214,9 @@
       },
       "stonestairs_variant1": {
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/stonestairs_variant1.stonestairs_variant1'"
+      },
+      "constructionyard": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/constructionyard.constructionyard'"
       }
     },
     "Whiskerwood/Content/Data/Icons/Icons_InputIcons": {
@@ -42283,6 +42327,12 @@
       },
       "mod.constructionYardWorker.desc": {
         "Value": "Improved construction due to coordination construction foreman"
+      },
+      "problem.noMineCart": {
+        "Value": "No vehicle on track"
+      },
+      "debt.cannonballTax": {
+        "Value": "Cannonfire reimbursement"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_En": {
@@ -110875,7 +110925,7 @@
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Root": {
       "meta.version": {
-        "Value": "0.6.192.0"
+        "Value": "0.6.193.0"
       },
       "UI.MONEY": {
         "Value": "¥"
