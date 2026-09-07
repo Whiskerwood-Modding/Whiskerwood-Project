@@ -1183,7 +1183,7 @@ class UBrainComponent : public UActorComponent {
     bool IsRunning() const;
     void RestartLogic();
     void StartLogic();
-    void StopLogic(FString Reason);
+    void StopLogic(FString reason);
 };
 
 // Size: 0x4
@@ -2073,7 +2073,7 @@ class UNavLocalGridManager : public UObject {
     static int32_t AddLocalNavigationGridForCapsule(UObject* WorldContextObject, const FVector& Location, float CapsuleRadius, float CapsuleHalfHeight, const int32_t Radius2D, const float Height, bool bRebuildGrids);
     static int32_t AddLocalNavigationGridForPoint(UObject* WorldContextObject, const FVector& Location, const int32_t Radius2D, const float Height, bool bRebuildGrids);
     static int32_t AddLocalNavigationGridForPoints(UObject* WorldContextObject, const TArray<FVector>& Locations, const int32_t Radius2D, const float Height, bool bRebuildGrids);
-    static bool FindLocalNavigationGridPath(UObject* WorldContextObject, const FVector& Start, const FVector& End, TArray<FVector>& PathPoints);
+    static bool FindLocalNavigationGridPath(UObject* WorldContextObject, const FVector& Start, const FVector& End, TArray<FVector>& pathPoints);
     static void RemoveLocalNavigationGrid(UObject* WorldContextObject, int32_t GridId, bool bRebuildGrids);
     static bool SetLocalNavigationGridDensity(UObject* WorldContextObject, float CellSize);
 };
@@ -2389,7 +2389,7 @@ struct FAnimNode_AnimDynamics : public FAnimNode_SkeletalControlBase {
 
 // Size: 0xc8
 struct FAnimNode_ApplyAdditive : public FAnimNode_Base {
-    /* 0x0010 */ FPoseLink base;
+    /* 0x0010 */ FPoseLink Base;
     /* 0x0020 */ FPoseLink Additive;
     /* 0x0030 */ float Alpha;
     /* 0x0034 */ FInputScaleBias AlphaScaleBias;
@@ -2645,7 +2645,7 @@ struct FAnimNode_LookAt : public FAnimNode_SkeletalControlBase {
 
 // Size: 0x38
 struct FAnimNode_MakeDynamicAdditive : public FAnimNode_Base {
-    /* 0x0010 */ FPoseLink base;
+    /* 0x0010 */ FPoseLink Base;
     /* 0x0020 */ FPoseLink Additive;
     /* 0x0030 */ bool bMeshSpaceAdditive;
 };
@@ -4501,7 +4501,7 @@ class UAudioMixerBlueprintLibrary : public UBlueprintFunctionLibrary {
     static void ResumeRecordingOutput(const UObject* WorldContextObject, USoundSubmix* SubmixToPause);
     static void SetBypassSourceEffectChainEntry(const UObject* WorldContextObject, USoundEffectSourcePresetChain* PresetChain, int32_t EntryIndex, bool bBypassed);
     static void SetSubmixEffectChainOverride(const UObject* WorldContextObject, USoundSubmix* SoundSubmix, TArray<USoundEffectSubmixPreset*> SubmixEffectPresetChain, float FadeTimeSec);
-    static void StartAnalyzingOutput(const UObject* WorldContextObject, USoundSubmix* SubmixToAnalyze, EFFTSize FFTSize, EFFTPeakInterpolationMethod InterpolationMethod, EFFTWindowType WindowType, float HopSize, EAudioSpectrumType SpectrumType);
+    static void StartAnalyzingOutput(const UObject* WorldContextObject, USoundSubmix* SubmixToAnalyze, EFFTSize FFTSize, EFFTPeakInterpolationMethod InterpolationMethod, EFFTWindowType windowType, float HopSize, EAudioSpectrumType SpectrumType);
     static void StartAudioBus(const UObject* WorldContextObject, UAudioBus* AudioBus);
     static void StartRecordingOutput(const UObject* WorldContextObject, float ExpectedDuration, USoundSubmix* SubmixToRecord);
     static void StopAnalyzingOutput(const UObject* WorldContextObject, USoundSubmix* SubmixToStopAnalyzing);
@@ -4931,7 +4931,7 @@ class UConstantQNRTSettings : public UAudioSynesthesiaNRTSettings {
     /* 0x0034 */ float AnalysisPeriod;
     /* 0x0038 */ bool bDownmixToMono;
     /* 0x0039 */ EConstantQFFTSizeEnum FFTSize;
-    /* 0x003a */ EFFTWindowType WindowType;
+    /* 0x003a */ EFFTWindowType windowType;
     /* 0x003b */ EAudioSpectrumType SpectrumType;
     /* 0x003c */ float BandWidthStretch;
     /* 0x0040 */ EConstantQNormalizationEnum CQTNormalization;
@@ -4952,7 +4952,7 @@ class UConstantQSettings : public UAudioSynesthesiaSettings {
     /* 0x0034 */ float AnalysisPeriodInSeconds;
     /* 0x0038 */ bool bDownmixToMono;
     /* 0x0039 */ EConstantQFFTSizeEnum FFTSize;
-    /* 0x003a */ EFFTWindowType WindowType;
+    /* 0x003a */ EFFTWindowType windowType;
     /* 0x003b */ EAudioSpectrumType SpectrumType;
     /* 0x003c */ float BandWidthStretch;
     /* 0x0040 */ EConstantQNormalizationEnum CQTNormalization;
@@ -5102,7 +5102,7 @@ class USynesthesiaSpectrumAnalysisSettings : public UAudioSynesthesiaSettings {
     /* 0x0028 */ float AnalysisPeriod;
     /* 0x002c */ EFFTSize FFTSize;
     /* 0x002d */ EAudioSpectrumType SpectrumType;
-    /* 0x002e */ EFFTWindowType WindowType;
+    /* 0x002e */ EFFTWindowType windowType;
     /* 0x002f */ bool bDownmixToMono;
 };
 
@@ -11943,7 +11943,7 @@ struct FRigUnit_ConnectorExecution : public FRigUnit {
 // Size: 0x180
 struct FRigUnit_Control : public FRigUnit {
     /* 0x0008 */ FEulerTransform Transform;
-    /* 0x0050 */ FTransform base;
+    /* 0x0050 */ FTransform Base;
     /* 0x00b0 */ FTransform InitTransform;
     /* 0x0110 */ FTransform Result;
     /* 0x0170 */ FTransformFilter Filter;
@@ -17618,7 +17618,7 @@ struct FDataflowMathLogNode : public FDataflowMathOneInputOperatorNode {
 
 // Size: 0x298
 struct FDataflowMathLogXNode : public FDataflowMathOneInputOperatorNode {
-    /* 0x0290 */ FDataflowNumericTypes base;
+    /* 0x0290 */ FDataflowNumericTypes Base;
 };
 
 // Size: 0x298
@@ -19557,7 +19557,7 @@ struct FAnimNodeStructData {
 
 // Size: 0xd0
 struct FAnimNode_ApplyMeshSpaceAdditive : public FAnimNode_Base {
-    /* 0x0010 */ FPoseLink base;
+    /* 0x0010 */ FPoseLink Base;
     /* 0x0020 */ FPoseLink Additive;
     /* 0x0030 */ bool bRootSpaceAdditive;
     /* 0x0031 */ EAnimAlphaInputType AlphaInputType;
@@ -21168,7 +21168,7 @@ struct FBasedMovementInfo {
 
 // Size: 0x68
 struct FBasedPosition {
-    /* 0x0000 */ AActor* base;
+    /* 0x0000 */ AActor* Base;
     /* 0x0008 */ FVector position;
     /* 0x0020 */ FVector CachedBaseLocation;
     /* 0x0038 */ FRotator CachedBaseRotation;
@@ -33188,7 +33188,7 @@ class UKismetMathLibrary : public UBlueprintFunctionLibrary {
     static void MinOfIntArray(const TArray<int32_t>& IntArray, int32_t& IndexOfMinValue, int32_t& MinValue);
     static FVector MirrorVectorByNormal(FVector InVect, FVector InNormal);
     static double MultiplyByPi(double Value);
-    static double MultiplyMultiply_FloatFloat(double base, double exp);
+    static double MultiplyMultiply_FloatFloat(double Base, double exp);
     static uint8_t Multiply_ByteByte(uint8_t A, uint8_t B);
     static double Multiply_DoubleDouble(double A, double B);
     static int64_t Multiply_Int64Int64(int64_t A, int64_t B);
@@ -33494,7 +33494,7 @@ class UKismetMathLibrary : public UBlueprintFunctionLibrary {
     static int32_t clamp(int32_t Value, int32_t min, int32_t max);
     static double cos(double A);
     static double exp(double A);
-    static double log(double A, double base);
+    static double log(double A, double Base);
     static int32_t max(int32_t A, int32_t B);
     static int32_t min(int32_t A, int32_t B);
     static int32_t round(double A);
@@ -34012,7 +34012,7 @@ class ALODActor : public AActor {
     /* 0x0318 */ TArray<AActor*> SubActors;
     /* 0x0328 */ uint8_t CachedNumHLODLevels;
 
-    void OnSubActorEndPlay(AActor* Actor, uint8_t Reason);
+    void OnSubActorEndPlay(AActor* Actor, uint8_t reason);
 };
 
 // Size: 0x20
@@ -36207,7 +36207,7 @@ class UMaterialExpressionPostVolumeUserFlagTest : public UMaterialExpression {
 
 // Size: 0x108
 class UMaterialExpressionPower : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput base;
+    /* 0x00b0 */ FExpressionInput Base;
     /* 0x00d8 */ FExpressionInput Exponent;
     /* 0x0100 */ float ConstExponent;
 };
@@ -36867,7 +36867,7 @@ class UMaterialExpressionSubstrateUtilityBase : public UMaterialExpression {
 // Size: 0x130
 class UMaterialExpressionSubstrateVerticalLayering : public UMaterialExpressionSubstrateBSDF {
     /* 0x00b0 */ FExpressionInput Top;
-    /* 0x00d8 */ FExpressionInput base;
+    /* 0x00d8 */ FExpressionInput Base;
     /* 0x0100 */ FExpressionInput Thickness;
     /* 0x0128 */ bool bUseParameterBlending;
 };
@@ -37231,7 +37231,7 @@ struct FMaterialFunctionInfo {
 // Size: 0xf0
 class UMaterialFunctionInstance : public UMaterialFunctionInterface {
     /* 0x0040 */ UMaterialFunctionInterface* Parent;
-    /* 0x0048 */ UMaterialFunctionInterface* base;
+    /* 0x0048 */ UMaterialFunctionInterface* Base;
     /* 0x0050 */ TArray<FScalarParameterValue> ScalarParameterValues;
     /* 0x0060 */ TArray<FVectorParameterValue> VectorParameterValues;
     /* 0x0070 */ TArray<FDoubleVectorParameterValue> DoubleVectorParameterValues;
@@ -45330,7 +45330,7 @@ class USoundSubmix : public USoundSubmixWithParentBase {
     void SetWetVolumeModulation(const FSoundModulationDestinationSettings& InVolMod);
     void StartEnvelopeFollowing(const UObject* WorldContextObject);
     void StartRecordingOutput(const UObject* WorldContextObject, float ExpectedDuration);
-    void StartSpectralAnalysis(const UObject* WorldContextObject, EFFTSize FFTSize, EFFTPeakInterpolationMethod InterpolationMethod, EFFTWindowType WindowType, float HopSize, EAudioSpectrumType SpectrumType);
+    void StartSpectralAnalysis(const UObject* WorldContextObject, EFFTSize FFTSize, EFFTPeakInterpolationMethod InterpolationMethod, EFFTWindowType windowType, float HopSize, EAudioSpectrumType SpectrumType);
     void StopEnvelopeFollowing(const UObject* WorldContextObject);
     void StopRecordingOutput(const UObject* WorldContextObject, EAudioRecordingExportType ExportType, FString Name, FString Path, USoundWave* ExistingSoundWaveToOverwrite);
     void StopSpectralAnalysis(const UObject* WorldContextObject);
@@ -47862,7 +47862,7 @@ class UVisualLoggerKismetLibrary : public UBlueprintFunctionLibrary {
     static void EnableRecording(bool bEnabled);
     static void LogArrow(UObject* WorldContextObject, const FVector SegmentStart, const FVector SegmentEnd, FString Text, FLinearColor ObjectColor, FName CategoryName, bool bAddToMessageLog, float ArrowHeadSize);
     static void LogBox(UObject* WorldContextObject, FBox BoxShape, FString Text, FLinearColor ObjectColor, FName LogCategory, bool bAddToMessageLog, bool bWireframe);
-    static void LogCapsule(UObject* WorldContextObject, FVector base, float HalfHeight, float Radius, FQuat Rotation, FString Text, FLinearColor ObjectColor, FName LogCategory, bool bAddToMessageLog, bool bWireframe);
+    static void LogCapsule(UObject* WorldContextObject, FVector Base, float HalfHeight, float Radius, FQuat Rotation, FString Text, FLinearColor ObjectColor, FName LogCategory, bool bAddToMessageLog, bool bWireframe);
     static void LogCircle(UObject* WorldContextObject, FVector Center, FVector UpAxis, float Radius, FString Text, FLinearColor ObjectColor, const float Thickness, FName CategoryName, bool bAddToMessageLog, bool bWireframe);
     static void LogCone(UObject* WorldContextObject, FVector Origin, FVector Direction, float Length, float Angle, FString Text, FLinearColor ObjectColor, FName LogCategory, bool bAddToMessageLog, bool bWireframe);
     static void LogCylinder(UObject* WorldContextObject, FVector Start, FVector End, float Radius, FString Text, FLinearColor ObjectColor, FName LogCategory, bool bAddToMessageLog, bool bWireframe);
@@ -50599,156 +50599,6 @@ struct FSolverInput {
     /* 0x0018 */ float Damping;
     /* 0x001c */ int32_t MaxIterations;
     /* 0x0020 */ bool bUseJacobianTranspose;
-};
-
-enum class EGLTFMaterialBakeMode {
-    Disabled = 0,
-    Simple = 1,
-    UseMeshData = 2,
-    EGLTFMaterialBakeMode_MAX = 3,
-};
-
-enum class EGLTFMaterialPropertyGroup {
-    None = 0,
-    BaseColorOpacity = 1,
-    MetallicRoughness = 2,
-    EmissiveColor = 3,
-    Normal = 4,
-    AmbientOcclusion = 5,
-    ClearCoatRoughness = 6,
-    ClearCoatBottomNormal = 7,
-    EGLTFMaterialPropertyGroup_MAX = 8,
-};
-
-enum class EGLTFMaterialVariantMode {
-    None = 0,
-    Simple = 1,
-    UseMeshData = 2,
-    EGLTFMaterialVariantMode_MAX = 3,
-};
-
-enum class EGLTFTextureImageFormat {
-    None = 0,
-    PNG = 1,
-    JPEG = 2,
-    EGLTFTextureImageFormat_MAX = 3,
-};
-
-// Size: 0x78
-class UGLTFAnimSequenceExporter : public UGLTFExporter {
-};
-
-// Size: 0x30
-struct FGLTFExportMessages {
-    /* 0x0000 */ TArray<FString> Suggestions;
-    /* 0x0010 */ TArray<FString> Warnings;
-    /* 0x0020 */ TArray<FString> Errors;
-};
-
-// Size: 0xb0
-class UGLTFExportOptions : public UObject {
-    /* 0x0028 */ float ExportUniformScale;
-    /* 0x002c */ bool bExportPreviewMesh;
-    /* 0x002d */ bool bSkipNearDefaultValues;
-    /* 0x002e */ bool bIncludeCopyrightNotice;
-    /* 0x002f */ bool bExportProxyMaterials;
-    /* 0x0030 */ bool bUseImporterMaterialMapping;
-    /* 0x0031 */ bool bExportUnlitMaterials;
-    /* 0x0032 */ bool bExportClearCoatMaterials;
-    /* 0x0033 */ bool bExportClothMaterials;
-    /* 0x0034 */ bool bExportThinTranslucentMaterials;
-    /* 0x0035 */ bool bExportSpecularGlossinessMaterials;
-    /* 0x0036 */ bool bExportEmissiveStrength;
-    /* 0x0037 */ EGLTFMaterialBakeMode BakeMaterialInputs;
-    /* 0x0038 */ FGLTFMaterialBakeSize DefaultMaterialBakeSize;
-    /* 0x0044 */ uint8_t DefaultMaterialBakeFilter;
-    /* 0x0045 */ uint8_t DefaultMaterialBakeTiling;
-    /* 0x0048 */ TMap<EGLTFMaterialPropertyGroup, FGLTFOverrideMaterialBakeSettings> DefaultInputBakeSettings;
-    /* 0x0098 */ int32_t DefaultLevelOfDetail;
-    /* 0x009c */ bool bExportSourceModel;
-    /* 0x009d */ bool bExportVertexColors;
-    /* 0x009e */ bool bExportVertexSkinWeights;
-    /* 0x009f */ bool bMakeSkinnedMeshesRoot;
-    /* 0x00a0 */ bool bUseMeshQuantization;
-    /* 0x00a1 */ bool bExportLevelSequences;
-    /* 0x00a2 */ bool bExportAnimationSequences;
-    /* 0x00a3 */ EGLTFTextureImageFormat TextureImageFormat;
-    /* 0x00a4 */ int32_t TextureImageQuality;
-    /* 0x00a8 */ bool bExportTextureTransforms;
-    /* 0x00a9 */ bool bExportLightmaps;
-    /* 0x00aa */ bool bAdjustNormalmaps;
-    /* 0x00ab */ bool bExportHiddenInGame;
-    /* 0x00ac */ bool bExportLights;
-    /* 0x00ad */ bool bExportCameras;
-    /* 0x00ae */ EGLTFMaterialVariantMode ExportMaterialVariants;
-
-    void ResetToDefault();
-};
-
-// Size: 0x78
-class UGLTFExporter : public UExporter {
-
-    static bool ExportToGLTF(UObject* Object, FString FilePath, const UGLTFExportOptions* Options, const TSet<AActor*>& SelectedActors, FGLTFExportMessages& OutMessages);
-};
-
-// Size: 0x78
-class UGLTFLevelExporter : public UGLTFExporter {
-};
-
-// Size: 0x78
-class UGLTFLevelSequenceExporter : public UGLTFExporter {
-};
-
-// Size: 0x78
-class UGLTFLevelVariantSetsExporter : public UGLTFExporter {
-};
-
-// Size: 0xc
-struct FGLTFMaterialBakeSize {
-    /* 0x0000 */ int32_t X;
-    /* 0x0004 */ int32_t Y;
-    /* 0x0008 */ bool bAutoDetect;
-};
-
-// Size: 0x98
-class UGLTFMaterialExportOptions : public UAssetUserData {
-    /* 0x0028 */ UMaterialInterface* Proxy;
-    /* 0x0030 */ FGLTFOverrideMaterialBakeSettings Default;
-    /* 0x0048 */ TMap<EGLTFMaterialPropertyGroup, FGLTFOverrideMaterialBakeSettings> Inputs;
-};
-
-// Size: 0x78
-class UGLTFMaterialExporter : public UGLTFExporter {
-};
-
-// Size: 0x14
-struct FGLTFOverrideMaterialBakeSettings {
-    /* 0x0000 */ bool bOverrideSize;
-    /* 0x0004 */ FGLTFMaterialBakeSize Size;
-    /* 0x0010 */ bool bOverrideFilter;
-    /* 0x0011 */ uint8_t Filter;
-    /* 0x0012 */ bool bOverrideTiling;
-    /* 0x0013 */ uint8_t Tiling;
-};
-
-// Size: 0x90
-class UGLTFProxyOptions : public UObject {
-    /* 0x0028 */ bool bBakeMaterialInputs;
-    /* 0x0029 */ bool bUseThinTranslucentShadingModel;
-    /* 0x002c */ FGLTFMaterialBakeSize DefaultMaterialBakeSize;
-    /* 0x0038 */ uint8_t DefaultMaterialBakeFilter;
-    /* 0x0039 */ uint8_t DefaultMaterialBakeTiling;
-    /* 0x0040 */ TMap<EGLTFMaterialPropertyGroup, FGLTFOverrideMaterialBakeSettings> DefaultInputBakeSettings;
-
-    void ResetToDefault();
-};
-
-// Size: 0x78
-class UGLTFSkeletalMeshExporter : public UGLTFExporter {
-};
-
-// Size: 0x78
-class UGLTFStaticMeshExporter : public UGLTFExporter {
 };
 
 // Size: 0x38
@@ -53645,7 +53495,7 @@ class UGeometryCollectionISMPoolRenderer : public UObject {
 // Size: 0x80
 class UGeometryCollectionISMPoolSubSystem : public UWorldSubsystem {
 
-    void OnActorEndPlay(AActor* InSource, uint8_t Reason);
+    void OnActorEndPlay(AActor* InSource, uint8_t reason);
 };
 
 // Size: 0x10
@@ -56457,7 +56307,7 @@ class UISMPoolDebugDrawComponent : public UDebugDrawComponent {
 // Size: 0x80
 class UISMPoolSubSystem : public UWorldSubsystem {
 
-    void OnActorEndPlay(AActor* InSource, uint8_t Reason);
+    void OnActorEndPlay(AActor* InSource, uint8_t reason);
 };
 
 // Size: 0x8
@@ -57241,7 +57091,7 @@ class UGizmoElementArrow : public UGizmoElementBase {
     /* 0x0110 */ UGizmoElementCylinder* CylinderElement;
     /* 0x0118 */ UGizmoElementCone* ConeElement;
     /* 0x0120 */ UGizmoElementBox* BoxElement;
-    /* 0x0128 */ FVector base;
+    /* 0x0128 */ FVector Base;
     /* 0x0140 */ FVector Direction;
     /* 0x0158 */ FVector SideDirection;
     /* 0x0170 */ float BodyLength;
@@ -57327,7 +57177,7 @@ class UGizmoElementCone : public UGizmoElementBase {
 
 // Size: 0x148
 class UGizmoElementCylinder : public UGizmoElementBase {
-    /* 0x0108 */ FVector base;
+    /* 0x0108 */ FVector Base;
     /* 0x0120 */ FVector Direction;
     /* 0x0138 */ float Height;
     /* 0x013c */ float Radius;
@@ -57374,7 +57224,7 @@ struct FGizmoElementLineRenderStateAttributes {
 // Size: 0x1c8
 class UGizmoElementLineStrip : public UGizmoElementLineBase {
     /* 0x0158 */ TArray<FVector> Vertices;
-    /* 0x0168 */ FVector base;
+    /* 0x0168 */ FVector Base;
     /* 0x0180 */ FVector UpDirection;
     /* 0x0198 */ FVector SideDirection;
     /* 0x01b0 */ bool bDrawLineStrip;
@@ -57426,7 +57276,7 @@ class UGizmoElementTorus : public UGizmoElementCircleBase {
 // Size: 0x170
 class UGizmoElementTriangleList : public UGizmoElementBase {
     /* 0x0108 */ TArray<FVector> Vertices;
-    /* 0x0118 */ FVector base;
+    /* 0x0118 */ FVector Base;
     /* 0x0130 */ FVector UpDirection;
     /* 0x0148 */ FVector SideDirection;
 };
@@ -58068,3266 +57918,6 @@ class UViewAdjustedStaticMeshGizmoComponent : public UStaticMeshComponent {
 
 // Size: 0x28
 class IWidgetBaseBehavior : public UInterface {
-};
-
-enum class EInterchangeMaterialXBSDF {
-    OrenNayarDiffuse = 0,
-    BurleyDiffuse = 1,
-    Translucent = 2,
-    Dielectric = 3,
-    Conductor = 4,
-    GeneralizedSchlick = 5,
-    Subsurface = 6,
-    Sheen = 7,
-    ThinFilm = 8,
-    MaxBSDFCount = 9,
-    EInterchangeMaterialXBSDF_MAX = 10,
-};
-
-enum class EInterchangeMaterialXEDF {
-    Uniform = 0,
-    Conical = 1,
-    Measured = 2,
-    MaxEDFCount = 3,
-    EInterchangeMaterialXEDF_MAX = 4,
-};
-
-enum class EInterchangeMaterialXShaders {
-    OpenPBRSurface = 0,
-    OpenPBRSurfaceTransmission = 1,
-    StandardSurface = 2,
-    StandardSurfaceTransmission = 3,
-    SurfaceUnlit = 4,
-    UsdPreviewSurface = 5,
-    Surface = 6,
-    Displacement = 7,
-    MaxShaderCount = 8,
-    EInterchangeMaterialXShaders_MAX = 9,
-};
-
-enum class EInterchangeMaterialXVDF {
-    Absorption = 0,
-    Anisotropic = 1,
-    MaxVDFCount = 2,
-    EInterchangeMaterialXVDF_MAX = 3,
-};
-
-enum class EInterchangeSparseVolumeTextureFormat {
-    Unorm8 = 0,
-    Float16 = 1,
-    Float32 = 2,
-    EInterchangeSparseVolumeTextureFormat_MAX = 3,
-};
-
-enum class EInterchangeUsdPrimvar {
-    Standard = 0,
-    Bake = 1,
-    All = 2,
-    EInterchangeUsdPrimvar_MAX = 3,
-};
-
-enum class EInterchangeCurveInterpMode {
-    Linear = 0,
-    Constant = 1,
-    Cubic = 2,
-    None = 3,
-    EInterchangeCurveInterpMode_MAX = 4,
-};
-
-enum class EInterchangeCurveTangentMode {
-    Auto = 0,
-    User = 1,
-    Break = 2,
-    None = 3,
-    EInterchangeCurveTangentMode_MAX = 4,
-};
-
-enum class EInterchangeCurveTangentWeightMode {
-    WeightedNone = 0,
-    WeightedArrive = 1,
-    WeightedLeave = 2,
-    WeightedBoth = 3,
-    EInterchangeCurveTangentWeightMode_MAX = 4,
-};
-
-// Size: 0x10
-struct FInterchangeCurve {
-    /* 0x0000 */ TArray<FInterchangeCurveKey> Keys;
-};
-
-// Size: 0x1c
-struct FInterchangeCurveKey {
-    /* 0x0000 */ EInterchangeCurveInterpMode InterpMode;
-    /* 0x0001 */ EInterchangeCurveTangentMode TangentMode;
-    /* 0x0002 */ EInterchangeCurveTangentWeightMode TangentWeightMode;
-    /* 0x0004 */ float Time;
-    /* 0x0008 */ float Value;
-    /* 0x000c */ float ArriveTangent;
-    /* 0x0010 */ float ArriveTangentWeight;
-    /* 0x0014 */ float LeaveTangent;
-    /* 0x0018 */ float LeaveTangentWeight;
-};
-
-// Size: 0x60
-struct FInterchangeStepCurve {
-    /* 0x0000 */ TArray<float> KeyTimes;
-};
-
-enum class EInterchangeFactoryAssetType {
-    None = 0,
-    Textures = 1,
-    Materials = 2,
-    Meshes = 3,
-    Animations = 4,
-    Physics = 5,
-    EInterchangeFactoryAssetType_MAX = 6,
-};
-
-enum class EInterchangeNodeContainerType {
-    None = 0,
-    TranslatedScene = 1,
-    TranslatedAsset = 2,
-    FactoryData = 3,
-    EInterchangeNodeContainerType_MAX = 4,
-};
-
-enum class EInterchangeNodeUserInterfaceContext {
-    None = 0,
-    Preview = 1,
-    EInterchangeNodeUserInterfaceContext_MAX = 2,
-};
-
-enum class EInterchangePipelineContext {
-    None = 0,
-    AssetImport = 1,
-    AssetReimport = 2,
-    SceneImport = 3,
-    SceneReimport = 4,
-    AssetCustomLODImport = 5,
-    AssetCustomLODReimport = 6,
-    AssetAlternateSkinningImport = 7,
-    AssetAlternateSkinningReimport = 8,
-    AssetCustomMorphTargetImport = 9,
-    AssetCustomMorphTargetReImport = 10,
-    EInterchangePipelineContext_MAX = 11,
-};
-
-enum class EInterchangePipelineTask {
-    PostTranslator = 0,
-    PostFactory = 1,
-    PostImport = 2,
-    Export = 3,
-    EInterchangePipelineTask_MAX = 4,
-};
-
-enum class EInterchangeResultType {
-    Success = 0,
-    Warning = 1,
-    Error = 2,
-    EInterchangeResultType_MAX = 3,
-};
-
-enum class EInterchangeTranslatorAssetType {
-    None = 0,
-    Textures = 1,
-    Materials = 2,
-    Meshes = 4,
-    Animations = 8,
-    EInterchangeTranslatorAssetType_MAX = 9,
-};
-
-enum class EInterchangeTranslatorType {
-    Invalid = 0,
-    Assets = 2,
-    Actors = 4,
-    Scenes = 6,
-    EInterchangeTranslatorType_MAX = 7,
-};
-
-enum class EReimportStrategyFlags {
-    ApplyNoProperties = 0,
-    ApplyPipelineProperties = 1,
-    ApplyEditorChangedProperties = 2,
-    EReimportStrategyFlags_MAX = 3,
-};
-
-// Size: 0x60
-class UInterchangeBaseNode : public UObject {
-
-    bool AddBooleanAttribute(FString NodeAttributeKey, const bool& Value);
-    bool AddDoubleAttribute(FString NodeAttributeKey, const double& Value);
-    bool AddFloatAttribute(FString NodeAttributeKey, const float& Value);
-    bool AddGuidAttribute(FString NodeAttributeKey, const FGuid& Value);
-    bool AddInt32Attribute(FString NodeAttributeKey, const int32_t& Value);
-    bool AddLinearColorAttribute(FString NodeAttributeKey, const FLinearColor& Value);
-    bool AddStringAttribute(FString NodeAttributeKey, FString Value);
-    bool AddTargetNodeUid(FString AssetUid) const;
-    bool AddVector2Attribute(FString NodeAttributeKey, const FVector2f& Value);
-    FString GetAssetName() const;
-    bool GetBooleanAttribute(FString NodeAttributeKey, bool& OutValue) const;
-    int32_t GetDesiredChildIndex() const;
-    FString GetDisplayLabel() const;
-    bool GetDoubleAttribute(FString NodeAttributeKey, double& OutValue) const;
-    bool GetFloatAttribute(FString NodeAttributeKey, float& OutValue) const;
-    bool GetGuidAttribute(FString NodeAttributeKey, FGuid& OutValue) const;
-    FName GetIconName() const;
-    bool GetInt32Attribute(FString NodeAttributeKey, int32_t& OutValue) const;
-    bool GetLinearColorAttribute(FString NodeAttributeKey, FLinearColor& OutValue) const;
-    bool GetNameSpace(FString& Namespace) const;
-    EInterchangeNodeContainerType GetNodeContainerType() const;
-    FString GetParentUid() const;
-    bool GetStringAttribute(FString NodeAttributeKey, FString& OutValue) const;
-    int32_t GetTargetNodeCount() const;
-    void GetTargetNodeUids(TArray<FString>& OutTargetAssets) const;
-    FString GetTypeName() const;
-    FString GetUniqueID() const;
-    bool GetVector2Attribute(FString NodeAttributeKey, FVector2f& OutValue) const;
-    void InitializeNode(FString UniqueID, FString DisplayLabel, const EInterchangeNodeContainerType NodeContainerType);
-    bool IsEnabled() const;
-    bool RemoveAttribute(FString NodeAttributeKey);
-    bool RemoveTargetNodeUid(FString AssetUid) const;
-    bool SetAssetName(FString AssetName);
-    bool SetDisplayLabel(FString DisplayName);
-    bool SetEnabled(const bool bIsEnabled);
-};
-
-// Size: 0xc8
-class UInterchangeBaseNodeContainer : public UObject {
-    /* 0x0028 */ TMap<FString, UInterchangeBaseNode*> Nodes;
-
-    FString AddNode(UInterchangeBaseNode* Node);
-    bool ClearNodeParentUid(FString NodeUniqueID);
-    void ComputeChildrenCache();
-    UInterchangeFactoryBaseNode* GetFactoryNode(FString NodeUniqueID) const;
-    bool GetIsAncestor(FString NodeUniqueID, FString AncestorUID) const;
-    UInterchangeBaseNode* GetNode(FString NodeUniqueID) const;
-    UInterchangeBaseNode* GetNodeChildren(FString NodeUniqueID, int32_t ChildIndex);
-    int32_t GetNodeChildrenCount(FString NodeUniqueID) const;
-    TArray<FString> GetNodeChildrenUids(FString NodeUniqueID) const;
-    void GetNodes(const UClass* ClassNode, TArray<FString>& OutNodes) const;
-    void GetRoots(TArray<FString>& RootNodes) const;
-    bool IsNodeUidValid(FString NodeUniqueID) const;
-    void LoadFromFile(FString Filename);
-    void RemoveNode(FString NodeUniqueID);
-    void ReplaceNode(FString NodeUniqueID, UInterchangeFactoryBaseNode* NewNode);
-    void Reset();
-    void ResetChildrenCache();
-    void SaveToFile(FString Filename);
-    void SetNamespace(FString Namespace, UClass* targetClass);
-    bool SetNodeDesiredChildIndex(FString NodeUniqueID, const int32_t& NewNodeDesiredChildIndex);
-    bool SetNodeParentUid(FString NodeUniqueID, FString NewParentNodeUid);
-};
-
-// Size: 0x30
-class UInterchangeFactoryBase : public UObject {
-    /* 0x0028 */ UInterchangeResultsContainer* Results;
-
-    EInterchangeFactoryAssetType GetFactoryAssetType();
-    UClass* GetFactoryClass() const;
-    bool GetSourceFilenames(const UObject* Object, TArray<FString>& OutSourceFilenames) const;
-    bool SetSourceFilename(const UObject* Object, FString SourceFilename, int32_t SourceIndex) const;
-};
-
-// Size: 0x1c0
-class UInterchangeFactoryBaseNode : public UInterchangeBaseNode {
-    /* 0x0140 */ TSet<FString> AttributesAppliedThroughDelegatesKeySet;
-
-    bool AddFactoryDependencyUid(FString DependencyUid);
-    bool GetCustomLevelUid(FString& AttributeValue) const;
-    bool GetCustomReferenceObject(FSoftObjectPath& AttributeValue) const;
-    bool GetCustomSubPath(FString& AttributeValue) const;
-    void GetFactoryDependencies(TArray<FString>& OutDependencies) const;
-    int32_t GetFactoryDependenciesCount() const;
-    void GetFactoryDependency(const int32_t Index, FString& OutDependency) const;
-    UClass* GetObjectClass() const;
-    EReimportStrategyFlags GetReimportStrategyFlags() const;
-    bool IsRuntimeImportAllowed() const;
-    bool RemoveFactoryDependencyUid(FString DependencyUid);
-    bool SetCustomLevelUid(FString AttributeValue);
-    bool SetCustomReferenceObject(const FSoftObjectPath& AttributeValue);
-    bool SetCustomSubPath(FString AttributeValue);
-    bool SetForceNodeReimport();
-    bool SetReimportStrategyFlags(const EReimportStrategyFlags& ReimportStrategyFlags);
-    bool SetSkipNodeImport();
-    bool ShouldForceNodeReimport() const;
-    bool ShouldSkipNodeImport() const;
-    bool UnsetForceNodeReimport();
-    bool UnsetSkipNodeImport();
-};
-
-// Size: 0x128
-class UInterchangePipelineBase : public UObject {
-    /* 0x0028 */ FString DestinationName;
-    /* 0x0038 */ FString ContentImportPath;
-    /* 0x0048 */ bool bAllowPropertyStatesEdition;
-    /* 0x0049 */ bool bIsReimportContext;
-    /* 0x004a */ bool bIsShowEssentials;
-    /* 0x004b */ bool bFromReimportOrOverride;
-    /* 0x0050 */ UInterchangeResultsContainer* Results;
-    /* 0x0058 */ TMap<FName, FInterchangePipelinePropertyStates> PropertiesStates;
-    /* 0x00a8 */ TMap<FName, FInterchangePipelinePropertyStates> CachePropertiesStates;
-    /* 0x00f8 */ FInterchangePipelineContextParams CacheContextParam;
-
-    bool DoesPropertyStatesExist(const FName PropertyPath) const;
-    FInterchangePipelinePropertyStates FindOrAddPropertyStates(const FName PropertyPath);
-    bool IsReimportContext();
-    void ScriptedExecuteExportPipeline(UInterchangeBaseNodeContainer* BaseNodeContainer);
-    void ScriptedExecutePipeline(UInterchangeBaseNodeContainer* BaseNodeContainer, const TArray<UInterchangeSourceData*>& SourceDatas, FString ContentBasePath);
-    void ScriptedExecutePostBroadcastPipeline(const UInterchangeBaseNodeContainer* BaseNodeContainer, FString FactoryNodeKey, UObject* CreatedAsset, bool bIsAReimport);
-    void ScriptedExecutePostFactoryPipeline(const UInterchangeBaseNodeContainer* BaseNodeContainer, FString FactoryNodeKey, UObject* CreatedAsset, bool bIsAReimport);
-    void ScriptedExecutePostImportPipeline(const UInterchangeBaseNodeContainer* BaseNodeContainer, FString FactoryNodeKey, UObject* CreatedAsset, bool bIsAReimport);
-    FString ScriptedGetPipelineDisplayName() const;
-    void ScriptedSetReimportSourceIndex(UClass* ReimportObjectClass, const int32_t SourceFileIndex);
-    bool SupportReimport() const;
-};
-
-// Size: 0x20
-struct FInterchangePipelineContextParams {
-    /* 0x0000 */ EInterchangePipelineContext ContextType;
-    /* 0x0008 */ UClass* ImportObjectType;
-    /* 0x0010 */ UObject* ReimportAsset;
-    /* 0x0018 */ UInterchangeBaseNodeContainer* BaseNodeContainer;
-};
-
-// Size: 0x1
-struct FInterchangePipelinePropertyStatePerContext {
-    /* 0x0000 */ bool bVisible;
-};
-
-// Size: 0x5
-struct FInterchangePipelinePropertyStates {
-    /* 0x0000 */ bool bLocked;
-    /* 0x0001 */ bool bPreDialogReset;
-    /* 0x0002 */ FInterchangePipelinePropertyStatePerContext BasicLayoutStates;
-    /* 0x0003 */ FInterchangePipelinePropertyStatePerContext ImportStates;
-    /* 0x0004 */ FInterchangePipelinePropertyStatePerContext ReimportStates;
-};
-
-// Size: 0x70
-class UInterchangeResult : public UObject {
-    /* 0x0028 */ FString SourceAssetName;
-    /* 0x0038 */ FString DestinationAssetName;
-    /* 0x0048 */ FString AssetFriendlyName;
-    /* 0x0058 */ UClass* AssetType;
-    /* 0x0060 */ FString InterchangeKey;
-};
-
-// Size: 0x80
-class UInterchangeResultDisplay_Generic : public UInterchangeResultSuccess {
-    /* 0x0070 */ FText Text;
-};
-
-// Size: 0x70
-class UInterchangeResultError : public UInterchangeResult {
-};
-
-// Size: 0x80
-class UInterchangeResultError_Generic : public UInterchangeResultError {
-    /* 0x0070 */ FText Text;
-};
-
-// Size: 0x70
-class UInterchangeResultError_ReimportFail : public UInterchangeResultError {
-};
-
-// Size: 0x70
-class UInterchangeResultSuccess : public UInterchangeResult {
-};
-
-// Size: 0x70
-class UInterchangeResultWarning : public UInterchangeResult {
-};
-
-// Size: 0x80
-class UInterchangeResultWarning_Generic : public UInterchangeResultWarning {
-    /* 0x0070 */ FText Text;
-};
-
-// Size: 0x60
-class UInterchangeResultsContainer : public UObject {
-    /* 0x0050 */ TArray<UInterchangeResult*> Results;
-};
-
-// Size: 0xa0
-class UInterchangeSourceData : public UObject {
-    /* 0x0028 */ FString Filename;
-    /* 0x0050 */ TMap<FString, UObject*> ContextObjectsByTag;
-
-    TArray<FString> GetAllContextObjectTags() const;
-    UObject* GetContextObjectByTag(FString Tag) const;
-    FString GetFilename() const;
-    void RemoveAllContextObjects() const;
-    void SetContextObjectByTag(FString Tag, UObject* Object) const;
-    bool SetFilename(FString InFilename);
-};
-
-// Size: 0x198
-class UInterchangeSourceNode : public UInterchangeBaseNode {
-
-    bool GetCustomAnimatedTimeEnd(double& AttributeValue) const;
-    bool GetCustomAnimatedTimeStart(double& AttributeValue) const;
-    bool GetCustomAxisConversionInverseTransform(FTransform& AxisConversionInverseTransform) const;
-    bool GetCustomImportUnusedMaterial(bool& AttributeValue) const;
-    bool GetCustomReimportStrategyFlags(uint8_t& StrategyFlag) const;
-    bool GetCustomSourceFrameRateDenominator(int32_t& AttributeValue) const;
-    bool GetCustomSourceFrameRateNumerator(int32_t& AttributeValue) const;
-    bool GetCustomSourceTimelineEnd(double& AttributeValue) const;
-    bool GetCustomSourceTimelineStart(double& AttributeValue) const;
-    bool GetCustomSubPathPrefix(FString& Prefix) const;
-    bool GetCustomUseAssetTypeSubPathSuffix(bool& Suffix) const;
-    bool GetCustomUseLegacySkeletalMeshBakeTransform(bool& AttributeValue) const;
-    void GetExtraInformation(TMap<FString, FString>& OutExtraInformation) const;
-    static UInterchangeSourceNode* GetUniqueInstance(const UInterchangeBaseNodeContainer* NodeContainer);
-    void InitializeSourceNode(FString UniqueID, FString DisplayLabel, UInterchangeBaseNodeContainer* NodeContainer);
-    bool RemoveExtraInformation(FString Name);
-    bool SetCustomAnimatedTimeEnd(const double& AttributeValue);
-    bool SetCustomAnimatedTimeStart(const double& AttributeValue);
-    bool SetCustomAxisConversionInverseTransform(const FTransform& AxisConversionInverseTransform);
-    bool SetCustomImportUnusedMaterial(const bool& AttributeValue);
-    bool SetCustomReimportStrategyFlags(uint8_t StrategyFlag);
-    bool SetCustomSourceFrameRateDenominator(const int32_t& AttributeValue);
-    bool SetCustomSourceFrameRateNumerator(const int32_t& AttributeValue);
-    bool SetCustomSourceTimelineEnd(const double& AttributeValue);
-    bool SetCustomSourceTimelineStart(const double& AttributeValue);
-    bool SetCustomSubPathPrefix(FString Prefix);
-    bool SetCustomUseAssetTypeSubPathSuffix(const bool& Suffix);
-    bool SetCustomUseLegacySkeletalMeshBakeTransform(const bool& AttributeValue);
-    bool SetExtraInformation(FString Name, FString Value);
-};
-
-// Size: 0x48
-class UInterchangeTranslatorBase : public UObject {
-    /* 0x0028 */ UInterchangeResultsContainer* Results;
-    /* 0x0030 */ UInterchangeSourceData* SourceData;
-
-    bool CanImportSourceData(const UInterchangeSourceData* InSourceData) const;
-    UInterchangeTranslatorSettings* GetSettings() const;
-    UInterchangeSourceData* GetSourceData() const;
-    EInterchangeTranslatorAssetType GetSupportedAssetTypes() const;
-    TArray<FString> GetSupportedFormats() const;
-    EInterchangeTranslatorType GetTranslatorType() const;
-    void SetSettings(const UInterchangeTranslatorSettings* InterchangeTranslatorSettings);
-};
-
-// Size: 0x28
-class UInterchangeTranslatorSettings : public UObject {
-
-    void LoadSettings();
-    void SaveSettings();
-};
-
-// Size: 0x30
-struct FInterchangeUserDefinedAttributeInfo {
-    /* 0x0000 */ FString Name;
-};
-
-// Size: 0x28
-class UInterchangeUserDefinedAttributesAPI : public UObject {
-
-    static bool CreateUserDefinedAttribute_Boolean(UInterchangeBaseNode* InterchangeNode, FString UserDefinedAttributeName, const bool& Value, FString PayloadKey, bool RequiresDelegate);
-    static bool CreateUserDefinedAttribute_Double(UInterchangeBaseNode* InterchangeNode, FString UserDefinedAttributeName, const double& Value, FString PayloadKey, bool RequiresDelegate);
-    static bool CreateUserDefinedAttribute_FString(UInterchangeBaseNode* InterchangeNode, FString UserDefinedAttributeName, FString Value, FString PayloadKey, bool RequiresDelegate);
-    static bool CreateUserDefinedAttribute_Float(UInterchangeBaseNode* InterchangeNode, FString UserDefinedAttributeName, const float& Value, FString PayloadKey, bool RequiresDelegate);
-    static bool CreateUserDefinedAttribute_Int32(UInterchangeBaseNode* InterchangeNode, FString UserDefinedAttributeName, const int32_t& Value, FString PayloadKey, bool RequiresDelegate);
-    static void DuplicateAllUserDefinedAttribute(const UInterchangeBaseNode* InterchangeSourceNode, UInterchangeBaseNode* InterchangeDestinationNode, bool bAddSourceNodeName);
-    static void GetUserDefinedAttributeInfos(const UInterchangeBaseNode* InterchangeNode, TArray<FInterchangeUserDefinedAttributeInfo>& UserDefinedAttributeInfos);
-    static bool GetUserDefinedAttribute_Boolean(const UInterchangeBaseNode* InterchangeNode, FString UserDefinedAttributeName, bool& OutValue, FString& OutPayloadKey);
-    static bool GetUserDefinedAttribute_Double(const UInterchangeBaseNode* InterchangeNode, FString UserDefinedAttributeName, double& OutValue, FString& OutPayloadKey);
-    static bool GetUserDefinedAttribute_FString(const UInterchangeBaseNode* InterchangeNode, FString UserDefinedAttributeName, FString& OutValue, FString& OutPayloadKey);
-    static bool GetUserDefinedAttribute_Float(const UInterchangeBaseNode* InterchangeNode, FString UserDefinedAttributeName, float& OutValue, FString& OutPayloadKey);
-    static bool GetUserDefinedAttribute_Int32(const UInterchangeBaseNode* InterchangeNode, FString UserDefinedAttributeName, int32_t& OutValue, FString& OutPayloadKey);
-    static bool RemoveUserDefinedAttribute(UInterchangeBaseNode* InterchangeNode, FString UserDefinedAttributeName);
-};
-
-// Size: 0x28
-class UInterchangeWriterBase : public UObject {
-};
-
-enum class EInterchangePipelineConfigurationDialogResult {
-    Cancel = 0,
-    Import = 1,
-    ImportAll = 2,
-    SaveConfig = 3,
-    EInterchangePipelineConfigurationDialogResult_MAX = 4,
-};
-
-// Size: 0xc8
-struct FImportAssetParameters {
-    /* 0x0000 */ UObject* ReimportAsset;
-    /* 0x0008 */ int32_t ReimportSourceIndex;
-    /* 0x000c */ bool bIsAutomated;
-    /* 0x000d */ bool bFollowRedirectors;
-    /* 0x0010 */ TArray<FSoftObjectPath> OverridePipelines;
-    /* 0x0020 */ ULevel* ImportLevel;
-    /* 0x0028 */ FString DestinationName;
-    /* 0x0038 */ bool bReplaceExisting;
-    /* 0x0039 */ bool bForceShowDialog;
-    /* 0x003c */ FDelegate OnAssetDone;
-    /* 0x0060 */ FDelegate OnAssetsImportDone;
-    /* 0x0080 */ FDelegate OnSceneObjectDone;
-    /* 0x00a0 */ FDelegate OnSceneImportDone;
-};
-
-// Size: 0xd8
-class UInterchangeAssetImportData : public UAssetImportData {
-    /* 0x0028 */ FSoftObjectPath SceneImportAsset;
-    /* 0x0048 */ FString NodeUniqueID;
-    /* 0x0058 */ UInterchangeBaseNodeContainer* NodeContainer;
-    /* 0x0060 */ TArray<UObject*> Pipelines;
-    /* 0x0070 */ UInterchangeBaseNodeContainer* TransientNodeContainer;
-    /* 0x0078 */ TArray<UObject*> TransientPipelines;
-    /* 0x0088 */ UInterchangeTranslatorSettings* TransientTranslatorSettings;
-
-    UInterchangeBaseNodeContainer* GetNodeContainer() const;
-    int32_t GetNumberOfPipelines() const;
-    TArray<UObject*> GetPipelines() const;
-    UInterchangeFactoryBaseNode* GetStoredFactoryNode(FString InNodeUniqueId) const;
-    UInterchangeBaseNode* GetStoredNode(FString InNodeUniqueId) const;
-    UInterchangeTranslatorSettings* GetTranslatorSettings() const;
-    TArray<FString> ScriptExtractDisplayLabels() const;
-    TArray<FString> ScriptExtractFilenames() const;
-    FString ScriptGetFirstFilename() const;
-    void SetNodeContainer(UInterchangeBaseNodeContainer* InNodeContainer) const;
-    void SetPipelines(const TArray<UObject*>& InPipelines);
-    void SetTranslatorSettings(UInterchangeTranslatorSettings* TranslatorSettings) const;
-};
-
-// Size: 0x28
-class UInterchangeAssetImportDataConverterBase : public UObject {
-};
-
-// Size: 0xa8
-class UInterchangeBlueprintPipelineBase : public UBlueprint {
-};
-
-// Size: 0x128
-struct FInterchangeContentImportSettings : public FInterchangeImportSettings {
-    /* 0x0088 */ TMap<EInterchangeTranslatorAssetType, FName> DefaultPipelineStackOverride;
-    /* 0x00d8 */ TMap<EInterchangeTranslatorAssetType, FInterchangeDialogOverride> ShowImportDialogOverride;
-};
-
-// Size: 0x18
-struct FInterchangeDialogOverride {
-    /* 0x0000 */ bool bShowImportDialog;
-    /* 0x0001 */ bool bShowReimportDialog;
-    /* 0x0008 */ TArray<FInterchangePerTranslatorDialogOverride> PerTranslatorImportDialogOverride;
-};
-
-// Size: 0x58
-class UInterchangeEditorSettings : public UDeveloperSettings {
-    /* 0x0038 */ bool bShowImportDialogAtReimport;
-    /* 0x003c */ FName UsedGroupName;
-    /* 0x0044 */ FGuid UsedGroupUID;
-
-    TArray<FName> GetSelectableItems() const;
-    FName GetUsedGroupName() const;
-    void SetUsedGroupName(const FName& InUsedGroupName);
-};
-
-// Size: 0x28
-class UInterchangeEditorUtilitiesBase : public UObject {
-};
-
-// Size: 0x28
-class UInterchangeFilePickerBase : public UObject {
-
-    bool ScriptedFilePickerForTranslatorAssetType(const EInterchangeTranslatorAssetType TranslatorAssetType, FInterchangeFilePickerParameters& Parameters, TArray<FString>& OutFilenames);
-    bool ScriptedFilePickerForTranslatorType(const EInterchangeTranslatorType TranslatorType, FInterchangeFilePickerParameters& Parameters, TArray<FString>& OutFilenames);
-};
-
-// Size: 0x40
-struct FInterchangeFilePickerParameters {
-    /* 0x0000 */ bool bAllowMultipleFiles;
-    /* 0x0008 */ FText Title;
-    /* 0x0018 */ FString DefaultPath;
-    /* 0x0028 */ bool bShowAllFactoriesExtension;
-    /* 0x0030 */ TArray<FString> ExtraFormats;
-};
-
-// Size: 0xc8
-struct FInterchangeGroup {
-    /* 0x0000 */ FName DisplayName;
-    /* 0x0008 */ FGuid UniqueID;
-    /* 0x0018 */ FName DefaultPipelineStack;
-    /* 0x0020 */ TMap<EInterchangeTranslatorAssetType, FName> DefaultPipelineStackOverride;
-    /* 0x0070 */ bool bShowImportDialog;
-    /* 0x0071 */ bool bShowReimportDialog;
-    /* 0x0078 */ TMap<EInterchangeTranslatorAssetType, FInterchangeDialogOverride> ShowImportDialogOverride;
-};
-
-// Size: 0x88
-struct FInterchangeImportSettings {
-    /* 0x0000 */ TMap<FName, FInterchangePipelineStack> PipelineStacks;
-    /* 0x0050 */ FName DefaultPipelineStack;
-    /* 0x0058 */ TSoftClassPtr<UInterchangePipelineConfigurationBase> ImportDialogClass;
-    /* 0x0080 */ bool bShowImportDialog;
-    /* 0x0081 */ bool bShowReimportDialog;
-};
-
-// Size: 0x400
-class UInterchangeManager : public UObject {
-    /* 0x0238 */ TSet<UClass*> RegisteredTranslatorsClass;
-    /* 0x0288 */ TMap<UClass*, UClass*> RegisteredFactoryClasses;
-    /* 0x02d8 */ TMap<UClass*, UInterchangeWriterBase*> RegisteredWriters;
-    /* 0x0328 */ TMap<UClass*, UInterchangeAssetImportDataConverterBase*> RegisteredConverters;
-
-    bool CanReimport(const UObject* Object, TArray<FString>& OutFilenames) const;
-    bool CanTranslateSourceData(const UInterchangeSourceData* SourceData, bool bSceneImportOnly) const;
-    void CancelAllTasks();
-    static UInterchangeSourceData* CreateSourceData(FString InFilename);
-    bool ExportAsset(const UObject* Asset, bool bIsAutomated);
-    bool ExportScene(const UObject* World, bool bIsAutomated);
-    UInterchangeAssetImportData* GetAssetImportData(UObject* Asset) const;
-    static UInterchangeManager* GetInterchangeManagerScripted();
-    UClass* GetRegisteredFactoryClass(const UClass* ClassToMake) const;
-    TArray<FString> GetSupportedAssetTypeFormats(const EInterchangeTranslatorAssetType ForTranslatorAssetType, const EInterchangeTranslatorType ForTranslatorType, bool bStrictMatchTranslatorType) const;
-    TArray<FString> GetSupportedFormats(const EInterchangeTranslatorType ForTranslatorType) const;
-    TArray<FString> GetSupportedFormatsForObject(const UObject* Object, int32_t SourceFileIndex) const;
-    UInterchangeTranslatorBase* GetTranslatorForSourceData(const UInterchangeSourceData* SourceData) const;
-    bool ImportAsset(FString ContentPath, const UInterchangeSourceData* SourceData, const FImportAssetParameters& ImportAssetParameters, TArray<UObject*>& OutImportedObjects);
-    bool ImportScene(FString ContentPath, const UInterchangeSourceData* SourceData, const FImportAssetParameters& ImportAssetParameters);
-    bool IsInterchangeActive();
-    bool IsObjectBeingImported(UObject* Object) const;
-    bool ReimportAsset(UObject* ObjectToReimport, const FImportAssetParameters& ImportAssetParameters, TArray<UObject*>& OutImportedObjects);
-    bool ScriptedImportAssetAsync(FString ContentPath, const UInterchangeSourceData* SourceData, const FImportAssetParameters& ImportAssetParameters);
-    bool ScriptedImportSceneAsync(FString ContentPath, const UInterchangeSourceData* SourceData, const FImportAssetParameters& ImportAssetParameters);
-    bool ScriptedReimportAssetAsync(UObject* ObjectToReimport, const FImportAssetParameters& ImportAssetParameters);
-    void WaitUntilAllTasksDone(bool bCancel);
-    bool WarnIfInterchangeIsActive();
-};
-
-// Size: 0x28
-class UInterchangeMeshUtilities : public UObject {
-
-    bool ScriptedImportMorphTarget(USkeletalMesh* SkeletalMesh, const int32_t LODIndex, const UInterchangeSourceData* SourceData, FString MorphTargetName) const;
-};
-
-// Size: 0x30
-struct FInterchangePerTranslatorDialogOverride {
-    /* 0x0000 */ TSoftClassPtr<UInterchangeTranslatorBase> Translator;
-    /* 0x0028 */ bool bShowImportDialog;
-    /* 0x0029 */ bool bShowReimportDialog;
-};
-
-// Size: 0x28
-class UInterchangePipelineConfigurationBase : public UObject {
-
-    EInterchangePipelineConfigurationDialogResult ScriptedShowPipelineConfigurationDialog(TArray<FInterchangeStackInfo>& PipelineStacks, TArray<UInterchangePipelineBase*>& OutPipelines, UInterchangeSourceData* SourceData, UInterchangeTranslatorBase* Translator, UInterchangeBaseNodeContainer* BaseNodeContainer);
-    EInterchangePipelineConfigurationDialogResult ScriptedShowReimportPipelineConfigurationDialog(TArray<FInterchangeStackInfo>& PipelineStacks, TArray<UInterchangePipelineBase*>& OutPipelines, UInterchangeSourceData* SourceData, UInterchangeTranslatorBase* Translator, UInterchangeBaseNodeContainer* BaseNodeContainer, UObject* ReimportAsset, bool bSceneImport);
-    EInterchangePipelineConfigurationDialogResult ScriptedShowScenePipelineConfigurationDialog(TArray<FInterchangeStackInfo>& PipelineStacks, TArray<UInterchangePipelineBase*>& OutPipelines, UInterchangeSourceData* SourceData, UInterchangeTranslatorBase* Translator, UInterchangeBaseNodeContainer* BaseNodeContainer);
-    EInterchangePipelineConfigurationDialogResult ScriptedShowTestPlanConfigurationDialog(TArray<FInterchangeStackInfo>& PipelineStacks, TArray<UInterchangePipelineBase*>& OutPipelines, UInterchangeSourceData* SourceData, UInterchangeTranslatorBase* Translator, UInterchangeBaseNodeContainer* BaseNodeContainer, UObject* ReimportAsset, bool bSceneImport, bool bReimport);
-};
-
-// Size: 0x20
-struct FInterchangePipelineStack {
-    /* 0x0000 */ TArray<FSoftObjectPath> Pipelines;
-    /* 0x0010 */ TArray<FInterchangeTranslatorPipelines> PerTranslatorPipelines;
-};
-
-// Size: 0x38
-class UInterchangePipelineStackOverride : public UObject {
-    /* 0x0028 */ TArray<FSoftObjectPath> OverridePipelines;
-
-    void AddBlueprintPipeline(UInterchangeBlueprintPipelineBase* PipelineBase);
-    void AddPipeline(UInterchangePipelineBase* PipelineBase);
-    void AddPythonPipeline(UInterchangePythonPipelineBase* PipelineBase);
-};
-
-// Size: 0x280
-class UInterchangeProjectSettings : public UDeveloperSettings {
-    /* 0x0038 */ FInterchangeContentImportSettings ContentImportSettings;
-    /* 0x0160 */ FInterchangeSceneImportSettings SceneImportSettings;
-    /* 0x01f8 */ TSoftClassPtr<UInterchangeFilePickerBase> FilePickerClass;
-    /* 0x0220 */ bool bStaticMeshUseSmoothEdgesIfSmoothingInformationIsMissing;
-    /* 0x0228 */ TSoftClassPtr<UInterchangePipelineBase> GenericPipelineClass;
-    /* 0x0250 */ FSoftObjectPath ConverterDefaultPipeline;
-    /* 0x0270 */ TArray<FInterchangeGroup> InterchangeGroups;
-};
-
-// Size: 0x68
-class UInterchangePythonPipelineAsset : public UObject {
-    /* 0x0028 */ TSoftClassPtr<UInterchangePythonPipelineBase> PythonClass;
-    /* 0x0050 */ UInterchangePythonPipelineBase* GeneratedPipeline;
-    /* 0x0058 */ FString JsonDefaultProperties;
-};
-
-// Size: 0x128
-class UInterchangePythonPipelineBase : public UInterchangePipelineBase {
-};
-
-// Size: 0x30
-class UInterchangeSceneImportAsset : public UObject {
-};
-
-// Size: 0x98
-struct FInterchangeSceneImportSettings : public FInterchangeImportSettings {
-    /* 0x0088 */ TArray<FInterchangePerTranslatorDialogOverride> PerTranslatorDialogOverride;
-};
-
-// Size: 0x18
-struct FInterchangeStackInfo {
-    /* 0x0000 */ FName StackName;
-    /* 0x0008 */ TArray<UInterchangePipelineBase*> Pipelines;
-};
-
-// Size: 0x38
-struct FInterchangeTranslatorPipelines {
-    /* 0x0000 */ TSoftClassPtr<UInterchangeTranslatorBase> Translator;
-    /* 0x0028 */ TArray<FSoftObjectPath> Pipelines;
-};
-
-// Size: 0x18
-struct FPropertyData {
-};
-
-// Size: 0x28
-class UInterchangeTextureWriter : public UInterchangeWriterBase {
-};
-
-enum class EInterchangeSkeletalMeshContentType {
-    All = 0,
-    Geometry = 1,
-    SkinningWeights = 2,
-    MAX = 3,
-};
-
-// Size: 0x260
-class UInterchangeActorFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool GetCustomActorClassName(FString& AttributeValue) const;
-    bool GetCustomActorVisibility(bool& AttributeValue) const;
-    bool GetCustomComponentVisibility(bool& AttributeValue) const;
-    bool GetCustomGlobalTransform(FTransform& AttributeValue) const;
-    bool GetCustomLocalTransform(FTransform& AttributeValue) const;
-    bool GetCustomMobility(uint8_t& AttributeValue) const;
-    bool SetCustomActorClassName(FString AttributeValue);
-    bool SetCustomActorVisibility(bool AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomComponentVisibility(bool AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomGlobalTransform(const FTransform& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomLocalTransform(const FTransform& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomMobility(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x500
-class UInterchangeAnimSequenceFactoryNode : public UInterchangeFactoryBaseNode {
-
-    void GetAnimatedAttributeCurveName(const int32_t Index, FString& OutAttributeCurveName) const;
-    void GetAnimatedAttributeCurveNames(TArray<FString>& OutAttributeCurveNames) const;
-    int32_t GetAnimatedAttributeCurveNamesCount() const;
-    void GetAnimatedAttributeStepCurveName(const int32_t Index, FString& OutAttributeStepCurveName) const;
-    void GetAnimatedAttributeStepCurveNames(TArray<FString>& OutAttributeStepCurveNames) const;
-    int32_t GetAnimatedAttributeStepCurveNamesCount() const;
-    void GetAnimatedMaterialCurveSuffixe(const int32_t Index, FString& OutMaterialCurveSuffixe) const;
-    void GetAnimatedMaterialCurveSuffixes(TArray<FString>& OutMaterialCurveSuffixes) const;
-    int32_t GetAnimatedMaterialCurveSuffixesCount() const;
-    bool GetCustomAddCurveMetadataToSkeleton(bool& AttributeValue) const;
-    bool GetCustomDeleteExistingCustomAttributeCurves(bool& AttributeValue) const;
-    bool GetCustomDeleteExistingMorphTargetCurves(bool& AttributeValue) const;
-    bool GetCustomDeleteExistingNonCurveCustomAttributes(bool& AttributeValue) const;
-    bool GetCustomDoNotImportCurveWithZero(bool& AttributeValue) const;
-    bool GetCustomImportAttributeCurves(bool& AttributeValue) const;
-    bool GetCustomImportBoneTracks(bool& AttributeValue) const;
-    bool GetCustomImportBoneTracksRangeStart(double& AttributeValue) const;
-    bool GetCustomImportBoneTracksRangeStop(double& AttributeValue) const;
-    bool GetCustomImportBoneTracksSampleRate(double& AttributeValue) const;
-    bool GetCustomMaterialDriveParameterOnCustomAttribute(bool& AttributeValue) const;
-    bool GetCustomRemoveCurveRedundantKeys(bool& AttributeValue) const;
-    bool GetCustomSkeletonFactoryNodeUid(FString& AttributeValue) const;
-    bool GetCustomSkeletonSoftObjectPath(FSoftObjectPath& AttributeValue) const;
-    void GetMorphTargetNodeAnimationPayloadKeys(TMap<FString, FInterchangeAnimationPayLoadKey>& OutMorphTargetNodeAnimationPayloads) const;
-    void GetSceneNodeAnimationPayloadKeys(TMap<FString, FInterchangeAnimationPayLoadKey>& OutSceneNodeAnimationPayloadKeys) const;
-    void InitializeAnimSequenceNode(FString UniqueID, FString DisplayLabel, UInterchangeBaseNodeContainer* NodeContainer);
-    bool RemoveAnimatedAttributeCurveName(FString AttributeCurveName);
-    bool RemoveAnimatedAttributeStepCurveName(FString AttributeStepCurveName);
-    bool RemoveAnimatedMaterialCurveSuffixe(FString MaterialCurveSuffixe);
-    bool SetAnimatedAttributeCurveName(FString AttributeCurveName);
-    bool SetAnimatedAttributeStepCurveName(FString AttributeStepCurveName);
-    bool SetAnimatedMaterialCurveSuffixe(FString MaterialCurveSuffixe);
-    void SetAnimationPayloadKeysForMorphTargetNodeUids(const TMap<FString, FString>& MorphTargetAnimationPayloadKeyUids, const TMap<FString, uint8_t>& MorphTargetAnimationPayloadKeyTypes);
-    void SetAnimationPayloadKeysForSceneNodeUids(const TMap<FString, FString>& SceneNodeAnimationPayloadKeyUids, const TMap<FString, uint8_t>& SceneNodeAnimationPayloadKeyTypes);
-    bool SetCustomAddCurveMetadataToSkeleton(const bool& AttributeValue);
-    bool SetCustomDeleteExistingCustomAttributeCurves(const bool& AttributeValue);
-    bool SetCustomDeleteExistingMorphTargetCurves(const bool& AttributeValue);
-    bool SetCustomDeleteExistingNonCurveCustomAttributes(const bool& AttributeValue);
-    bool SetCustomDoNotImportCurveWithZero(const bool& AttributeValue);
-    bool SetCustomImportAttributeCurves(const bool& AttributeValue);
-    bool SetCustomImportBoneTracks(const bool& AttributeValue);
-    bool SetCustomImportBoneTracksRangeStart(const double& AttributeValue);
-    bool SetCustomImportBoneTracksRangeStop(const double& AttributeValue);
-    bool SetCustomImportBoneTracksSampleRate(const double& AttributeValue);
-    bool SetCustomMaterialDriveParameterOnCustomAttribute(const bool& AttributeValue);
-    bool SetCustomRemoveCurveRedundantKeys(const bool& AttributeValue);
-    bool SetCustomSkeletonFactoryNodeUid(FString AttributeValue);
-    bool SetCustomSkeletonSoftObjectPath(const FSoftObjectPath& AttributeValue);
-};
-
-// Size: 0x2a0
-class UInterchangeBaseLightFactoryNode : public UInterchangeActorFactoryNode {
-
-    bool GetCustomIntensity(float& AttributeValue) const;
-    bool GetCustomLightColor(FColor& AttributeValue) const;
-    bool GetCustomTemperature(float& AttributeValue) const;
-    bool GetCustomUseTemperature(bool& AttributeValue) const;
-    bool SetCustomIntensity(float AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomLightColor(const FColor& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomTemperature(float AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomUseTemperature(bool AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x1d0
-class UInterchangeBaseMaterialFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool GetCustomIsMaterialImportEnabled(bool& AttributeValue) const;
-    bool SetCustomIsMaterialImportEnabled(const bool& AttributeValue);
-};
-
-// Size: 0x1f0
-class UInterchangeCommonPipelineDataFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool GetBakeMeshes(bool& AttributeValue) const;
-    bool GetBakePivotMeshes(bool& AttributeValue) const;
-    bool GetCustomGlobalOffsetTransform(FTransform& AttributeValue) const;
-    bool SetBakeMeshes(const bool& AttributeValue);
-    bool SetBakePivotMeshes(const bool& AttributeValue);
-    bool SetCustomGlobalOffsetTransform(const UInterchangeBaseNodeContainer* NodeContainer, const FTransform& AttributeValue);
-};
-
-// Size: 0x290
-class UInterchangeDecalActorFactoryNode : public UInterchangeActorFactoryNode {
-
-    bool GetCustomDecalMaterialPathName(FString& AttributeValue) const;
-    bool GetCustomDecalSize(FVector& AttributeValue) const;
-    bool GetCustomSortOrder(int32_t& AttributeValue) const;
-    bool SetCustomDecalMaterialPathName(FString AttributeValue);
-    bool SetCustomDecalSize(const FVector& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomSortOrder(const int32_t& AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x1f0
-class UInterchangeDecalMaterialFactoryNode : public UInterchangeBaseMaterialFactoryNode {
-
-    bool GetCustomDiffuseTexturePath(FString& AttributeValue) const;
-    bool GetCustomNormalTexturePath(FString& AttributeValue) const;
-    bool SetCustomDiffuseTexturePath(FString AttributeValue);
-    bool SetCustomNormalTexturePath(FString AttributeValue);
-};
-
-// Size: 0x2a0
-class UInterchangeDirectionalLightFactoryNode : public UInterchangeBaseLightFactoryNode {
-};
-
-// Size: 0x3f8
-class UInterchangeGeometryCacheFactoryNode : public UInterchangeMeshFactoryNode {
-
-    bool GetCustomApplyConstantTopologyOptimization(bool& AttributeValue) const;
-    bool GetCustomEndFrame(int32_t& AttributeValue) const;
-    bool GetCustomFlattenTracks(bool& AttributeValue) const;
-    bool GetCustomMotionVectorsImport(EInterchangeMotionVectorsHandling& AttributeValue) const;
-    bool GetCustomNumBitsForUVs(int32_t& AttributeValue) const;
-    bool GetCustomOptimizeIndexBuffers(bool& AttributeValue) const;
-    bool GetCustomPositionPrecision(float& AttributeValue) const;
-    bool GetCustomStartFrame(int32_t& AttributeValue) const;
-    bool GetCustomStoreImportedVertexNumbers(bool& AttributeValue) const;
-    void InitializeGeometryCacheNode(FString UniqueID, FString DisplayLabel, FString InAssetClass, UInterchangeBaseNodeContainer* NodeContainer);
-    bool SetCustomApplyConstantTopologyOptimization(const bool& AttributeValue);
-    bool SetCustomEndFrame(const int32_t& AttributeValue);
-    bool SetCustomFlattenTracks(const bool& AttributeValue);
-    bool SetCustomMotionVectorsImport(EInterchangeMotionVectorsHandling AttributeValue);
-    bool SetCustomNumBitsForUVs(const int32_t& AttributeValue);
-    bool SetCustomOptimizeIndexBuffers(const bool& AttributeValue);
-    bool SetCustomPositionPrecision(const float& AttributeValue);
-    bool SetCustomStartFrame(const int32_t& AttributeValue);
-    bool SetCustomStoreImportedVertexNumbers(const bool& AttributeValue);
-};
-
-// Size: 0x270
-class UInterchangeHeterogeneousVolumeActorFactoryNode : public UInterchangeActorFactoryNode {
-
-    bool GetCustomVolumetricMaterialUid(FString& MaterialFactoryNodeUid) const;
-    bool SetCustomVolumetricMaterialUid(FString MaterialFactoryNodeUid);
-};
-
-// Size: 0x220
-class UInterchangeLevelFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool AddCustomActorFactoryNodeUid(FString ActorFactoryNodeUid);
-    void GetCustomActorFactoryNodeUid(const int32_t Index, FString& OutActorFactoryNodeUid) const;
-    int32_t GetCustomActorFactoryNodeUidCount() const;
-    void GetCustomActorFactoryNodeUids(TArray<FString>& OutActorFactoryNodeUids) const;
-    bool GetCustomCreateWorldPartitionLevel(bool& AttributeValue) const;
-    bool GetCustomSceneImportAssetFactoryNodeUid(FString& AttributeValue) const;
-    bool GetCustomShouldCreateLevel(bool& AttributeValue) const;
-    bool RemoveCustomActorFactoryNodeUid(FString ActorFactoryNodeUid);
-    bool SetCustomCreateWorldPartitionLevel(const bool& AttributeValue);
-    bool SetCustomSceneImportAssetFactoryNodeUid(FString AttributeValue);
-    bool SetCustomShouldCreateLevel(const bool& AttributeValue);
-};
-
-// Size: 0x280
-class UInterchangeLevelInstanceActorFactoryNode : public UInterchangeActorFactoryNode {
-
-    bool GetCustomLevelReference(FString& AttributeValue) const;
-    bool SetCustomLevelReference(FString AttributeValue);
-};
-
-// Size: 0x1f0
-class UInterchangeLevelSequenceFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool AddCustomAnimationTrackUid(FString AnimationTrackUid);
-    void GetCustomAnimationTrackUid(const int32_t Index, FString& OutAnimationTrackUid) const;
-    int32_t GetCustomAnimationTrackUidCount() const;
-    void GetCustomAnimationTrackUids(TArray<FString>& OutAnimationTrackUids) const;
-    bool GetCustomFrameRate(float& AttributeValue) const;
-    bool RemoveCustomAnimationTrackUid(FString AnimationTrackUid);
-    bool SetCustomFrameRate(const float& AttributeValue);
-};
-
-// Size: 0x300
-class UInterchangeLightFactoryNode : public UInterchangeBaseLightFactoryNode {
-
-    bool GetCustomAttenuationRadius(float& AttributeValue) const;
-    bool GetCustomIESBrightnessScale(float& AttributeValue) const;
-    bool GetCustomIESTexture(FString& AttributeValue) const;
-    bool GetCustomIntensityUnits(ELightUnits& AttributeValue) const;
-    bool GetCustomRotation(FRotator& AttributeValue) const;
-    bool GetCustomUseIESBrightness(bool& AttributeValue) const;
-    bool SetCustomAttenuationRadius(float AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomIESBrightnessScale(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomIESTexture(FString AttributeValue);
-    bool SetCustomIntensityUnits(ELightUnits AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomRotation(const FRotator& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomUseIESBrightness(const bool& AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x1d0
-class UInterchangeMaterialExpressionFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool GetCustomExpressionClassName(FString& AttributeValue) const;
-    bool SetCustomExpressionClassName(FString AttributeValue);
-};
-
-// Size: 0x250
-class UInterchangeMaterialFactoryNode : public UInterchangeBaseMaterialFactoryNode {
-
-    bool ConnectOutputToAnisotropy(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToBaseColor(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToClearCoat(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToClearCoatNormal(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToClearCoatRoughness(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToCloth(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToDisplacement(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToEmissiveColor(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToFuzzColor(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToMetallic(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToNormal(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToOcclusion(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToOpacity(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToRefraction(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToRoughness(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToSpecular(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToSubsurface(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToSurfaceCoverage(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToTangent(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectOutputToTransmissionColor(FString ExpressionNodeUid, FString OutputName);
-    bool ConnectToAnisotropy(FString ExpressionNodeUid);
-    bool ConnectToBaseColor(FString AttributeValue);
-    bool ConnectToClearCoat(FString AttributeValue);
-    bool ConnectToClearCoatNormal(FString AttributeValue);
-    bool ConnectToClearCoatRoughness(FString AttributeValue);
-    bool ConnectToCloth(FString AttributeValue);
-    bool ConnectToDisplacement(FString AttributeValue);
-    bool ConnectToEmissiveColor(FString ExpressionNodeUid);
-    bool ConnectToFuzzColor(FString AttributeValue);
-    bool ConnectToMetallic(FString AttributeValue);
-    bool ConnectToNormal(FString ExpressionNodeUid);
-    bool ConnectToOcclusion(FString AttributeValue);
-    bool ConnectToOpacity(FString AttributeValue);
-    bool ConnectToRefraction(FString AttributeValue);
-    bool ConnectToRoughness(FString ExpressionNodeUid);
-    bool ConnectToSpecular(FString ExpressionNodeUid);
-    bool ConnectToSubsurface(FString ExpressionNodeUid);
-    bool ConnectToSurfaceCoverage(FString ExpressionUid);
-    bool ConnectToTangent(FString ExpressionNodeUid);
-    bool ConnectToTransmissionColor(FString AttributeValue);
-    bool GetAnisotropyConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetBaseColorConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetClearCoatConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetClearCoatNormalConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetClearCoatRoughnessConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetClothConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetCustomBlendMode(uint8_t& AttributeValue) const;
-    bool GetCustomDisplacementCenter(float& AttributeValue) const;
-    bool GetCustomOpacityMaskClipValue(float& AttributeValue) const;
-    bool GetCustomRefractionMethod(uint8_t& AttributeValue) const;
-    bool GetCustomScreenSpaceReflections(bool& AttributeValue) const;
-    bool GetCustomShadingModel(uint8_t& AttributeValue) const;
-    bool GetCustomTranslucencyLightingMode(uint8_t& AttributeValue) const;
-    bool GetCustomTwoSided(bool& AttributeValue) const;
-    bool GetDisplacementConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetEmissiveColorConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetFuzzColorConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetMetallicConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetNormalConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetOcclusionConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetOpacityConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetRefractionConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetRoughnessConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetSpecularConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetSubsurfaceConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetSurfaceCoverageConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetTangentConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool GetTransmissionColorConnection(FString& ExpressionNodeUid, FString& OutputName) const;
-    bool SetCustomBlendMode(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomDisplacementCenter(float AttributeValue);
-    bool SetCustomOpacityMaskClipValue(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomRefractionMethod(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomScreenSpaceReflections(const bool& AttributeValue);
-    bool SetCustomShadingModel(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomTranslucencyLightingMode(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomTwoSided(const bool& AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x1e0
-class UInterchangeMaterialFunctionCallExpressionFactoryNode : public UInterchangeMaterialExpressionFactoryNode {
-
-    bool GetCustomMaterialFunctionDependency(FString& AttributeValue) const;
-    bool SetCustomMaterialFunctionDependency(FString AttributeValue);
-};
-
-// Size: 0x1d0
-class UInterchangeMaterialFunctionFactoryNode : public UInterchangeBaseMaterialFactoryNode {
-
-    bool GetInputConnection(FString InputName, FString& ExpressionNodeUid, FString& OutputName) const;
-};
-
-// Size: 0x1f0
-class UInterchangeMaterialInstanceFactoryNode : public UInterchangeBaseMaterialFactoryNode {
-
-    bool GetCustomInstanceClassName(FString& AttributeValue) const;
-    bool GetCustomParent(FString& AttributeValue) const;
-    bool SetCustomInstanceClassName(FString AttributeValue);
-    bool SetCustomParent(FString AttributeValue);
-};
-
-// Size: 0x1d0
-class UInterchangeMaterialReferenceFactoryNode : public UInterchangeBaseMaterialFactoryNode {
-};
-
-// Size: 0x308
-class UInterchangeMeshActorFactoryNode : public UInterchangeActorFactoryNode {
-
-    bool GetCustomAnimationAssetUidToPlay(FString& AttributeValue) const;
-    bool GetCustomGeometricTransform(FTransform& AttributeValue) const;
-    bool GetCustomInstancedAssetFactoryNodeUid(FString& AttributeValue) const;
-    void GetSlotMaterialDependencies(TMap<FString, FString>& OutMaterialDependencies) const;
-    bool GetSlotMaterialDependencyUid(FString SlotName, FString& OutMaterialDependency) const;
-    bool RemoveSlotMaterialDependencyUid(FString SlotName);
-    bool SetCustomAnimationAssetUidToPlay(FString AttributeValue);
-    bool SetCustomGeometricTransform(const FTransform& AttributeValue);
-    bool SetCustomInstancedAssetFactoryNodeUid(FString AttributeValue);
-    bool SetSlotMaterialDependencyUid(FString SlotName, FString MaterialDependencyUid);
-};
-
-// Size: 0x350
-class UInterchangeMeshFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool AddLodDataUniqueId(FString LodDataUniqueId);
-    bool AddPayloadKeyBooleanAttribute(FString PayloadAttributeKey, bool Value);
-    bool AddPayloadKeyDoubleAttribute(FString PayloadAttributeKey, double Value);
-    bool AddPayloadKeyFloatAttribute(FString PayloadAttributeKey, float Value);
-    bool AddPayloadKeyInt32Attribute(FString PayloadAttributeKey, int32_t Value);
-    bool AddPayloadKeyStringAttribute(FString PayloadAttributeKey, FString Value);
-    bool GetCustomComputeWeightedNormals(bool& AttributeValue) const;
-    bool GetCustomImportSockets(bool& AttributeValue) const;
-    bool GetCustomKeepSectionsSeparate(bool& AttributeValue) const;
-    bool GetCustomLODGroup(FName& AttributeValue) const;
-    bool GetCustomRecomputeNormals(bool& AttributeValue) const;
-    bool GetCustomRecomputeTangents(bool& AttributeValue) const;
-    bool GetCustomRemoveDegenerates(bool& AttributeValue) const;
-    bool GetCustomUseBackwardsCompatibleF16TruncUVs(bool& AttributeValue) const;
-    bool GetCustomUseFullPrecisionUVs(bool& AttributeValue) const;
-    bool GetCustomUseHighPrecisionTangentBasis(bool& AttributeValue) const;
-    bool GetCustomUseMikkTSpace(bool& AttributeValue) const;
-    bool GetCustomVertexColorIgnore(bool& AttributeValue) const;
-    bool GetCustomVertexColorOverride(FColor& AttributeValue) const;
-    bool GetCustomVertexColorReplace(bool& AttributeValue) const;
-    int32_t GetLodDataCount() const;
-    void GetLodDataUniqueIds(TArray<FString>& OutLodDataUniqueIds) const;
-    bool GetPayloadKeyBooleanAttribute(FString PayloadAttributeKey, bool& Value);
-    bool GetPayloadKeyDoubleAttribute(FString PayloadAttributeKey, double& Value);
-    bool GetPayloadKeyFloatAttribute(FString PayloadAttributeKey, float& Value);
-    bool GetPayloadKeyInt32Attribute(FString PayloadAttributeKey, int32_t& Value);
-    bool GetPayloadKeyStringAttribute(FString PayloadAttributeKey, FString& Value);
-    void GetSlotMaterialDependencies(TMap<FString, FString>& OutMaterialDependencies) const;
-    bool GetSlotMaterialDependencyUid(FString SlotName, FString& OutMaterialDependency) const;
-    bool RemoveLodDataUniqueId(FString LodDataUniqueId);
-    bool RemoveSlotMaterialDependencyUid(FString SlotName);
-    bool ResetSlotMaterialDependencies();
-    bool SetCustomComputeWeightedNormals(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomImportSockets(const bool& AttributeValue);
-    bool SetCustomKeepSectionsSeparate(const bool& AttributeValue);
-    bool SetCustomLODGroup(const FName& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomRecomputeNormals(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomRecomputeTangents(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomRemoveDegenerates(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomUseBackwardsCompatibleF16TruncUVs(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomUseFullPrecisionUVs(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomUseHighPrecisionTangentBasis(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomUseMikkTSpace(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomVertexColorIgnore(const bool& AttributeValue);
-    bool SetCustomVertexColorOverride(const FColor& AttributeValue);
-    bool SetCustomVertexColorReplace(const bool& AttributeValue);
-    bool SetSlotMaterialDependencyUid(FString SlotName, FString MaterialDependencyUid);
-};
-
-// Size: 0x2a0
-class UInterchangePhysicalCameraFactoryNode : public UInterchangeActorFactoryNode {
-
-    bool GetCustomFocalLength(float& AttributeValue) const;
-    bool GetCustomFocusMethod(ECameraFocusMethod& AttributeValue) const;
-    bool GetCustomSensorHeight(float& AttributeValue) const;
-    bool GetCustomSensorWidth(float& AttributeValue) const;
-    bool SetCustomFocalLength(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomFocusMethod(const ECameraFocusMethod& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomSensorHeight(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomSensorWidth(const float& AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x1f0
-class UInterchangePhysicsAssetFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool GetCustomSkeletalMeshUid(FString& AttributeValue) const;
-    void InitializePhysicsAssetNode(FString UniqueID, FString DisplayLabel, FString InAssetClass, UInterchangeBaseNodeContainer* NodeContainer);
-    bool SetCustomSkeletalMeshUid(FString AttributeValue);
-};
-
-// Size: 0x320
-class UInterchangePointLightFactoryNode : public UInterchangeLightFactoryNode {
-
-    bool GetCustomLightFalloffExponent(float& AttributeValue) const;
-    bool GetCustomUseInverseSquaredFalloff(bool& AttributeValue) const;
-    bool SetCustomLightFalloffExponent(float AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomUseInverseSquaredFalloff(bool AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x320
-class UInterchangeRectLightFactoryNode : public UInterchangeLightFactoryNode {
-
-    bool GetCustomSourceHeight(float& AttributeValue) const;
-    bool GetCustomSourceWidth(float& AttributeValue) const;
-    bool SetCustomSourceHeight(float AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomSourceWidth(float AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x1c0
-class UInterchangeSceneImportAssetFactoryNode : public UInterchangeFactoryBaseNode {
-};
-
-// Size: 0x1e0
-class UInterchangeSceneVariantSetsFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool AddCustomVariantSetUid(FString VariantUid);
-    void GetCustomVariantSetUid(const int32_t Index, FString& OutVariantUid) const;
-    int32_t GetCustomVariantSetUidCount() const;
-    void GetCustomVariantSetUids(TArray<FString>& OutVariantUids) const;
-    bool RemoveCustomVariantSetUid(FString VariantUid);
-};
-
-// Size: 0x448
-class UInterchangeSkeletalMeshFactoryNode : public UInterchangeMeshFactoryNode {
-
-    bool GetCustomAddCurveMetadataToSkeleton(bool& AttributeValue) const;
-    bool GetCustomBoneInfluenceLimit(int32_t& AttributeValue) const;
-    bool GetCustomCreatePhysicsAsset(bool& AttributeValue) const;
-    bool GetCustomImportContentType(EInterchangeSkeletalMeshContentType& AttributeValue) const;
-    bool GetCustomImportMorphTarget(bool& AttributeValue) const;
-    bool GetCustomImportVertexAttributes(bool& AttributeValue) const;
-    bool GetCustomMergeMorphTargetShapeWithSameName(bool& AttributeValue) const;
-    bool GetCustomMorphThresholdPosition(float& AttributeValue) const;
-    bool GetCustomPhysicAssetSoftObjectPath(FSoftObjectPath& AttributeValue) const;
-    bool GetCustomSkeletonSoftObjectPath(FSoftObjectPath& AttributeValue) const;
-    bool GetCustomThresholdPosition(float& AttributeValue) const;
-    bool GetCustomThresholdTangentNormal(float& AttributeValue) const;
-    bool GetCustomThresholdUV(float& AttributeValue) const;
-    bool GetCustomUseHighPrecisionSkinWeights(bool& AttributeValue) const;
-    void InitializeSkeletalMeshNode(FString UniqueID, FString DisplayLabel, FString InAssetClass, UInterchangeBaseNodeContainer* NodeContainer);
-    bool SetCustomAddCurveMetadataToSkeleton(const bool& AttributeValue);
-    bool SetCustomBoneInfluenceLimit(const int32_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomCreatePhysicsAsset(const bool& AttributeValue);
-    bool SetCustomImportContentType(const EInterchangeSkeletalMeshContentType& AttributeValue);
-    bool SetCustomImportMorphTarget(const bool& AttributeValue);
-    bool SetCustomImportVertexAttributes(const bool& AttributeValue);
-    bool SetCustomMergeMorphTargetShapeWithSameName(const bool& AttributeValue);
-    bool SetCustomMorphThresholdPosition(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomPhysicAssetSoftObjectPath(const FSoftObjectPath& AttributeValue);
-    bool SetCustomSkeletonSoftObjectPath(const FSoftObjectPath& AttributeValue);
-    bool SetCustomThresholdPosition(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomThresholdTangentNormal(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomThresholdUV(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomUseHighPrecisionSkinWeights(const bool& AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x1f0
-class UInterchangeSkeletalMeshLodDataNode : public UInterchangeFactoryBaseNode {
-
-    bool AddMeshUid(FString MeshName);
-    bool GetCustomSkeletonUid(FString& AttributeValue) const;
-    void GetMeshUids(TArray<FString>& OutMeshNames) const;
-    int32_t GetMeshUidsCount() const;
-    bool RemoveAllMeshes();
-    bool RemoveMeshUid(FString MeshName);
-    bool SetCustomSkeletonUid(FString AttributeValue);
-};
-
-// Size: 0x210
-class UInterchangeSkeletonFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool GetCustomRootJointUid(FString& AttributeValue) const;
-    bool GetCustomSkeletalMeshFactoryNodeUid(FString& AttributeValue) const;
-    bool GetCustomUseTimeZeroForBindPose(bool& AttributeValue) const;
-    void InitializeSkeletonNode(FString UniqueID, FString DisplayLabel, FString InAssetClass, UInterchangeBaseNodeContainer* NodeContainer);
-    bool SetCustomRootJointUid(FString AttributeValue);
-    bool SetCustomSkeletalMeshFactoryNodeUid(FString AttributeValue);
-    bool SetCustomUseTimeZeroForBindPose(const bool& AttributeValue);
-};
-
-// Size: 0x270
-class UInterchangeSparseVolumeTextureFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool GetCustomAnimationID(FString& OutAnimationID) const;
-    bool GetCustomAttributesAChannelW(FString& GridNameAndComponentIndex) const;
-    bool GetCustomAttributesAChannelX(FString& GridNameAndComponentIndex) const;
-    bool GetCustomAttributesAChannelY(FString& GridNameAndComponentIndex) const;
-    bool GetCustomAttributesAChannelZ(FString& GridNameAndComponentIndex) const;
-    bool GetCustomAttributesAFormat(EInterchangeSparseVolumeTextureFormat& Format) const;
-    bool GetCustomAttributesBChannelW(FString& GridNameAndComponentIndex) const;
-    bool GetCustomAttributesBChannelX(FString& GridNameAndComponentIndex) const;
-    bool GetCustomAttributesBChannelY(FString& GridNameAndComponentIndex) const;
-    bool GetCustomAttributesBChannelZ(FString& GridNameAndComponentIndex) const;
-    bool GetCustomAttributesBFormat(EInterchangeSparseVolumeTextureFormat& Format) const;
-    bool SetCustomAnimationID(FString InAnimationID);
-    bool SetCustomAttributesAChannelW(FString GridNameAndComponentIndex);
-    bool SetCustomAttributesAChannelX(FString GridNameAndComponentIndex);
-    bool SetCustomAttributesAChannelY(FString GridNameAndComponentIndex);
-    bool SetCustomAttributesAChannelZ(FString GridNameAndComponentIndex);
-    bool SetCustomAttributesAFormat(EInterchangeSparseVolumeTextureFormat Format);
-    bool SetCustomAttributesBChannelW(FString GridNameAndComponentIndex);
-    bool SetCustomAttributesBChannelX(FString GridNameAndComponentIndex);
-    bool SetCustomAttributesBChannelY(FString GridNameAndComponentIndex);
-    bool SetCustomAttributesBChannelZ(FString GridNameAndComponentIndex);
-    bool SetCustomAttributesBFormat(EInterchangeSparseVolumeTextureFormat Format);
-};
-
-// Size: 0x1e0
-class UInterchangeSpecularProfileFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool GetCustomFormat(ESpecularProfileFormat& Format) const;
-    bool GetCustomTexture(FString& TextureUid) const;
-    bool SetCustomFormat(ESpecularProfileFormat Format);
-    bool SetCustomTexture(FString TextureUid);
-};
-
-// Size: 0x340
-class UInterchangeSpotLightFactoryNode : public UInterchangePointLightFactoryNode {
-
-    bool GetCustomInnerConeAngle(float& AttributeValue) const;
-    bool GetCustomOuterConeAngle(float& AttributeValue) const;
-    bool SetCustomInnerConeAngle(float AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomOuterConeAngle(float AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x2c0
-class UInterchangeStandardCameraFactoryNode : public UInterchangeActorFactoryNode {
-
-    bool GetCustomAspectRatio(float& AttributeValue) const;
-    bool GetCustomFarClipPlane(float& AttributeValue) const;
-    bool GetCustomFieldOfView(float& AttributeValue) const;
-    bool GetCustomNearClipPlane(float& AttributeValue) const;
-    bool GetCustomProjectionMode(uint8_t& AttributeValue) const;
-    bool GetCustomWidth(float& AttributeValue) const;
-    bool SetCustomAspectRatio(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomFarClipPlane(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomFieldOfView(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomNearClipPlane(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomProjectionMode(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomWidth(const float& AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x468
-class UInterchangeStaticMeshFactoryNode : public UInterchangeMeshFactoryNode {
-
-    bool AddSocketUid(FString SocketUid);
-    bool AddSocketUids(const TArray<FString>& InSocketUids);
-    bool GetCustomAutoComputeLODScreenSizes(bool& AttributeValue) const;
-    bool GetCustomBuildNanite(bool& AttributeValue) const;
-    bool GetCustomBuildReversedIndexBuffer(bool& AttributeValue) const;
-    bool GetCustomBuildScale3D(FVector& AttributeValue) const;
-    bool GetCustomDistanceFieldReplacementMesh(FSoftObjectPath& AttributeValue) const;
-    bool GetCustomDistanceFieldResolutionScale(float& AttributeValue) const;
-    bool GetCustomDstLightmapIndex(int32_t& AttributeValue) const;
-    bool GetCustomGenerateDistanceFieldAsIfTwoSided(bool& AttributeValue) const;
-    bool GetCustomGenerateLightmapUVs(bool& AttributeValue) const;
-    bool GetCustomMaxLumenMeshCards(int32_t& AttributeValue) const;
-    bool GetCustomMinLightmapResolution(int32_t& AttributeValue) const;
-    bool GetCustomSrcLightmapIndex(int32_t& AttributeValue) const;
-    bool GetCustomSupportFaceRemap(bool& AttributeValue) const;
-    int32_t GetLODScreenSizeCount() const;
-    void GetLODScreenSizes(TArray<float>& OutLODScreenSizes) const;
-    int32_t GetSocketUidCount() const;
-    void GetSocketUids(TArray<FString>& OutSocketUids) const;
-    void InitializeStaticMeshNode(FString UniqueID, FString DisplayLabel, FString InAssetClass, UInterchangeBaseNodeContainer* NodeContainer);
-    bool RemoveSocketUd(FString SocketUid);
-    bool SetCustomAutoComputeLODScreenSizes(const bool& AttributeValue);
-    bool SetCustomBuildNanite(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomBuildReversedIndexBuffer(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomBuildScale3D(const FVector& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomDistanceFieldReplacementMesh(const FSoftObjectPath& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomDistanceFieldResolutionScale(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomDstLightmapIndex(const int32_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomGenerateDistanceFieldAsIfTwoSided(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomGenerateLightmapUVs(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomMaxLumenMeshCards(const int32_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomMinLightmapResolution(const int32_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomSrcLightmapIndex(const int32_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomSupportFaceRemap(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetLODScreenSizes(const TArray<float>& InLODScreenSizes);
-};
-
-// Size: 0x400
-class UInterchangeStaticMeshLodDataNode : public UInterchangeFactoryBaseNode {
-
-    bool AddBoxCollisionMeshUid(FString ColliderMeshUid);
-    bool AddBoxCollisionMeshUids(FString ColliderMeshUid, FString RenderMeshUid);
-    bool AddCapsuleCollisionMeshUid(FString ColliderMeshUid);
-    bool AddCapsuleCollisionMeshUids(FString ColliderMeshUid, FString RenderMeshUid);
-    bool AddConvexCollisionMeshUid(FString ColliderMeshUid);
-    bool AddConvexCollisionMeshUids(FString ColliderMeshUid, FString RenderMeshUid);
-    bool AddMeshUid(FString MeshName);
-    bool AddSphereCollisionMeshUid(FString ColliderMeshUid);
-    bool AddSphereCollisionMeshUids(FString ColliderMeshUid, FString RenderMeshUid);
-    void GetBoxColliderRenderMeshUid(FString InColliderMeshUid, FString& OutRenderMeshUid) const;
-    TMap<FString, FString> GetBoxCollisionMeshMap() const;
-    void GetBoxCollisionMeshUids(TArray<FString>& OutMeshNames) const;
-    int32_t GetBoxCollisionMeshUidsCount() const;
-    void GetCapsuleColliderRenderMeshUid(FString InColliderMeshUid, FString& OutRenderMeshUid) const;
-    TMap<FString, FString> GetCapsuleCollisionMeshMap() const;
-    void GetCapsuleCollisionMeshUids(TArray<FString>& OutMeshNames) const;
-    int32_t GetCapsuleCollisionMeshUidsCount() const;
-    void GetConvexColliderRenderMeshUid(FString InColliderMeshUid, FString& OutRenderMeshUid) const;
-    TMap<FString, FString> GetConvexCollisionMeshMap() const;
-    void GetConvexCollisionMeshUids(TArray<FString>& OutMeshNames) const;
-    int32_t GetConvexCollisionMeshUidsCount() const;
-    bool GetForceCollisionPrimitiveGeneration(bool& bGenerate) const;
-    bool GetImportCollision(bool& AttributeValue) const;
-    bool GetImportCollisionType(EInterchangeMeshCollision& AttributeValue) const;
-    void GetMeshUids(TArray<FString>& OutMeshNames) const;
-    int32_t GetMeshUidsCount() const;
-    bool GetOneConvexHullPerUCX(bool& AttributeValue) const;
-    void GetSphereColliderRenderMeshUid(FString InColliderMeshUid, FString& OutRenderMeshUid) const;
-    TMap<FString, FString> GetSphereCollisionMeshMap() const;
-    void GetSphereCollisionMeshUids(TArray<FString>& OutMeshNames) const;
-    int32_t GetSphereCollisionMeshUidsCount() const;
-    bool RemoveAllBoxCollisionMeshes();
-    bool RemoveAllCapsuleCollisionMeshes();
-    bool RemoveAllConvexCollisionMeshes();
-    bool RemoveAllMeshes();
-    bool RemoveAllSphereCollisionMeshes();
-    bool RemoveBoxCollisionMeshUid(FString ColliderMeshUid);
-    bool RemoveCapsuleCollisionMeshUid(FString ColliderMeshUid);
-    bool RemoveConvexCollisionMeshUid(FString MeshName);
-    bool RemoveMeshUid(FString MeshName);
-    bool RemoveSphereCollisionMeshUid(FString ColliderMeshUid);
-    bool SetForceCollisionPrimitiveGeneration(bool bGenerate);
-    bool SetImportCollision(bool AttributeValue);
-    bool SetImportCollisionType(EInterchangeMeshCollision AttributeValue);
-    bool SetOneConvexHullPerUCX(bool AttributeValue);
-};
-
-// Size: 0x490
-class UInterchangeTexture2DArrayFactoryNode : public UInterchangeTextureFactoryNode {
-
-    bool GetCustomAddressX(uint8_t& AttributeValue) const;
-    bool GetCustomAddressY(uint8_t& AttributeValue) const;
-    bool GetCustomAddressZ(uint8_t& AttributeValue) const;
-    bool SetCustomAddressZ(const uint8_t AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x4f8
-class UInterchangeTexture2DFactoryNode : public UInterchangeTextureFactoryNode {
-
-    bool GetCustomAddressX(uint8_t& AttributeValue) const;
-    bool GetCustomAddressY(uint8_t& AttributeValue) const;
-    bool GetSourceBlock(int32_t BlockIndex, FString& OutSourceFile) const;
-    bool GetSourceBlockByCoordinates(int32_t X, int32_t Y, FString& OutSourceFile) const;
-    TMap<int32_t, FString> GetSourceBlocks() const;
-    bool SetCustomAddressX(const uint8_t AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomAddressY(const uint8_t AttributeValue, bool bAddApplyDelegate);
-    void SetSourceBlock(int32_t BlockIndex, FString InSourceFile);
-    void SetSourceBlockByCoordinates(int32_t X, int32_t Y, FString InSourceFile);
-    void SetSourceBlocks(const TMap<int32_t, FString>& InSourceBlocks);
-};
-
-// Size: 0x460
-class UInterchangeTextureCubeArrayFactoryNode : public UInterchangeTextureFactoryNode {
-};
-
-// Size: 0x460
-class UInterchangeTextureCubeFactoryNode : public UInterchangeTextureFactoryNode {
-};
-
-// Size: 0x460
-class UInterchangeTextureFactoryNode : public UInterchangeFactoryBaseNode {
-
-    bool GetCustomAdjustBrightness(float& AttributeValue) const;
-    bool GetCustomAdjustBrightnessCurve(float& AttributeValue) const;
-    bool GetCustomAdjustHue(float& AttributeValue) const;
-    bool GetCustomAdjustMaxAlpha(float& AttributeValue) const;
-    bool GetCustomAdjustMinAlpha(float& AttributeValue) const;
-    bool GetCustomAdjustRGBCurve(float& AttributeValue) const;
-    bool GetCustomAdjustSaturation(float& AttributeValue) const;
-    bool GetCustomAdjustVibrance(float& AttributeValue) const;
-    bool GetCustomAllowNonPowerOfTwo(bool& AttributeValue) const;
-    bool GetCustomAlphaCoverageThresholds(FVector4& AttributeValue) const;
-    bool GetCustomChromaKeyColor(FColor& AttributeValue) const;
-    bool GetCustomChromaKeyThreshold(float& AttributeValue) const;
-    bool GetCustomColorSpace(ETextureColorSpace& AttributeValue) const;
-    bool GetCustomCompositePower(float& AttributeValue) const;
-    bool GetCustomCompositeTextureMode(uint8_t& AttributeValue) const;
-    bool GetCustomCompressionNoAlpha(bool& AttributeValue) const;
-    bool GetCustomCompressionQuality(uint8_t& AttributeValue) const;
-    bool GetCustomCompressionSettings(uint8_t& AttributeValue) const;
-    bool GetCustomDeferCompression(bool& AttributeValue) const;
-    bool GetCustomDownscale(float& AttributeValue) const;
-    bool GetCustomDownscaleOptions(uint8_t& AttributeValue) const;
-    bool GetCustomFilter(uint8_t& AttributeValue) const;
-    bool GetCustomLODBias(int32_t& AttributeValue) const;
-    bool GetCustomLODGroup(uint8_t& AttributeValue) const;
-    bool GetCustomLossyCompressionAmount(uint8_t& AttributeValue) const;
-    bool GetCustomMaxTextureSize(int32_t& AttributeValue) const;
-    bool GetCustomMipGenSettings(uint8_t& AttributeValue) const;
-    bool GetCustomMipLoadOptions(uint8_t& AttributeValue) const;
-    bool GetCustomPaddingColor(FColor& AttributeValue) const;
-    bool GetCustomPowerOfTwoMode(uint8_t& AttributeValue) const;
-    bool GetCustomPreferCompressedSourceData(bool& AttributeValue) const;
-    bool GetCustomSRGB(bool& AttributeValue) const;
-    bool GetCustomTranslatedTextureNodeUid(FString& AttributeValue) const;
-    bool GetCustomVirtualTextureStreaming(bool& AttributeValue) const;
-    bool GetCustombChromaKeyTexture(bool& AttributeValue) const;
-    bool GetCustombDoScaleMipsForAlphaCoverage(bool& AttributeValue) const;
-    bool GetCustombFlipGreenChannel(bool& AttributeValue) const;
-    bool GetCustombPreserveBorder(bool& AttributeValue) const;
-    bool GetCustombUseLegacyGamma(bool& AttributeValue) const;
-    void InitializeTextureNode(FString UniqueID, FString DisplayLabel, FString InAssetName, UInterchangeBaseNodeContainer* NodeContainer);
-    bool SetCustomAdjustBrightness(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomAdjustBrightnessCurve(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomAdjustHue(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomAdjustMaxAlpha(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomAdjustMinAlpha(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomAdjustRGBCurve(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomAdjustSaturation(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomAdjustVibrance(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomAllowNonPowerOfTwo(const bool& AttributeValue);
-    bool SetCustomAlphaCoverageThresholds(const FVector4& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomChromaKeyColor(const FColor& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomChromaKeyThreshold(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomColorSpace(ETextureColorSpace AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomCompositePower(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomCompositeTextureMode(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomCompressionNoAlpha(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomCompressionQuality(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomCompressionSettings(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomDeferCompression(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomDownscale(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomDownscaleOptions(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomFilter(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomLODBias(const int32_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomLODGroup(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomLossyCompressionAmount(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomMaxTextureSize(const int32_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomMipGenSettings(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomMipLoadOptions(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomPaddingColor(const FColor& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomPowerOfTwoMode(const uint8_t& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomPreferCompressedSourceData(const bool& AttributeValue);
-    bool SetCustomSRGB(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomTranslatedTextureNodeUid(FString AttributeValue);
-    bool SetCustomVirtualTextureStreaming(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustombChromaKeyTexture(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustombDoScaleMipsForAlphaCoverage(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustombFlipGreenChannel(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustombPreserveBorder(const bool& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustombUseLegacyGamma(const bool& AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x538
-class UInterchangeTextureLightProfileFactoryNode : public UInterchangeTexture2DFactoryNode {
-
-    bool GetCustomBrightness(float& AttributeValue) const;
-    bool GetCustomTextureMultiplier(float& AttributeValue) const;
-    bool SetCustomBrightness(const float AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomTextureMultiplier(const float AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x460
-class UInterchangeVolumeTextureFactoryNode : public UInterchangeTextureFactoryNode {
-};
-
-enum class EMAterialXTextureSampleBlurKernel {
-    Kernel1 = 0,
-    Kernel3 = 1,
-    Kernel5 = 2,
-    Kernel7 = 3,
-    EMAterialXTextureSampleBlurKernel_MAX = 4,
-};
-
-enum class EMaterialXLuminanceMode {
-    ACEScg = 0,
-    Rec709 = 1,
-    Rec2020 = 2,
-    Rec2100 = 2,
-    Custom = 3,
-    EMaterialXLuminanceMode_MAX = 4,
-};
-
-enum class EMaterialXTextureSampleBlurFilter {
-    Box = 0,
-    Gaussian = 1,
-    EMaterialXTextureSampleBlurFilter_MAX = 2,
-};
-
-// Size: 0x30
-class UInterchangeActorFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x1d8
-class UInterchangeAnimSequenceFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x28
-class IInterchangeAnimationPayloadInterface : public UInterface {
-};
-
-// Size: 0x78
-class UInterchangeAssetUserData : public UAssetUserData {
-    /* 0x0028 */ TMap<FString, FString> MetaData;
-};
-
-// Size: 0x28
-class IInterchangeBlockedTexturePayloadInterface : public UInterface {
-};
-
-// Size: 0x30
-class UInterchangeCameraActorFactory : public UInterchangeActorFactory {
-};
-
-// Size: 0x30
-class UInterchangeCineCameraActorFactory : public UInterchangeActorFactory {
-};
-
-// Size: 0x58
-class UInterchangeDDSTranslator : public UInterchangeTranslatorBase {
-};
-
-// Size: 0x30
-class UInterchangeDecalActorFactory : public UInterchangeActorFactory {
-};
-
-// Size: 0x88
-class UInterchangeFbxTranslator : public UInterchangeTranslatorBase {
-    /* 0x0068 */ UInterchangeFbxTranslatorSettings* CacheFbxTranslatorSettings;
-};
-
-// Size: 0x30
-class UInterchangeFbxTranslatorSettings : public UInterchangeTranslatorSettings {
-    /* 0x0028 */ bool bConvertScene;
-    /* 0x0029 */ bool bForceFrontXAxis;
-    /* 0x002a */ bool bConvertSceneUnit;
-    /* 0x002b */ bool bKeepFbxNamespace;
-};
-
-// Size: 0x2b8
-class UInterchangeGLTFTranslator : public UInterchangeTranslatorBase {
-};
-
-// Size: 0x48
-class UInterchangeGeometryCacheFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x30
-class UInterchangeHeterogeneousVolumeActorFactory : public UInterchangeActorFactory {
-};
-
-// Size: 0x50
-class UInterchangeIESTranslator : public UInterchangeTranslatorBase {
-};
-
-// Size: 0x58
-class UInterchangeImageWrapperTranslator : public UInterchangeTranslatorBase {
-};
-
-// Size: 0x50
-class UInterchangeJPGTranslator : public UInterchangeTranslatorBase {
-};
-
-// Size: 0x38
-class UInterchangeLevelAssetUserData : public UAssetUserData {
-    /* 0x0028 */ TArray<FSoftObjectPath> SceneImportPaths;
-};
-
-// Size: 0x30
-class UInterchangeLevelFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x30
-class UInterchangeLevelInstanceActorFactory : public UInterchangeActorFactory {
-};
-
-// Size: 0x38
-class UInterchangeLevelSequenceFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x30
-class UInterchangeLightActorFactory : public UInterchangeActorFactory {
-};
-
-// Size: 0x38
-class UInterchangeMaterialFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x38
-class UInterchangeMaterialFunctionFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x50
-class UInterchangeMaterialXTranslator : public UInterchangeTranslatorBase {
-};
-
-// Size: 0x28
-class IInterchangeMeshPayloadInterface : public UInterface {
-};
-
-// Size: 0x60
-class UInterchangeOBJTranslator : public UInterchangeTranslatorBase {
-};
-
-// Size: 0x50
-class UInterchangePSDTranslator : public UInterchangeTranslatorBase {
-};
-
-// Size: 0x30
-class UInterchangePhysicsAssetFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x30
-class UInterchangeSceneImportAssetFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x38
-class UInterchangeSceneVariantSetsFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x30
-class UInterchangeSkeletalMeshActorFactory : public UInterchangeActorFactory {
-};
-
-// Size: 0xd0
-class UInterchangeSkeletalMeshFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x30
-class UInterchangeSkeletonFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x28
-class IInterchangeSlicedTexturePayloadInterface : public UInterface {
-};
-
-// Size: 0x48
-class UInterchangeSparseVolumeTextureFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x30
-class UInterchangeSpecularProfileFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x30
-class UInterchangeStaticMeshActorFactory : public UInterchangeActorFactory {
-};
-
-// Size: 0x140
-class UInterchangeStaticMeshFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x108
-class UInterchangeTextureFactory : public UInterchangeFactoryBase {
-};
-
-// Size: 0x28
-class IInterchangeTextureLightProfilePayloadInterface : public UInterface {
-};
-
-// Size: 0x28
-class IInterchangeTexturePayloadInterface : public UInterface {
-};
-
-// Size: 0x50
-class UInterchangeUEJPEGTranslator : public UInterchangeTranslatorBase {
-};
-
-// Size: 0x28
-class IInterchangeVariantSetPayloadInterface : public UInterface {
-};
-
-// Size: 0x28
-class IInterchangeVolumePayloadInterface : public UInterface {
-};
-
-// Size: 0x40
-class UInterchangeVolumeTranslatorSettings : public UInterchangeTranslatorSettings {
-    /* 0x0028 */ bool bTranslateAdjacentNumberedFiles;
-    /* 0x0030 */ FString AnimationID;
-};
-
-// Size: 0x128
-class UMaterialExpressionMaterialXAppend3Vector : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput C;
-};
-
-// Size: 0x150
-class UMaterialExpressionMaterialXAppend4Vector : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput C;
-    /* 0x0128 */ FExpressionInput D;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXBurn : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXContrast : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Input;
-    /* 0x00d8 */ FExpressionInput amount;
-    /* 0x0100 */ FExpressionInput Pivot;
-    /* 0x0128 */ float ConstAmount;
-    /* 0x012c */ float ConstPivot;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXDifference : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXDisjointOver : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXDodge : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0x1a8
-class UMaterialExpressionMaterialXFractal3D : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput position;
-    /* 0x00d8 */ FExpressionInput Amplitude;
-    /* 0x0100 */ float ConstAmplitude;
-    /* 0x0108 */ FExpressionInput Octaves;
-    /* 0x0130 */ int32_t ConstOctaves;
-    /* 0x0138 */ FExpressionInput Lacunarity;
-    /* 0x0160 */ float ConstLacunarity;
-    /* 0x0168 */ FExpressionInput Diminish;
-    /* 0x0190 */ float ConstDiminish;
-    /* 0x0194 */ float Scale;
-    /* 0x0198 */ bool bTurbulence;
-    /* 0x019c */ int32_t Levels;
-    /* 0x01a0 */ float OutputMin;
-    /* 0x01a4 */ float OutputMax;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXIn : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0xf0
-class UMaterialExpressionMaterialXLuminance : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Input;
-    /* 0x00d8 */ FLinearColor LuminanceFactors;
-    /* 0x00e8 */ EMaterialXLuminanceMode LuminanceMode;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXMask : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXMatte : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXMinus : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0x108
-class UMaterialExpressionMaterialXMod : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ float ConstB;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXOut : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXOver : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXOverlay : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0x180
-class UMaterialExpressionMaterialXPlace2D : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Coordinates;
-    /* 0x00d8 */ FExpressionInput Pivot;
-    /* 0x0100 */ FExpressionInput Scale;
-    /* 0x0128 */ FExpressionInput Offset;
-    /* 0x0150 */ FExpressionInput RotationAngle;
-    /* 0x0178 */ float ConstRotationAngle;
-    /* 0x017c */ uint8_t ConstCoordinate;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXPlus : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0xd8
-class UMaterialExpressionMaterialXPremult : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Input;
-};
-
-// Size: 0x180
-class UMaterialExpressionMaterialXRamp4 : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Coordinates;
-    /* 0x00d8 */ FExpressionInput A;
-    /* 0x0100 */ FExpressionInput B;
-    /* 0x0128 */ FExpressionInput C;
-    /* 0x0150 */ FExpressionInput D;
-    /* 0x0178 */ uint8_t ConstCoordinate;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXRampLeftRight : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Coordinates;
-    /* 0x00d8 */ FExpressionInput A;
-    /* 0x0100 */ FExpressionInput B;
-    /* 0x0128 */ uint8_t ConstCoordinate;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXRampTopBottom : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Coordinates;
-    /* 0x00d8 */ FExpressionInput A;
-    /* 0x0100 */ FExpressionInput B;
-    /* 0x0128 */ uint8_t ConstCoordinate;
-};
-
-// Size: 0x1e0
-class UMaterialExpressionMaterialXRange : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Input;
-    /* 0x00d8 */ FExpressionInput InputLow;
-    /* 0x0100 */ FExpressionInput InputHigh;
-    /* 0x0128 */ FExpressionInput TargetLow;
-    /* 0x0150 */ FExpressionInput TargetHigh;
-    /* 0x0178 */ FExpressionInput Gamma;
-    /* 0x01a0 */ FExpressionInput clamp;
-    /* 0x01c8 */ float ConstInputLow;
-    /* 0x01cc */ float ConstInputHigh;
-    /* 0x01d0 */ float ConstTargetLow;
-    /* 0x01d4 */ float ConstTargetHigh;
-    /* 0x01d8 */ float ConstGamma;
-    /* 0x01dc */ bool bConstClamp;
-};
-
-// Size: 0x188
-class UMaterialExpressionMaterialXRemap : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Input;
-    /* 0x00d8 */ FExpressionInput InputLow;
-    /* 0x0100 */ FExpressionInput InputHigh;
-    /* 0x0128 */ FExpressionInput TargetLow;
-    /* 0x0150 */ FExpressionInput TargetHigh;
-    /* 0x0178 */ float InputLowDefault;
-    /* 0x017c */ float InputHighDefault;
-    /* 0x0180 */ float TargetLowDefault;
-    /* 0x0184 */ float TargetHighDefault;
-};
-
-// Size: 0x108
-class UMaterialExpressionMaterialXRotate2D : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Input;
-    /* 0x00d8 */ FExpressionInput RotationAngle;
-    /* 0x0100 */ float ConstRotationAngle;
-};
-
-// Size: 0x130
-class UMaterialExpressionMaterialXScreen : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput A;
-    /* 0x00d8 */ FExpressionInput B;
-    /* 0x0100 */ FExpressionInput Alpha;
-    /* 0x0128 */ float ConstAlpha;
-};
-
-// Size: 0x158
-class UMaterialExpressionMaterialXSplitLeftRight : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Coordinates;
-    /* 0x00d8 */ FExpressionInput A;
-    /* 0x0100 */ FExpressionInput B;
-    /* 0x0128 */ FExpressionInput Center;
-    /* 0x0150 */ float ConstCenter;
-    /* 0x0154 */ uint8_t ConstCoordinate;
-};
-
-// Size: 0x158
-class UMaterialExpressionMaterialXSplitTopBottom : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Coordinates;
-    /* 0x00d8 */ FExpressionInput A;
-    /* 0x0100 */ FExpressionInput B;
-    /* 0x0128 */ FExpressionInput Center;
-    /* 0x0150 */ float ConstCenter;
-    /* 0x0154 */ uint8_t ConstCoordinate;
-};
-
-// Size: 0xe8
-class UMaterialExpressionMaterialXSwizzle : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Input;
-    /* 0x00d8 */ FString Channels;
-};
-
-// Size: 0x238
-class UMaterialExpressionMaterialXTextureSampleParameterBlur : public UMaterialExpressionTextureSampleParameter2D {
-    /* 0x0228 */ EMAterialXTextureSampleBlurKernel KernelSize;
-    /* 0x022c */ float FilterSize;
-    /* 0x0230 */ float FilterOffset;
-    /* 0x0234 */ EMaterialXTextureSampleBlurFilter Filter;
-};
-
-// Size: 0xd8
-class UMaterialExpressionMaterialXUnpremult : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput Input;
-};
-
-// Size: 0x80
-class UInterchangeResultMeshError : public UInterchangeResultError {
-    /* 0x0070 */ FString MeshName;
-};
-
-// Size: 0x90
-class UInterchangeResultMeshError_Generic : public UInterchangeResultMeshError {
-    /* 0x0080 */ FText Text;
-};
-
-// Size: 0x80
-class UInterchangeResultMeshWarning : public UInterchangeResultWarning {
-    /* 0x0070 */ FString MeshName;
-};
-
-// Size: 0x90
-class UInterchangeResultMeshWarning_Generic : public UInterchangeResultMeshWarning {
-    /* 0x0080 */ FText Text;
-};
-
-// Size: 0x88
-class UInterchangeResultMeshWarning_TooManyUVs : public UInterchangeResultMeshWarning {
-    /* 0x0080 */ int32_t ExcessUVs;
-};
-
-// Size: 0x90
-class UInterchangeResultTextureDisplay : public UInterchangeResultDisplay_Generic {
-    /* 0x0080 */ FString TextureName;
-};
-
-// Size: 0xa0
-class UInterchangeResultTextureDisplay_TextureFileDoNotExist : public UInterchangeResultTextureDisplay {
-    /* 0x0090 */ FString MaterialName;
-};
-
-// Size: 0x80
-class UInterchangeResultTextureWarning : public UInterchangeResultWarning {
-    /* 0x0070 */ FString TextureName;
-};
-
-enum class EInterchangeAnimatedProperty {
-    None = 0,
-    Visibility = 1,
-    MAX = 2,
-};
-
-enum class EInterchangeAnimationPayLoadType {
-    NONE = 0,
-    CURVE = 1,
-    MORPHTARGETCURVE = 2,
-    STEPCURVE = 3,
-    BAKED = 4,
-    MORPHTARGETCURVEWEIGHTINSTANCE = 5,
-    EInterchangeAnimationPayLoadType_MAX = 6,
-};
-
-enum class EInterchangeCameraProjectionType {
-    Perspective = 0,
-    Orthographic = 1,
-    EInterchangeCameraProjectionType_MAX = 2,
-};
-
-enum class EInterchangeLightUnits {
-    Unitless = 0,
-    Candelas = 1,
-    Lumens = 2,
-    EV = 3,
-    EInterchangeLightUnits_MAX = 4,
-};
-
-enum class EInterchangeMeshCollision {
-    Box = 0,
-    Sphere = 1,
-    Capsule = 2,
-    Convex10DOP_X = 3,
-    Convex10DOP_Y = 4,
-    Convex10DOP_Z = 5,
-    Convex18DOP = 6,
-    Convex26DOP = 7,
-    None = 255,
-    EInterchangeMeshCollision_MAX = 256,
-};
-
-enum class EInterchangeMeshPayLoadType {
-    NONE = 0,
-    STATIC = 1,
-    SKELETAL = 2,
-    MORPHTARGET = 3,
-    ANIMATED = 4,
-    EInterchangeMeshPayLoadType_MAX = 5,
-};
-
-enum class EInterchangeMotionVectorsHandling {
-    NoMotionVectors = 0,
-    ImportVelocitiesAsMotionVectors = 1,
-    CalculateMotionVectorsDuringImport = 2,
-    EInterchangeMotionVectorsHandling_MAX = 3,
-};
-
-enum class EInterchangePropertyTracks {
-    AffectDistanceFieldLighting = 0,
-    AffectDynamicIndirectLighting = 1,
-    AffectIndirectLightingWhileHidden = 2,
-    AutoActivate = 3,
-    BodyInstanceAngularDamping = 4,
-    BodyInstancebEnableGravity = 5,
-    BodyInstancebNotifyRigidBodyCollision = 6,
-    BodyInstancebSimulatePhysics = 7,
-    BodyInstancebUpdateKinematicFromSimulation = 8,
-    BodyInstancebUseCCD = 9,
-    BodyInstanceLinearDamping = 10,
-    BodyInstanceMassScale = 11,
-    BoundsScale = 12,
-    CastContactShadow = 13,
-    CastHiddenShadow = 14,
-    CastInsetShadow = 15,
-    CastShadow = 16,
-    CustomDepthStencilValue = 17,
-    CustomDepthStencilWriteMask = 18,
-    DefaultUpVector = 19,
-    DrawDebug = 20,
-    EmissiveLightSource = 21,
-    ExcludeFromLightAttachmentGroup = 22,
-    HiddenInGame = 23,
-    HiddenInSceneCapture = 24,
-    Holdout = 25,
-    LightAttachmentsAsGroup = 26,
-    Mobility = 27,
-    OnlyOwnerSee = 28,
-    OwnerNoSee = 29,
-    ReceivesDecals = 30,
-    RenderCustomDepth = 31,
-    RenderInDepthPass = 32,
-    RenderInMainPass = 33,
-    SingleSampleShadowFromStationaryLights = 34,
-    TranslucencySortDistanceOffset = 35,
-    VisibleInRayTracing = 36,
-    VisibleInSceneCaptureOnly = 37,
-    ActorHiddenInGame = 38,
-    LightAffectGlobalIllumination = 39,
-    LightAffectReflection = 40,
-    LightAffectTranslucentLighting = 41,
-    LightAtmosphereSunDiskColorScale = 42,
-    LightAtmosphereSunLight = 43,
-    LightAtmosphereSunLightIndex = 44,
-    LightAttenuationRadius = 45,
-    LightBarnDoorAngle = 46,
-    LightBarnDoorLength = 47,
-    LightBloomMaxBrightness = 48,
-    LightBloomScale = 49,
-    LightBloomThreshold = 50,
-    LightBloomTint = 51,
-    LightCascadeDistributionExponent = 52,
-    LightCascadeTransitionFraction = 53,
-    LightCastDeepShadow = 54,
-    LightCastShadows = 55,
-    LightCastVolumetricShadow = 56,
-    LightCloudAmbientOcclusionStrength = 57,
-    LightCloudScatteredLuminanceScale = 58,
-    LightCloudShadowOnAtmosphereStrength = 59,
-    LightCloudShadowOnSurfaceStrength = 60,
-    LightCloudShadowStrength = 61,
-    LightColor = 62,
-    LightDynamicShadowCascades = 63,
-    LightDynamicShadowDistanceMovableLight = 64,
-    LightDynamicShadowDistanceStationaryLight = 65,
-    LightEnableLightShaftBloom = 66,
-    LightEnableLightShaftOcclusion = 67,
-    LightFalloffExponent = 68,
-    LightForceCachedShadowsForMovablePrimitives = 69,
-    LightForwardShadingPriority = 70,
-    LightFunctionFadeDistance = 71,
-    LightFunctionScale = 72,
-    LightIESBrightnessScale = 73,
-    LightIndirectLightingIntensity = 74,
-    LightInnerConeAngle = 75,
-    LightIntensity = 76,
-    LightIntensityUnits = 77,
-    LightInverseExposureBlend = 78,
-    LightLowerHemisphereColor = 79,
-    LightmassSettingsLightSourceAngle = 80,
-    LightMinOcclusion = 81,
-    LightModulatedShadowColor = 82,
-    LightOcclusionDepthRange = 83,
-    LightOcclusionExponent = 84,
-    LightOcclusionMaskDarkness = 85,
-    LightOcclusionTint = 86,
-    LightOuterConeAngle = 87,
-    LightSamplesPerPixel = 88,
-    LightShadowAmount = 89,
-    LightShadowBias = 90,
-    LightShadowCascadeBiasDistribution = 91,
-    LightShadowDistanceFadeoutFraction = 92,
-    LightShadowSlopeBias = 93,
-    LightShadowSourceAngleFactor = 94,
-    LightShaftOverrideDirection = 95,
-    LightSoftSourceRadius = 96,
-    LightSourceAngle = 97,
-    LightSourceCubemapAngle = 98,
-    LightSourceHeight = 99,
-    LightSourceLength = 100,
-    LightSourceRadius = 101,
-    LightSourceSoftAngle = 102,
-    LightSourceWidth = 103,
-    LightSpecularScale = 104,
-    LightDiffuseScale = 105,
-    LightTemperature = 106,
-    LightTransmission = 107,
-    LightUseIESBrightness = 108,
-    LightUseInverseSquaredFalloff = 109,
-    LightUseTemperature = 110,
-    LightVolumetricScatteringIntensity = 111,
-    CameraAspectRatio = 112,
-    CameraAspectRatioAxisConstraint = 113,
-    CameraAutoCalculateOrthoPlanes = 114,
-    CameraAutoPlaneShift = 115,
-    CameraConstrainAspectRatio = 116,
-    CameraCurrentAperture = 117,
-    CameraCurrentFocalLength = 118,
-    CameraCustomNearClippingPlane = 119,
-    CameraFieldOfView = 120,
-    CameraFilmbackSensorAspectRatio = 121,
-    CameraFilmbackSensorHeight = 122,
-    CameraFilmbackSensorWidth = 123,
-    CameraFocusSettingsFocusOffset = 124,
-    CameraFocusSettingsManualFocusDistance = 125,
-    CameraFocusSettingsTrackingFocusSettingsRelativeOffset = 126,
-    CameraOrthoFarClipPlane = 127,
-    CameraOrthoNearClipPlane = 128,
-    CameraOrthoWidth = 129,
-    CameraOverrideAspectRatioAxisConstraint = 130,
-    CameraPostProcessBlendWeight = 131,
-    CameraPostProcessSettingsAmbientCubemapIntensity = 132,
-    CameraPostProcessSettingsAmbientCubemapTint = 133,
-    CameraPostProcessSettingsAmbientOcclusionBias = 134,
-    CameraPostProcessSettingsAmbientOcclusionFadeDistance = 135,
-    CameraPostProcessSettingsAmbientOcclusionFadeRadius = 136,
-    CameraPostProcessSettingsAmbientOcclusionIntensity = 137,
-    CameraPostProcessSettingsAmbientOcclusionMipBlend = 138,
-    CameraPostProcessSettingsAmbientOcclusionMipScale = 139,
-    CameraPostProcessSettingsAmbientOcclusionMipThreshold = 140,
-    CameraPostProcessSettingsAmbientOcclusionPower = 141,
-    CameraPostProcessSettingsAmbientOcclusionQuality = 142,
-    CameraPostProcessSettingsAmbientOcclusionRadius = 143,
-    CameraPostProcessSettingsAmbientOcclusionStaticFraction = 144,
-    CameraPostProcessSettingsAmbientOcclusionTemporalBlendWeight = 145,
-    CameraPostProcessSettingsAutoExposureBias = 146,
-    CameraPostProcessSettingsAutoExposureHighPercent = 147,
-    CameraPostProcessSettingsAutoExposureLowPercent = 148,
-    CameraPostProcessSettingsAutoExposureMaxBrightness = 149,
-    CameraPostProcessSettingsAutoExposureMinBrightness = 150,
-    CameraPostProcessSettingsAutoExposureSpeedDown = 151,
-    CameraPostProcessSettingsAutoExposureSpeedUp = 152,
-    CameraPostProcessSettingsBloom1Size = 153,
-    CameraPostProcessSettingsBloom1Tint = 154,
-    CameraPostProcessSettingsBloom2Size = 155,
-    CameraPostProcessSettingsBloom2Tint = 156,
-    CameraPostProcessSettingsBloom3Size = 157,
-    CameraPostProcessSettingsBloom3Tint = 158,
-    CameraPostProcessSettingsBloom4Size = 159,
-    CameraPostProcessSettingsBloom4Tint = 160,
-    CameraPostProcessSettingsBloom5Size = 161,
-    CameraPostProcessSettingsBloom5Tint = 162,
-    CameraPostProcessSettingsBloom6Size = 163,
-    CameraPostProcessSettingsBloom6Tint = 164,
-    CameraPostProcessSettingsBloomConvolutionBufferScale = 165,
-    CameraPostProcessSettingsBloomConvolutionCenterUV = 166,
-    CameraPostProcessSettingsBloomConvolutionPreFilterMax = 167,
-    CameraPostProcessSettingsBloomConvolutionPreFilterMin = 168,
-    CameraPostProcessSettingsBloomConvolutionPreFilterMult = 169,
-    CameraPostProcessSettingsBloomConvolutionScatterDispersion = 170,
-    CameraPostProcessSettingsBloomConvolutionSize = 171,
-    CameraPostProcessSettingsBloomDirtMaskIntensity = 172,
-    CameraPostProcessSettingsBloomDirtMaskTint = 173,
-    CameraPostProcessSettingsBloomIntensity = 174,
-    CameraPostProcessSettingsBloomSizeScale = 175,
-    CameraPostProcessSettingsBloomThreshold = 176,
-    CameraPostProcessSettingsBlueCorrection = 177,
-    CameraPostProcessSettingsChromaticAberrationStartOffset = 178,
-    CameraPostProcessSettingsColorContrast = 179,
-    CameraPostProcessSettingsColorContrastHighlights = 180,
-    CameraPostProcessSettingsColorContrastMidtones = 181,
-    CameraPostProcessSettingsColorContrastShadows = 182,
-    CameraPostProcessSettingsColorCorrectionHighlightsMax = 183,
-    CameraPostProcessSettingsColorCorrectionHighlightsMin = 184,
-    CameraPostProcessSettingsColorCorrectionShadowsMax = 185,
-    CameraPostProcessSettingsColorGain = 186,
-    CameraPostProcessSettingsColorGainHighlights = 187,
-    CameraPostProcessSettingsColorGainMidtones = 188,
-    CameraPostProcessSettingsColorGainShadows = 189,
-    CameraPostProcessSettingsColorGamma = 190,
-    CameraPostProcessSettingsColorGammaHighlights = 191,
-    CameraPostProcessSettingsColorGammaMidtones = 192,
-    CameraPostProcessSettingsColorGammaShadows = 193,
-    CameraPostProcessSettingsColorGradingIntensity = 194,
-    CameraPostProcessSettingsColorOffset = 195,
-    CameraPostProcessSettingsColorOffsetHighlights = 196,
-    CameraPostProcessSettingsColorOffsetMidtones = 197,
-    CameraPostProcessSettingsColorOffsetShadows = 198,
-    CameraPostProcessSettingsColorSaturation = 199,
-    CameraPostProcessSettingsColorSaturationHighlights = 200,
-    CameraPostProcessSettingsColorSaturationMidtones = 201,
-    CameraPostProcessSettingsColorSaturationShadows = 202,
-    CameraPostProcessSettingsDepthOfFieldBladeCount = 203,
-    CameraPostProcessSettingsDepthOfFieldDepthBlurAmount = 204,
-    CameraPostProcessSettingsDepthOfFieldDepthBlurRadius = 205,
-    CameraPostProcessSettingsDepthOfFieldFarBlurSize = 206,
-    CameraPostProcessSettingsDepthOfFieldFarTransitionRegion = 207,
-    CameraPostProcessSettingsDepthOfFieldFocalDistance = 208,
-    CameraPostProcessSettingsDepthOfFieldFocalRegion = 209,
-    CameraPostProcessSettingsDepthOfFieldFstop = 210,
-    CameraPostProcessSettingsDepthOfFieldMinFstop = 211,
-    CameraPostProcessSettingsDepthOfFieldNearBlurSize = 212,
-    CameraPostProcessSettingsDepthOfFieldNearTransitionRegion = 213,
-    CameraPostProcessSettingsDepthOfFieldOcclusion = 214,
-    CameraPostProcessSettingsDepthOfFieldScale = 215,
-    CameraPostProcessSettingsDepthOfFieldSkyFocusDistance = 216,
-    CameraPostProcessSettingsDepthOfFieldUseHairDepth = 217,
-    CameraPostProcessSettingsDepthOfFieldVignetteSize = 218,
-    CameraPostProcessSettingsDynamicGlobalIlluminationMethod = 219,
-    CameraPostProcessSettingsExpandGamut = 220,
-    CameraPostProcessSettingsFilmBlackClip = 221,
-    CameraPostProcessSettingsFilmGrainHighlightsMax = 222,
-    CameraPostProcessSettingsFilmGrainHighlightsMin = 223,
-    CameraPostProcessSettingsFilmGrainIntensity = 224,
-    CameraPostProcessSettingsFilmGrainIntensityHighlights = 225,
-    CameraPostProcessSettingsFilmGrainIntensityMidtones = 226,
-    CameraPostProcessSettingsFilmGrainIntensityShadows = 227,
-    CameraPostProcessSettingsFilmGrainShadowsMax = 228,
-    CameraPostProcessSettingsFilmGrainTexelSize = 229,
-    CameraPostProcessSettingsFilmShoulder = 230,
-    CameraPostProcessSettingsFilmSlope = 231,
-    CameraPostProcessSettingsFilmToe = 232,
-    CameraPostProcessSettingsFilmWhiteClip = 233,
-    CameraPostProcessSettingsHistogramLogMax = 234,
-    CameraPostProcessSettingsHistogramLogMin = 235,
-    CameraPostProcessSettingsIndirectLightingColor = 236,
-    CameraPostProcessSettingsIndirectLightingIntensity = 237,
-    CameraPostProcessSettingsLensFlareBokehSize = 238,
-    CameraPostProcessSettingsLensFlareIntensity = 239,
-    CameraPostProcessSettingsLensFlareThreshold = 240,
-    CameraPostProcessSettingsLensFlareTint = 241,
-    CameraPostProcessSettingsLocalExposureBlurredLuminanceBlend = 242,
-    CameraPostProcessSettingsLocalExposureBlurredLuminanceKernelSizePercent = 243,
-    CameraPostProcessSettingsLocalExposureDetailStrength = 244,
-    CameraPostProcessSettingsLocalExposureHighlightContrastScale = 245,
-    CameraPostProcessSettingsLocalExposureHighlightThreshold = 246,
-    CameraPostProcessSettingsLocalExposureMiddleGreyBias = 247,
-    CameraPostProcessSettingsLocalExposureShadowContrastScale = 248,
-    CameraPostProcessSettingsLocalExposureShadowThreshold = 249,
-    CameraPostProcessSettingsLumenDiffuseColorBoost = 250,
-    CameraPostProcessSettingsLumenFinalGatherLightingUpdateSpeed = 251,
-    CameraPostProcessSettingsLumenFinalGatherQuality = 252,
-    CameraPostProcessSettingsLumenFinalGatherScreenTraces = 253,
-    CameraPostProcessSettingsLumenFrontLayerTranslucencyReflections = 254,
-    CameraPostProcessSettingsLumenFullSkylightLeakingDistance = 255,
-    CameraPostProcessSettingsLumenMaxReflectionBounces = 256,
-    CameraPostProcessSettingsLumenMaxRefractionBounces = 257,
-    CameraPostProcessSettingsLumenMaxRoughnessToTraceReflections = 258,
-    CameraPostProcessSettingsLumenMaxTraceDistance = 259,
-    CameraPostProcessSettingsLumenRayLightingMode = 260,
-    CameraPostProcessSettingsLumenReflectionQuality = 261,
-    CameraPostProcessSettingsLumenReflectionsScreenTraces = 262,
-    CameraPostProcessSettingsLumenSceneDetail = 263,
-    CameraPostProcessSettingsLumenSceneLightingQuality = 264,
-    CameraPostProcessSettingsLumenSceneLightingUpdateSpeed = 265,
-    CameraPostProcessSettingsLumenSceneViewDistance = 266,
-    CameraPostProcessSettingsLumenSkylightLeaking = 267,
-    CameraPostProcessSettingsLumenSkylightLeakingTint = 268,
-    CameraPostProcessSettingsMotionBlurAmount = 269,
-    CameraPostProcessSettingsMotionBlurMax = 270,
-    CameraPostProcessSettingsMotionBlurPerObjectSize = 271,
-    CameraPostProcessSettingsPathTracingMaxBounces = 272,
-    CameraPostProcessSettingsPathTracingMaxPathIntensity = 273,
-    CameraPostProcessSettingsRayTracingAO = 274,
-    CameraPostProcessSettingsRayTracingAOIntensity = 275,
-    CameraPostProcessSettingsRayTracingAORadius = 276,
-    CameraPostProcessSettingsRayTracingAOSamplesPerPixel = 277,
-    CameraPostProcessSettingsRayTracingTranslucencyMaxRoughness = 278,
-    CameraPostProcessSettingsRayTracingTranslucencyRefraction = 279,
-    CameraPostProcessSettingsRayTracingTranslucencyRefractionRays = 280,
-    CameraPostProcessSettingsRayTracingTranslucencySamplesPerPixel = 281,
-    CameraPostProcessSettingsRayTracingTranslucencyShadows = 282,
-    CameraPostProcessSettingsReflectionMethod = 283,
-    CameraPostProcessSettingsSceneColorTint = 284,
-    CameraPostProcessSettingsSceneFringeIntensity = 285,
-    CameraPostProcessSettingsScreenSpaceReflectionIntensity = 286,
-    CameraPostProcessSettingsScreenSpaceReflectionMaxRoughness = 287,
-    CameraPostProcessSettingsScreenSpaceReflectionQuality = 288,
-    CameraPostProcessSettingsSharpen = 289,
-    CameraPostProcessSettingsTemperatureType = 290,
-    CameraPostProcessSettingsToneCurveAmount = 291,
-    CameraPostProcessSettingsTranslucencyType = 292,
-    CameraPostProcessSettingsVignetteIntensity = 293,
-    CameraPostProcessSettingsWhiteTemp = 294,
-    CameraPostProcessSettingsWhiteTint = 295,
-    CameraProjectionMode = 296,
-    CameraUpdateOrthoPlanes = 297,
-    CameraUseCameraHeightAsViewTarget = 298,
-    CameraUseFieldOfViewForLOD = 299,
-    MeshOverlayMaterialMaxDrawDistance = 300,
-    SkinnedMeshCapsuleIndirectShadowMinVisibility = 301,
-    SkinnedMeshCastCapsuleDirectShadow = 302,
-    SkinnedMeshCastCapsuleIndirectShadow = 303,
-    SkinnedMeshRenderStatic = 304,
-    SkinnedMeshVisibilityBasedAnimTickOption = 305,
-    SkeletalMesh = 306,
-    SkeletalMeshAllowClothActors = 307,
-    SkeletalMeshAnimationMode = 308,
-    SkeletalMeshClothBlendWeight = 309,
-    SkeletalMeshClothMaxDistanceScale = 310,
-    StaticMeshDistanceFieldSelfShadowBias = 311,
-    StaticMeshEvaluateWorldPositionOffset = 312,
-    StaticMeshEvaluateWorldPositionOffsetInRayTracing = 313,
-    StaticMeshForcedLodModel = 314,
-    StaticMeshReverseCulling = 315,
-    StaticMeshWorldPositionOffsetDisableDistance = 316,
-    StaticMesh = 317,
-    HeterogeneousVolumeFrame = 318,
-    None = -1,
-    Visibility = 38,
-    EInterchangePropertyTracks_MAX = 319,
-};
-
-enum class EInterchangeTextureColorSpace {
-    TCS_None = 0,
-    TCS_sRGB = 1,
-    TCS_Rec2020 = 2,
-    TCS_ACESAP0 = 3,
-    TCS_ACESAP1 = 4,
-    TCS_P3DCI = 5,
-    TCS_P3D65 = 6,
-    TCS_REDWideGamut = 7,
-    TCS_SonySGamut3 = 8,
-    TCS_SonySGamut3Cine = 9,
-    TCS_AlexaWideGamut = 10,
-    TCS_CanonCinemaGamut = 11,
-    TCS_GoProProtuneNative = 12,
-    TCS_PanasonicVGamut = 13,
-    TCS_Custom = 99,
-    TCS_MAX = 100,
-};
-
-enum class EInterchangeTextureFilterMode {
-    Nearest = 0,
-    Bilinear = 1,
-    Trilinear = 2,
-    Default = 3,
-    EInterchangeTextureFilterMode_MAX = 4,
-};
-
-enum class EInterchangeTextureWrapMode {
-    Wrap = 0,
-    Clamp = 1,
-    Mirror = 2,
-    EInterchangeTextureWrapMode_MAX = 3,
-};
-
-enum class EVolumeGridElementType {
-    Unknown = 0,
-    Half = 1,
-    Float = 2,
-    Double = 3,
-    EVolumeGridElementType_MAX = 4,
-};
-
-// Size: 0x18
-struct FInterchangeAnimationPayLoadKey {
-    /* 0x0000 */ FString UniqueID;
-    /* 0x0010 */ EInterchangeAnimationPayLoadType Type;
-};
-
-// Size: 0x70
-class UInterchangeAnimationTrackBaseNode : public UInterchangeBaseNode {
-
-    bool GetCustomCompletionMode(int32_t& AttributeValue) const;
-    bool SetCustomCompletionMode(const int32_t& AttributeValue);
-};
-
-// Size: 0xd0
-class UInterchangeAnimationTrackNode : public UInterchangeAnimationTrackBaseNode {
-
-    bool GetCustomActorDependencyUid(FString& DependencyUid) const;
-    bool GetCustomAnimationPayloadKey(FInterchangeAnimationPayLoadKey& AnimationPayLoadKey) const;
-    bool GetCustomFrameCount(int32_t& AttributeValue) const;
-    bool GetCustomPropertyTrack(EInterchangePropertyTracks& PropertyTrack) const;
-    bool SetCustomActorDependencyUid(FString DependencyUid);
-    bool SetCustomAnimationPayloadKey(FString InUniqueId, const EInterchangeAnimationPayLoadType& InType);
-    bool SetCustomFrameCount(const int32_t& AttributeValue);
-    bool SetCustomPropertyTrack(EInterchangePropertyTracks PropertyTrack);
-};
-
-// Size: 0xb0
-class UInterchangeAnimationTrackSetInstanceNode : public UInterchangeAnimationTrackBaseNode {
-
-    bool GetCustomDuration(int32_t& AttributeValue) const;
-    bool GetCustomStartFrame(int32_t& AttributeValue) const;
-    bool GetCustomTimeScale(float& AttributeValue) const;
-    bool GetCustomTrackSetDependencyUid(FString& AttributeValue) const;
-    bool SetCustomDuration(const int32_t& AttributeValue);
-    bool SetCustomStartFrame(const int32_t& AttributeValue);
-    bool SetCustomTimeScale(const float& AttributeValue);
-    bool SetCustomTrackSetDependencyUid(FString AttributeValue);
-};
-
-// Size: 0x90
-class UInterchangeAnimationTrackSetNode : public UInterchangeBaseNode {
-
-    bool AddCustomAnimationTrackUid(FString AnimationTrackUid);
-    void GetCustomAnimationTrackUid(const int32_t Index, FString& OutAnimationTrackUid) const;
-    int32_t GetCustomAnimationTrackUidCount() const;
-    void GetCustomAnimationTrackUids(TArray<FString>& OutAnimationTrackUids) const;
-    bool GetCustomFrameRate(float& AttributeValue) const;
-    bool RemoveCustomAnimationTrackUid(FString AnimationTrackUid);
-    bool SetCustomFrameRate(const float& AttributeValue);
-};
-
-// Size: 0xa0
-class UInterchangeBaseLightNode : public UInterchangeBaseNode {
-
-    bool GetCustomIntensity(float& AttributeValue) const;
-    bool GetCustomLightColor(FLinearColor& AttributeValue) const;
-    bool GetCustomTemperature(float& AttributeValue) const;
-    bool GetCustomUseTemperature(bool& AttributeValue) const;
-    bool SetCustomIntensity(float AttributeValue);
-    bool SetCustomLightColor(const FLinearColor& AttributeValue);
-    bool SetCustomTemperature(float AttributeValue);
-    bool SetCustomUseTemperature(bool AttributeValue);
-};
-
-// Size: 0x90
-class UInterchangeDecalMaterialNode : public UInterchangeShaderNode {
-};
-
-// Size: 0x90
-class UInterchangeDecalNode : public UInterchangeBaseNode {
-
-    bool GetCustomDecalMaterialPathName(FString& AttributeValue) const;
-    bool GetCustomDecalSize(FVector& AttributeValue) const;
-    bool GetCustomSortOrder(int32_t& AttributeValue) const;
-    bool SetCustomDecalMaterialPathName(FString AttributeValue);
-    bool SetCustomDecalSize(const FVector& AttributeValue);
-    bool SetCustomSortOrder(const int32_t& AttributeValue);
-};
-
-// Size: 0xa0
-class UInterchangeDirectionalLightNode : public UInterchangeBaseLightNode {
-};
-
-// Size: 0x80
-class UInterchangeFunctionCallShaderNode : public UInterchangeShaderNode {
-
-    bool GetCustomMaterialFunction(FString& AttributeValue) const;
-    bool SetCustomMaterialFunction(FString AttributeValue);
-};
-
-// Size: 0x238
-class UInterchangeGeometryCacheNode : public UInterchangeMeshNode {
-
-    bool GetCustomEndFrame(int32_t& AttributeValue) const;
-    bool GetCustomFrameRate(double& AttributeValue) const;
-    bool GetCustomHasConstantTopology(bool& AttributeValue) const;
-    bool GetCustomStartFrame(int32_t& AttributeValue) const;
-    bool SetCustomEndFrame(const int32_t& AttributeValue);
-    bool SetCustomFrameRate(const double& AttributeValue);
-    bool SetCustomHasConstantTopology(const bool& AttributeValue);
-    bool SetCustomStartFrame(const int32_t& AttributeValue);
-};
-
-// Size: 0x100
-class UInterchangeLightNode : public UInterchangeBaseLightNode {
-
-    bool GetCustomAttenuationRadius(float& AttributeValue) const;
-    bool GetCustomIESBrightnessScale(float& AttributeValue) const;
-    bool GetCustomIESTexture(FString& AttributeValue) const;
-    bool GetCustomIntensityUnits(EInterchangeLightUnits& AttributeValue) const;
-    bool GetCustomRotation(FRotator& AttributeValue) const;
-    bool GetCustomUseIESBrightness(bool& AttributeValue) const;
-    bool SetCustomAttenuationRadius(float AttributeValue);
-    bool SetCustomIESBrightnessScale(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomIESTexture(FString AttributeValue);
-    bool SetCustomIntensityUnits(const EInterchangeLightUnits& AttributeValue);
-    bool SetCustomRotation(const FRotator& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomUseIESBrightness(const bool& AttributeValue, bool bAddApplyDelegate);
-};
-
-// Size: 0x70
-class UInterchangeMaterialInstanceNode : public UInterchangeBaseNode {
-
-    bool AddScalarParameterValue(FString ParameterName, float AttributeValue);
-    bool AddStaticSwitchParameterValue(FString ParameterName, bool AttributeValue);
-    bool AddTextureParameterValue(FString ParameterName, FString AttributeValue);
-    bool AddVectorParameterValue(FString ParameterName, const FLinearColor& AttributeValue);
-    bool GetCustomParent(FString& AttributeValue) const;
-    bool GetScalarParameterValue(FString ParameterName, float& AttributeValue) const;
-    bool GetStaticSwitchParameterValue(FString ParameterName, bool& AttributeValue) const;
-    bool GetTextureParameterValue(FString ParameterName, FString& AttributeValue) const;
-    bool GetVectorParameterValue(FString ParameterName, FLinearColor& AttributeValue) const;
-    bool SetCustomParent(FString AttributeValue) const;
-};
-
-// Size: 0x70
-class UInterchangeMaterialReferenceNode : public UInterchangeBaseNode {
-
-    bool GetCustomContentPath(FString& AttributeValue) const;
-    bool SetCustomContentPath(FString AttributeValue) const;
-};
-
-// Size: 0x1f8
-class UInterchangeMeshNode : public UInterchangeBaseNode {
-
-    bool GetCustomBoundingBox(FBox& AttributeValue) const;
-    bool GetCustomCollisionType(EInterchangeMeshCollision& AttributeValue) const;
-    bool GetCustomHasSmoothGroup(bool& AttributeValue) const;
-    bool GetCustomHasVertexBinormal(bool& AttributeValue) const;
-    bool GetCustomHasVertexColor(bool& AttributeValue) const;
-    bool GetCustomHasVertexNormal(bool& AttributeValue) const;
-    bool GetCustomHasVertexTangent(bool& AttributeValue) const;
-    bool GetCustomPolygonCount(int32_t& AttributeValue) const;
-    bool GetCustomUVCount(int32_t& AttributeValue) const;
-    bool GetCustomVertexCount(int32_t& AttributeValue) const;
-    int32_t GetMorphTargetDependeciesCount() const;
-    void GetMorphTargetDependencies(TArray<FString>& OutDependencies) const;
-    void GetMorphTargetDependency(const int32_t Index, FString& OutDependency) const;
-    bool GetMorphTargetName(FString& OutMorphTargetName) const;
-    void GetSceneInstanceUid(const int32_t Index, FString& OutDependency) const;
-    void GetSceneInstanceUids(TArray<FString>& OutDependencies) const;
-    int32_t GetSceneInstanceUidsCount() const;
-    int32_t GetSkeletonDependeciesCount() const;
-    void GetSkeletonDependencies(TArray<FString>& OutDependencies) const;
-    void GetSkeletonDependency(const int32_t Index, FString& OutDependency) const;
-    void GetSlotMaterialDependencies(TMap<FString, FString>& OutMaterialDependencies) const;
-    bool GetSlotMaterialDependencyUid(FString SlotName, FString& OutMaterialDependency) const;
-    bool IsMorphTarget() const;
-    bool IsSkinnedMesh() const;
-    bool RemoveMorphTargetDependencyUid(FString DependencyUid);
-    bool RemoveSceneInstanceUid(FString DependencyUid);
-    bool RemoveSkeletonDependencyUid(FString DependencyUid);
-    bool RemoveSlotMaterialDependencyUid(FString SlotName);
-    bool SetCustomBoundingBox(const FBox& AttributeValue);
-    bool SetCustomCollisionType(EInterchangeMeshCollision AttributeValue);
-    bool SetCustomHasSmoothGroup(const bool& AttributeValue);
-    bool SetCustomHasVertexBinormal(const bool& AttributeValue);
-    bool SetCustomHasVertexColor(const bool& AttributeValue);
-    bool SetCustomHasVertexNormal(const bool& AttributeValue);
-    bool SetCustomHasVertexTangent(const bool& AttributeValue);
-    bool SetCustomPolygonCount(const int32_t& AttributeValue);
-    bool SetCustomUVCount(const int32_t& AttributeValue);
-    bool SetCustomVertexCount(const int32_t& AttributeValue);
-    bool SetMorphTarget(const bool bIsMorphTarget);
-    bool SetMorphTargetDependencyUid(FString DependencyUid);
-    bool SetMorphTargetName(FString MorphTargetName);
-    void SetPayLoadKey(FString PayloadKey, const EInterchangeMeshPayLoadType& PayLoadType);
-    bool SetSceneInstanceUid(FString DependencyUid);
-    bool SetSkeletonDependencyUid(FString DependencyUid);
-    bool SetSkinnedMesh(const bool bIsSkinnedMesh);
-    bool SetSlotMaterialDependencyUid(FString SlotName, FString MaterialDependencyUid);
-};
-
-// Size: 0x18
-struct FInterchangeMeshPayLoadKey {
-    /* 0x0000 */ FString UniqueID;
-    /* 0x0010 */ EInterchangeMeshPayLoadType Type;
-    /* 0x0014 */ int32_t FrameNumber;
-};
-
-// Size: 0xa0
-class UInterchangePhysicalCameraNode : public UInterchangeBaseNode {
-
-    bool GetCustomEnableDepthOfField(bool& AttributeValue) const;
-    bool GetCustomFocalLength(float& AttributeValue) const;
-    bool GetCustomSensorHeight(float& AttributeValue) const;
-    bool GetCustomSensorWidth(float& AttributeValue) const;
-    bool SetCustomEnableDepthOfField(const bool& AttributeValue);
-    bool SetCustomFocalLength(const float& AttributeValue);
-    bool SetCustomSensorHeight(const float& AttributeValue);
-    bool SetCustomSensorWidth(const float& AttributeValue);
-};
-
-// Size: 0x120
-class UInterchangePointLightNode : public UInterchangeLightNode {
-
-    bool GetCustomLightFalloffExponent(float& AttributeValue) const;
-    bool GetCustomUseInverseSquaredFalloff(bool& AttributeValue) const;
-    bool SetCustomLightFalloffExponent(float AttributeValue);
-    bool SetCustomUseInverseSquaredFalloff(bool AttributeValue);
-};
-
-// Size: 0x120
-class UInterchangeRectLightNode : public UInterchangeLightNode {
-
-    bool GetCustomSourceHeight(float& AttributeValue) const;
-    bool GetCustomSourceWidth(float& AttributeValue) const;
-    bool SetCustomSourceHeight(float AttributeValue);
-    bool SetCustomSourceWidth(float AttributeValue);
-};
-
-// Size: 0x490
-class UInterchangeSceneNode : public UInterchangeBaseNode {
-
-    bool AddSpecializedType(FString SpecializedType);
-    bool GetAnimationCurveTypeForCurveName(FString CurveName, EInterchangeAnimationPayLoadType& OutCurveAnimationType) const;
-    bool GetCustomActorVisibility(bool& bOutIsVisible) const;
-    bool GetCustomAnimationAssetUidToPlay(FString& AttributeValue) const;
-    bool GetCustomAssetInstanceUid(FString& AttributeValue) const;
-    bool GetCustomBindPoseGlobalTransform(const UInterchangeBaseNodeContainer* BaseNodeContainer, const FTransform& GlobalOffsetTransform, FTransform& AttributeValue, bool bForceRecache) const;
-    bool GetCustomBindPoseLocalTransform(FTransform& AttributeValue) const;
-    bool GetCustomComponentVisibility(bool& bOutIsVisible) const;
-    bool GetCustomGeometricTransform(FTransform& AttributeValue) const;
-    bool GetCustomGlobalTransform(const UInterchangeBaseNodeContainer* BaseNodeContainer, const FTransform& GlobalOffsetTransform, FTransform& AttributeValue, bool bForceRecache) const;
-    bool GetCustomHasBindPose(bool& bHasBindPose) const;
-    bool GetCustomLocalTransform(FTransform& AttributeValue) const;
-    bool GetCustomPivotNodeTransform(FTransform& AttributeValue) const;
-    bool GetCustomTimeZeroGlobalTransform(const UInterchangeBaseNodeContainer* BaseNodeContainer, const FTransform& GlobalOffsetTransform, FTransform& AttributeValue, bool bForceRecache) const;
-    bool GetCustomTimeZeroLocalTransform(FTransform& AttributeValue) const;
-    bool GetGlobalBindPoseReferenceForMeshUID(FString MeshUid, FMatrix& GlobalBindPoseReference) const;
-    void GetMorphTargetCurveWeights(TMap<FString, float>& OutMorphTargetCurveWeights) const;
-    void GetSlotMaterialDependencies(TMap<FString, FString>& OutMaterialDependencies) const;
-    bool GetSlotMaterialDependencyUid(FString SlotName, FString& OutMaterialDependency) const;
-    void GetSpecializedType(const int32_t Index, FString& OutSpecializedType) const;
-    int32_t GetSpecializedTypeCount() const;
-    void GetSpecializedTypes(TArray<FString>& OutSpecializedTypes) const;
-    bool IsSpecializedTypeContains(FString SpecializedType) const;
-    bool RemoveSlotMaterialDependencyUid(FString SlotName);
-    bool RemoveSpecializedType(FString SpecializedType);
-    bool SetAnimationCurveTypeForCurveName(FString CurveName, const EInterchangeAnimationPayLoadType& AnimationCurveType);
-    bool SetCustomActorVisibility(bool bInIsVisible);
-    bool SetCustomAnimationAssetUidToPlay(FString AttributeValue);
-    bool SetCustomAssetInstanceUid(FString AttributeValue);
-    bool SetCustomBindPoseLocalTransform(const UInterchangeBaseNodeContainer* BaseNodeContainer, const FTransform& AttributeValue, bool bResetCache);
-    bool SetCustomComponentVisibility(bool bInIsVisible);
-    bool SetCustomGeometricTransform(const FTransform& AttributeValue);
-    bool SetCustomHasBindPose(const bool& bHasBindPose);
-    bool SetCustomLocalTransform(const UInterchangeBaseNodeContainer* BaseNodeContainer, const FTransform& AttributeValue, bool bResetCache);
-    bool SetCustomPivotNodeTransform(const FTransform& AttributeValue);
-    bool SetCustomTimeZeroLocalTransform(const UInterchangeBaseNodeContainer* BaseNodeContainer, const FTransform& AttributeValue, bool bResetCache);
-    void SetGlobalBindPoseReferenceForMeshUIDs(const TMap<FString, FMatrix>& GlobalBindPoseReferenceForMeshUIDs);
-    bool SetMorphTargetCurveWeight(FString MorphTargetName, const float& Weight);
-    bool SetSlotMaterialDependencyUid(FString SlotName, FString MaterialDependencyUid);
-};
-
-// Size: 0x80
-class UInterchangeSceneVariantSetsNode : public UInterchangeBaseNode {
-
-    bool AddCustomVariantSetUid(FString VariantUid);
-    void GetCustomVariantSetUid(const int32_t Index, FString& OutVariantUid) const;
-    int32_t GetCustomVariantSetUidCount() const;
-    void GetCustomVariantSetUids(TArray<FString>& OutVariantUids) const;
-    bool RemoveCustomVariantSetUid(FString VariantUid);
-};
-
-// Size: 0xe0
-class UInterchangeShaderGraphNode : public UInterchangeShaderNode {
-
-    bool GetCustomBlendMode(int32_t& AttributeValue) const;
-    bool GetCustomDisplacementCenterMode(float& AttributeValue) const;
-    bool GetCustomIsAShaderFunction(bool& AttributeValue) const;
-    bool GetCustomOpacityMaskClipValue(float& AttributeValue) const;
-    bool GetCustomScreenSpaceReflections(bool& AttributeValue) const;
-    bool GetCustomTwoSided(bool& AttributeValue) const;
-    bool GetCustomTwoSidedTransmission(bool& AttributeValue) const;
-    bool SetCustomBlendMode(int32_t AttributeValue);
-    bool SetCustomDisplacementCenterMode(float AttributeValue);
-    bool SetCustomIsAShaderFunction(const bool& AttributeValue);
-    bool SetCustomOpacityMaskClipValue(const float& AttributeValue, bool bAddApplyDelegate);
-    bool SetCustomScreenSpaceReflections(const bool& AttributeValue);
-    bool SetCustomTwoSided(const bool& AttributeValue);
-    bool SetCustomTwoSidedTransmission(const bool& AttributeValue);
-};
-
-// Size: 0x70
-class UInterchangeShaderNode : public UInterchangeBaseNode {
-
-    bool AddFloatInput(FString InputName, const float& AttributeValue, bool bIsAParameter);
-    bool AddLinearColorInput(FString InputName, const FLinearColor& AttributeValue, bool bIsAParameter);
-    bool AddStringInput(FString InputName, FString AttributeValue, bool bIsAParameter);
-    bool GetCustomShaderType(FString& AttributeValue) const;
-    bool SetCustomShaderType(FString AttributeValue);
-};
-
-// Size: 0x28
-class UInterchangeShaderPortsAPI : public UObject {
-
-    static bool ConnectDefaultOuputToInput(UInterchangeBaseNode* InterchangeNode, FString InputName, FString ExpressionUid);
-    static bool ConnectOuputToInputByIndex(UInterchangeBaseNode* InterchangeNode, FString InputName, FString ExpressionUid, int32_t OutputIndex);
-    static bool ConnectOuputToInputByName(UInterchangeBaseNode* InterchangeNode, FString InputName, FString ExpressionUid, FString OutputName);
-    static void GatherInputs(const UInterchangeBaseNode* InterchangeNode, TArray<FString>& OutInputNames);
-    static bool GetInputConnection(const UInterchangeBaseNode* InterchangeNode, FString InputName, FString& OutExpressionUid, FString& OutputName);
-    static bool HasInput(const UInterchangeBaseNode* InterchangeNode, const FName& InInputName);
-    static bool HasParameter(const UInterchangeBaseNode* InterchangeNode, const FName& InInputName);
-    static bool IsAParameter(FString AttributeKey);
-    static bool IsAnInput(FString AttributeKey);
-    static FString MakeInputConnectionKey(FString InputName);
-    static FString MakeInputName(FString InputKey);
-    static FString MakeInputParameterKey(FString InputName);
-    static FString MakeInputValueKey(FString InputName);
-};
-
-// Size: 0x2b0
-class UInterchangeSkeletalAnimationTrackNode : public UInterchangeAnimationTrackBaseNode {
-
-    bool GetCustomAnimationSampleRate(double& SampleRate) const;
-    bool GetCustomAnimationStartTime(double& StartTime) const;
-    bool GetCustomAnimationStopTime(double& StopTime) const;
-    bool GetCustomSkeletonNodeUid(FString& AttributeValue) const;
-    bool GetCustomSourceTimelineAnimationStartTime(double& StartTime) const;
-    bool GetCustomSourceTimelineAnimationStopTime(double& StopTime) const;
-    void GetMorphTargetNodeAnimationPayloadKeys(TMap<FString, FString>& OutMorphTargetNodeAnimationPayloadKeyUids, TMap<FString, uint8_t>& OutMorphTargetNodeAnimationPayloadKeyTypes) const;
-    void GetSceneNodeAnimationPayloadKeys(TMap<FString, FString>& OutSceneNodeAnimationPayloadKeyUids, TMap<FString, uint8_t>& OutSceneNodeAnimationPayloadKeyTypes) const;
-    bool IsNodeAnimatedWithBakedCurve(FString SceneNodeUid) const;
-    bool SetAnimationPayloadKeyForMorphTargetNodeUid(FString MorphTargetNodeUid, FString InUniqueId, const EInterchangeAnimationPayLoadType& InType);
-    bool SetAnimationPayloadKeyForSceneNodeUid(FString SceneNodeUid, FString InUniqueId, const EInterchangeAnimationPayLoadType& InType);
-    bool SetCustomAnimationSampleRate(const double& SampleRate);
-    bool SetCustomAnimationStartTime(const double& StartTime);
-    bool SetCustomAnimationStopTime(const double& StopTime);
-    bool SetCustomSkeletonNodeUid(FString AttributeValue);
-    bool SetCustomSourceTimelineAnimationStartTime(const double& StartTime);
-    bool SetCustomSourceTimelineAnimationStopTime(const double& StopTime);
-};
-
-// Size: 0x80
-class UInterchangeSpecularProfileNode : public UInterchangeBaseNode {
-
-    bool GetCustomFormat(uint8_t& Format) const;
-    bool GetCustomTexture(FString& TextureUid) const;
-    bool SetCustomFormat(uint8_t Format);
-    bool SetCustomTexture(FString TextureUid);
-};
-
-// Size: 0x140
-class UInterchangeSpotLightNode : public UInterchangePointLightNode {
-
-    bool GetCustomInnerConeAngle(float& AttributeValue) const;
-    bool GetCustomOuterConeAngle(float& AttributeValue) const;
-    bool SetCustomInnerConeAngle(float AttributeValue);
-    bool SetCustomOuterConeAngle(float AttributeValue);
-};
-
-// Size: 0xc0
-class UInterchangeStandardCameraNode : public UInterchangeBaseNode {
-
-    bool GetCustomAspectRatio(float& AttributeValue) const;
-    bool GetCustomFarClipPlane(float& AttributeValue) const;
-    bool GetCustomFieldOfView(float& AttributeValue) const;
-    bool GetCustomNearClipPlane(float& AttributeValue) const;
-    bool GetCustomProjectionMode(EInterchangeCameraProjectionType& AttributeValue) const;
-    bool GetCustomWidth(float& AttributeValue) const;
-    bool SetCustomAspectRatio(const float& AttributeValue);
-    bool SetCustomFarClipPlane(const float& AttributeValue);
-    bool SetCustomFieldOfView(const float& AttributeValue);
-    bool SetCustomNearClipPlane(const float& AttributeValue);
-    bool SetCustomProjectionMode(const EInterchangeCameraProjectionType& AttributeValue);
-    bool SetCustomWidth(const float& AttributeValue);
-};
-
-// Size: 0xa0
-class UInterchangeTexture2DArrayNode : public UInterchangeTextureNode {
-};
-
-// Size: 0x138
-class UInterchangeTexture2DNode : public UInterchangeTextureNode {
-
-    bool GetCustomWrapU(EInterchangeTextureWrapMode& AttributeValue) const;
-    bool GetCustomWrapV(EInterchangeTextureWrapMode& AttributeValue) const;
-    TMap<int32_t, FString> GetSourceBlocks() const;
-    bool SetCustomWrapU(const EInterchangeTextureWrapMode& AttributeValue);
-    bool SetCustomWrapV(const EInterchangeTextureWrapMode& AttributeValue);
-};
-
-// Size: 0x138
-class UInterchangeTextureBlurNode : public UInterchangeTexture2DNode {
-};
-
-// Size: 0xa0
-class UInterchangeTextureCubeArrayNode : public UInterchangeTextureNode {
-};
-
-// Size: 0xa0
-class UInterchangeTextureCubeNode : public UInterchangeTextureNode {
-};
-
-// Size: 0xa0
-class UInterchangeTextureLightProfileNode : public UInterchangeTextureNode {
-};
-
-// Size: 0xa0
-class UInterchangeTextureNode : public UInterchangeBaseNode {
-
-    bool GetCustomColorSpace(EInterchangeTextureColorSpace& AttributeValue) const;
-    bool GetCustomFilter(EInterchangeTextureFilterMode& AttributeValue) const;
-    bool GetCustomSRGB(bool& AttributeValue) const;
-    bool GetCustombFlipGreenChannel(bool& AttributeValue) const;
-    bool SetCustomColorSpace(const EInterchangeTextureColorSpace& AttributeValue);
-    bool SetCustomFilter(const EInterchangeTextureFilterMode& AttributeValue);
-    bool SetCustomSRGB(const bool& AttributeValue);
-    bool SetCustombFlipGreenChannel(const bool& AttributeValue);
-    void SetPayLoadKey(FString PayloadKey);
-};
-
-// Size: 0xe0
-class UInterchangeTransformAnimationTrackNode : public UInterchangeAnimationTrackNode {
-
-    bool GetCustomUsedChannels(int32_t& AttributeValue) const;
-    bool SetCustomUsedChannels(const int32_t& AttributeValue);
-};
-
-// Size: 0xa0
-class UInterchangeVariantSetNode : public UInterchangeBaseNode {
-
-    bool AddCustomDependencyUid(FString DependencyUid);
-    void GetCustomDependencyUid(const int32_t Index, FString& OutDependencyUid) const;
-    int32_t GetCustomDependencyUidCount() const;
-    void GetCustomDependencyUids(TArray<FString>& OutDependencyUids) const;
-    bool GetCustomDisplayText(FString& AttributeValue) const;
-    bool GetCustomVariantsPayloadKey(FString& PayloadKey) const;
-    bool RemoveCustomDependencyUid(FString DependencyUid);
-    bool SetCustomDisplayText(FString AttributeValue);
-    bool SetCustomVariantsPayloadKey(FString PayloadKey);
-};
-
-// Size: 0xc0
-class UInterchangeVolumeGridNode : public UInterchangeBaseNode {
-
-    bool GetCustomElementType(EVolumeGridElementType& AttributeValue) const;
-    bool GetCustomGridActiveAABBMax(FIntVector& AttributeValue) const;
-    bool GetCustomGridActiveAABBMin(FIntVector& AttributeValue) const;
-    bool GetCustomGridActiveDimensions(FIntVector& AttributeValue) const;
-    bool GetCustomGridTransform(FTransform& AttributeValue) const;
-    bool GetCustomNumComponents(int32_t& NumComponents) const;
-    bool SetCustomElementType(const EVolumeGridElementType& AttributeValue);
-    bool SetCustomGridActiveAABBMax(const FIntVector& AttributeValue);
-    bool SetCustomGridActiveAABBMin(const FIntVector& AttributeValue);
-    bool SetCustomGridActiveDimensions(const FIntVector& AttributeValue);
-    bool SetCustomGridTransform(const FTransform& AttributeValue);
-    bool SetCustomNumComponents(const int32_t& NumComponents);
-};
-
-// Size: 0xc0
-class UInterchangeVolumeNode : public UInterchangeBaseNode {
-
-    bool AddCustomFrameIndexInAnimation(int32_t Index);
-    bool AddCustomGridDependency(FString DependencyUid);
-    bool GetCustomAnimationID(FString& AttributeValue) const;
-    bool GetCustomFileName(FString& AttributeValue) const;
-    void GetCustomFrameIndexInAnimation(int32_t IndexIndex, int32_t& OutIndex) const;
-    void GetCustomFrameIndicesInAnimation(TArray<int32_t>& OutAnimationIndices) const;
-    void GetCustomGridDependecies(TArray<FString>& OutDependencies) const;
-    int32_t GetCustomGridDependeciesCount() const;
-    void GetCustomGridDependency(const int32_t Index, FString& OutDependency) const;
-    bool RemoveCustomFrameIndexInAnimation(int32_t Index);
-    bool RemoveCustomGridDependency(FString DependencyUid);
-    bool SetCustomAnimationID(FString AttributeValue);
-    bool SetCustomFileName(FString AttributeValue);
-};
-
-// Size: 0xa0
-class UInterchangeVolumeTextureNode : public UInterchangeTextureNode {
-};
-
-enum class EInterchangeAnimationRange {
-    Timeline = 0,
-    Animated = 1,
-    SetRange = 2,
-    MAX = 3,
-};
-
-enum class EInterchangeForceMeshType {
-    IFMT_None = 0,
-    IFMT_StaticMesh = 1,
-    IFMT_SkeletalMesh = 2,
-    IFMT_MAX = 3,
-};
-
-enum class EInterchangeMaterialImportOption {
-    ImportAsMaterials = 0,
-    ImportAsMaterialInstances = 1,
-    EInterchangeMaterialImportOption_MAX = 2,
-};
-
-enum class EInterchangeMaterialSearchLocation {
-    Local = 0,
-    UnderParent = 1,
-    UnderRoot = 2,
-    AllAssets = 3,
-    DoNotSearch = 4,
-    EInterchangeMaterialSearchLocation_MAX = 5,
-};
-
-enum class EInterchangeSceneHierarchyType {
-    CreateLevelActors = 0,
-    CreateLevelInstanceActor = 1,
-    CreatePackedActor = 2,
-    EInterchangeSceneHierarchyType_MAX = 3,
-};
-
-enum class EInterchangeVertexColorImportOption {
-    IVCIO_Replace = 0,
-    IVCIO_Ignore = 1,
-    IVCIO_Override = 2,
-    IVCIO_MAX = 3,
-};
-
-// Size: 0x90
-class UGLTFPipelineSettings : public UDeveloperSettings {
-    /* 0x0038 */ TMap<FString, FSoftObjectPath> MaterialParents;
-};
-
-// Size: 0x140
-class UInterchangeGLTFPipeline : public UInterchangePipelineBase {
-    /* 0x0128 */ FString PipelineDisplayName;
-};
-
-// Size: 0x198
-class UInterchangeGenericAnimationPipeline : public UInterchangePipelineBase {
-    /* 0x0128 */ TWeakObjectPtr<UInterchangeGenericCommonSkeletalMeshesAndAnimationsProperties> CommonSkeletalMeshesAndAnimationsProperties;
-    /* 0x0130 */ TWeakObjectPtr<UInterchangeGenericCommonMeshesProperties> CommonMeshesProperties;
-    /* 0x0138 */ bool bImportAnimations;
-    /* 0x0139 */ bool bImportBoneTracks;
-    /* 0x013a */ EInterchangeAnimationRange AnimationRange;
-    /* 0x013c */ FInt32Interval FrameImportRange;
-    /* 0x0144 */ bool bUse30HzToBakeBoneAnimation;
-    /* 0x0148 */ int32_t CustomBoneAnimationSampleRate;
-    /* 0x014c */ bool bSnapToClosestFrameBoundary;
-    /* 0x014d */ bool bImportCustomAttribute;
-    /* 0x014e */ bool bAddCurveMetadataToSkeleton;
-    /* 0x014f */ bool bSetMaterialDriveParameterOnCustomAttribute;
-    /* 0x0150 */ TArray<FString> MaterialCurveSuffixes;
-    /* 0x0160 */ bool bRemoveCurveRedundantKeys;
-    /* 0x0161 */ bool bDoNotImportCurveWithZero;
-    /* 0x0162 */ bool bDeleteExistingNonCurveCustomAttributes;
-    /* 0x0163 */ bool bDeleteExistingCustomAttributeCurves;
-    /* 0x0164 */ bool bDeleteExistingMorphTargetCurves;
-    /* 0x0168 */ FString SourceAnimationName;
-    /* 0x0178 */ bool bSceneImport;
-};
-
-// Size: 0x2b0
-class UInterchangeGenericAssetsPipeline : public UInterchangePipelineBase {
-    /* 0x0128 */ FString PipelineDisplayName;
-    /* 0x0138 */ EReimportStrategyFlags ReimportStrategy;
-    /* 0x0139 */ bool bUseSourceNameForAsset;
-    /* 0x013a */ bool bSceneNameSubFolder;
-    /* 0x013b */ bool bAssetTypeSubFolders;
-    /* 0x0140 */ FString AssetName;
-    /* 0x0150 */ FVector ImportOffsetTranslation;
-    /* 0x0168 */ FRotator ImportOffsetRotation;
-    /* 0x0180 */ float ImportOffsetUniformScale;
-    /* 0x0188 */ UInterchangeGenericCommonMeshesProperties* CommonMeshesProperties;
-    /* 0x0190 */ UInterchangeGenericCommonSkeletalMeshesAndAnimationsProperties* CommonSkeletalMeshesAndAnimationsProperties;
-    /* 0x0198 */ UInterchangeGenericMeshPipeline* MeshPipeline;
-    /* 0x01a0 */ UInterchangeGenericAnimationPipeline* AnimationPipeline;
-    /* 0x01a8 */ UInterchangeGenericMaterialPipeline* MaterialPipeline;
-    /* 0x01b0 */ FSoftObjectPath ContentPathExistingSkeleton;
-    /* 0x01d0 */ bool bImportOnlyAnimationAdjusted;
-};
-
-// Size: 0x140
-class UInterchangeGenericCommonMeshesProperties : public UInterchangePipelineBase {
-    /* 0x0128 */ EInterchangeForceMeshType ForceAllMeshAsType;
-    /* 0x0129 */ bool bAutoDetectMeshType;
-    /* 0x012a */ bool bImportLods;
-    /* 0x012b */ bool bBakeMeshes;
-    /* 0x012c */ bool bBakePivotMeshes;
-    /* 0x012d */ bool bKeepSectionsSeparate;
-    /* 0x012e */ EInterchangeVertexColorImportOption VertexColorImportOption;
-    /* 0x0130 */ FColor VertexOverrideColor;
-    /* 0x0134 */ bool bImportSockets;
-    /* 0x0135 */ bool bRecomputeNormals;
-    /* 0x0136 */ bool bRecomputeTangents;
-    /* 0x0137 */ bool bUseMikkTSpace;
-    /* 0x0138 */ bool bComputeWeightedNormals;
-    /* 0x0139 */ bool bUseHighPrecisionTangentBasis;
-    /* 0x013a */ bool bUseFullPrecisionUVs;
-    /* 0x013b */ bool bUseBackwardsCompatibleF16TruncUVs;
-    /* 0x013c */ bool bRemoveDegenerates;
-};
-
-// Size: 0x138
-class UInterchangeGenericCommonSkeletalMeshesAndAnimationsProperties : public UInterchangePipelineBase {
-    /* 0x0128 */ bool bImportOnlyAnimations;
-    /* 0x012c */ TWeakObjectPtr<USkeleton> Skeleton;
-    /* 0x0134 */ bool bImportMeshesInBoneHierarchy;
-    /* 0x0135 */ bool bUseT0AsRefPose;
-    /* 0x0136 */ bool bAddCurveMetadataToSkeleton;
-    /* 0x0137 */ bool bConvertStaticsWithMorphTargetsToSkeletals;
-};
-
-// Size: 0x160
-class UInterchangeGenericLevelPipeline : public UInterchangePipelineBase {
-    /* 0x0128 */ FString PipelineDisplayName;
-    /* 0x0138 */ EReimportStrategyFlags ReimportPropertyStrategy;
-    /* 0x0139 */ EInterchangeSceneHierarchyType SceneHierarchyType;
-    /* 0x013a */ bool bDeleteMissingActors;
-    /* 0x013b */ bool bForceReimportDeletedActors;
-    /* 0x013c */ bool bForceReimportDeletedAssets;
-    /* 0x013d */ bool bDeleteMissingAssets;
-    /* 0x013e */ bool bUsePhysicalInsteadOfStandardPerspectiveCamera;
-};
-
-// Size: 0x1c8
-class UInterchangeGenericMaterialPipeline : public UInterchangePipelineBase {
-    /* 0x0128 */ FString PipelineDisplayName;
-    /* 0x0138 */ bool bImportMaterials;
-    /* 0x0139 */ EInterchangeMaterialSearchLocation SearchLocation;
-    /* 0x0140 */ FString AssetName;
-    /* 0x0150 */ EInterchangeMaterialImportOption MaterialImport;
-    /* 0x0151 */ bool bIdentifyDuplicateMaterials;
-    /* 0x0152 */ bool bCreateMaterialInstanceForParent;
-    /* 0x0158 */ FSoftObjectPath ParentMaterial;
-    /* 0x0178 */ UInterchangeGenericTexturePipeline* TexturePipeline;
-    /* 0x0180 */ UInterchangeSparseVolumeTexturePipeline* SparseVolumeTexturePipeline;
-    /* 0x0188 */ bool bOverrideDisplacement;
-    /* 0x018c */ float OverrideDisplacementCenter;
-    /* 0x0190 */ UInterchangeBaseNodeContainer* BaseNodeContainer;
-};
-
-// Size: 0x240
-class UInterchangeGenericMeshPipeline : public UInterchangePipelineBase {
-    /* 0x0128 */ TWeakObjectPtr<UInterchangeGenericCommonMeshesProperties> CommonMeshesProperties;
-    /* 0x0130 */ TWeakObjectPtr<UInterchangeGenericCommonSkeletalMeshesAndAnimationsProperties> CommonSkeletalMeshesAndAnimationsProperties;
-    /* 0x0138 */ bool bImportStaticMeshes;
-    /* 0x0139 */ bool bCombineStaticMeshes;
-    /* 0x013c */ FName LODGroup;
-    /* 0x0144 */ bool bAutoComputeLODScreenSizes;
-    /* 0x0148 */ TArray<float> LODScreenSizes;
-    /* 0x0158 */ bool bImportCollision;
-    /* 0x0159 */ bool bCollision;
-    /* 0x015a */ bool bImportCollisionAccordingToMeshName;
-    /* 0x015b */ bool bOneConvexHullPerUCX;
-    /* 0x015c */ EInterchangeMeshCollision Collision;
-    /* 0x015d */ bool bForceCollisionPrimitiveGeneration;
-    /* 0x015e */ bool bBuildNanite;
-    /* 0x015f */ bool bBuildReversedIndexBuffer;
-    /* 0x0160 */ bool bGenerateLightmapUVs;
-    /* 0x0161 */ bool bGenerateDistanceFieldAsIfTwoSided;
-    /* 0x0162 */ bool bSupportFaceRemap;
-    /* 0x0164 */ int32_t MinLightmapResolution;
-    /* 0x0168 */ int32_t SrcLightmapIndex;
-    /* 0x016c */ int32_t DstLightmapIndex;
-    /* 0x0170 */ FVector BuildScale3D;
-    /* 0x0188 */ float DistanceFieldResolutionScale;
-    /* 0x018c */ TWeakObjectPtr<UStaticMesh> DistanceFieldReplacementMesh;
-    /* 0x0194 */ int32_t MaxLumenMeshCards;
-    /* 0x0198 */ bool bImportSkeletalMeshes;
-    /* 0x0199 */ EInterchangeSkeletalMeshContentType SkeletalMeshImportContentType;
-    /* 0x019a */ EInterchangeSkeletalMeshContentType LastSkeletalMeshImportContentType;
-    /* 0x019b */ bool bCombineSkeletalMeshes;
-    /* 0x019c */ bool bImportMorphTargets;
-    /* 0x019d */ bool bMergeMorphTargetsWithSameName;
-    /* 0x019e */ bool bImportVertexAttributes;
-    /* 0x019f */ bool bUpdateSkeletonReferencePose;
-    /* 0x01a0 */ bool bCreatePhysicsAsset;
-    /* 0x01a4 */ TWeakObjectPtr<UPhysicsAsset> PhysicsAsset;
-    /* 0x01ac */ bool bUseHighPrecisionSkinWeights;
-    /* 0x01b0 */ float ThresholdPosition;
-    /* 0x01b4 */ float ThresholdTangentNormal;
-    /* 0x01b8 */ float ThresholdUV;
-    /* 0x01bc */ float MorphThresholdPosition;
-    /* 0x01c0 */ int32_t BoneInfluenceLimit;
-    /* 0x01c4 */ bool bImportGeometryCaches;
-    /* 0x01c5 */ bool bFlattenTracks;
-    /* 0x01c8 */ float CompressedPositionPrecision;
-    /* 0x01cc */ int32_t CompressedTextureCoordinatesNumberOfBits;
-    /* 0x01d0 */ bool bOverrideTimeRange;
-    /* 0x01d4 */ int32_t FrameStart;
-    /* 0x01d8 */ int32_t FrameEnd;
-    /* 0x01dc */ EInterchangeMotionVectorsHandling MotionVectors;
-    /* 0x01dd */ bool bApplyConstantTopologyOptimizations;
-    /* 0x01de */ bool bStoreImportedVertexNumbers;
-    /* 0x01df */ bool bOptimizeIndexBuffers;
-
-    bool GetCombineSkeletalMeshes() const;
-    void SetCombineSkeletalMeshes(bool InbCombineSkeletalMeshes);
-};
-
-// Size: 0x190
-class UInterchangeGenericTexturePipeline : public UInterchangePipelineBase {
-    /* 0x0128 */ FString PipelineDisplayName;
-    /* 0x0138 */ bool bImportTextures;
-    /* 0x0140 */ FString AssetName;
-    /* 0x0150 */ bool bAllowNonPowerOfTwo;
-    /* 0x0158 */ UInterchangeBaseNodeContainer* BaseNodeContainer;
-};
-
-// Size: 0x10
-struct FInterchangeLodSceneNodeContainer {
-    /* 0x0000 */ TArray<UInterchangeSceneNode*> SceneNodes;
-};
-
-// Size: 0x130
-class UInterchangeMaterialXPipeline : public UInterchangePipelineBase {
-};
-
-// Size: 0x38
-struct FInterchangeMeshGeometry {
-    /* 0x0000 */ FString MeshUid;
-    /* 0x0010 */ UInterchangeMeshNode* MeshNode;
-    /* 0x0018 */ TArray<FString> ReferencingMeshInstanceUids;
-    /* 0x0028 */ TArray<FString> AttachedSocketUids;
-};
-
-// Size: 0x80
-struct FInterchangeMeshInstance {
-    /* 0x0000 */ FString MeshInstanceUid;
-    /* 0x0010 */ UInterchangeSceneNode* LodGroupNode;
-    /* 0x0018 */ bool bReferenceSkinnedMesh;
-    /* 0x0019 */ bool bReferenceMorphTarget;
-    /* 0x001a */ bool bHasMorphTargets;
-    /* 0x001b */ bool bIsAnimated;
-    /* 0x0020 */ TMap<int32_t, FInterchangeLodSceneNodeContainer> SceneNodePerLodIndex;
-    /* 0x0070 */ TArray<FString> ReferencingMeshGeometryUids;
-};
-
-// Size: 0x128
-class UInterchangePipelineMeshesUtilities : public UObject {
-
-    static UInterchangePipelineMeshesUtilities* CreateInterchangePipelineMeshesUtilities(UInterchangeBaseNodeContainer* BaseNodeContainer);
-    void GetAllGeometryCacheGeometry(TArray<FString>& MeshGeometryUids) const;
-    void GetAllGeometryCacheInstance(TArray<FString>& MeshInstanceUids) const;
-    void GetAllMeshGeometry(TArray<FString>& MeshGeometryUids) const;
-    void GetAllMeshGeometryNotInstanced(TArray<FString>& MeshGeometryUids) const;
-    void GetAllMeshInstanceUids(TArray<FString>& MeshInstanceUids) const;
-    void GetAllMeshInstanceUidsUsingMeshGeometryUid(FString MeshGeometryUid, TArray<FString>& MeshInstanceUids) const;
-    void GetAllSkinnedMeshGeometry(TArray<FString>& MeshGeometryUids) const;
-    void GetAllSkinnedMeshInstance(TArray<FString>& MeshInstanceUids) const;
-    void GetAllStaticMeshGeometry(TArray<FString>& MeshGeometryUids) const;
-    void GetAllStaticMeshInstance(TArray<FString>& MeshInstanceUids) const;
-    FInterchangeMeshGeometry GetMeshGeometryByUid(FString MeshGeometryUid) const;
-    FString GetMeshGeometrySkeletonRootUid(FString MeshGeometryUid) const;
-    FInterchangeMeshInstance GetMeshInstanceByUid(FString MeshInstanceUid) const;
-    FString GetMeshInstanceSkeletonRootUid(FString MeshInstanceUid) const;
-    bool IsValidMeshGeometryUid(FString MeshGeometryUid) const;
-    bool IsValidMeshInstanceUid(FString MeshInstanceUid) const;
-    void SetContext(const FInterchangePipelineMeshesUtilitiesContext& Context) const;
-};
-
-// Size: 0x7
-struct FInterchangePipelineMeshesUtilitiesContext {
-    /* 0x0000 */ bool bConvertStaticMeshToSkeletalMesh;
-    /* 0x0001 */ bool bConvertSkeletalMeshToStaticMesh;
-    /* 0x0002 */ bool bConvertStaticsWithMorphTargetsToSkeletals;
-    /* 0x0003 */ bool bImportMeshesInBoneHierarchy;
-    /* 0x0004 */ bool bQueryGeometryOnlyIfNoInstance;
-    /* 0x0005 */ bool bIgnoreStaticMeshes;
-    /* 0x0006 */ bool bIgnoreGeometryCaches;
-};
-
-// Size: 0x158
-class UInterchangeSparseVolumeTexturePipeline : public UInterchangePipelineBase {
-    /* 0x0128 */ FString PipelineDisplayName;
-    /* 0x0138 */ bool bImportSparseVolumeTextures;
-    /* 0x0139 */ bool bImportAnimatedSparseVolumeTextures;
-    /* 0x0140 */ FString AssetName;
-    /* 0x0150 */ UInterchangeBaseNodeContainer* BaseNodeContainer;
-};
-
-// Size: 0x178
-class UMaterialXPipelineSettings : public UDeveloperSettings {
-    /* 0x0038 */ TMap<EInterchangeMaterialXShaders, FSoftObjectPath> PredefinedSurfaceShaders;
-    /* 0x0088 */ TMap<EInterchangeMaterialXBSDF, FSoftObjectPath> PredefinedBSDF;
-    /* 0x00d8 */ TMap<EInterchangeMaterialXEDF, FSoftObjectPath> PredefinedEDF;
-    /* 0x0128 */ TMap<EInterchangeMaterialXVDF, FSoftObjectPath> PredefinedVDF;
 };
 
 // Size: 0x60
@@ -62949,7 +59539,7 @@ class UMaterialExpressionLandscapeLayerSwitch : public UMaterialExpression {
 
 // Size: 0x128
 class UMaterialExpressionLandscapeLayerWeight : public UMaterialExpression {
-    /* 0x00b0 */ FExpressionInput base;
+    /* 0x00b0 */ FExpressionInput Base;
     /* 0x00d8 */ FExpressionInput Layer;
     /* 0x0100 */ FName ParameterName;
     /* 0x0108 */ float PreviewWeight;
@@ -70017,6 +66607,14 @@ struct FDamageHitAccumulation {
     /* 0x0000 */ TMap<FVector, int32_t> Hits;
 };
 
+enum class EAgentSyncReason {
+    NONE = 0,
+    DEATH_INJURY = 1,
+    DEATH_STARVATION = 2,
+    DEATH_SANK = 3,
+    EAgentSyncReason_MAX = 4,
+};
+
 enum class ENauticalAction {
     None = 0,
     Idle = 1,
@@ -70026,7 +66624,7 @@ enum class ENauticalAction {
     DeliverLetter = 5,
     Scout = 6,
     Attack = 7,
-    GotoAttack = 8,
+    OBSOLETE_1 = 8,
     Repair = 9,
     Return = 10,
     Flee = 11,
@@ -70034,7 +66632,46 @@ enum class ENauticalAction {
     Salvage = 13,
     Sink = 14,
     Docking = 15,
-    ENauticalAction_MAX = 16,
+    Docked = 16,
+    OBSOLETE_3 = 17,
+    Hunt = 18,
+    GoHarvestGuano = 19,
+    HarvestGuano = 20,
+    EscortShip = 21,
+    LocalFerry = 22,
+    BombardTower = 23,
+    ShakedownApproach = 24,
+    ShakedownNegotiation = 25,
+    OBSOLETE_2 = 26,
+    TaxCollection = 27,
+    SupplyRun = 28,
+    Smuggle = 29,
+    LaborTransport = 30,
+    Extortion = 31,
+    ENauticalAction_MAX = 32,
+};
+
+enum class ENauticalCannonBallMode {
+    None = 0,
+    Nautical = 1,
+    InMap = 2,
+    ENauticalCannonBallMode_MAX = 3,
+};
+
+enum class ENauticalCombatScale {
+    LOCAL_SCALE = 0,
+    LOCAL_SCALE_UNLESS_SHIP_V_SHIP_OUTSIDE_COLONY_EDGE_AND_ZOOMED_OUT = 1,
+    NAUTICAL_SCALE = 2,
+    ENauticalCombatScale_MAX = 3,
+};
+
+enum class ENauticalCrewPosition {
+    None = 0,
+    Officer = 1,
+    Sailor = 2,
+    Prisoner = 3,
+    Passenger = 4,
+    ENauticalCrewPosition_MAX = 5,
 };
 
 enum class ENauticalDockTask {
@@ -70043,11 +66680,28 @@ enum class ENauticalDockTask {
     ENauticalDockTask_MAX = 2,
 };
 
+enum class ENauticalNavigatorResult {
+    Failure = 0,
+    Straight = 1,
+    Curve = 2,
+    ENauticalNavigatorResult_MAX = 3,
+};
+
 enum class ENauticalPoiType {
     None = 0,
     FishingSpot = 1,
     SalvageSpot = 2,
-    ENauticalPoiType_MAX = 3,
+    Lifeboat = 3,
+    Leviathan = 4,
+    GuanoRock = 5,
+    ENauticalPoiType_MAX = 6,
+};
+
+enum class ENauticalShipCrewDeathType {
+    DEATH_INJURY = 0,
+    DEATH_STARVATION = 1,
+    DEATH_SANK = 2,
+    DEATH_MAX = 3,
 };
 
 enum class ENauticalShipSailCategory {
@@ -70057,44 +66711,64 @@ enum class ENauticalShipSailCategory {
     ENauticalShipSailCategory_MAX = 3,
 };
 
-enum class ENauticalShipSails {
-    None = 0,
-    Jibs = 1,
-    StaySails = 2,
-    Driver = 3,
-    ForeSails = 4,
-    MainSails = 5,
-    MizzenSails = 6,
-    ForeSailsLateral = 7,
-    MainSailsLateral = 8,
-    MizzenSailsLateral = 9,
-    ENauticalShipSails_MAX = 10,
+enum class EOceanProximityQueryType {
+    Ships = 1,
+    Towers = 2,
+    Both = 3,
+    EOceanProximityQueryType_MAX = 4,
 };
 
 enum class ESyncEventType {
     None = 0,
     ShipNew = 1,
-    ShipSunk = 2,
-    ShipDocked = 3,
-    CargoSet = 4,
-    DockNew = 5,
-    DockRemove = 6,
-    ESyncEventType_MAX = 7,
+    ShipBeganSinking = 2,
+    ShipFinishedSinking = 3,
+    ShipDocked = 4,
+    ShipAssignDock = 5,
+    ShipClearDock = 6,
+    ShipMarkToGhost = 7,
+    CargoSet = 8,
+    DockNew = 9,
+    DockRemove = 10,
+    CommandFish = 11,
+    CommandHunt = 12,
+    CommandTrade = 13,
+    CommandReturn = 14,
+    CommandForceDocked = 15,
+    CommandGuano = 16,
+    CommandEscort = 17,
+    CommandFerry = 18,
+    CommandIdle = 19,
+    CommandIdleAtPosition = 20,
+    DockMoved = 21,
+    VisitingShipScheduled = 22,
+    VisitingShipReleased = 23,
+    RequestIslandPopulate = 24,
+    StructureNew = 25,
+    StructureRemove = 26,
+    StructureCargoSet = 27,
+    CombatGeneralHit = 28,
+    StructureFired = 29,
+    NavalDeath = 30,
+    IslandDefeated = 31,
+    IslandDiscovered = 32,
+    ESyncEventType_MAX = 33,
 };
 
 // Size: 0x370
 class ANauticalCannonBall : public AActor {
     /* 0x02a8 */ USceneComponent* Root;
     /* 0x02b0 */ FNauticalCannonBallConfig config;
-    /* 0x02f0 */ FNauticalCannonBallState State;
+    /* 0x0308 */ FNauticalCannonBallState State;
     /* 0x0368 */ ANauticalOcean* ocean;
 
     void UponFire();
+    void UponGroundHit();
     void UponHit(AActor* Target, FVector WorldPosition, FVector HitNormal);
     void UponSplash();
 };
 
-// Size: 0x40
+// Size: 0x58
 struct FNauticalCannonBallConfig {
     /* 0x0000 */ bool isBall;
     /* 0x0008 */ double splashHeight;
@@ -70103,29 +66777,31 @@ struct FNauticalCannonBallConfig {
     /* 0x0020 */ double upwardRatio;
     /* 0x0028 */ double Gravity;
     /* 0x0030 */ double collisionRadius;
-    /* 0x0038 */ uint8_t CollisionChannel;
+    /* 0x0038 */ double collisionRadiusInMap;
+    /* 0x0040 */ double nauticalScale;
+    /* 0x0048 */ double inMapScale;
+    /* 0x0050 */ uint8_t CollisionChannel;
 };
 
-// Size: 0x78
+// Size: 0x60
 struct FNauticalCannonBallState {
     /* 0x0000 */ int32_t ID;
     /* 0x0004 */ FName faction;
-    /* 0x0010 */ double simScale;
-    /* 0x0018 */ double visualScale;
-    /* 0x0020 */ bool IsVisible;
-    /* 0x0028 */ FVector worldStart;
-    /* 0x0040 */ FVector worldForward;
-    /* 0x0058 */ double Height;
-    /* 0x0060 */ double velocityForward;
-    /* 0x0068 */ double velocityUp;
-    /* 0x0070 */ double Time;
+    /* 0x000c */ ENauticalCannonBallMode Mode;
+    /* 0x000d */ bool forceSmallTrace;
+    /* 0x0010 */ FVector initialLocation;
+    /* 0x0028 */ double angleTangent;
+    /* 0x0030 */ FVector planarDirection;
+    /* 0x0048 */ double planarDistance;
+    /* 0x0050 */ double planarVelocity;
+    /* 0x0058 */ double planarRange;
 };
 
-// Size: 0x18
+// Size: 0x70
 struct FNauticalCannonState {
-    /* 0x0000 */ USceneComponent* Component;
-    /* 0x0008 */ double cooldown;
-    /* 0x0010 */ double firingPeriod;
+    /* 0x0000 */ FTransform relativeToActor;
+    /* 0x0060 */ double cooldown;
+    /* 0x0068 */ double firingPeriod;
 };
 
 // Size: 0x50
@@ -70144,7 +66820,18 @@ struct FNauticalConflicts {
     /* 0x0000 */ TMap<FName, FNauticalWarStatus> warByFaction;
 };
 
-// Size: 0x328
+// Size: 0x50
+struct FNauticalCrew {
+    /* 0x0000 */ TMap<FName, FNauticalCrewMember> members;
+};
+
+// Size: 0xc
+struct FNauticalCrewMember {
+    /* 0x0000 */ FName crewId;
+    /* 0x0008 */ ENauticalCrewPosition position;
+};
+
+// Size: 0x370
 class ANauticalDock : public AActor {
     /* 0x02a8 */ USceneComponent* Root;
     /* 0x02b0 */ UStaticMeshComponent* foundation;
@@ -70152,282 +66839,458 @@ class ANauticalDock : public AActor {
     /* 0x02c0 */ ANauticalOcean* ocean;
     /* 0x02c8 */ ANauticalIsland* owningIsland;
     /* 0x02d0 */ FNauticalDockState State;
-    /* 0x0310 */ FNauticalDockConfig config;
+    /* 0x0338 */ FNauticalDockInterframe interframe;
+    /* 0x0348 */ FNauticalDockConfig config;
 };
 
-// Size: 0x18
+// Size: 0x28
 struct FNauticalDockConfig {
     /* 0x0000 */ UClass* shipClass;
     /* 0x0008 */ double repairSpeed;
-    /* 0x0010 */ double shipBuildTime;
+    /* 0x0010 */ FVector2D shipBuildTimeRange;
+    /* 0x0020 */ int32_t maxShipsByDock;
 };
 
-// Size: 0x40
+// Size: 0x10
+struct FNauticalDockInterframe {
+    /* 0x0000 */ TArray<ANauticalShip*> queue;
+};
+
+// Size: 0x68
 struct FNauticalDockState {
     /* 0x0000 */ int32_t ID;
     /* 0x0004 */ FName prototype;
     /* 0x000c */ FName externalName;
-    /* 0x0018 */ double simScale;
-    /* 0x0020 */ double visualScale;
-    /* 0x0028 */ double visualHeight;
-    /* 0x0030 */ ENauticalDockTask taskType;
-    /* 0x0038 */ double taskTimeRemaining;
+    /* 0x0014 */ ENauticalDockTask taskType;
+    /* 0x0018 */ double taskTimeRemaining;
+    /* 0x0020 */ TArray<ANauticalShip*> assignedShips;
+    /* 0x0030 */ bool berthOverridden;
+    /* 0x0038 */ FVector berthLocation;
+    /* 0x0050 */ FVector berthOutDirection;
 };
 
-// Size: 0x370
+// Size: 0x478
 class ANauticalIsland : public AActor {
     /* 0x02a8 */ USceneComponent* Root;
     /* 0x02b0 */ UStaticMeshComponent* land;
     /* 0x02b8 */ AActor* terrain;
-    /* 0x02c0 */ ANauticalOcean* ocean;
-    /* 0x02c8 */ FNauticalIslandState State;
-    /* 0x0350 */ FNauticalIslandConfig config;
+    /* 0x02c0 */ UGridNavMesh* NavMesh;
+    /* 0x02c8 */ ANauticalOcean* ocean;
+    /* 0x02d0 */ FNauticalIslandState State;
+    /* 0x03e0 */ FNauticalIslandInterframe interframe;
+    /* 0x03e8 */ FNauticalIslandConfig config;
+    /* 0x0458 */ FTerrainBuildingSpots buildingSpots;
+
+    void ApplyFaction(FName faction);
 };
 
-// Size: 0x20
+// Size: 0x70
 struct FNauticalIslandConfig {
     /* 0x0000 */ UClass* islandSubactorClass;
     /* 0x0008 */ double defenseRange;
     /* 0x0010 */ double simBounds;
     /* 0x0018 */ double simFindBounds;
+    /* 0x0020 */ bool isAlwaysKnown;
+    /* 0x0021 */ bool isUnknowable;
+    /* 0x0028 */ TArray<FNauticalIslandTradePersonality> tradePersonalities;
+    /* 0x0038 */ FTerrainBuildingConstraints buildingConstraints;
 };
 
-// Size: 0x88
+// Size: 0x1
+struct FNauticalIslandInterframe {
+    /* 0x0000 */ bool elideVisuals;
+};
+
+// Size: 0x110
 struct FNauticalIslandState {
     /* 0x0000 */ int32_t ID;
     /* 0x0004 */ FName prototype;
-    /* 0x0010 */ double Bounds;
-    /* 0x0018 */ FName faction;
-    /* 0x0020 */ double simScale;
-    /* 0x0028 */ double visualScale;
-    /* 0x0030 */ double visualHeight;
+    /* 0x000c */ int32_t Seed;
+    /* 0x0010 */ FString DisplayName;
+    /* 0x0020 */ double Bounds;
+    /* 0x0028 */ FName faction;
+    /* 0x0030 */ bool isKnownIsland;
     /* 0x0038 */ TSet<ANauticalDock*> docks;
+    /* 0x0088 */ TSet<ANauticalStructure*> structures;
+    /* 0x00d8 */ FName personalityId;
+    /* 0x00e0 */ TArray<FName> offeredItems;
+    /* 0x00f0 */ TArray<FName> desiredItems;
+    /* 0x0100 */ double profitMargin;
+    /* 0x0108 */ int32_t offerVolume;
 };
 
-// Size: 0x368
+// Size: 0x48
+struct FNauticalIslandTradePersonality {
+    /* 0x0000 */ FName ID;
+    /* 0x0008 */ FString Note;
+    /* 0x0018 */ TArray<FName> offeredItems;
+    /* 0x0028 */ TArray<FName> desiredItems;
+    /* 0x0038 */ int32_t offerVolumeStart;
+    /* 0x0040 */ double protiftMargin;
+};
+
+// Size: 0x3e8
 class ANauticalMap : public AActor {
     /* 0x02a8 */ USceneComponent* Root;
     /* 0x02b0 */ FNauticalMapConfig config;
-    /* 0x02f0 */ FNauticalMapState State;
-    /* 0x0360 */ ANauticalOcean* ocean;
+    /* 0x0328 */ FNauticalMapState State;
+    /* 0x03e0 */ ANauticalOcean* ocean;
 };
 
-// Size: 0x40
+// Size: 0x78
 struct FNauticalMapConfig {
     /* 0x0000 */ float heightOffset;
     /* 0x0008 */ UClass* islandFeatureClass;
     /* 0x0010 */ FName legendTargetFaction;
     /* 0x0018 */ UClass* legendIslandFeatureClass;
     /* 0x0020 */ UClass* legendFeatureClass;
-    /* 0x0028 */ FVector legendSimOffset;
+    /* 0x0028 */ UClass* mapGridCellClass;
+    /* 0x0030 */ UClass* borderPieceClass;
+    /* 0x0038 */ UClass* motifClass;
+    /* 0x0040 */ FVector legendSimOffset;
+    /* 0x0058 */ FIntVector2 mapBound;
+    /* 0x0060 */ double mapGridWorldHeight;
+    /* 0x0068 */ FVector2D motifRangeIsland;
 };
 
-// Size: 0x70
+// Size: 0xb8
 struct FNauticalMapState {
     /* 0x0000 */ TMap<AActor*, FVector> mapFeatures;
-    /* 0x0050 */ double simScale;
-    /* 0x0058 */ double visualScale;
-    /* 0x0060 */ double visualHeight;
-    /* 0x0068 */ bool IsVisible;
+    /* 0x0050 */ TMap<FIntVector2, AActor*> gridCellActors;
+    /* 0x00a0 */ TArray<AActor*> borderPieces;
+    /* 0x00b0 */ bool IsVisible;
 };
 
-// Size: 0x68
+// Size: 0x18
 struct FNauticalNavigatorDirections {
     /* 0x0000 */ FRotator Angle;
-    /* 0x0018 */ TSet<ENauticalShipSails> usedSails;
 };
 
-// Size: 0xd8
+// Size: 0x80
 struct FNauticalNavigatorGoal {
-    /* 0x0000 */ bool requiresAngle;
-    /* 0x0008 */ FVector currentPosition;
-    /* 0x0020 */ FRotator currentAngle;
-    /* 0x0038 */ FRotator goalAngle;
-    /* 0x0050 */ FVector goalPosition;
-    /* 0x0068 */ double goalRadius;
-    /* 0x0070 */ TSet<ENauticalShipSails> availableSails;
-    /* 0x00c0 */ FVector WindDirection;
 };
 
-// Size: 0x798
+// Size: 0x30
+struct FNauticalNotice {
+    /* 0x0000 */ int32_t noticeId;
+    /* 0x0004 */ FName noticeType;
+    /* 0x000c */ FName noticeTitleId;
+    /* 0x0014 */ FName noticeDescId;
+    /* 0x0020 */ ANauticalShip* ship;
+    /* 0x0028 */ ANauticalIsland* island;
+};
+
+// Size: 0xab0
 class ANauticalOcean : public AActor {
     /* 0x02a8 */ FOceanConfig config;
-    /* 0x0468 */ FOceanState State;
-    /* 0x0778 */ FSyncEventList pendingEvents;
-    /* 0x0788 */ TArray<uint8_t> testSaveBuffer;
+    /* 0x0560 */ FOceanState State;
+    /* 0x09b8 */ FSyncEventList pendingEvents;
+    /* 0x09c8 */ TArray<uint8_t> testSaveBuffer;
+    /* 0x09d8 */ FOceanInterframe interframe;
+    /* 0x0a90 */ FMulticastInlineDelegate OnNoticeChange;
+    /* 0x0aa0 */ FMulticastInlineDelegate OnNoticeClear;
 
+    static FString AssembleMapGridLabel(FIntVector2 gridLoc);
+    static FIntVector2 CalcMapGridFromWorld(FVector worldLoc);
+    static FVector CalcWorldCellCenterFromMapGrid(FIntVector2 gridLoc);
+    FName GetActionStringKey(ENauticalAction action) const;
+    FString GetRandomShipNameForFaction(FName faction, FName shipPrototype) const;
+    static FVector SnapWorldLocationToGridCenter(FVector worldLoc);
     void TestLoadFromBuffer();
     void TestSaveToBuffer();
     void TestToggleVisiblity();
 };
 
-// Size: 0x58
+// Size: 0x78
 struct FNauticalPlan {
     /* 0x0000 */ ANauticalShip* otherShip;
     /* 0x0008 */ ANauticalDock* otherDock;
-    /* 0x0010 */ ANauticalPoi* otherPoi;
-    /* 0x0018 */ FVector otherLocation;
-    /* 0x0030 */ ENauticalAction actionGoal;
-    /* 0x0031 */ bool isAutoPlan;
-    /* 0x0038 */ double workStartPeriod;
-    /* 0x0040 */ FName workStartTask;
-    /* 0x0048 */ double workEndPeriod;
-    /* 0x0050 */ FName workEndTask;
+    /* 0x0010 */ ANauticalIsland* otherIsland;
+    /* 0x0018 */ ANauticalPoi* otherPoi;
+    /* 0x0020 */ ANauticalStructure* otherStructure;
+    /* 0x0028 */ bool isOtherLocationValid;
+    /* 0x0030 */ FVector otherLocation;
+    /* 0x0048 */ ENauticalAction actionGoal;
+    /* 0x0049 */ bool isAutoPlan;
+    /* 0x0050 */ double workStartPeriod;
+    /* 0x0058 */ FName workStartTask;
+    /* 0x0060 */ double workEndPeriod;
+    /* 0x0068 */ FName workEndTask;
+    /* 0x0070 */ double maxEffortPeriod;
 };
 
-// Size: 0x3a8
+// Size: 0x3d8
 class ANauticalPlanDisplay : public AActor {
     /* 0x02a8 */ USceneComponent* Root;
     /* 0x02b0 */ UStaticMeshComponent* targetSymbol;
-    /* 0x02b8 */ USplineMeshComponent* pathVisual;
-    /* 0x02c0 */ FNauticalPlanDisplayConfig config;
-    /* 0x02e0 */ FNauticalPlanDisplayState State;
+    /* 0x02b8 */ TArray<USplineMeshComponent*> pathMembers;
+    /* 0x02c8 */ FNauticalPlanDisplayConfig config;
+    /* 0x02f0 */ FNauticalPlanDisplayState State;
 };
 
-// Size: 0x20
+// Size: 0x28
 struct FNauticalPlanDisplayConfig {
-    /* 0x0000 */ int32_t PathSegmentCount;
-    /* 0x0004 */ float pathHeight;
-    /* 0x0008 */ int32_t pathCustomDepth;
-    /* 0x0010 */ double arcEndsHeight;
-    /* 0x0018 */ FColor arcColor;
+    /* 0x0000 */ UStaticMesh* splineMeshObject;
+    /* 0x0008 */ int32_t PathSegmentCount;
+    /* 0x000c */ float pathHeight;
+    /* 0x0010 */ int32_t pathCustomDepth;
+    /* 0x0018 */ double arcEndsHeight;
+    /* 0x0020 */ FColor arcColor;
 };
 
-// Size: 0xc8
+// Size: 0xe8
 struct FNauticalPlanDisplayState {
-    /* 0x0000 */ double simScale;
-    /* 0x0008 */ double visualScale;
-    /* 0x0010 */ FNauticalPlan shownPlan;
-    /* 0x0068 */ bool hasValidPlan;
-    /* 0x0070 */ FVector Start;
-    /* 0x0088 */ FVector destination;
-    /* 0x00a0 */ FName IconName;
-    /* 0x00a8 */ bool isMobileTarget;
-    /* 0x00b0 */ AActor* Target;
-    /* 0x00b8 */ AActor* doer;
-    /* 0x00c0 */ bool IsVisible;
+    /* 0x0000 */ FNauticalPlan shownPlan;
+    /* 0x0078 */ bool hasValidPlan;
+    /* 0x0080 */ FVector Start;
+    /* 0x0098 */ FVector destination;
+    /* 0x00b0 */ TArray<FVector> pathPoints;
+    /* 0x00c0 */ FName IconName;
+    /* 0x00c8 */ bool isMobileTarget;
+    /* 0x00d0 */ AActor* Target;
+    /* 0x00d8 */ AActor* doer;
+    /* 0x00e0 */ bool IsVisible;
+    /* 0x00e1 */ bool needsUpdate;
 };
 
-// Size: 0x348
+// Size: 0x3e0
 class ANauticalPoi : public AActor {
     /* 0x02a8 */ USceneComponent* Root;
     /* 0x02b0 */ UStaticMeshComponent* Symbol;
-    /* 0x02b8 */ FNauticalPoiConfig config;
-    /* 0x02c8 */ FNauticalPoiState State;
-    /* 0x0340 */ ANauticalOcean* ocean;
+    /* 0x02b8 */ UWidgetComponent* statusWidget;
+    /* 0x02c0 */ FNauticalPoiConfig config;
+    /* 0x0318 */ FNauticalPoiState State;
+    /* 0x03d0 */ FNauticalPoiInterframe interframe;
+    /* 0x03d8 */ ANauticalOcean* ocean;
 };
 
-// Size: 0xc
+// Size: 0x58
 struct FNauticalPoiConfig {
     /* 0x0000 */ ENauticalPoiType poiType;
     /* 0x0004 */ FName prototype;
+    /* 0x0010 */ FVector2D idleRotSpeedRange;
+    /* 0x0020 */ FVector2D idleSpeedRange;
+    /* 0x0030 */ FString poiNameStringKey;
+    /* 0x0040 */ double statusOffsetDistance;
+    /* 0x0048 */ int32_t generatorFullCount;
+    /* 0x004c */ int32_t generatorDaysToFull;
+    /* 0x0050 */ FName generatorResource;
 };
 
-// Size: 0x78
+// Size: 0x2
+struct FNauticalPoiInterframe {
+    /* 0x0000 */ bool showVisuals;
+    /* 0x0001 */ bool showHover;
+};
+
+// Size: 0xb8
 struct FNauticalPoiState {
     /* 0x0000 */ int32_t ID;
     /* 0x0004 */ FName prototype;
-    /* 0x0010 */ double simScale;
-    /* 0x0018 */ double visualScale;
-    /* 0x0020 */ double visualHeight;
-    /* 0x0028 */ FNauticalCargo cargo;
+    /* 0x0010 */ FNauticalCargo cargo;
+    /* 0x0060 */ FNauticalCrew crew;
+    /* 0x00b0 */ bool isKnown;
 };
 
-// Size: 0x50
-struct FNauticalRigging {
-    /* 0x0000 */ TMap<ENauticalShipSails, double> sailDeployments;
-};
-
-// Size: 0x618
+// Size: 0x888
 class ANauticalShip : public AActor {
     /* 0x02a8 */ USceneComponent* Root;
     /* 0x02b0 */ UStaticMeshComponent* hull;
     /* 0x02b8 */ UWidgetComponent* statusWidget;
     /* 0x02c0 */ USceneComponent* cannonsGroup;
     /* 0x02c8 */ UChildActorComponent* zoomedActor;
-    /* 0x02d0 */ FNauticalShipConfig config;
-    /* 0x0440 */ ANauticalOcean* ocean;
-    /* 0x0448 */ ANauticalIsland* owningIsland;
-    /* 0x0450 */ FNauticalShipState State;
+    /* 0x02d0 */ UOceanShipImpactComponent* oceanImpactComponent;
+    /* 0x02d8 */ UCapsuleComponent* nauticallScaleCollison;
+    /* 0x02e0 */ FNauticalShipConfig config;
+    /* 0x0408 */ ANauticalOcean* ocean;
+    /* 0x0410 */ ANauticalIsland* owningIsland;
+    /* 0x0418 */ ANauticalDock* assignedDock;
+    /* 0x0420 */ FNauticalShipState State;
+    /* 0x0850 */ FNauticalShipInterframe interframe;
 
     bool CanDoAction(ENauticalAction ActionType);
     void FireCannons(ANauticalShip* Target);
     void SetAnimation(ENauticalAction ActionType);
     void SetFullOrMini(bool isFull, bool isMini);
     void SetShowSelection(bool doShow);
-    void SetShownRigging(FNauticalRigging nd);
-    void TestCannons();
+    void SetShowSpatialUi(bool doShow);
     void TestDestruction();
     void TestDocking();
     void TestSinking();
+    void TestStarving();
 };
 
-// Size: 0x170
+// Size: 0x128
 struct FNauticalShipConfig {
     /* 0x0000 */ FName prototype;
-    /* 0x0008 */ UTexture2D* Icon;
-    /* 0x0010 */ TSet<ENauticalAction> capableActions;
-    /* 0x0060 */ double simBounds;
-    /* 0x0068 */ double goalBeeLineRange;
-    /* 0x0070 */ double turningLookAhead;
-    /* 0x0078 */ double moveSpeedMax;
-    /* 0x0080 */ double rotateSpeed;
-    /* 0x0088 */ double combatRange;
-    /* 0x0090 */ double combatPower;
-    /* 0x0098 */ double leewayRatio;
-    /* 0x00a0 */ double sailDeploySpeed;
-    /* 0x00a8 */ double sailStowSpeed;
-    /* 0x00b0 */ double hullLeanRatio;
-    /* 0x00b8 */ FRotator hullRotBase;
-    /* 0x00d0 */ FVector2D cannonCooldowns;
-    /* 0x00e0 */ TSet<ENauticalShipSails> equipedSails;
-    /* 0x0130 */ UClass* planClass;
-    /* 0x0138 */ double visionDeltaBetweenReports;
-    /* 0x0140 */ FLinearColor factionColor;
-    /* 0x0150 */ double armorDamageThreshold;
-    /* 0x0158 */ double armorDamageReduction;
-    /* 0x0160 */ double armorPoints;
-    /* 0x0168 */ double minutesToFullHeal;
+    /* 0x0008 */ FName shipType_locKey;
+    /* 0x0010 */ UTexture2D* Icon;
+    /* 0x0018 */ TSet<ENauticalAction> capableActions;
+    /* 0x0068 */ double simBounds;
+    /* 0x0070 */ double goalBeeLineRange;
+    /* 0x0078 */ double turningLookAhead;
+    /* 0x0080 */ double nearGoalThreshhold;
+    /* 0x0088 */ double moveSpeedMax;
+    /* 0x0090 */ double Acceleration;
+    /* 0x0098 */ double AngularVelocity;
+    /* 0x00a0 */ double rotateSpeed;
+    /* 0x00a8 */ double combatRange;
+    /* 0x00b0 */ FRotator hullRotBase;
+    /* 0x00c8 */ FVector2D cannonCooldowns;
+    /* 0x00d8 */ UClass* planClass;
+    /* 0x00e0 */ double visionDeltaBetweenReports;
+    /* 0x00e8 */ FLinearColor factionColor;
+    /* 0x00f8 */ double highPrecisionUpdateRange;
+    /* 0x0100 */ int32_t cargoLimit;
+    /* 0x0104 */ bool ignoreFoodLogic;
+    /* 0x0108 */ int32_t hp;
+    /* 0x010c */ bool hasPassiveHeal;
+    /* 0x0110 */ double minutesToFullHeal;
+    /* 0x0118 */ bool ignoreCombat;
+    /* 0x0119 */ bool ignoreAmmoLimit;
+    /* 0x011c */ FName infiniteAmmoType;
+    /* 0x0124 */ int32_t nCannons_ui;
 };
 
-// Size: 0x1c8
+// Size: 0x38
+struct FNauticalShipInterframe {
+    /* 0x0000 */ bool isUnseen;
+    /* 0x0008 */ FRotator worldStatusRotation;
+    /* 0x0020 */ double healAccumulator;
+    /* 0x0028 */ FIntPoint proximityGridCell;
+    /* 0x0030 */ float dynamicPathingCooldown;
+};
+
+// Size: 0x430
 struct FNauticalShipState {
     /* 0x0000 */ int32_t ID;
     /* 0x0004 */ FName prototype;
     /* 0x000c */ FName externalName;
-    /* 0x0018 */ double simScale;
-    /* 0x0020 */ double Bounds;
-    /* 0x0028 */ double visualScale;
-    /* 0x0030 */ double visualHeight;
-    /* 0x0038 */ FNauticalPlan plan;
-    /* 0x0090 */ FNauticalCargo cargo;
-    /* 0x00e0 */ UNauticalStatusWidget* statusUi;
-    /* 0x00e8 */ FNauticalRigging rigging;
-    /* 0x0138 */ double hp;
-    /* 0x0140 */ FName killedByFaction;
-    /* 0x0148 */ TArray<FNauticalCannonState> cannons;
-    /* 0x0158 */ bool IsVisible;
-    /* 0x0160 */ FVector worldLoc;
-    /* 0x0178 */ FVector simLoc;
-    /* 0x0190 */ FRotator worldRot;
-    /* 0x01a8 */ ANauticalPlanDisplay* planDisplay;
-    /* 0x01b0 */ FVector lastReportedVisionPoint;
+    /* 0x0018 */ ANauticalIsland* dockedIsland;
+    /* 0x0020 */ ANauticalDock* dockedDock;
+    /* 0x0028 */ bool filterAllowedActions;
+    /* 0x0030 */ TSet<ENauticalAction> allowedActionsFilter;
+    /* 0x0080 */ FString shipName;
+    /* 0x0090 */ FNauticalPlan plan;
+    /* 0x0108 */ FNauticalCargo cargo;
+    /* 0x0158 */ FNauticalCrew crew;
+    /* 0x01a8 */ int32_t ammoCount;
+    /* 0x01ac */ int32_t food;
+    /* 0x01b0 */ int32_t foodMax;
+    /* 0x01b4 */ int32_t foodDesperationTrigger;
+    /* 0x01b8 */ int32_t hp;
+    /* 0x01bc */ int32_t hpMax;
+    /* 0x01c0 */ int32_t materialStrength;
+    /* 0x01c4 */ int32_t destructivePower;
+    /* 0x01c8 */ bool ghostUponArrival;
+    /* 0x01c9 */ ENauticalCombatScale combatScale;
+    /* 0x01cc */ int32_t sailorCount;
+    /* 0x01d0 */ int32_t officerCount;
+    /* 0x01d4 */ int32_t corpseCount;
+    /* 0x01d8 */ FName killedByFaction;
+    /* 0x01e0 */ TArray<FNauticalCannonState> cannonsLeft;
+    /* 0x01f0 */ TArray<FNauticalCannonState> cannonsRight;
+    /* 0x0200 */ bool IsVisible;
+    /* 0x0208 */ FVector worldLoc;
+    /* 0x0220 */ FVector simLoc;
+    /* 0x0238 */ FRotator worldRot;
+    /* 0x0250 */ FVector lastReportedVisionPoint;
+    /* 0x0268 */ ANauticalStructure* lastAttackerTower;
+    /* 0x0270 */ ANauticalShip* shakedownBlocker;
+    /* 0x0278 */ FNauticalNavigatorGoal navGoal;
+    /* 0x02f8 */ float Velocity;
+    /* 0x0300 */ TArray<ANauticalShip*> escorts;
+    /* 0x0310 */ UNauticalStatusWidget* statusUi;
+    /* 0x0318 */ ANauticalPlanDisplay* planDisplay;
+    /* 0x0320 */ int32_t noticeId_IsStarving;
+    /* 0x0324 */ int32_t noticeId_Shakedown;
+    /* 0x0328 */ int32_t noticeId_UnderAttack;
+    /* 0x032c */ int32_t noticeId_TradeReady;
+    /* 0x0330 */ FName msgId_TradeReady;
+    /* 0x0338 */ int32_t noticeId_idle;
+    /* 0x0340 */ TSet<FName> whitelistTargetFactions;
+    /* 0x0390 */ TSet<int32_t> whitelistTargets;
+    /* 0x03e0 */ TSet<int32_t> blacklistTargets;
 };
 
-// Size: 0x78
+// Size: 0xa0
 struct FNauticalStatus {
     /* 0x0000 */ bool doHide;
-    /* 0x0004 */ FName taskName;
-    /* 0x0010 */ double hp;
-    /* 0x0018 */ FLinearColor hpColor;
-    /* 0x0028 */ FNauticalCargo cargo;
+    /* 0x0008 */ FString shipName;
+    /* 0x0018 */ FName taskName;
+    /* 0x0020 */ double hp;
+    /* 0x0028 */ double hpMax;
+    /* 0x0030 */ FLinearColor hpColor;
+    /* 0x0040 */ FNauticalCargo cargo;
+    /* 0x0090 */ bool hasCannons;
+    /* 0x0094 */ int32_t ammoCount;
+    /* 0x0098 */ FName faction;
 };
 
 // Size: 0x340
 class UNauticalStatusWidget : public UUserWidget {
 
-    void SetShownHp(double newHp);
+    void SetShownHp(double newHp, double newHpMax);
     void SetShownStatus(FNauticalStatus nd);
+};
+
+// Size: 0x520
+class ANauticalStructure : public AActor {
+    /* 0x02a8 */ USceneComponent* Root;
+    /* 0x02b0 */ USceneComponent* hoverParent;
+    /* 0x02b8 */ USceneComponent* cannonsGroup;
+    /* 0x02c0 */ UStaticMeshComponent* structureMesh;
+    /* 0x02c8 */ UWidgetComponent* statusWidget;
+    /* 0x02d0 */ USceneComponent* cannonRotator;
+    /* 0x02d8 */ ANauticalOcean* ocean;
+    /* 0x02e0 */ ANauticalIsland* owningIsland;
+    /* 0x02e8 */ FNauticalStructureState State;
+    /* 0x0470 */ FNauticalStructureConfig config;
+    /* 0x0518 */ FNauticalStructureInterframe interframe;
+
+    void SetShowRange(bool doShow);
+};
+
+// Size: 0xa8
+struct FNauticalStructureConfig {
+    /* 0x0000 */ bool isSelectable;
+    /* 0x0001 */ bool syncCargo;
+    /* 0x0002 */ bool hasCannon;
+    /* 0x0008 */ double firingArcDotProduct;
+    /* 0x0010 */ double AngularVelocity;
+    /* 0x0018 */ double cannonSpread;
+    /* 0x0020 */ double firingMaxRange;
+    /* 0x0028 */ FVector2D cannonCooldowns;
+    /* 0x0038 */ TSet<FName> autoTargetFactions;
+    /* 0x0088 */ bool enableFullRotation;
+    /* 0x0089 */ bool ignoreAmmoLimit;
+    /* 0x008c */ FName infiniteAmmo_ammoType;
+    /* 0x0094 */ bool hasPassiveHeal;
+    /* 0x0098 */ double secondsToFullHeal;
+    /* 0x00a0 */ int32_t hp;
+};
+
+// Size: 0x8
+struct FNauticalStructureInterframe {
+    /* 0x0000 */ double hpAccumulator;
+};
+
+// Size: 0x188
+struct FNauticalStructureState {
+    /* 0x0000 */ int32_t ID;
+    /* 0x0004 */ FName prototype;
+    /* 0x000c */ FName externalName;
+    /* 0x0018 */ FNauticalCargo cargo;
+    /* 0x0068 */ int32_t hp;
+    /* 0x006c */ int32_t hpMax;
+    /* 0x0070 */ int32_t ammoCount;
+    /* 0x0078 */ TArray<FNauticalCannonState> cannons;
+    /* 0x0088 */ bool cannonsEnabled;
+    /* 0x008c */ int32_t lastTargetID;
+    /* 0x0090 */ double cannonRotation;
+    /* 0x0098 */ TSet<FName> whitelistTargetFactions;
+    /* 0x00e8 */ TSet<int32_t> whitelistTargets;
+    /* 0x0138 */ TSet<int32_t> blacklistTargets;
 };
 
 // Size: 0xb8
@@ -70452,21 +67315,6 @@ struct FNauticalWarStatus {
     /* 0x0098 */ TSet<int32_t> ownCombatants;
 };
 
-// Size: 0x90
-struct FNauticalWindSimInput {
-    /* 0x0000 */ double leewayRatio;
-    /* 0x0008 */ FVector shipDirection;
-    /* 0x0020 */ FVector WindDirection;
-    /* 0x0038 */ double windPower;
-    /* 0x0040 */ FNauticalRigging rigging;
-};
-
-// Size: 0x20
-struct FNauticalWindSimResult {
-    /* 0x0000 */ FVector shipDelta;
-    /* 0x0018 */ double hullLean;
-};
-
 // Size: 0x18
 struct FOceanBlockerReport {
     /* 0x0000 */ ANauticalShip* ship;
@@ -70474,36 +67322,55 @@ struct FOceanBlockerReport {
     /* 0x0010 */ double Distance;
 };
 
-// Size: 0x1c0
-struct FOceanConfig {
-    /* 0x0000 */ UClass* shipClass;
-    /* 0x0008 */ TMap<FName, FOceanShipPrototypeLookup> shipPrototypes;
-    /* 0x0058 */ UClass* dockClass;
-    /* 0x0060 */ UClass* islandClass;
-    /* 0x0068 */ UClass* poiClass;
-    /* 0x0070 */ TMap<FName, FOceanPoiPrototypeLookup> poiPrototypes;
-    /* 0x00c0 */ UClass* salvageClass;
-    /* 0x00c8 */ UClass* cannonBallClass;
-    /* 0x00d0 */ UClass* mapClass;
-    /* 0x00d8 */ double simScale;
-    /* 0x00e0 */ double visualHeight;
-    /* 0x00e8 */ double visualScale;
-    /* 0x00f0 */ UTextureRenderTarget2D* windRt;
-    /* 0x00f8 */ double windPowerScale;
-    /* 0x0100 */ bool manageStandalone;
-    /* 0x0101 */ bool gatherOnStart;
-    /* 0x0108 */ TArray<FOceanDesignPlan> procGenPlans;
-    /* 0x0118 */ bool doProcGen;
-    /* 0x0119 */ bool startHidden;
-    /* 0x0120 */ FOceanVision visionConfig;
-    /* 0x0150 */ float cannonBallForwardOffset;
-    /* 0x0158 */ TMap<FName, UTexture2D*> factionIcons;
-    /* 0x01a8 */ double waveSpawnDistance;
-    /* 0x01b0 */ double simLimitRadius;
-    /* 0x01b8 */ bool animateScale;
+// Size: 0x10
+struct FOceanCannonballPrototypeLookup {
+    /* 0x0000 */ FName cannonballType;
+    /* 0x0008 */ UClass* cannonballClass;
 };
 
-// Size: 0xf0
+// Size: 0x2b8
+struct FOceanConfig {
+    /* 0x0000 */ UClass* shipClass;
+    /* 0x0008 */ FName lifeboatPrototype;
+    /* 0x0010 */ TMap<FName, FOceanShipPrototypeLookup> shipPrototypes;
+    /* 0x0060 */ UClass* dockClass;
+    /* 0x0068 */ FName defaultTowerClass;
+    /* 0x0070 */ TMap<FName, FOceanStructurePrototypeLookup> structurePrototypes;
+    /* 0x00c0 */ UClass* islandClass;
+    /* 0x00c8 */ UClass* poiClass;
+    /* 0x00d0 */ UClass* leviathanClass;
+    /* 0x00d8 */ UClass* lifeboatClass;
+    /* 0x00e0 */ UClass* guanoClass;
+    /* 0x00e8 */ TMap<FName, FOceanPoiPrototypeLookup> poiPrototypes;
+    /* 0x0138 */ UClass* salvageClass;
+    /* 0x0140 */ UClass* cannonballClass;
+    /* 0x0148 */ TMap<FName, FOceanCannonballPrototypeLookup> cannonBallPrototypes;
+    /* 0x0198 */ double cannonVertSpreadMultiplier;
+    /* 0x01a0 */ double cannonHorzSpreadMultiplier;
+    /* 0x01a8 */ UClass* mapClass;
+    /* 0x01b0 */ UDataTable* tuningTable;
+    /* 0x01b8 */ TArray<FOceanDesignPlan> procGenPlans;
+    /* 0x01c8 */ int32_t goalPoiCount;
+    /* 0x01cc */ bool doProcGen;
+    /* 0x01cd */ bool startHidden;
+    /* 0x01d0 */ FOceanVision visionConfig;
+    /* 0x0200 */ FString bannedIslandName;
+    /* 0x0210 */ float cannonBallForwardOffset;
+    /* 0x0218 */ TMap<FName, UTexture2D*> factionIcons;
+    /* 0x0268 */ double waveSpawnDistance;
+    /* 0x0270 */ double simLimitRadius;
+    /* 0x0278 */ FIntVector2 mapBound;
+    /* 0x0280 */ double edgeVisionRange;
+    /* 0x0288 */ float localCombatSimRadius;
+    /* 0x028c */ float playerColonyRadius;
+    /* 0x0290 */ USoundBase* notifSfx_shakedown;
+    /* 0x0298 */ USoundBase* notifSfx_tradeReady;
+    /* 0x02a0 */ USoundBase* notifSfx_starving;
+    /* 0x02a8 */ USoundBase* notifSfx_underattack;
+    /* 0x02b0 */ USoundBase* notifSfx_generic;
+};
+
+// Size: 0x100
 struct FOceanDesignPlan {
     /* 0x0000 */ FName faction;
     /* 0x0008 */ UClass* islandClassOverride;
@@ -70514,18 +67381,21 @@ struct FOceanDesignPlan {
     /* 0x0048 */ double islandMaxRatio;
     /* 0x0050 */ double islandHeight;
     /* 0x0058 */ UClass* dockClassOverride;
-    /* 0x0060 */ double dockBaseDistance;
-    /* 0x0068 */ FVector dockFixedAngle;
-    /* 0x0080 */ double dockHeight;
-    /* 0x0088 */ UClass* shipClassOverride;
-    /* 0x0090 */ FVector2D shipsCount;
-    /* 0x00a0 */ UClass* shipClassOverrideAlt;
-    /* 0x00a8 */ FVector2D shipsCountAlt;
-    /* 0x00b8 */ double shipBaseDistance;
-    /* 0x00c0 */ double shipHeight;
-    /* 0x00c8 */ FVector2D poiCount;
-    /* 0x00d8 */ FVector2D poiDistance;
-    /* 0x00e8 */ double poiHeight;
+    /* 0x0060 */ FName towerClassOverride;
+    /* 0x0068 */ double dockBaseDistance;
+    /* 0x0070 */ FVector dockFixedAngle;
+    /* 0x0088 */ double dockHeight;
+    /* 0x0090 */ int32_t dockCount;
+    /* 0x0094 */ int32_t towerCount;
+    /* 0x0098 */ UClass* shipClassOverride;
+    /* 0x00a0 */ FVector2D shipsCount;
+    /* 0x00b0 */ UClass* shipClassOverrideAlt;
+    /* 0x00b8 */ FVector2D shipsCountAlt;
+    /* 0x00c8 */ double shipBaseDistance;
+    /* 0x00d0 */ double shipHeight;
+    /* 0x00d8 */ FVector2D poiCount;
+    /* 0x00e8 */ FVector2D poiDistance;
+    /* 0x00f8 */ double poiHeight;
 };
 
 // Size: 0x58
@@ -70544,17 +67414,30 @@ struct FOceanFoundIslands {
     /* 0x0000 */ TMap<int32_t, FOceanFoundIslandState> islands;
 };
 
-// Size: 0x20
-struct FOceanMessage {
-    /* 0x0000 */ ANauticalIsland* issueingIsland;
-    /* 0x0008 */ ANauticalShip* issueingShip;
-    /* 0x0010 */ FName titleStringId;
-    /* 0x0018 */ FName descStringId;
+// Size: 0xb8
+struct FOceanInterframe {
+    /* 0x0000 */ double bgmTimePlayed;
+    /* 0x0010 */ ATiledBlockTerrain* tiledTerrain;
+    /* 0x0018 */ TMap<FIntPoint, FOceanProximityGridEntry> proximityGrid;
+    /* 0x0068 */ TMap<FName, bool> factionAgression;
 };
 
-// Size: 0x10
+// Size: 0x68
+struct FOceanMessage {
+    /* 0x0000 */ FName msgId;
+    /* 0x0008 */ ANauticalIsland* issueingIsland;
+    /* 0x0010 */ ANauticalShip* issueingShip;
+    /* 0x0018 */ ANauticalShip* targetShip;
+    /* 0x0020 */ FName titleStringId;
+    /* 0x0028 */ FName descStringId;
+    /* 0x0030 */ TArray<FName> actions;
+    /* 0x0040 */ TArray<FName> Flags;
+    /* 0x0050 */ FVector worldLoc;
+};
+
+// Size: 0x50
 struct FOceanMessageAccumulation {
-    /* 0x0000 */ TArray<FOceanMessage> msgs;
+    /* 0x0000 */ TMap<FName, FOceanMessage> msgs;
 };
 
 // Size: 0x10
@@ -70563,41 +67446,76 @@ struct FOceanPoiPrototypeLookup {
     /* 0x0008 */ UClass* poiClass;
 };
 
+// Size: 0x20
+struct FOceanProximityGridEntry {
+    /* 0x0000 */ TArray<ANauticalShip*> ships;
+    /* 0x0010 */ TArray<ANauticalStructure*> Towers;
+};
+
+// Size: 0x10
+struct FOceanProximityQueryResult {
+    /* 0x0000 */ TArray<FOceanProximityResult> Actors;
+};
+
+// Size: 0x18
+struct FOceanProximityResult {
+    /* 0x0000 */ ANauticalShip* ship;
+    /* 0x0008 */ ANauticalStructure* tower;
+};
+
 // Size: 0x10
 struct FOceanShipPrototypeLookup {
     /* 0x0000 */ FName shipType;
     /* 0x0008 */ UClass* shipClass;
 };
 
-// Size: 0x310
+// Size: 0x458
 struct FOceanState {
     /* 0x0000 */ TMap<int32_t, ANauticalShip*> ships;
     /* 0x0050 */ TMap<int32_t, ANauticalDock*> docks;
-    /* 0x00a0 */ TMap<int32_t, ANauticalIsland*> islands;
-    /* 0x00f0 */ TMap<int32_t, ANauticalPoi*> pois;
-    /* 0x0140 */ TMap<int32_t, ANauticalCannonBall*> cannonBalls;
-    /* 0x0190 */ ANauticalMap* Map;
-    /* 0x0198 */ double playtime;
-    /* 0x01a0 */ bool IsVisible;
-    /* 0x01a8 */ FNauticalConflicts conflicts;
-    /* 0x01f8 */ FOceanFoundIslands foundIslands;
-    /* 0x0248 */ int32_t nextAvailableId;
-    /* 0x0250 */ TArray<int32_t> returnedIds;
-    /* 0x0260 */ TSet<int32_t> inUseIds;
-    /* 0x02b0 */ FDamageHitAccumulation damageHits;
-    /* 0x0300 */ FOceanMessageAccumulation msgAccumulation;
+    /* 0x00a0 */ TMap<int32_t, ANauticalStructure*> structures;
+    /* 0x00f0 */ TMap<int32_t, ANauticalIsland*> islands;
+    /* 0x0140 */ TMap<int32_t, ANauticalPoi*> pois;
+    /* 0x0190 */ TMap<int32_t, ANauticalCannonBall*> cannonBalls;
+    /* 0x01e0 */ ANauticalMap* Map;
+    /* 0x01e8 */ double playtime;
+    /* 0x01f0 */ bool IsVisible;
+    /* 0x01f8 */ FNauticalConflicts conflicts;
+    /* 0x0248 */ FOceanFoundIslands foundIslands;
+    /* 0x0298 */ FOceanVisionState visionState;
+    /* 0x02e8 */ TMap<int32_t, FNauticalNotice> notices;
+    /* 0x0338 */ int32_t nextAvailableId;
+    /* 0x0340 */ TArray<int32_t> returnedIds;
+    /* 0x0350 */ TSet<int32_t> inUseIds;
+    /* 0x03a0 */ FDamageHitAccumulation damageHits;
+    /* 0x03f0 */ FOceanMessageAccumulation msgAccumulation;
+    /* 0x0440 */ FVector lastPlayerSnappedForward;
+};
+
+// Size: 0x10
+struct FOceanStructurePrototypeLookup {
+    /* 0x0000 */ FName structureType;
+    /* 0x0008 */ UClass* structureClass;
 };
 
 // Size: 0x30
 struct FOceanVision {
     /* 0x0000 */ FName playerTeamName;
-    /* 0x0008 */ UTextureRenderTarget2D* playerVisionRt;
-    /* 0x0010 */ UTexture2D* visionStamp;
-    /* 0x0018 */ float visionWorldLimitSize;
-    /* 0x001c */ int32_t visionRtResolution;
-    /* 0x0020 */ float islandBaseVisionRange;
-    /* 0x0024 */ float islandFoundVisionRange;
-    /* 0x0028 */ float shipBaseVisionRange;
+    /* 0x0008 */ float islandPlayerCellSightRange;
+    /* 0x0010 */ UTextureRenderTarget2D* playerVisionRt;
+    /* 0x0018 */ int32_t visionRtResolution;
+    /* 0x0020 */ FVector2D visionDrawScale;
+};
+
+// Size: 0x50
+struct FOceanVisionState {
+    /* 0x0000 */ TSet<FIntVector2> knownCells;
+};
+
+// Size: 0x8
+struct FShipSchedulingContext {
+    /* 0x0000 */ int32_t nPirateThreatLevel;
+    /* 0x0004 */ bool areClawsMad;
 };
 
 // Size: 0x60
@@ -70607,20 +67525,38 @@ struct FSyncCargoState {
     /* 0x0010 */ FNauticalCargo cargo;
 };
 
-// Size: 0x38
+// Size: 0xc
+struct FSyncCombatState {
+    /* 0x0000 */ bool IsValid;
+    /* 0x0004 */ FName TargetName;
+};
+
+// Size: 0xc
+struct FSyncCrewState {
+    /* 0x0000 */ FName crewId;
+    /* 0x0008 */ EAgentSyncReason reason;
+};
+
+// Size: 0x58
 struct FSyncDockState {
     /* 0x0000 */ bool IsValid;
     /* 0x0004 */ FName dockName;
     /* 0x0010 */ FString islandOwner;
     /* 0x0020 */ FVector dockLoc;
+    /* 0x0038 */ FRotator dockRot;
+    /* 0x0050 */ int32_t islandId;
 };
 
-// Size: 0xe8
+// Size: 0x1b8
 struct FSyncEvent {
     /* 0x0000 */ ESyncEventType EventType;
     /* 0x0008 */ FSyncShipState ship;
-    /* 0x0050 */ FSyncDockState dock;
-    /* 0x0088 */ FSyncCargoState cargo;
+    /* 0x0070 */ FSyncCombatState combat;
+    /* 0x0080 */ FSyncDockState dock;
+    /* 0x00d8 */ FSyncStructureState structure;
+    /* 0x0140 */ FSyncCargoState cargo;
+    /* 0x01a0 */ FSyncCrewState crewChange;
+    /* 0x01ac */ FShipSchedulingContext shipSpawnContext;
 };
 
 // Size: 0x10
@@ -70628,14 +67564,36 @@ struct FSyncEventList {
     /* 0x0000 */ TArray<FSyncEvent> Events;
 };
 
-// Size: 0x48
+// Size: 0x68
 struct FSyncShipState {
     /* 0x0000 */ bool IsValid;
     /* 0x0004 */ FName shipName;
+    /* 0x0010 */ FString shipDisplayName;
+    /* 0x0020 */ FString faction;
+    /* 0x0030 */ FName shipType;
+    /* 0x0038 */ FName owningDockId;
+    /* 0x0040 */ FVector Loc;
+    /* 0x0058 */ FName killedByFaction;
+    /* 0x0060 */ bool isScheduledShip;
+    /* 0x0064 */ float expectedTimeUntilScheduledArrival;
+};
+
+// Size: 0x10
+struct FSyncShipStatus {
+    /* 0x0000 */ FName shipName;
+    /* 0x0008 */ double arrivalEta;
+};
+
+// Size: 0x68
+struct FSyncStructureState {
+    /* 0x0000 */ bool IsValid;
+    /* 0x0004 */ FName structureName;
     /* 0x0010 */ FString faction;
-    /* 0x0020 */ FName shipType;
-    /* 0x0028 */ FName owningDockId;
-    /* 0x0030 */ FVector Loc;
+    /* 0x0020 */ FName structureType;
+    /* 0x0028 */ FVector Loc;
+    /* 0x0040 */ FRotator rot;
+    /* 0x0058 */ AActor* ParentActor;
+    /* 0x0060 */ int32_t dmg;
 };
 
 // Size: 0x500
@@ -71019,7 +67977,7 @@ class UNavigationObjectRepository : public UWorldSubsystem {
 // Size: 0x88
 class UNavigationPath : public UObject {
     /* 0x0028 */ FMulticastInlineDelegate PathUpdatedNotifier;
-    /* 0x0038 */ TArray<FVector> PathPoints;
+    /* 0x0038 */ TArray<FVector> pathPoints;
     /* 0x0048 */ ENavigationOptionFlag RecalculateOnInvalidation;
 
     void EnableDebugDrawing(bool bShouldDrawDebugData, FLinearColor PathColor);
@@ -73834,7 +70792,7 @@ class UNiagaraDataInterfaceSkeletalMesh : public UNiagaraDataInterface {
     /* 0x00f8 */ bool bRequireCurrentFrameData;
     /* 0x00f9 */ bool bReadDeformedGeometry;
 
-    void OnSourceEndPlay(AActor* InSource, uint8_t Reason);
+    void OnSourceEndPlay(AActor* InSource, uint8_t reason);
 };
 
 // Size: 0xa8
@@ -73897,7 +70855,7 @@ class UNiagaraDataInterfaceStaticMesh : public UNiagaraDataInterface {
     /* 0x00d0 */ int32_t InstanceIndex;
     /* 0x00d8 */ TArray<FName> FilteredSockets;
 
-    void OnSourceEndPlay(AActor* InSource, uint8_t Reason);
+    void OnSourceEndPlay(AActor* InSource, uint8_t reason);
     static void SetNiagaraStaticMeshDIInstanceIndex(UNiagaraComponent* NiagaraSystem, const FName UserParameterName, int32_t NewInstanceIndex);
 };
 
@@ -79542,10 +76500,10 @@ struct FActionResult {
     /* 0x0010 */ FName asUnlock;
     /* 0x0018 */ FResourceCollection asResourceCollection;
     /* 0x0068 */ bool mustHaveResourceToTrigger;
-    /* 0x0070 */ TArray<FAgentCharacteristics> agentsToSpawn;
+    /* 0x0070 */ TArray<FAgentRewardParams> agentSpawnParams;
 };
 
-// Size: 0x50
+// Size: 0x60
 struct FActionResult_MasterSyncFormat : public FTableRowBase {
     /* 0x0008 */ FName EffectType;
     /* 0x0010 */ int32_t asCount;
@@ -79558,6 +76516,7 @@ struct FActionResult_MasterSyncFormat : public FTableRowBase {
     /* 0x003c */ FName resource3;
     /* 0x0044 */ int32_t resourceCt3;
     /* 0x0048 */ bool mustHaveResourceToTrigger;
+    /* 0x0050 */ TArray<FAgentRewardParams> agentSpawnParams;
 };
 
 // Size: 0x28
@@ -79595,6 +76554,12 @@ class IAdjacentChangesListener : public UInterface {
     void AdjacentGridCellChanged(bool onAddition);
 };
 
+// Size: 0x28
+struct FAgentAtNauticalRaftDock {
+    /* 0x0000 */ APrototype_Agent* Agent;
+    /* 0x0008 */ FTraversal Traversal;
+};
+
 // Size: 0x138
 struct FAgentCharacteristics {
     /* 0x0000 */ float speedAt100Percent;
@@ -79617,9 +76582,10 @@ struct FAgentCharacteristics {
     /* 0x00c9 */ bool ignoreFarmFieldDebuffs;
     /* 0x00d0 */ TMap<EExpectationType, float> expectationExcess;
     /* 0x0120 */ float CraftsmanProgress;
-    /* 0x0124 */ float ScholarProgress;
-    /* 0x0128 */ float GuildProgress;
-    /* 0x012c */ FName GuildTarget;
+    /* 0x0124 */ float SailorProgress;
+    /* 0x0128 */ float ScholarProgress;
+    /* 0x012c */ float GuildProgress;
+    /* 0x0130 */ FName GuildTarget;
 };
 
 // Size: 0x14
@@ -79770,6 +76736,16 @@ class UAgentOverviewPanel : public UArcoView {
     void ShiftUiForPickup(bool Hide);
 };
 
+// Size: 0x20
+struct FAgentRewardParams {
+    /* 0x0000 */ bool bOverrideEducation;
+    /* 0x0001 */ EAgentEducation education;
+    /* 0x0002 */ bool bOverrideGuild;
+    /* 0x0004 */ FName guild;
+    /* 0x000c */ bool bOverrideName;
+    /* 0x0010 */ FString Name;
+};
+
 // Size: 0x4a0
 class UAgentSelector : public UArcoWidgetBase {
     /* 0x0428 */ UListView* WhiskerListView;
@@ -79820,9 +76796,10 @@ struct FAgentState {
     /* 0x0324 */ int32_t derived_carryCapacity;
     /* 0x0328 */ bool isDummy;
     /* 0x0329 */ bool isSelfTicking;
-    /* 0x032a */ bool desireVisible;
-    /* 0x032b */ bool isBeingManhandled;
-    /* 0x032c */ bool seekingHeat;
+    /* 0x032a */ bool isInNautical;
+    /* 0x032b */ bool desireVisible;
+    /* 0x032c */ bool isBeingManhandled;
+    /* 0x032d */ bool seekingHeat;
     /* 0x0330 */ float seekHeatAttemptCooldown;
     /* 0x0338 */ FString currentActionDesc;
     /* 0x0348 */ UHouse* Home;
@@ -79992,7 +76969,7 @@ class AAimItem : public AActor {
     /* 0x02c0 */ UAimMachine* holder;
 };
 
-// Size: 0x2d0
+// Size: 0x2e0
 class UAimMachine : public UActorComponent {
     /* 0x00c0 */ float lengthInSeconds;
     /* 0x00c8 */ FVector positionStart;
@@ -80004,7 +76981,8 @@ class UAimMachine : public UActorComponent {
     /* 0x0140 */ float visualRotationPeriod;
     /* 0x0144 */ float visualRotationStart;
     /* 0x0148 */ float visualRotationMagnitude;
-    /* 0x014c */ bool logicEntranceIsInventory;
+    /* 0x014c */ EEase bendRotationEasing;
+    /* 0x014d */ bool logicEntranceIsInventory;
     /* 0x0150 */ FIntVector logicDestination;
     /* 0x015c */ bool logicDestinationIsInventory;
     /* 0x015d */ bool teleportIsEnabled;
@@ -80029,13 +77007,15 @@ class UAimMachine : public UActorComponent {
     /* 0x0240 */ FVector worldPositionMid;
     /* 0x0258 */ float worldLength;
     /* 0x025c */ float reservedProgress;
-    /* 0x0260 */ TArray<AAimItem*> heldItems;
-    /* 0x0270 */ FIntVector worldLogicEntrance;
-    /* 0x027c */ FIntVector worldLogicDestination;
-    /* 0x0288 */ FRotator worldRotation;
-    /* 0x02a8 */ bool anime_callDelegateOnly;
-    /* 0x02b0 */ FMulticastInlineDelegate anime_delegate;
-    /* 0x02c0 */ TArray<USceneComponent*> anime_rotatables;
+    /* 0x0260 */ int32_t computeOrder;
+    /* 0x0268 */ TArray<AAimItem*> heldItems;
+    /* 0x0278 */ FIntVector worldLogicEntrance;
+    /* 0x0284 */ FIntVector worldLogicDestination;
+    /* 0x0290 */ FRotator worldRotation;
+    /* 0x02a8 */ float worldBendYaw;
+    /* 0x02b8 */ bool anime_callDelegateOnly;
+    /* 0x02c0 */ FMulticastInlineDelegate anime_delegate;
+    /* 0x02d0 */ TArray<USceneComponent*> anime_rotatables;
 
     void RegisterAnimationAsDelegateBased();
     void RegisterAnimationRotables(TArray<USceneComponent*> rotables);
@@ -80165,7 +77145,7 @@ class UArcoFunctionLibrary : public UBlueprintFunctionLibrary {
     static void SortResourceCollectionByMagnitudeDescending(FResourceCollection& Collection);
 };
 
-// Size: 0x860
+// Size: 0x8c0
 class UArcoGameInstance : public UBackbone {
     /* 0x02e0 */ UDataTable* CommonMaterials;
     /* 0x02e8 */ UDataTable* CommonAudio;
@@ -80204,15 +77184,18 @@ class UArcoGameInstance : public UBackbone {
     /* 0x03f8 */ UDataTable* m_taxPaymentThresholds;
     /* 0x0400 */ UDataTable* m_clawsGiftPools;
     /* 0x0408 */ UDataTable* m_seasonDefs;
-    /* 0x0410 */ TMap<EArco_PlayerVerb, FName> m_verbToLoc;
-    /* 0x0460 */ TMap<FKey, EInputIconButton> m_unrealKeyToInputIcon;
-    /* 0x04b0 */ TMap<EArco_PlayerAction, FArco_PlayerActionUnrealKeybindMapper> m_actionToKeybind;
-    /* 0x0500 */ TArray<FTechTier> m_techTiers;
-    /* 0x0518 */ UMetaSave* m_metaSave;
+    /* 0x0410 */ UDataTable* m_arcoWorkShipDefs;
+    /* 0x0418 */ TMap<EArco_PlayerVerb, FName> m_verbToLoc;
+    /* 0x0468 */ TMap<FKey, EInputIconButton> m_unrealKeyToInputIcon;
+    /* 0x04b8 */ TMap<EArco_PlayerAction, FArco_PlayerActionUnrealKeybindMapper> m_actionToKeybind;
+    /* 0x0508 */ TArray<FTechTier> m_techTiers;
+    /* 0x0518 */ UClass* m_commonPartialDamageWidget;
+    /* 0x0528 */ UMetaSave* m_metaSave;
 
     static EArco_PlayerAction ArcoVerbToAction(EArco_PlayerVerb verb);
     static TArray<FAgentCharacteristics> CalcArrayCharacteristicsWithGuildAndTraitMods(UObject* Context, const TArray<FAgentCharacteristics>& characteristics);
     static FAgentCharacteristics CalcCharacteristicsWithGuildAndTraitMods(UObject* Context, const FAgentCharacteristics& characteristics);
+    static void DevOnly_RequestMasterSyncUpdate(UObject* Context);
     static void EditorOnly_ClearSave();
     static void EditorOnly_RequestMasterSyncUpdate();
     static void EditorOnly_SetEnableAssertSaves(bool Enable);
@@ -80231,6 +77214,7 @@ class UArcoGameInstance : public UBackbone {
     static FActionResult GetActionResult(const UObject* Context, FName Name);
     static bool GetAgentModifier(const UObject* Context, FAgentModifier& out_modifier, FName Key);
     static bool GetAgentThought(const UObject* Context, FAgentThought& outThought, FName Key);
+    static FArcoWorkShipDef GetArcoWorkShipDef_Copy(const UObject* Context, FName Key);
     static EInputIconButton GetBoundIconForVerb(const UObject* Context, EArco_PlayerVerb verb);
     static TArray<FName> GetCampResourceGroup(const UObject* Context, FName camp);
     static FKey GetCurrentlyBoundKeyForAction(const UObject* Context, EArco_PlayerAction playerAction);
@@ -80253,11 +77237,13 @@ class UArcoGameInstance : public UBackbone {
     static FName GetResourceSubCategory(const UObject* Context, FName Key);
     static TArray<FString> GetSaveGames(const UObject* Context, ESaveLocation saveLocation);
     static TArray<FString> GetSaveGamesDateSorted(const UObject* Context, ESaveLocation saveLocation);
+    static FName GetSlotDecorativeParentVariant(const UObject* Context, FName slotDecorativeKey);
     static float GetSystemTune(const UObject* Context, FName Key);
     static FTechTier GetTechTier(const UObject* Context, int32_t tier);
     static FName GetTechUnlockLocKey(const UObject* Context, FName unlockKey);
     static bool GetTechUnlock_outParam(const UObject* Context, FName Key, FTechUnlock_V2& outDef);
     static FTooltipTag GetTooltipTag(const UObject* Context, FName Name);
+    static FName GetTooltipTagForNauticalAction(ENauticalAction nauticalAction);
     static TArray<FName> GetUnlockPrerequisites(const UObject* Context, FName unlockKey);
     static FName GetUnlockResearchPrerequisite(const UObject* Context, FName unlockKey);
     static FName GetVariantParent(const UObject* Context, FName gridActorKey);
@@ -80267,6 +77253,7 @@ class UArcoGameInstance : public UBackbone {
     static bool HasQuestDef(const UObject* Context, FName Key);
     static ESaveLocation InferSaveLocationForSave(const UObject* Context, FString saveName);
     static bool IsPartOfVariantSet(const UObject* Context, FName gridActorKey);
+    static bool IsSlotDecorativePartOfVariantSet(const UObject* Context, FName slotDecorativeKey);
     static void PlayUiSound(UObject* Context, FName soundKey, float Volume);
     static void SaveMetaSave(const UObject* Context);
     static void SetNewMapDifficulty_Debt(const UObject* Context, float difficulty);
@@ -80375,126 +77362,136 @@ struct FArcoScenario {
     /* 0x0038 */ FResourceCollection startingResources;
 };
 
-// Size: 0x30
+// Size: 0x48
 struct FArcoSystemConfig {
     /* 0x0000 */ FAimSystemConfig aimConfig;
     /* 0x0018 */ FNavySystemConfig navyConfig;
-    /* 0x0028 */ EDayPhase embarkDayPhase;
+    /* 0x0040 */ EDayPhase embarkDayPhase;
 };
 
-// Size: 0x39c8
+// Size: 0x3d28
 class AArcoSystems : public AActor {
-    /* 0x02b0 */ FNewMapInitParams m_newMapParams;
-    /* 0x03e8 */ FArcoSystemConfig config;
-    /* 0x0418 */ FIntVector WorldOrigin;
-    /* 0x0424 */ FIntVector WorldExtent;
-    /* 0x0498 */ FMulticastInlineDelegate EmitHudActionDelegate;
-    /* 0x04b0 */ FTaxState m_taxState;
-    /* 0x0508 */ FTaxTradeInformation m_tradeMarketValues;
-    /* 0x05e0 */ FShipTracker m_shipTracker;
-    /* 0x06d8 */ UClass* m_canonballClass;
-    /* 0x06f0 */ UClass* agentClass;
-    /* 0x06f8 */ UClass* constructionSiteTemplate;
-    /* 0x0738 */ UClass* m_infoBlipsClass;
-    /* 0x0740 */ AInfoBlips* m_infoBlips;
-    /* 0x0748 */ UPlayerBank* m_playerBank;
-    /* 0x0750 */ UClass* m_worldTimeClass;
-    /* 0x0758 */ AWorldTime* m_worldTime;
-    /* 0x0760 */ UClass* m_eventsTimelineClass;
-    /* 0x0768 */ UEventTimeline* m_eventsTimeline;
-    /* 0x0770 */ UWorldEffects* m_worldEffects;
-    /* 0x0778 */ UClass* m_scaffoldClass;
-    /* 0x0780 */ AScaffoldRenderer* m_scaffoldRenderer;
-    /* 0x0788 */ UClass* m_radiusRendererClass;
-    /* 0x0790 */ ARadiusOfEffectRenderer* m_radiusRenderer;
-    /* 0x0798 */ UClass* m_ambientAudioClass;
-    /* 0x07a0 */ AAmbientAudio* m_ambientAudio;
-    /* 0x07a8 */ UClass* m_railSystemClass;
-    /* 0x07b0 */ ARailSystem* m_railSystem;
-    /* 0x07b8 */ FWorldMeta m_worldMeta;
-    /* 0x26b0 */ UClass* m_questTrackerClass;
-    /* 0x26b8 */ UQuestTracker* m_questTracker;
-    /* 0x26c0 */ UStatisticsTracker* m_statistics;
-    /* 0x26c8 */ UClass* m_policiesClass;
-    /* 0x26d0 */ UPolicies* m_policies;
-    /* 0x26d8 */ UJobSystem* m_jobSystem;
-    /* 0x26e0 */ UClass* m_giftPoolCalculatorClass;
-    /* 0x26e8 */ UGiftPools* m_giftPoolCalculator;
-    /* 0x26f0 */ FTiledTerrainData m_terrain;
-    /* 0x30e0 */ UClass* m_tiledTerrainClass;
-    /* 0x30e8 */ UClass* m_tiledTerrainConfigMule;
-    /* 0x30f0 */ ATiledBlockTerrain* m_tiledTerrain;
-    /* 0x30f8 */ UTerrainGenerator* m_terrainGenerator;
-    /* 0x3100 */ UClass* m_terrainGeneratorConfig;
-    /* 0x3108 */ UOreDistributor* m_oreDistributor;
-    /* 0x3110 */ UClass* m_oreDistributorConfig;
-    /* 0x3118 */ UHeatSystem* m_heatSystem;
-    /* 0x3120 */ UClass* m_heatSystemConfigMule;
-    /* 0x3128 */ UClass* m_farmCropConfigMule;
-    /* 0x3130 */ UExpectationSystem* m_expectationSystem;
-    /* 0x3138 */ UClass* m_expectationSystemConfigMule;
-    /* 0x3140 */ UAimSystem* m_aimSystem;
-    /* 0x3148 */ UNavySystem* m_navySystem;
-    /* 0x3150 */ UClass* m_mineVizClass;
-    /* 0x3158 */ UMineViz* m_mineViz;
-    /* 0x3160 */ UClass* m_farmVizClass;
-    /* 0x3168 */ UFarmViz* m_farmViz;
-    /* 0x3170 */ UClass* m_resourceMarkingVizClass;
-    /* 0x3178 */ UResourceMarkingViz* m_resourceMarkingViz;
-    /* 0x3180 */ UClass* m_terraformVizClass;
-    /* 0x3188 */ UTerraformViz* m_terraformViz;
-    /* 0x3190 */ UClass* m_problemIndicatorClass;
-    /* 0x3198 */ AProblemIndicator* m_problemIndicator;
-    /* 0x31a0 */ UNotificationSystem* m_notificationSystem;
-    /* 0x31a8 */ UColonyProblemsSummary* m_colonyProblemsSummary;
-    /* 0x31b0 */ UClass* m_elevatorSystemClass;
-    /* 0x31b8 */ AElevatorSystem* m_elevatorSystem;
-    /* 0x31c0 */ UClass* m_pipeSystemClass;
-    /* 0x31c8 */ APipeSystem* m_pipeSystem;
-    /* 0x31d0 */ UClass* m_doorwayRendererClass;
-    /* 0x31d8 */ AStructureDoorwayRenderer* m_doorwayRenderer;
-    /* 0x31e0 */ AResourceFling* m_resourceFlinger;
-    /* 0x31e8 */ UClass* m_roofSystemClass;
-    /* 0x31f0 */ ARoofSystem* m_roofSystem;
-    /* 0x31f8 */ UEventQueue* m_eventQueue;
-    /* 0x3200 */ UClass* m_musicControllerClass;
-    /* 0x3208 */ AArcoMusicController* m_musicController;
-    /* 0x3210 */ UClass* m_raftRouteAssignmentsClass;
-    /* 0x3218 */ URaftRouteAssignments* m_raftRouteAssignments;
-    /* 0x3220 */ TSet<FName> m_enabledUnlocks;
-    /* 0x3270 */ FUnlockTree m_unlockTree;
-    /* 0x32c0 */ bool m_allUnlocksCheat;
-    /* 0x32c8 */ FResearchState m_researchState;
-    /* 0x3390 */ TMap<int32_t, FColor> m_heatToUiColorLookup;
-    /* 0x33e0 */ FString m_associatedSave;
-    /* 0x33f0 */ FArcoScenario m_scenarioData;
-    /* 0x3478 */ int32_t m_mealRationingCount;
-    /* 0x347c */ int32_t m_drinkRationingCount;
-    /* 0x3480 */ bool m_mealRationing_rawOnly;
-    /* 0x3481 */ bool m_mealRationing_preparedOnly;
-    /* 0x3482 */ bool m_assertSavesEnabled;
-    /* 0x3484 */ float cullDistanceSquared;
-    /* 0x3488 */ int32_t MaxRenderedAgents;
-    /* 0x34b8 */ TArray<FName> m_derivedResearchableTech;
-    /* 0x34c8 */ TArray<FMealDefTierGroup> m_mealDefsQualitySorted_descendingGroups;
-    /* 0x34d8 */ TArray<FMealDefTierGroup> m_drinkDefsQualitySorted_descendingGroups;
-    /* 0x3560 */ UClass* embarkBoatClass;
-    /* 0x3568 */ AEmbarkBoat* embarkBoatInstance;
-    /* 0x3570 */ int32_t m_totalActions;
-    /* 0x3574 */ int32_t m_totalAssertSaves;
-    /* 0x3578 */ int32_t m_maxAllowedSavesPerRun;
-    /* 0x3580 */ TSet<FName> m_miscEventFlags;
-    /* 0x3608 */ TArray<FReportedDeath> m_recentDeaths;
-    /* 0x3618 */ TArray<FReportedDeath> m_deathsPendingGraves;
-    /* 0x3628 */ TArray<FMailStyleNotif> m_pendingMailNotifs;
-    /* 0x3638 */ FPathfinderCallCounts m_pathfinderCallCountsForFrame;
-    /* 0x3768 */ TMap<FName, UClass*> m_workshipActorLookup;
-    /* 0x3858 */ FAutoExportState m_autoExportState;
+    /* 0x0300 */ FNewMapInitParams m_newMapParams;
+    /* 0x04e0 */ FArcoSystemConfig config;
+    /* 0x0528 */ FIntVector WorldOrigin;
+    /* 0x0534 */ FIntVector WorldExtent;
+    /* 0x05a8 */ FMulticastInlineDelegate EmitHudActionDelegate;
+    /* 0x05c0 */ TSet<AGridActor*> m_damagedGridActors;
+    /* 0x0611 */ ENavalQuestPhase m_navalQuestState;
+    /* 0x0618 */ FTaxState m_taxState;
+    /* 0x0670 */ FTaxTradeInformation m_tradeMarketValues;
+    /* 0x0758 */ FVisitingShipTracker m_visitingShipsTracker;
+    /* 0x0840 */ UClass* m_canonballClass;
+    /* 0x0858 */ UClass* agentClass;
+    /* 0x0860 */ UClass* constructionSiteTemplate;
+    /* 0x08a0 */ UClass* m_infoBlipsClass;
+    /* 0x08a8 */ AInfoBlips* m_infoBlips;
+    /* 0x08b0 */ UPlayerBank* m_playerBank;
+    /* 0x08b8 */ UClass* m_worldTimeClass;
+    /* 0x08c0 */ AWorldTime* m_worldTime;
+    /* 0x08c8 */ UClass* m_eventsTimelineClass;
+    /* 0x08d0 */ UEventTimeline* m_eventsTimeline;
+    /* 0x08d8 */ UWorldEffects* m_worldEffects;
+    /* 0x08e0 */ UClass* m_scaffoldClass;
+    /* 0x08e8 */ AScaffoldRenderer* m_scaffoldRenderer;
+    /* 0x08f0 */ UClass* m_reservedTileVizClass;
+    /* 0x08f8 */ AReservedTileViz* m_reservedTileViz;
+    /* 0x0900 */ UClass* m_radiusRendererClass;
+    /* 0x0908 */ ARadiusOfEffectRenderer* m_radiusRenderer;
+    /* 0x0910 */ UClass* m_ambientAudioClass;
+    /* 0x0918 */ AAmbientAudio* m_ambientAudio;
+    /* 0x0920 */ UClass* m_railSystemClass;
+    /* 0x0928 */ ARailSystem* m_railSystem;
+    /* 0x0930 */ FWorldMeta m_worldMeta;
+    /* 0x2a58 */ UClass* m_questTrackerClass;
+    /* 0x2a60 */ UQuestTracker* m_questTracker;
+    /* 0x2a68 */ UStatisticsTracker* m_statistics;
+    /* 0x2a70 */ UClass* m_policiesClass;
+    /* 0x2a78 */ UPolicies* m_policies;
+    /* 0x2a80 */ UJobSystem* m_jobSystem;
+    /* 0x2a88 */ UClass* m_giftPoolCalculatorClass;
+    /* 0x2a90 */ UGiftPools* m_giftPoolCalculator;
+    /* 0x2a98 */ FTiledTerrainData m_terrain;
+    /* 0x3478 */ UClass* m_tiledTerrainClass;
+    /* 0x3480 */ UClass* m_tiledTerrainConfigMule;
+    /* 0x3488 */ ATiledBlockTerrain* m_tiledTerrain;
+    /* 0x3490 */ UTerrainGenerator* m_terrainGenerator;
+    /* 0x3498 */ UClass* m_terrainGeneratorConfig;
+    /* 0x34a0 */ UOreDistributor* m_oreDistributor;
+    /* 0x34a8 */ UClass* m_oreDistributorConfig;
+    /* 0x34b0 */ UHeatSystem* m_heatSystem;
+    /* 0x34b8 */ UClass* m_heatSystemConfigMule;
+    /* 0x34c0 */ UClass* m_farmCropConfigMule;
+    /* 0x34c8 */ UExpectationSystem* m_expectationSystem;
+    /* 0x34d0 */ UClass* m_expectationSystemConfigMule;
+    /* 0x34d8 */ UAimSystem* m_aimSystem;
+    /* 0x34e0 */ UNavySystem* m_navySystem;
+    /* 0x34e8 */ float m_distancePastColonyEdgeForNauticalCombat;
+    /* 0x34f0 */ UClass* m_mineVizClass;
+    /* 0x34f8 */ UMineViz* m_mineViz;
+    /* 0x3500 */ UClass* m_farmVizClass;
+    /* 0x3508 */ UFarmViz* m_farmViz;
+    /* 0x3510 */ UClass* m_resourceMarkingVizClass;
+    /* 0x3518 */ UResourceMarkingViz* m_resourceMarkingViz;
+    /* 0x3520 */ UClass* m_terraformVizClass;
+    /* 0x3528 */ UTerraformViz* m_terraformViz;
+    /* 0x3530 */ UClass* m_problemIndicatorClass;
+    /* 0x3538 */ AProblemIndicator* m_problemIndicator;
+    /* 0x3540 */ UNotificationSystem* m_notificationSystem;
+    /* 0x3548 */ UColonyProblemsSummary* m_colonyProblemsSummary;
+    /* 0x3550 */ UClass* m_elevatorSystemClass;
+    /* 0x3558 */ AElevatorSystem* m_elevatorSystem;
+    /* 0x3560 */ UClass* m_pipeSystemClass;
+    /* 0x3568 */ APipeSystem* m_pipeSystem;
+    /* 0x3570 */ UClass* m_doorwayRendererClass;
+    /* 0x3578 */ AStructureDoorwayRenderer* m_doorwayRenderer;
+    /* 0x3580 */ AResourceFling* m_resourceFlinger;
+    /* 0x3588 */ UClass* m_roofSystemClass;
+    /* 0x3590 */ ARoofSystem* m_roofSystem;
+    /* 0x3598 */ UEventQueue* m_eventQueue;
+    /* 0x35a0 */ UClass* m_musicControllerClass;
+    /* 0x35a8 */ AArcoMusicController* m_musicController;
+    /* 0x35b0 */ UClass* m_raftRouteAssignmentsClass;
+    /* 0x35b8 */ URaftRouteAssignments* m_raftRouteAssignments;
+    /* 0x35c0 */ UClass* m_nauticalraftRouteAssignmentsClass;
+    /* 0x35c8 */ UNauticalRaftRouteAssignments* m_nauticalraftRouteAssignments;
+    /* 0x35d0 */ TSet<FName> m_enabledUnlocks;
+    /* 0x3620 */ FUnlockTree m_unlockTree;
+    /* 0x3670 */ bool m_allUnlocksCheat;
+    /* 0x3678 */ FResearchState m_researchState;
+    /* 0x3758 */ TMap<int32_t, FColor> m_heatToUiColorLookup;
+    /* 0x37a8 */ FString m_associatedSave;
+    /* 0x37b8 */ FArcoScenario m_scenarioData;
+    /* 0x3840 */ int32_t m_mealRationingCount;
+    /* 0x3844 */ int32_t m_drinkRationingCount;
+    /* 0x3848 */ bool m_mealRationing_rawOnly;
+    /* 0x3849 */ bool m_mealRationing_preparedOnly;
+    /* 0x384a */ bool m_assertSavesEnabled;
+    /* 0x384c */ float cullDistanceSquared;
+    /* 0x3850 */ int32_t MaxRenderedAgents;
+    /* 0x3880 */ TArray<FName> m_derivedResearchableTech;
+    /* 0x3890 */ TArray<FMealDefTierGroup> m_mealDefsQualitySorted_descendingGroups;
+    /* 0x38a0 */ TArray<FMealDefTierGroup> m_drinkDefsQualitySorted_descendingGroups;
+    /* 0x3940 */ UClass* embarkBoatClass;
+    /* 0x3948 */ ABoat* embarkBoatInstance;
+    /* 0x3950 */ int32_t m_totalActions;
+    /* 0x3954 */ int32_t m_totalAssertSaves;
+    /* 0x3958 */ int32_t m_maxAllowedSavesPerRun;
+    /* 0x3960 */ TSet<FName> m_miscEventFlags;
+    /* 0x39e8 */ TArray<FReportedDeath> m_recentDeaths;
+    /* 0x39f8 */ TArray<FReportedDeath> m_deathsPendingGraves;
+    /* 0x3a08 */ TArray<FMailStyleNotif> m_pendingMailNotifs;
+    /* 0x3a18 */ FPathfinderCallCounts m_pathfinderCallCountsForFrame;
+    /* 0x3b50 */ FArcoWorkShipTracker m_arcoWorkShipTracker;
+    /* 0x3ba8 */ FAutoExportState m_autoExportState;
+    /* 0x3bfc */ float m_highAlertTimeMaxCooldown;
+    /* 0x3c00 */ float m_barrageInterval;
 
-    bool CalcAffordabilityOfChoice(FEventChoiceV2 choice);
-    bool CalcAffordabilityOfResult(FActionResult Result);
+    bool CalcAffordabilityOfChoice(int32_t eventId, FEventChoiceV2 choice);
+    bool CalcAffordabilityOfResult(int32_t eventId, FActionResult Result);
     EDayPhase CurrentPhase();
     static void Delete_FromRecRec(UWorld* WorldContext, FString saveFileName, ESaveLocation saveLocation);
+    APrototype_Agent* GetAgentById(int32_t agentId);
     int32_t GetApprovalDifficultyIndex() const;
     static AArcoSystems* GetArcoSys(bool& out_isValid);
     FBuildingCyclerInfo GetBuildingCyclerInfoForStructure(AGridActor* GridActor);
@@ -80507,9 +77504,12 @@ class AArcoSystems : public AActor {
     int32_t GetDaysUntilTaxDay() const;
     float GetDebtMultiplier() const;
     FVector GetDockingPosForMainDock() const;
+    FTimelineEventDef GetEventLiveData(int32_t eventId);
     static TArray<FName> GetGlobalWhiskerGenTraitsForScenario(FName scenario);
     FHeatDebugInfo GetHeatDebugInfo(int32_t day);
     TArray<FName> GetMissingPrerequisites(const FName& Name) const;
+    FNauticalShipConfig GetNauticalShipTypeConfig(FName nauticalShipkey) const;
+    FNauticalShipConfig GetNauticalShipTypeConfig_FromArcoShip(FName arcoShipkey) const;
     FPopulationSummary_UI GetPopulationSummaryInfo() const;
     int32_t GetPopulationTotal() const;
     AActor* GetPrimaryDockActor() const;
@@ -80525,6 +77525,7 @@ class AArcoSystems : public AActor {
     bool HasResearchLabs() const;
     bool HasUnlock(const FName& Name) const;
     FColor HeatToUiColor(uint8_t heat);
+    bool IsColonyOnHighAlert() const;
     bool IsGridActorUnderground(AGridActor* GridActor);
     bool IsLive();
     bool IsSaveGame();
@@ -80596,14 +77597,26 @@ class UArcoWidgetBase : public UNaviSubGrid {
     bool _SendPlayerActionToChildren(FName playerAction);
 };
 
-// Size: 0x48
+// Size: 0x30
 struct FArcoWorkShip {
-    /* 0x0000 */ int32_t ID;
-    /* 0x0008 */ ABoat* shipActor;
-    /* 0x0010 */ FVector Pos;
-    /* 0x0028 */ FRotator rot;
-    /* 0x0040 */ int32_t assignedWorkDock;
-    /* 0x0044 */ EWorkShipState shipState;
+    /* 0x0000 */ FName nameId;
+    /* 0x0008 */ int32_t assignedWorkDockGridActor;
+    /* 0x000c */ EWorkShipState shipState;
+    /* 0x0010 */ TArray<int32_t> crewOnBoard;
+    /* 0x0020 */ FName workshipType;
+    /* 0x0028 */ FName associatedNauticalClass;
+};
+
+// Size: 0x28
+struct FArcoWorkShipDef : public FTableRowBase {
+    /* 0x0008 */ FName associatedNauticalShipKey;
+    /* 0x0010 */ TArray<FWorkerSlotRequirements> workerRequirements;
+    /* 0x0020 */ int32_t nDaysOfFood;
+};
+
+// Size: 0x58
+struct FArcoWorkShipTracker {
+    /* 0x0000 */ TMap<FName, FArcoWorkShip> m_allWorkships;
 };
 
 // Size: 0x20
@@ -80612,12 +77625,35 @@ struct FArco_PlayerActionUnrealKeybindMapper {
     /* 0x0010 */ FString asGamepad;
 };
 
-// Size: 0x270
+// Size: 0x2b0
 class UAssignableDockPosition : public USceneComponent {
     /* 0x0240 */ bool m_treatDockedWorkboatAsUnassigned;
-    /* 0x0244 */ int32_t m_assignedShipId;
-    /* 0x0248 */ float transitionTimeRemaining;
-    /* 0x024c */ float transitionSpan;
+    /* 0x0241 */ bool m_allowNonAssignedBoatsToDock;
+    /* 0x0242 */ bool m_overrideNauticalDockBerthPos;
+    /* 0x0244 */ FName m_assignedShipId;
+    /* 0x024c */ FName m_dockId;
+    /* 0x0254 */ float transitionTimeRemaining;
+    /* 0x0258 */ float transitionSpan;
+    /* 0x0260 */ TArray<FName> m_shipsCurrentlyTryingToInteract;
+};
+
+// Size: 0x38
+struct FAssignableDockSlotUiData {
+    /* 0x0000 */ FName dockNameKey;
+    /* 0x0008 */ FName correspondingDockSlotId;
+    /* 0x0010 */ int32_t correspondingDockActorId;
+    /* 0x0018 */ TArray<FName> supportedNavalBehaviors_tooltipTags;
+    /* 0x0028 */ bool shipAlreadyAssigned;
+    /* 0x002c */ FName assignedShipTypeKey;
+    /* 0x0034 */ bool assigningShipHasCannons;
+    /* 0x0035 */ bool slotRequireCannons;
+};
+
+// Size: 0x428
+class UAssignableDockSlotWidget : public UArcoWidgetBase {
+
+    void Highlight(bool Highlight);
+    void SetData(const FAssignableDockSlotUiData Data);
 };
 
 // Size: 0x28
@@ -80683,16 +77719,17 @@ struct FBathingSlotState_UI {
     /* 0x0018 */ FName Portrait;
 };
 
-// Size: 0x2f0
-class ABlockadeVisual : public AActor {
-    /* 0x02c0 */ float m_leaveDelay;
-    /* 0x02c4 */ float m_barrageInterval;
-};
-
-// Size: 0x2b0
+// Size: 0x2b8
 class ABoat : public AActor {
+    /* 0x02b0 */ UWidgetComponent* assignmentWarningWidget;
 
     void AnimateBoatInOut(bool In);
+    void SendActionToShip(FName action);
+    void SetArrivingAgents(FEmbarkBoatWhiskerGroup colonists);
+    void SetAsStormie();
+    void SetNColonists(int32_t colonists);
+    void SetShowBoat(bool Show);
+    void StormieBlip();
 };
 
 // Size: 0x228
@@ -80758,8 +77795,14 @@ struct FCampResourceGroup : public FTableRowBase {
     /* 0x0008 */ TArray<FName> supportedResources;
 };
 
-// Size: 0x58
+// Size: 0x68
 struct FCannonball {
+};
+
+// Size: 0x10
+struct FCheatWorkShipHud {
+    /* 0x0000 */ FName workshipKey;
+    /* 0x0008 */ FName LocKey;
 };
 
 // Size: 0x200
@@ -80820,32 +77863,32 @@ struct FClothingState {
     /* 0x000c */ float durabilityTimePassed;
 };
 
-// Size: 0x2b0
+// Size: 0x318
 class UColonyProblemsSummary : public UObject {
-    /* 0x01b8 */ TMap<int32_t, FString> m_pathingErrAgents;
-    /* 0x0208 */ TSet<int32_t> m_longPathAgents;
+    /* 0x0208 */ TMap<int32_t, FString> m_pathingErrAgents;
+    /* 0x0258 */ TSet<int32_t> m_longPathAgents;
 };
 
-// Size: 0x1f0
+// Size: 0x208
 struct FColonyShip_Trade_UiState {
     /* 0x0000 */ FDockableShipData dockedShipState;
-    /* 0x01b8 */ FTradeBreakdown tradeCostsBreakdown;
-    /* 0x01d0 */ bool canAffordReroll;
-    /* 0x01d1 */ bool canReroll;
-    /* 0x01d2 */ bool anyAccepted;
-    /* 0x01d4 */ int32_t availableDiplomacy;
-    /* 0x01d8 */ int32_t availableApproval;
-    /* 0x01dc */ int32_t maxApproval;
-    /* 0x01e0 */ int32_t acceptedWhiskerCount;
-    /* 0x01e4 */ int32_t extraCostPerAcceptance;
-    /* 0x01e8 */ int32_t costForAcceptingAllRemaining;
-    /* 0x01ec */ bool canAffordAll;
+    /* 0x01d0 */ FTradeBreakdown tradeCostsBreakdown;
+    /* 0x01e8 */ bool canAffordReroll;
+    /* 0x01e9 */ bool canReroll;
+    /* 0x01ea */ bool anyAccepted;
+    /* 0x01ec */ int32_t availableDiplomacy;
+    /* 0x01f0 */ int32_t availableApproval;
+    /* 0x01f4 */ int32_t maxApproval;
+    /* 0x01f8 */ int32_t acceptedWhiskerCount;
+    /* 0x01fc */ int32_t extraCostPerAcceptance;
+    /* 0x0200 */ int32_t costForAcceptingAllRemaining;
+    /* 0x0204 */ bool canAffordAll;
 };
 
-// Size: 0x1c0
+// Size: 0x1d8
 struct FColonyShip_UiState {
     /* 0x0000 */ FDockableShipData dockedShipState;
-    /* 0x01b8 */ int32_t startingColonistsCost;
+    /* 0x01d0 */ int32_t startingColonistsCost;
 };
 
 // Size: 0xf0
@@ -80938,12 +77981,12 @@ struct FContiguousRail {
     /* 0x0000 */ FSimpleSpline railSpline;
 };
 
-// Size: 0xf8
+// Size: 0x108
 struct FContractEmbarkHudState {
     /* 0x0000 */ TArray<FTax> debts;
     /* 0x0010 */ int32_t totalDebt;
     /* 0x0018 */ FTaxTradeInformation tradeInfo;
-    /* 0x00e8 */ FString colonyName;
+    /* 0x00f8 */ FString colonyName;
 };
 
 // Size: 0x28
@@ -81018,6 +78061,7 @@ struct FDaySummary_UI {
     /* 0x00fd */ bool allowPageBack;
     /* 0x00fe */ bool allowPageFwd;
     /* 0x0100 */ int32_t standingMax;
+    /* 0x0104 */ int32_t nLivePirateProtections;
 };
 
 // Size: 0x40
@@ -81053,7 +78097,7 @@ struct FDebtsViewHudData {
     /* 0x00c1 */ bool alreadySentWhiskers;
 };
 
-// Size: 0xa
+// Size: 0xb
 struct FDebugCfg {
     /* 0x0000 */ bool showAgentPaths;
     /* 0x0001 */ bool showAgentGridOcc;
@@ -81065,6 +78109,7 @@ struct FDebugCfg {
     /* 0x0007 */ bool drawPollutionValues;
     /* 0x0008 */ bool drawTrainNetworkDebug;
     /* 0x0009 */ bool drawOceanReachabilityOverlay;
+    /* 0x000a */ bool drawDebugShipNav;
 };
 
 // Size: 0x4a8
@@ -81108,12 +78153,52 @@ class ADecorativeSlotTool : public AActor {
     /* 0x02b8 */ UStaticMeshComponent* m_quadrantWedge;
 };
 
+// Size: 0x258
+class UDefensiveTower : public UActorComponent {
+    /* 0x00e0 */ FMulticastInlineDelegate m_cannonFiredEvent;
+    /* 0x00f8 */ FName m_cannonType;
+    /* 0x0158 */ TArray<FName> m_supportedCannonballTypes;
+    /* 0x0168 */ int32_t m_nMaxCannonballStorage;
+    /* 0x0170 */ FWorkerAssignment m_workers;
+    /* 0x0190 */ UWorkerViz* m_workerViz;
+    /* 0x0198 */ FStockpile m_stockpile;
+    /* 0x0200 */ UStockpileRender* m_stockpileVisual;
+};
+
+// Size: 0x130
+struct FDefensiveTower_UiData {
+    /* 0x0000 */ FStockpile stockpile_inboundTrackingOnly;
+    /* 0x0058 */ FResourceCollection loadedCannonballs;
+    /* 0x00a8 */ FWorkerAssignmentData workerData;
+    /* 0x00b8 */ FStockpileLinkerUiStruct linkerInfo;
+    /* 0x00f8 */ bool disabledByPlayer;
+    /* 0x00fc */ float baseReloadTime;
+    /* 0x0100 */ float percentReloaded;
+    /* 0x0104 */ bool attackPirates;
+    /* 0x0108 */ FName cannonType;
+    /* 0x0110 */ int32_t cannonDamage;
+    /* 0x0114 */ FName loadedAmmo;
+    /* 0x011c */ int32_t loadedAmmoDamage;
+    /* 0x0120 */ EDefensiveTowerState State;
+    /* 0x0121 */ bool highAlert;
+    /* 0x0124 */ float highAlertTotalTime;
+    /* 0x0128 */ float highAlertRemaining;
+    /* 0x012c */ bool shareSettings;
+};
+
 // Size: 0x20
 struct FDelayedExplosion {
     /* 0x0000 */ UParticleSystemComponent* smokeParticle;
     /* 0x0008 */ float fuse;
     /* 0x0010 */ AGridActor* gridActorToExplode;
     /* 0x0018 */ float injuryChance;
+};
+
+// Size: 0x10
+struct FDepartureResourceData {
+    /* 0x0000 */ FName Resource;
+    /* 0x0008 */ int32_t count;
+    /* 0x000c */ int32_t max;
 };
 
 // Size: 0x198
@@ -81126,7 +78211,7 @@ struct FDetailedResourceCost {
     /* 0x0148 */ FResourceCollection salvageCost;
 };
 
-// Size: 0x88
+// Size: 0x90
 struct FDeveloperToolState {
     /* 0x0000 */ bool isFreePlacement;
     /* 0x0004 */ float cameraPanSpeed;
@@ -81168,6 +78253,9 @@ struct FDeveloperToolState {
     /* 0x0068 */ FString saveName;
     /* 0x0078 */ FIntVector mapSize;
     /* 0x0084 */ float resourceScaling;
+    /* 0x0088 */ bool allowCloseNavy;
+    /* 0x0089 */ bool spawnShipsAsNautical;
+    /* 0x008a */ bool drawDetailedNauticalNavPaths;
 };
 
 // Size: 0x30
@@ -81208,21 +78296,23 @@ enum class DirectionEnum {
     DirectionEnum_MAX = 7,
 };
 
-// Size: 0x1b8
+// Size: 0x1d0
 struct FDockableShipData {
-    /* 0x0000 */ int32_t shipId;
-    /* 0x0004 */ EShipType shipType;
-    /* 0x0005 */ EShipState shipState;
-    /* 0x0008 */ float secondsUntilArrival;
-    /* 0x000c */ float secondsUntilAutoLeave_total;
-    /* 0x0010 */ float secondsUntilAutoLeave;
-    /* 0x0014 */ bool canAutoleave;
-    /* 0x0018 */ FShipData_Colonists asColonists;
-    /* 0x0030 */ FShipData_TaxShip asTaxShip;
-    /* 0x0088 */ FShipData_PirateShip asPirateShip;
-    /* 0x00e8 */ FShipData_SmugglerTraderShip asSmugglerTrader;
-    /* 0x0148 */ FShipData_EmbarkResources asEmbarkSupplies;
-    /* 0x01a0 */ FSupplyShipState asSupplyShip;
+    /* 0x0000 */ FShipData_debugTiming debugTimingInfo;
+    /* 0x0010 */ int32_t shipId;
+    /* 0x0014 */ EShipType shipType;
+    /* 0x0015 */ EShipState shipState;
+    /* 0x0018 */ float secondsUntilArrival;
+    /* 0x001c */ float secondsUntilAutoLeave_total;
+    /* 0x0020 */ float secondsUntilAutoLeave;
+    /* 0x0024 */ bool canAutoleave;
+    /* 0x0028 */ FShipData_Colonists asColonists;
+    /* 0x0040 */ FShipData_TaxShip asTaxShip;
+    /* 0x0098 */ FShipData_PirateShip asPirateShip;
+    /* 0x00f8 */ FShipData_SmugglerTraderShip asSmugglerTrader;
+    /* 0x0158 */ FShipData_EmbarkResources asEmbarkSupplies;
+    /* 0x01b0 */ FSupplyShipState asSupplyShip;
+    /* 0x01c8 */ bool nauticalIsAware;
 };
 
 // Size: 0x428
@@ -81308,7 +78398,9 @@ enum class EActionResultType {
     RejectQuest = 14,
     TurnInQuest = 15,
     DebtCredit = 16,
-    EActionResultType_MAX = 17,
+    PopulateFreeIsland = 17,
+    AgentLoss_Specific = 18,
+    EActionResultType_MAX = 19,
 };
 
 enum class EActorRefundRule {
@@ -81323,7 +78415,8 @@ enum class EAgentDeleteReason {
     DEATH_ILLNESS = 1,
     DEATH_WOUND = 2,
     DEATH_STARVATION = 3,
-    EAgentDeleteReason_MAX = 4,
+    DEATH_NAVAL = 4,
+    EAgentDeleteReason_MAX = 5,
 };
 
 enum class EAgentDesire {
@@ -81361,6 +78454,31 @@ enum class EAgentEducation {
     SchoolEducated = 12,
     SchoolEducatedApprentice = 13,
     SchoolEducatedMaster = 15,
+    Sailor = 16,
+    Officer = 48,
+    ApprenticeSailor = 17,
+    ApprenticeOfficer = 49,
+    MasterSailor = 19,
+    MasterOfficer = 51,
+    EducatedSailor = 20,
+    EducatedOfficer = 52,
+    EducatedApprenticeSailor = 21,
+    EducatedApprenticeOfficer = 53,
+    EducatedMasterSailor = 23,
+    EducatedMasterOfficer = 55,
+    SchooledSailor = 24,
+    SchooledOfficer = 56,
+    SchooledApprenticeSailor = 25,
+    SchooledApprenticeOfficer = 57,
+    SchooledMasterSailor = 27,
+    SchooledMasterOfficer = 59,
+    SchoolEducatedSailor = 28,
+    SchoolEducatedOfficer = 60,
+    SchoolEducatedApprenticeSailor = 29,
+    SchoolEducatedApprenticeOfficer = 61,
+    SchoolEducatedMasterSailor = 31,
+    SchoolEducatedMasterOfficer = 63,
+    SailorOnly = 64,
     ApprenticeOnly = 128,
     EAgentEducation_MAX = 129,
 };
@@ -81444,7 +78562,8 @@ enum class EArcoPlayerMode {
     BUILD_RAILROAD = 16,
     BUILD_TRAIN = 17,
     TERRAIN = 18,
-    EArcoPlayerMode_MAX = 19,
+    BUILD_WALL = 19,
+    EArcoPlayerMode_MAX = 20,
 };
 
 enum class EArco_PlayerAction {
@@ -81483,7 +78602,8 @@ enum class EArco_PlayerAction {
     HOTKEY_TERRAFORMTOOL = 32,
     COPY_SETTINGS = 33,
     PASTE_SETTINGS = 34,
-    EArco_MAX = 35,
+    NAVAL_SHORTCUT = 35,
+    EArco_MAX = 36,
 };
 
 enum class EArco_PlayerVerb {
@@ -81519,8 +78639,13 @@ enum class EArco_PlayerVerb {
     HOTKEY_TERRAFORMTOOL = 29,
     COPY_SETTINGS = 30,
     PASTE_SETTINGS = 31,
-    INVALID = 32,
-    EArco_MAX = 33,
+    SELECT_SHIPS = 32,
+    UNSELECT_SHIPS = 33,
+    ISSUE_ORDER = 34,
+    NAVAL_TOGGLE_TO_NAVAL = 35,
+    NAVAL_TOGGLE_TO_COLONY = 36,
+    INVALID = 37,
+    EArco_MAX = 38,
 };
 
 enum class EAudioSoundPhase {
@@ -81631,7 +78756,8 @@ enum class EDebugMode {
     KILL_WHISKER = 9,
     PATHING_DEST_REPATHABLE = 10,
     NAUTICAL_PATH = 11,
-    EDebugMode_MAX = 12,
+    EXPLODE_AREA = 12,
+    EDebugMode_MAX = 13,
 };
 
 enum class EDecorativeSlotPos {
@@ -81644,6 +78770,14 @@ enum class EDecorativeType {
     Beauty = 0,
     Intimidation = 1,
     EDecorativeType_MAX = 2,
+};
+
+enum class EDefensiveTowerState {
+    NO_WORKERS_PRESENT = 0,
+    NO_AMMO = 1,
+    READY = 2,
+    RELOADING = 3,
+    EDefensiveTowerState_MAX = 4,
 };
 
 enum class EDockState {
@@ -81746,7 +78880,12 @@ enum class EGoalType {
     Smuggle = 21,
     FindIslands = 22,
     DebtPaidInFull = 23,
-    EGoalType_MAX = 24,
+    UnlockAquired = 24,
+    PirateIsland_Destroy = 25,
+    SinkShip = 26,
+    AgentTurnIn = 27,
+    SchematicTurnIn = 28,
+    EGoalType_MAX = 29,
 };
 
 enum class EGridOccupancy {
@@ -81754,7 +78893,8 @@ enum class EGridOccupancy {
     FULL_OCCUPATION = 1,
     FLOOR_OCCUPATION = 2,
     DEMAND_PARTIAL_OCCUPATION = 3,
-    EGridOccupancy_MAX = 4,
+    RESERVE_NAVAL_SPACE = 4,
+    EGridOccupancy_MAX = 5,
 };
 
 enum class EHaulVisualPos {
@@ -81844,6 +78984,35 @@ enum class EMusicOverridePriority {
     EMusicOverridePriority_MAX = 5,
 };
 
+enum class ENauticalRaftDockState {
+    INVALID_TRAVERSIBLE_NOROUTE = 0,
+    INVALID_TRAVERSIBLE_NOSHIPASSIGNED = 1,
+    NAV_BLOCKED = 2,
+    SHIP_NOT_PRESENT = 3,
+    SHIP_PRESENT = 4,
+    ENauticalRaftDockState_MAX = 5,
+};
+
+enum class ENavalQuestPhase {
+    NONE = 0,
+    SHIP_AT_MAINDOCK = 1,
+    SHIP_AT_PRIMARY_SHIPYARD = 2,
+    ENavalQuestPhase_MAX = 3,
+};
+
+enum class ENavalToolBehavior {
+    NAVAL_TOOL_ENFORCES_ZOOMOUT = 0,
+    NAVAL_TOOL_ALLOWED_ZOOMED_IF_SHIPS_SELECTED = 1,
+    NAVAL_TOOL_MAX = 2,
+};
+
+enum class ENavyDebugToolState {
+    None = 0,
+    Ship_Spawn = 1,
+    Ship_Damage = 2,
+    ENavyDebugToolState_MAX = 3,
+};
+
 enum class ENavyFormationType {
     None = 0,
     Line = 1,
@@ -81864,6 +79033,21 @@ enum class ENavyHudWindowDirection {
     Left = 7,
     UpLeft = 8,
     ENavyHudWindowDirection_MAX = 9,
+};
+
+enum class ENavyHudWindowType {
+    None = 0,
+    Action = 1,
+    Confirmation = 2,
+    Diplomacy = 3,
+    Trade = 4,
+    ENavyHudWindowType_MAX = 5,
+};
+
+enum class ENavySubWidget {
+    None = 0,
+    Trade = 1,
+    ENavySubWidget_MAX = 2,
 };
 
 enum class ENodeBoundary {
@@ -81933,7 +79117,9 @@ enum class EPlacementResponse {
     PLACING_ONTO_RAIL = 12,
     NOT_AFFORDABLE = 13,
     NOT_OCEAN_NAVIGABLE = 14,
-    EPlacementResponse_MAX = 15,
+    INSUFFICIENT_DOCKING_SPACE = 15,
+    OVERLAPS_DOCKING_SPACE = 16,
+    EPlacementResponse_MAX = 17,
 };
 
 enum class EPolicyCardType {
@@ -81958,7 +79144,9 @@ enum class EProblemSummaryType {
     CAMP_OUTPUT_FULL = 10,
     FREEZING_PATIENTS = 11,
     IDLE_CONSTRUCTION_YARD = 12,
-    EProblemSummaryType_MAX = 13,
+    DOCK_PATH_ISSES = 13,
+    HIGH_ALERT = 14,
+    EProblemSummaryType_MAX = 15,
 };
 
 enum class EQuestType {
@@ -82201,8 +79389,11 @@ enum class ESimAction {
     TOGGLE_MISC_FLAG = 148,
     SET_HEATER_AUTOPAUSE_LIMIT = 149,
     SET_OVERFLOW_FILTER = 150,
-    FINAL_ACTION = 151,
-    ESimAction_MAX = 152,
+    RENAME_SHIP = 151,
+    NAUTICALRAFT_ROUTE_ASSIGN = 152,
+    NAUTICALRAFT_ROUTE_CLEAR = 153,
+    FINAL_ACTION = 154,
+    ESimAction_MAX = 155,
 };
 
 enum class ESimPauseReason {
@@ -82253,7 +79444,8 @@ enum class ETechCardSlotType {
     HIDDEN = 3,
     TIER_LINE = 4,
     TIER_TECH = 5,
-    ETechCardSlotType_MAX = 6,
+    TECH_SECRET = 6,
+    ETechCardSlotType_MAX = 7,
 };
 
 enum class ETerraformerState {
@@ -82285,7 +79477,10 @@ enum class ETimelineEventType {
     UNUSED2 = 8,
     DEATH_REPORT = 9,
     QUEST_COMPLETE = 10,
-    ETimelineEventType_MAX = 11,
+    MAIN_DOCK_BLOCKED = 11,
+    NEW_TAX_OPTIONS = 12,
+    AGENT_SENDOFF = 13,
+    ETimelineEventType_MAX = 14,
 };
 
 enum class EToolbarItemType {
@@ -82315,8 +79510,10 @@ enum class ETowerGridFlag_Alt {
     NONE = 0,
     IGNORED_BY_SUPPORTS = 1,
     ALLOW_WATER_PLACEMENT = 2,
-    MUST_BE_WATER_NAVIGABLE = 4,
-    ETowerGridFlag_MAX = 5,
+    MUST_BE_WATER_NAVIGABLE_SMALLSHIP = 4,
+    DONT_EFFECT_NAVAL_NAVGRID = 8,
+    MUST_BE_WATER_NAVIGABLE_LARGESHIP = 16,
+    ETowerGridFlag_MAX = 17,
 };
 
 enum class ETrainState {
@@ -82342,6 +79539,17 @@ enum class EWorkShipState {
     EWorkShipState_MAX = 4,
 };
 
+enum class EWorkdockPhase {
+    NO_WORKSHIP_ASSIGNED = 0,
+    WORKSHIP_DOCKED_DAMAGED = 1,
+    WORKSHIP_DOCKED_REPAIRING = 2,
+    WORKSHIP_PREPARING = 3,
+    WORKSHIP_OUT = 4,
+    WORKSHIP_READY_TO_DEPLOY = 5,
+    WORKSHIP_NO_VALID_DEPARTURE_PATH = 6,
+    EWorkdockPhase_MAX = 7,
+};
+
 enum class EWorkerAssignmentValidity {
     VALID = 0,
     FAILED_OTHER = 1,
@@ -82349,7 +79557,8 @@ enum class EWorkerAssignmentValidity {
     FAILED_LOCKED = 3,
     FAILED_ALREADYASSIGNED = 4,
     FAILED_SLOTALREADYFULL = 5,
-    EWorkerAssignmentValidity_MAX = 6,
+    FAILED_ATSEA = 6,
+    EWorkerAssignmentValidity_MAX = 7,
 };
 
 enum class EWorkerSlotType {
@@ -82415,16 +79624,6 @@ class AElevatorSystem : public AActor {
     /* 0x02b0 */ TMap<UElevatorSegment*, Aelevator*> m_segmentToShaftLookup;
     /* 0x0300 */ TArray<Aelevator*> m_elevatorShafts;
     /* 0x0310 */ TMap<FIntVector, UElevatorSegment*> m_segmentPositions;
-};
-
-// Size: 0x2b0
-class AEmbarkBoat : public AActor {
-
-    void AnimateBoatInOut(bool In);
-    void SendActionToShip(FName action);
-    void SetArrivingAgents(FEmbarkBoatWhiskerGroup colonists);
-    void SetNBoxes(int32_t nBoxes);
-    void SetNColonists(int32_t colonists);
 };
 
 // Size: 0x10
@@ -82494,11 +79693,11 @@ class UEventDetailsView : public UArcoView {
 class UEventQueue : public UObject {
 };
 
-// Size: 0x80
+// Size: 0x88
 struct FEventQueue_EventCard_Hud {
     /* 0x0000 */ FTimelineEventDef eventDef;
-    /* 0x0078 */ bool triggerAnimation;
-    /* 0x007c */ int32_t eventId;
+    /* 0x0080 */ bool triggerAnimation;
+    /* 0x0084 */ int32_t eventId;
 };
 
 // Size: 0x10
@@ -82519,27 +79718,29 @@ struct FExchangeRate {
     /* 0x000d */ bool lowPriority;
 };
 
-// Size: 0x80
+// Size: 0x88
 struct FExpectationConfig {
     /* 0x0000 */ int32_t MinimumExpectationInHalfStars;
     /* 0x0004 */ int32_t MaximumExpectationInHalfStars;
     /* 0x0008 */ int32_t BaseExpectationInHalfStars;
     /* 0x000c */ int32_t ApprenticeExpectationInHalfStars;
     /* 0x0010 */ int32_t CraftsmasterExpectationInHalfStars;
-    /* 0x0014 */ int32_t EducatedExpectationInHalfStars;
-    /* 0x0018 */ int32_t SchooledExpectationInHalfStars;
-    /* 0x0020 */ TMap<FName, int32_t> TraitExpectationsInHalfStars;
-    /* 0x0070 */ TArray<FExpectationResponse> ResponseDifficulties;
+    /* 0x0014 */ int32_t SailorExpectationInHalfStars;
+    /* 0x0018 */ int32_t OfficerExpectationInHalfStars;
+    /* 0x001c */ int32_t EducatedExpectationInHalfStars;
+    /* 0x0020 */ int32_t SchooledExpectationInHalfStars;
+    /* 0x0028 */ TMap<FName, int32_t> TraitExpectationsInHalfStars;
+    /* 0x0078 */ TArray<FExpectationResponse> ResponseDifficulties;
 };
 
-// Size: 0xa8
+// Size: 0xb0
 class UExpectationConfigMule : public UObject {
     /* 0x0028 */ FExpectationConfig config;
 };
 
 // Size: 0xc
 struct FExpectationReason {
-    /* 0x0000 */ FName Reason;
+    /* 0x0000 */ FName reason;
     /* 0x0008 */ int32_t HalfStars;
 };
 
@@ -82549,13 +79750,13 @@ struct FExpectationResponse {
     /* 0x0008 */ TArray<float> ExpectationExcessPerDelta;
 };
 
-// Size: 0x150
+// Size: 0x158
 class UExpectationSystem : public UActorComponent {
     /* 0x00b8 */ int32_t DifficultyIndex;
     /* 0x00bc */ float PenaltyMultiplier;
     /* 0x00c0 */ float ExcessMultiplier;
     /* 0x00c8 */ FExpectationConfig config;
-    /* 0x0148 */ URandomXorshift* Randomizer;
+    /* 0x0150 */ URandomXorshift* Randomizer;
 };
 
 // Size: 0xc
@@ -82573,47 +79774,48 @@ struct FExtractorHudData {
     /* 0x00a1 */ bool useWhitelist;
 };
 
-// Size: 0x390
+// Size: 0x3b8
 class UFactionDock : public UActorComponent {
-    /* 0x00c0 */ TMap<EShipType, UClass*> m_boatVisualsTable;
-    /* 0x0160 */ float m_boatArrivalAnimTime;
-    /* 0x0164 */ float interpExponent;
-    /* 0x0168 */ int32_t m_currentStanding;
-    /* 0x016c */ int32_t m_maxStanding;
-    /* 0x0170 */ bool m_dangerOfLosing;
-    /* 0x0180 */ UClass* m_pirateBlockadeClass;
-    /* 0x0188 */ UClass* m_taxBlockadeClass;
-    /* 0x0241 */ EDockState m_dockState;
-    /* 0x02e8 */ UClass* m_widgetDef;
-    /* 0x02f0 */ UWidgetComponent* m_hintWidget;
-    /* 0x0300 */ FMulticastInlineDelegate TickDockVisuals;
-    /* 0x0310 */ FMulticastInlineDelegate DockedShipChanged;
-    /* 0x0320 */ float m_minShipSpawnSpacingTime;
+    /* 0x00c8 */ TMap<EShipType, UClass*> m_boatVisualsLookup;
+    /* 0x016c */ float m_boatArrivalAnimTime;
+    /* 0x0170 */ float interpExponent;
+    /* 0x0174 */ int32_t m_currentStanding;
+    /* 0x0178 */ int32_t m_maxStanding;
+    /* 0x017c */ bool m_dangerOfLosing;
+    /* 0x0244 */ EDockState m_dockState;
+    /* 0x0300 */ UClass* m_widgetDef;
+    /* 0x0308 */ UWidgetComponent* m_hintWidget;
+    /* 0x0318 */ FMulticastInlineDelegate TickDockVisuals;
+    /* 0x0328 */ FMulticastInlineDelegate DockedShipChanged;
+    /* 0x0338 */ FMulticastInlineDelegate QuestVisualChanged;
+    /* 0x0348 */ float m_minShipSpawnSpacingTime;
 
     static FString GetKeyForStanding(int32_t standing);
     void SpatialHudAction(FHudAction HudAction);
 };
 
-// Size: 0x230
+// Size: 0x258
 struct FFactionDock_UiState {
     /* 0x0000 */ bool shipPresent;
     /* 0x0008 */ FDockableShipData dockedShipState;
-    /* 0x01c0 */ FShipsForDay inboundShips;
-    /* 0x01d0 */ TArray<FShipsForDay> futureShips;
-    /* 0x01e0 */ bool isEmbarkMode;
-    /* 0x01e1 */ bool shipIsComingIn;
-    /* 0x01e4 */ float timeUntilShipArrives;
-    /* 0x01e8 */ TArray<FTax> debts;
-    /* 0x01f8 */ int32_t totalDebt;
-    /* 0x01fc */ int32_t daysUntilDebtDue;
-    /* 0x0200 */ int32_t currentStanding;
-    /* 0x0204 */ int32_t maxStanding;
-    /* 0x0208 */ bool dangerOfLosing;
-    /* 0x0210 */ FString standingString;
-    /* 0x0220 */ bool moveBlocked_busy;
-    /* 0x0224 */ int32_t moveCost_approval;
-    /* 0x0228 */ bool canAffordMove;
-    /* 0x0229 */ bool showMoveOption;
+    /* 0x01d8 */ FString dockedShipFlavorName;
+    /* 0x01e8 */ FShipsForDay inboundShips;
+    /* 0x01f8 */ TArray<FShipsForDay> futureShips;
+    /* 0x0208 */ bool isEmbarkMode;
+    /* 0x0209 */ bool shipIsComingIn;
+    /* 0x020c */ float timeUntilShipArrives;
+    /* 0x0210 */ TArray<FTax> debts;
+    /* 0x0220 */ int32_t totalDebt;
+    /* 0x0224 */ int32_t daysUntilDebtDue;
+    /* 0x0228 */ int32_t currentStanding;
+    /* 0x022c */ int32_t maxStanding;
+    /* 0x0230 */ bool dangerOfLosing;
+    /* 0x0238 */ FString standingString;
+    /* 0x0248 */ bool moveBlocked_busy;
+    /* 0x024c */ int32_t moveCost_approval;
+    /* 0x0250 */ bool canAffordMove;
+    /* 0x0251 */ bool showMoveOption;
+    /* 0x0252 */ bool blockedTravel;
 };
 
 // Size: 0x14
@@ -82776,7 +79978,7 @@ struct FFertilityInfo {
     /* 0x0018 */ int32_t SoilPropertyThreshold;
 };
 
-// Size: 0x618
+// Size: 0x6d0
 class AFloorTool : public AActor {
     /* 0x03a8 */ bool isDragging;
     /* 0x03ac */ FIntVector dragStartPos;
@@ -82851,7 +80053,7 @@ class AFootprintTool : public AActor {
     /* 0x02e0 */ TMap<FIntVector, AFootprintTool_Cell*> footprintCellActors;
 };
 
-// Size: 0x340
+// Size: 0x348
 class AFootprintTool_Cell : public AActor {
     /* 0x02c8 */ UMaterialInstance* material_passing;
     /* 0x02d0 */ UMaterialInstance* material_blocking;
@@ -82862,12 +80064,13 @@ class AFootprintTool_Cell : public AActor {
     /* 0x02f8 */ UMaterialInstance* material_entrance;
     /* 0x0300 */ UMaterialInstance* material_floorOccupancy;
     /* 0x0308 */ UMaterialInstance* material_demandPartialOccupation;
-    /* 0x0310 */ USceneComponent* Root;
-    /* 0x0318 */ UStaticMeshComponent* floor;
-    /* 0x0320 */ UStaticMeshComponent* north;
-    /* 0x0328 */ UStaticMeshComponent* east;
-    /* 0x0330 */ UStaticMeshComponent* south;
-    /* 0x0338 */ UStaticMeshComponent* west;
+    /* 0x0310 */ UMaterialInstance* material_navalReserve;
+    /* 0x0318 */ USceneComponent* Root;
+    /* 0x0320 */ UStaticMeshComponent* floor;
+    /* 0x0328 */ UStaticMeshComponent* north;
+    /* 0x0330 */ UStaticMeshComponent* east;
+    /* 0x0338 */ UStaticMeshComponent* south;
+    /* 0x0340 */ UStaticMeshComponent* west;
 };
 
 // Size: 0x1f0
@@ -82954,7 +80157,7 @@ struct FGranaryViewState {
     /* 0x0000 */ int32_t m_rationingValue;
 };
 
-// Size: 0x408
+// Size: 0x410
 class AGridActor : public AActor {
     /* 0x02a8 */ FPrefabInfo PrefabInfo;
     /* 0x0380 */ FGridFootprint liveFootprint;
@@ -82963,8 +80166,12 @@ class AGridActor : public AActor {
     /* 0x03f8 */ bool isPlayerOwned;
     /* 0x03fc */ int32_t ID;
     /* 0x0400 */ bool allowOverwrite;
+    /* 0x0404 */ int32_t Health;
+    /* 0x0408 */ int32_t maxHealth;
 
     bool GetGridActorDefinition(FGridActorDefinition_MasterSyncFormat& Out) const;
+    FResourceCollection GetRepairCost() const;
+    void PopulateHeatInsulatorFromFootprint();
 };
 
 // Size: 0x8
@@ -82973,14 +80180,14 @@ struct FGridActorDef_CropInfo {
     /* 0x0004 */ int32_t desiredSun;
 };
 
-// Size: 0xc0
+// Size: 0xc8
 struct FGridActorDef_IndustryInfo {
     /* 0x0000 */ FIndustryRecipe recipe;
-    /* 0x00b8 */ float avgUptimeBeforeBreakdown;
-    /* 0x00bc */ int32_t basePowerDraw;
+    /* 0x00c0 */ float avgUptimeBeforeBreakdown;
+    /* 0x00c4 */ int32_t basePowerDraw;
 };
 
-// Size: 0x130
+// Size: 0x138
 struct FGridActorDefinition_MasterSyncFormat : public FTableRowBase {
     /* 0x0008 */ UClass* GridActor;
     /* 0x0010 */ FString stringKey;
@@ -83005,9 +80212,10 @@ struct FGridActorDefinition_MasterSyncFormat : public FTableRowBase {
     /* 0x00a4 */ int32_t asHouseTier;
     /* 0x00a8 */ FName asIndustryDef;
     /* 0x00b0 */ TArray<FName> supportedIndustryRecipes;
-    /* 0x00c0 */ int32_t minMaintenanceInterval;
-    /* 0x00c4 */ FColor workerColor;
-    /* 0x00c8 */ bool limitOne;
+    /* 0x00c0 */ int32_t maxHealth;
+    /* 0x00c4 */ int32_t minMaintenanceInterval;
+    /* 0x00c8 */ FColor workerColor;
+    /* 0x00cc */ bool limitOne;
     /* 0x00d0 */ USoundBase* customBuildCue;
     /* 0x00d8 */ bool requiresConstruction;
     /* 0x00dc */ FName decorType;
@@ -83022,6 +80230,7 @@ struct FGridActorDefinition_MasterSyncFormat : public FTableRowBase {
     /* 0x0110 */ FName refundRule;
     /* 0x0118 */ int32_t Quality;
     /* 0x0120 */ TArray<FName> Variants;
+    /* 0x0130 */ bool isDraggableWall;
 };
 
 // Size: 0x50
@@ -83103,6 +80312,13 @@ class UHeightVisualizer : public USceneComponent {
     /* 0x0248 */ UStaticMesh* m_heightFooter;
     /* 0x0250 */ UStaticMesh* m_heightMid;
     /* 0x0258 */ UStaticMesh* m_heightTop;
+};
+
+// Size: 0xc
+struct FHighAlertState {
+    /* 0x0000 */ bool isHighAlert;
+    /* 0x0004 */ float timeLeft;
+    /* 0x0008 */ float timeMax;
 };
 
 // Size: 0x228
@@ -83203,7 +80419,7 @@ struct FHudEvents {
     /* 0x0010 */ int32_t debuffDelta;
 };
 
-// Size: 0x4f8
+// Size: 0x520
 struct FHudState {
     /* 0x0000 */ int32_t influence;
     /* 0x0004 */ int32_t influenceCap;
@@ -83232,36 +80448,37 @@ struct FHudState {
     /* 0x0318 */ FProblemSummaries_UI problemSummaries;
     /* 0x0330 */ bool showDebugUi;
     /* 0x0331 */ bool showDeveloperUi;
-    /* 0x0332 */ bool ShowHUD;
-    /* 0x0333 */ bool showToolbar;
-    /* 0x0334 */ bool showRightElements;
-    /* 0x0335 */ bool showCenterMessageArea;
-    /* 0x0336 */ bool showWheelHint;
-    /* 0x0338 */ int32_t music;
-    /* 0x033c */ FHudEvents HudEvents;
-    /* 0x0350 */ bool sliceView;
-    /* 0x0351 */ bool heatView;
-    /* 0x0352 */ bool fishView;
-    /* 0x0353 */ bool pollutionView;
-    /* 0x0354 */ bool bulldozeActive;
-    /* 0x0358 */ TArray<FAgentModifier> globalModifiers;
-    /* 0x0368 */ bool victoryPending;
-    /* 0x0369 */ bool postVictory;
-    /* 0x036a */ bool eodPending;
-    /* 0x036b */ bool enablePolicybutton;
-    /* 0x036c */ bool enableResearchbutton;
-    /* 0x0370 */ FPolicySummary PolicySummary;
-    /* 0x0374 */ FFactionExportSummary_Hud factionSummary;
-    /* 0x0388 */ FActiveEffects_Hud m_activeEffects;
-    /* 0x0408 */ FTimelineSummary m_timelineSummary;
-    /* 0x0428 */ FDebtsSummary_Hud m_debtsSummary;
-    /* 0x0468 */ FLastHappinessEffect lastHappinessMod;
-    /* 0x0478 */ TArray<FLastHappinessEffect> recentEffects;
-    /* 0x0488 */ FTechSummary TechSummary;
-    /* 0x04c8 */ bool showSaving;
-    /* 0x04d0 */ FString colonyName;
-    /* 0x04e0 */ bool showGamepadCursor;
-    /* 0x04e8 */ TArray<FRecentPolicyCost> recentPolicyCosts;
+    /* 0x0332 */ bool showCenterMessageArea;
+    /* 0x0333 */ FVisibilityToggles sectionVisibilities;
+    /* 0x033c */ bool showWheelHint;
+    /* 0x033d */ EArcoPlayerMode currentPlayerMode;
+    /* 0x0340 */ int32_t music;
+    /* 0x0344 */ FHudEvents HudEvents;
+    /* 0x0358 */ bool sliceView;
+    /* 0x0359 */ bool heatView;
+    /* 0x035a */ bool fishView;
+    /* 0x035b */ bool pollutionView;
+    /* 0x035c */ bool bulldozeActive;
+    /* 0x0360 */ TArray<FAgentModifier> globalModifiers;
+    /* 0x0370 */ bool victoryPending;
+    /* 0x0371 */ bool postVictory;
+    /* 0x0372 */ bool eodPending;
+    /* 0x0373 */ bool enablePolicybutton;
+    /* 0x0374 */ bool enableResearchbutton;
+    /* 0x0378 */ FPolicySummary PolicySummary;
+    /* 0x037c */ FFactionExportSummary_Hud factionSummary;
+    /* 0x0390 */ FActiveEffects_Hud m_activeEffects;
+    /* 0x0410 */ FTimelineSummary m_timelineSummary;
+    /* 0x0430 */ FDebtsSummary_Hud m_debtsSummary;
+    /* 0x0470 */ FLastHappinessEffect lastHappinessMod;
+    /* 0x0480 */ TArray<FLastHappinessEffect> recentEffects;
+    /* 0x0490 */ FTechSummary TechSummary;
+    /* 0x04d0 */ bool showSaving;
+    /* 0x04d8 */ FString colonyName;
+    /* 0x04e8 */ bool showGamepadCursor;
+    /* 0x04f0 */ TArray<FRecentPolicyCost> recentPolicyCosts;
+    /* 0x0500 */ FNauticalEventQueueStruct_Hud nauticalEvents;
+    /* 0x0510 */ FHighAlertState HighAlertState;
 };
 
 // Size: 0x18
@@ -83290,41 +80507,42 @@ struct FImprovementsCommonHudInfo {
 struct FIndividualLadderData {
 };
 
-// Size: 0x4e8
+// Size: 0x500
 class UIndustry : public UActorComponent {
     /* 0x00e8 */ bool reportOutputAsExtraction;
     /* 0x00ec */ float m_baseToolWear;
     /* 0x00f0 */ float m_powerDrawPerSecond;
     /* 0x00f4 */ bool m_isScienceLab;
     /* 0x00f8 */ FIndustryRecipe m_recipe;
-    /* 0x01b0 */ TArray<FName> m_recipeOptions;
-    /* 0x01c0 */ bool m_isRecipeFoodProduction;
-    /* 0x01c1 */ bool m_isRecipeFuelProduction;
-    /* 0x01c2 */ bool m_isRecipeScienceProduction;
-    /* 0x01c8 */ UWorkerViz* m_workerViz;
-    /* 0x0240 */ FWorkerAssignment m_workers;
-    /* 0x0260 */ FName m_activeRecipeKey;
-    /* 0x0268 */ FStockpile m_outputStockpile;
-    /* 0x02c0 */ FStockpile m_inputStockpile;
-    /* 0x0318 */ FStockpile m_partsStockpile;
-    /* 0x0370 */ FStockpile m_catalystStockpile;
-    /* 0x03c8 */ FName m_catalystResource;
-    /* 0x03d0 */ int32_t m_catalystResourceCyclesLeft;
-    /* 0x03d4 */ int32_t m_cyclesPerCatalyst;
-    /* 0x03d8 */ bool m_isFishing;
-    /* 0x0404 */ bool m_allowCatalysts;
-    /* 0x0410 */ FMaintenanceState m_maintenanceState;
-    /* 0x0450 */ float m_agentDispatchCooldown;
-    /* 0x0458 */ UStockpileRender* m_stockpileVisual;
-    /* 0x0480 */ UHeatSourceComponent* m_heatSource;
-    /* 0x0488 */ UParticleSystemComponent* m_breakdownParticle;
-    /* 0x0498 */ FMulticastInlineDelegate runningChangedEvent;
-    /* 0x04a8 */ FMulticastInlineDelegate progressEvent;
-    /* 0x04c0 */ FMulticastInlineDelegate completedEvent;
-    /* 0x04dc */ float waterDrainPerCycle;
-    /* 0x04e0 */ float cachedWaterLevel;
+    /* 0x01b8 */ TArray<FName> m_recipeOptions;
+    /* 0x01c8 */ bool m_isRecipeFoodProduction;
+    /* 0x01c9 */ bool m_isRecipeFuelProduction;
+    /* 0x01ca */ bool m_isRecipeScienceProduction;
+    /* 0x01d0 */ UWorkerViz* m_workerViz;
+    /* 0x0248 */ FWorkerAssignment m_workers;
+    /* 0x0268 */ FName m_activeRecipeKey;
+    /* 0x0270 */ FStockpile m_outputStockpile;
+    /* 0x02c8 */ FStockpile m_inputStockpile;
+    /* 0x0320 */ FStockpile m_partsStockpile;
+    /* 0x0378 */ FStockpile m_catalystStockpile;
+    /* 0x03d0 */ FName m_catalystResource;
+    /* 0x03d8 */ int32_t m_catalystResourceCyclesLeft;
+    /* 0x03dc */ int32_t m_cyclesPerCatalyst;
+    /* 0x03e0 */ bool m_isFishing;
+    /* 0x040c */ bool m_allowCatalysts;
+    /* 0x0418 */ FMaintenanceState m_maintenanceState;
+    /* 0x0458 */ float m_agentDispatchCooldown;
+    /* 0x0460 */ UStockpileRender* m_stockpileVisual;
+    /* 0x0488 */ UHeatSourceComponent* m_heatSource;
+    /* 0x0490 */ UParticleSystemComponent* m_breakdownParticle;
+    /* 0x04a0 */ FMulticastInlineDelegate runningChangedEvent;
+    /* 0x04b0 */ FMulticastInlineDelegate progressEvent;
+    /* 0x04c8 */ FMulticastInlineDelegate completedEvent;
+    /* 0x04d8 */ FMulticastInlineDelegate QuestVisualChanged;
+    /* 0x04f4 */ float waterDrainPerCycle;
+    /* 0x04f8 */ float cachedWaterLevel;
 
-    void DockSlotChanged(int32_t newBoatId, EWorkShipState NewState);
+    void DockSlotChanged(FName newBoatId, EWorkShipState NewState);
 };
 
 // Size: 0x438
@@ -83339,8 +80557,8 @@ class UIndustryDetails : public UArcoView {
     /* 0x0449 */ bool m_recipeSelectorOpen;
 
     FIndustryHudState ComputeState();
-    void CycleCompletedEvent(FResourceCollection base, FResourceCollection cat);
-    void CycleCompletedEvent_BlueprintEvent(FResourceCollection base, FResourceCollection cat);
+    void CycleCompletedEvent(FResourceCollection Base, FResourceCollection cat);
+    void CycleCompletedEvent_BlueprintEvent(FResourceCollection Base, FResourceCollection cat);
     void CycleTabs(bool tabRight);
     void EndRecipeSelection();
     void EndStockpileSelection();
@@ -83356,50 +80574,51 @@ struct FIndustryHoverState {
     /* 0x0020 */ FName structureNameKey;
 };
 
-// Size: 0x300
+// Size: 0x310
 struct FIndustryHudState {
     /* 0x0000 */ FIndustryRecipe baseRecipe;
-    /* 0x00b8 */ TArray<FName> recipeOptionKeys;
-    /* 0x00c8 */ FName selectedRecipeKey;
-    /* 0x00d0 */ TMap<FName, FIndustryRecipe> availableRecipes;
-    /* 0x0120 */ float liveRecipeLength;
-    /* 0x0124 */ float TimeRemaining;
-    /* 0x0128 */ FString statusString;
-    /* 0x0138 */ float recipeProgressPercent;
-    /* 0x013c */ float workerEfficiency;
-    /* 0x0140 */ FWorkerAssignmentData agentsInfo;
-    /* 0x0150 */ FStockpile outputStockpile;
-    /* 0x01a8 */ FStockpile inputStockpile;
-    /* 0x0200 */ TSet<FName> newRecipes;
-    /* 0x0250 */ FString productionState;
-    /* 0x0260 */ int32_t statDaysIntoPast;
-    /* 0x0264 */ int32_t costToInstantDeliver;
-    /* 0x0268 */ int32_t currentInfluenceAvailable;
-    /* 0x0270 */ FStockpileLinkerUiStruct linkerInfo;
-    /* 0x02b0 */ bool disabledByPlayer;
-    /* 0x02b1 */ bool overtimeHours;
-    /* 0x02b4 */ int32_t overtimeCost;
-    /* 0x02b8 */ bool canAffordOvertime;
-    /* 0x02bc */ float remainingOvertime;
-    /* 0x02c0 */ bool showInputStockpileOverrider;
-    /* 0x02c1 */ bool showOutputStockpileOverrider;
-    /* 0x02c2 */ bool showScienceShortcut;
-    /* 0x02c4 */ FMaintenanceUiState maintenance;
-    /* 0x02d4 */ bool steamPowerConnected;
-    /* 0x02d5 */ bool steamPowerSupplied;
-    /* 0x02d6 */ bool running;
-    /* 0x02d8 */ FName catalystResource;
-    /* 0x02e0 */ int32_t catalystCount;
-    /* 0x02e4 */ int32_t catalystResource_cyclesRemaining;
-    /* 0x02e8 */ int32_t catalystResource_cyclesPerResource;
-    /* 0x02ec */ float catalystPercent_towardsNextProduction;
-    /* 0x02f0 */ bool catalystEnabled;
-    /* 0x02f1 */ bool isFishing;
-    /* 0x02f4 */ float fishingSuccessRate;
-    /* 0x02f8 */ FTerrainFishingProperties fishingProperties;
+    /* 0x00c0 */ TArray<FName> recipeOptionKeys;
+    /* 0x00d0 */ FName selectedRecipeKey;
+    /* 0x00d8 */ TMap<FName, FIndustryRecipe> availableRecipes;
+    /* 0x0128 */ float liveRecipeLength;
+    /* 0x012c */ float TimeRemaining;
+    /* 0x0130 */ FString statusString;
+    /* 0x0140 */ float recipeProgressPercent;
+    /* 0x0144 */ float workerEfficiency;
+    /* 0x0148 */ FWorkerAssignmentData agentsInfo;
+    /* 0x0158 */ FStockpile outputStockpile;
+    /* 0x01b0 */ FStockpile inputStockpile;
+    /* 0x0208 */ TSet<FName> newRecipes;
+    /* 0x0258 */ FString productionState;
+    /* 0x0268 */ int32_t statDaysIntoPast;
+    /* 0x026c */ int32_t costToInstantDeliver;
+    /* 0x0270 */ int32_t currentInfluenceAvailable;
+    /* 0x0278 */ FStockpileLinkerUiStruct linkerInfo;
+    /* 0x02b8 */ bool disabledByPlayer;
+    /* 0x02b9 */ bool overtimeHours;
+    /* 0x02bc */ int32_t overtimeCost;
+    /* 0x02c0 */ bool canAffordOvertime;
+    /* 0x02c4 */ float remainingOvertime;
+    /* 0x02c8 */ bool showInputStockpileOverrider;
+    /* 0x02c9 */ bool showOutputStockpileOverrider;
+    /* 0x02ca */ bool showScienceShortcut;
+    /* 0x02cc */ FMaintenanceUiState maintenance;
+    /* 0x02dc */ bool steamPowerConnected;
+    /* 0x02dd */ bool steamPowerSupplied;
+    /* 0x02de */ bool running;
+    /* 0x02e0 */ FName catalystResource;
+    /* 0x02e8 */ int32_t catalystCount;
+    /* 0x02ec */ int32_t catalystResource_cyclesRemaining;
+    /* 0x02f0 */ int32_t catalystResource_cyclesPerResource;
+    /* 0x02f4 */ float catalystPercent_towardsNextProduction;
+    /* 0x02f8 */ bool catalystEnabled;
+    /* 0x02f9 */ bool isFishing;
+    /* 0x02fc */ float fishingSuccessRate;
+    /* 0x0300 */ FTerrainFishingProperties fishingProperties;
+    /* 0x0308 */ bool showNoShipsHint;
 };
 
-// Size: 0xb8
+// Size: 0xc0
 struct FIndustryRecipe {
     /* 0x0000 */ FResourceCollection Inputs;
     /* 0x0050 */ FResourceCollection Outputs;
@@ -83407,9 +80626,11 @@ struct FIndustryRecipe {
     /* 0x00a4 */ FName RequiredUnlock;
     /* 0x00ac */ int32_t pollutionPerSecond;
     /* 0x00b0 */ bool hideUnlessUnlocked;
+    /* 0x00b1 */ bool workersStockOneCycleMax;
+    /* 0x00b4 */ FName shipToSpawn;
 };
 
-// Size: 0x80
+// Size: 0x88
 struct FIndustryRecipe_MasterSyncFormat : public FTableRowBase {
     /* 0x0008 */ int32_t recipeTime;
     /* 0x000c */ int32_t powerPerWorker;
@@ -83431,6 +80652,8 @@ struct FIndustryRecipe_MasterSyncFormat : public FTableRowBase {
     /* 0x006c */ FName RequiredUnlock;
     /* 0x0074 */ int32_t pollutionPerSecond;
     /* 0x0078 */ bool hideUnlessUnlocked;
+    /* 0x0079 */ bool workersStockOneCycleMax;
+    /* 0x007c */ FName shipToSpawn;
 };
 
 // Size: 0x128
@@ -83627,12 +80850,28 @@ struct FLevelEditorPropToolState {
     /* 0x0058 */ FName CategoryName;
 };
 
-// Size: 0x88
+// Size: 0x90
 struct FLiveTimelineEvent {
     /* 0x0000 */ FTimelineEventDef eventDef;
-    /* 0x0078 */ int32_t decisionMade;
-    /* 0x007c */ int32_t liveEventId;
-    /* 0x0080 */ float initialMinimumDelay;
+    /* 0x0080 */ int32_t decisionMade;
+    /* 0x0084 */ int32_t liveEventId;
+    /* 0x0088 */ float initialMinimumDelay;
+};
+
+// Size: 0x120
+struct FLocalShipHoverInfo {
+    /* 0x0000 */ bool isPlayerOwned;
+    /* 0x0001 */ bool needsAssignment;
+    /* 0x0002 */ bool canreassign;
+    /* 0x0003 */ bool shouldGoToNautical;
+    /* 0x0008 */ FString owningDockName;
+    /* 0x0018 */ FNavyHudShipCard shipInfo;
+};
+
+// Size: 0x428
+class ULocalShipHoverWidget : public UArcoWidgetBase {
+
+    FLocalShipHoverInfo CalcHudInfo();
 };
 
 // Size: 0x78
@@ -83781,7 +81020,7 @@ class UMineViz : public USceneComponent {
     /* 0x0498 */ TArray<UStaticMesh*> Meshes;
 };
 
-// Size: 0x1b8
+// Size: 0x1d0
 struct FMissionShip_UiState {
     /* 0x0000 */ FDockableShipData dockedShipState;
 };
@@ -83803,6 +81042,12 @@ struct FModifierTracker {
     /* 0x0000 */ FName modKey;
     /* 0x0008 */ FAgentModifier modData;
     /* 0x0050 */ TArray<APrototype_Agent*> agentsWithMod;
+};
+
+// Size: 0x28
+class IMonitorsOceanAccessChanges : public UInterface {
+
+    void RecalcOceanAccess();
 };
 
 // Size: 0x28
@@ -83860,7 +81105,73 @@ struct FMusicRule {
     /* 0x0008 */ USoundBase* music;
 };
 
-// Size: 0x468
+// Size: 0x428
+class UNauticalDebugWidget : public UArcoWidgetBase {
+};
+
+// Size: 0x48
+struct FNauticalDebugWidgetData {
+    /* 0x0000 */ FString factionToSpawn;
+    /* 0x0010 */ TArray<FString> factionOptions;
+    /* 0x0020 */ FName shipToSpawn;
+    /* 0x0028 */ TArray<FName> shipOptions;
+    /* 0x0038 */ int32_t Damage;
+    /* 0x003c */ bool showTool;
+    /* 0x0040 */ int32_t subModeActive;
+};
+
+// Size: 0x10
+struct FNauticalEventQueueStruct_Hud {
+    /* 0x0000 */ TArray<FNauticalEventQueue_Hud> Entries;
+};
+
+// Size: 0xd8
+struct FNauticalEventQueue_Hud {
+    /* 0x0000 */ FNauticalNotice baseNauticalNoticeData;
+    /* 0x0030 */ int32_t eventId;
+    /* 0x0038 */ FString shipName;
+    /* 0x0048 */ FString islandName;
+    /* 0x0058 */ UTexture2D* eventIcon;
+    /* 0x0060 */ FName islandFaction;
+    /* 0x0068 */ FVector directionToEvent;
+    /* 0x0080 */ FHudAction onClick;
+};
+
+// Size: 0x5d8
+struct FNauticalRaftDockHudData {
+    /* 0x0000 */ FNauticalRaftRoute routeInfo;
+    /* 0x0028 */ bool routeValid;
+    /* 0x0029 */ bool routeExistsButProblem;
+    /* 0x002c */ int32_t nShipsAssigned;
+    /* 0x0030 */ int32_t nWhiskersWaiting;
+    /* 0x0034 */ int32_t nWhiskersTravelling;
+    /* 0x0038 */ bool dockBlockedFromNav;
+    /* 0x003c */ ENauticalRaftDockState currentDockState;
+    /* 0x0040 */ FArcoWorkShip assignedShipInfo;
+    /* 0x0070 */ FNauticalShipConfig assignedShipNauticalInfo;
+    /* 0x0198 */ FNauticalShipState assignedShipNauticalState;
+    /* 0x05c8 */ FName assignedShipActionKey;
+    /* 0x05d0 */ float timeToArrival;
+};
+
+// Size: 0x28
+struct FNauticalRaftRoute {
+    /* 0x0004 */ FName workShipId;
+    /* 0x000c */ int32_t routeDockA_id;
+    /* 0x0010 */ int32_t routeDockB_id;
+    /* 0x0014 */ bool lastPathGenFailed;
+    /* 0x0018 */ TArray<FVector2D> lastPathCalculated;
+};
+
+// Size: 0xd8
+class UNauticalRaftRouteAssignments : public UObject {
+    /* 0x0028 */ TMap<int32_t, FNauticalRaftRoute> routesById;
+    /* 0x0078 */ TMap<int32_t, int32_t> dockIdToRouteId;
+    /* 0x00c8 */ int32_t nextRouteId;
+    /* 0x00cc */ FName nauticalShipId;
+};
+
+// Size: 0x560
 class ANavyConfigMule : public AActor {
     /* 0x02a8 */ FOceanConfig OceanConfig;
 };
@@ -83872,16 +81183,16 @@ struct FNavyDragState {
     /* 0x0020 */ FVector endWorld;
 };
 
-// Size: 0x550
+// Size: 0x568
 class UNavyHudBase : public UArcoWidgetBase {
     /* 0x0428 */ FNavyToolConfig config;
-    /* 0x0500 */ FNavyHudConfig HudConfig;
-    /* 0x0510 */ TArray<FNavyHudWindowPlan> windowPlans;
-    /* 0x0520 */ ULocManager* locMan;
-    /* 0x0528 */ ANavyTool* NavyTool;
-    /* 0x0530 */ ANauticalOcean* ocean;
-    /* 0x0538 */ int32_t initRand;
-    /* 0x0540 */ FNavyHudInterframe interframe;
+    /* 0x0518 */ FNavyHudConfig HudConfig;
+    /* 0x0528 */ TArray<FNavyHudWindowPlan> windowPlans;
+    /* 0x0538 */ ULocManager* locMan;
+    /* 0x0540 */ ANavyTool* NavyTool;
+    /* 0x0548 */ ANauticalOcean* ocean;
+    /* 0x0550 */ int32_t initRand;
+    /* 0x0558 */ FNavyHudInterframe interframe;
 
     void ApplyWindowChoice(FNavyHudSubWindow windowData, FName choiceStirngId);
     FNavyHudState CalcState();
@@ -83923,7 +81234,7 @@ struct FNavyHudDynamicState {
     /* 0x0018 */ TArray<FNavyHudDamageHit> damageHits;
 };
 
-// Size: 0x28
+// Size: 0xd0
 struct FNavyHudFullscreenMessage {
     /* 0x0000 */ bool IsActive;
     /* 0x0008 */ FNavyHudWindowPlan plan;
@@ -83934,18 +81245,39 @@ struct FNavyHudInterframe {
     /* 0x0000 */ TArray<FNavyHudDamageHit> damageHits;
 };
 
-// Size: 0x38
+// Size: 0x108
 struct FNavyHudShipCard {
     /* 0x0000 */ UTexture2D* shipIcon;
-    /* 0x0008 */ bool IsSelected;
-    /* 0x0009 */ bool isAutomated;
-    /* 0x0010 */ double hp;
-    /* 0x0018 */ FName actionLocId;
-    /* 0x0020 */ FString resultAction;
-    /* 0x0030 */ int32_t resultPayload;
+    /* 0x0008 */ FString shipName;
+    /* 0x0018 */ bool IsSelected;
+    /* 0x0019 */ bool isAutomated;
+    /* 0x001c */ int32_t sailorCount;
+    /* 0x0020 */ int32_t officerCount;
+    /* 0x0024 */ int32_t corpseCount;
+    /* 0x0028 */ bool hasCannons;
+    /* 0x002c */ int32_t ammo;
+    /* 0x0030 */ int32_t food;
+    /* 0x0034 */ int32_t foodMax;
+    /* 0x0038 */ int32_t foodDesperationTrigger;
+    /* 0x003c */ int32_t hp;
+    /* 0x0040 */ int32_t hpMax;
+    /* 0x0044 */ int32_t materialStrength;
+    /* 0x0048 */ int32_t destructivePower;
+    /* 0x004c */ FName actionLocId;
+    /* 0x0058 */ FString resultAction;
+    /* 0x0068 */ int32_t resultPayload;
+    /* 0x006c */ FIntVector2 gridLocation;
+    /* 0x0074 */ FName actionStringKey;
+    /* 0x007c */ FIntVector2 gridDestination;
+    /* 0x0088 */ FVector worldPos;
+    /* 0x00a0 */ FResourceCollection cargoHold;
+    /* 0x00f0 */ TArray<ENauticalAction> supportedJobs;
+    /* 0x0100 */ bool isAtHomeDock;
+    /* 0x0101 */ bool needsAssignment;
+    /* 0x0104 */ float secondsTillGoal;
 };
 
-// Size: 0x108
+// Size: 0x220
 struct FNavyHudState {
     /* 0x0000 */ TArray<FNavyHudSubWindow> Windows;
     /* 0x0010 */ TArray<FNavyHudShipCard> ships;
@@ -83954,17 +81286,25 @@ struct FNavyHudState {
     /* 0x0060 */ FNavyHudDrag Drag;
     /* 0x0088 */ FNauticalConflicts conflicts;
     /* 0x00d8 */ FNavyHudFullscreenMessage fullscreenMessage;
-    /* 0x0100 */ int32_t simSpeed;
-    /* 0x0104 */ bool IsPaused;
+    /* 0x01a8 */ FNauticalDebugWidgetData devDebugData;
+    /* 0x01f0 */ TArray<FName> possibleActionsAtCursor;
+    /* 0x0200 */ FVector2D cursorScreenPos;
+    /* 0x0210 */ bool showPossibleActionsOnCursor;
+    /* 0x0214 */ int32_t simSpeed;
+    /* 0x0218 */ bool IsPaused;
 };
 
-// Size: 0x48
+// Size: 0x120
 struct FNavyHudSubWindow {
-    /* 0x0000 */ FNavyHudWindowPlan plan;
-    /* 0x0020 */ ANauticalShip* issueingShip;
-    /* 0x0028 */ ANauticalIsland* issueingIsland;
-    /* 0x0030 */ FVector2D screenPos;
-    /* 0x0040 */ ENavyHudWindowDirection overrideDir;
+    /* 0x0000 */ FName msgId;
+    /* 0x0008 */ FNavyHudWindowPlan plan;
+    /* 0x00d0 */ ANauticalShip* issueingShip;
+    /* 0x00d8 */ ANauticalIsland* issueingIsland;
+    /* 0x00e0 */ ANauticalShip* targetShip;
+    /* 0x00e8 */ bool useSimLoc;
+    /* 0x00f0 */ FVector simLoc;
+    /* 0x0108 */ FVector2D screenPos;
+    /* 0x0118 */ ENavyHudWindowDirection overrideDir;
 };
 
 // Size: 0x18
@@ -83975,92 +81315,143 @@ struct FNavyHudWarState {
     /* 0x0010 */ FName enemyId;
 };
 
-// Size: 0x20
+// Size: 0xc8
 struct FNavyHudWindowPlan {
-    /* 0x0000 */ FName titleId;
-    /* 0x0008 */ FName descId;
-    /* 0x0010 */ TArray<FName> decisionIds;
+    /* 0x0000 */ ENavyHudWindowType windowType;
+    /* 0x0008 */ TSet<ENavySubWidget> subWidgets;
+    /* 0x0058 */ ANauticalShip* ship;
+    /* 0x0060 */ ANauticalIsland* island;
+    /* 0x0068 */ ANavyTool* NavyTool;
+    /* 0x0070 */ FName titleId;
+    /* 0x0078 */ FName descId;
+    /* 0x0080 */ TArray<FName> Flags;
+    /* 0x0090 */ TArray<FName> decisionIds;
+    /* 0x00a0 */ FVector worldLoc;
+    /* 0x00b8 */ TArray<FNavyHudWindowPlanEntry> detailedChoices;
 };
 
-// Size: 0xe0
+// Size: 0x20
+struct FNavyHudWindowPlanEntry {
+    /* 0x0000 */ FName decisionId;
+    /* 0x0008 */ bool isAttack;
+    /* 0x0010 */ FString TargetName;
+};
+
+// Size: 0x3b0
 class UNavySystem : public UActorComponent {
     /* 0x00b8 */ FNavySystemConfig config;
-    /* 0x00c8 */ UWorld* World;
-    /* 0x00d0 */ ANauticalOcean* ocean;
-    /* 0x00d8 */ float Time;
+    /* 0x00e0 */ FOceanConfig lastOceanConfig;
+    /* 0x0398 */ UWorld* World;
+    /* 0x03a0 */ ANauticalOcean* ocean;
+    /* 0x03a8 */ float Time;
 };
 
-// Size: 0x10
+// Size: 0x28
 struct FNavySystemConfig {
     /* 0x0000 */ int32_t scenarioId;
-    /* 0x0008 */ UClass* configMule;
+    /* 0x0004 */ int32_t playerIslandSize;
+    /* 0x0008 */ float distancePastColonyEdgeForNauticalCombat;
+    /* 0x0010 */ FString playerIslandName;
+    /* 0x0020 */ UClass* configMule;
 };
 
-// Size: 0x458
+// Size: 0x720
 class ANavyTool : public AActor {
     /* 0x02b0 */ FNavyToolConfig config;
-    /* 0x0388 */ FNavyToolMembers M;
-    /* 0x03c0 */ FNavyToolState State;
+    /* 0x03a0 */ FNavyToolMembers M;
+    /* 0x03e0 */ FNavyToolState State;
 
+    void ApplyTrade(ANauticalShip* ship, ANauticalIsland* island, FShipTradeChoice choice);
+    FShipTradeState ComputeTradeState(ANauticalShip* ship, ANauticalIsland* island);
+    FVector GetMapForwardPerspective() const;
     void ReceiveHudAction(FHudAction HudAction);
 };
 
-// Size: 0xd8
+// Size: 0xf0
 struct FNavyToolConfig {
     /* 0x0000 */ double selectionRadius;
-    /* 0x0008 */ double minimumDragMovement;
-    /* 0x0010 */ FString playerFaction;
-    /* 0x0020 */ FString pirateFaction;
-    /* 0x0030 */ FString clawFaction;
-    /* 0x0040 */ UClass* navyHudClass;
-    /* 0x0048 */ UMaterialParameterCollection* matParams;
-    /* 0x0050 */ USoundBase* windSfx;
-    /* 0x0058 */ double windSfxFadeIn;
-    /* 0x0060 */ double windSfxFadeOut;
-    /* 0x0068 */ USoundBase* bgm;
-    /* 0x0070 */ double bgmFadeIn;
-    /* 0x0078 */ double bgmFadeOut;
-    /* 0x0080 */ USoundBase* battleBgm;
-    /* 0x0088 */ double battleBgmFadeIn;
-    /* 0x0090 */ double battleBgmFadeOut;
-    /* 0x0098 */ double arcEndHeight;
-    /* 0x00a0 */ FColor arcHomeColor;
-    /* 0x00a4 */ FColor arcPlanColor;
-    /* 0x00a8 */ FColor arcIconColor;
-    /* 0x00b0 */ double arcPlanHeight;
-    /* 0x00b8 */ double arcPlanHeightRatio;
-    /* 0x00c0 */ double arcPlanWidth;
-    /* 0x00c8 */ double arcPlanIconSize;
-    /* 0x00d0 */ double formationSimSpacing;
+    /* 0x0008 */ double selectionScreenDist;
+    /* 0x0010 */ double actionRadius;
+    /* 0x0018 */ double islandSelectRadius;
+    /* 0x0020 */ double minimumDragScreenMovement;
+    /* 0x0028 */ FString playerFaction;
+    /* 0x0038 */ FString pirateFaction;
+    /* 0x0048 */ FString clawFaction;
+    /* 0x0058 */ UClass* navyHudClass;
+    /* 0x0060 */ UMaterialParameterCollection* matParams;
+    /* 0x0068 */ USoundBase* windSfx;
+    /* 0x0070 */ double windSfxFadeIn;
+    /* 0x0078 */ double windSfxFadeOut;
+    /* 0x0080 */ USoundBase* bgm;
+    /* 0x0088 */ double bgmFadeIn;
+    /* 0x0090 */ double bgmFadeOut;
+    /* 0x0098 */ USoundBase* battleBgm;
+    /* 0x00a0 */ double battleBgmFadeIn;
+    /* 0x00a8 */ double battleBgmFadeOut;
+    /* 0x00b0 */ double arcEndHeight;
+    /* 0x00b8 */ FColor arcHomeColor;
+    /* 0x00bc */ FColor arcPlanColor;
+    /* 0x00c0 */ FColor arcIconColor;
+    /* 0x00c8 */ double arcPlanHeight;
+    /* 0x00d0 */ double arcPlanHeightRatio;
+    /* 0x00d8 */ double arcPlanWidth;
+    /* 0x00e0 */ double arcPlanIconSize;
+    /* 0x00e8 */ double formationSimSpacing;
 };
 
-// Size: 0x38
+// Size: 0x48
+struct FNavyToolDebugState {
+    /* 0x0000 */ ENavyDebugToolState debugMode;
+    /* 0x0008 */ TArray<FName> shipSpawnOptions;
+    /* 0x0018 */ FName shipToSpawn;
+    /* 0x0020 */ FString factionToSpawn;
+    /* 0x0030 */ TArray<FString> factionOptions;
+    /* 0x0040 */ int32_t damagePerClick;
+    /* 0x0044 */ bool showTool;
+};
+
+// Size: 0x40
 struct FNavyToolMembers {
     /* 0x0000 */ APlayerController_Play* pCon;
-    /* 0x0008 */ UNavySystem* navy;
-    /* 0x0010 */ ANauticalOcean* ocean;
-    /* 0x0018 */ UNavyHudBase* navyHud;
-    /* 0x0020 */ UAudioComponent* audioWind;
-    /* 0x0028 */ UAudioComponent* audioBgm;
-    /* 0x0030 */ UAudioComponent* audioBattleBgm;
+    /* 0x0008 */ AArcoSystems* Arco;
+    /* 0x0010 */ UNavySystem* navy;
+    /* 0x0018 */ ANauticalOcean* ocean;
+    /* 0x0020 */ UNavyHudBase* navyHud;
+    /* 0x0028 */ UAudioComponent* audioWind;
+    /* 0x0030 */ UAudioComponent* audioBgm;
+    /* 0x0038 */ UAudioComponent* audioBattleBgm;
 };
 
-// Size: 0x98
+// Size: 0x340
 struct FNavyToolState {
-    /* 0x0000 */ bool isDragging;
-    /* 0x0001 */ bool didDragMove;
-    /* 0x0008 */ FVector dragWorldStart;
-    /* 0x0020 */ FVector dragWorldNow;
-    /* 0x0038 */ bool isModifier;
-    /* 0x0040 */ FVector focus;
-    /* 0x0058 */ bool isOnGround;
-    /* 0x0060 */ TArray<ANauticalShip*> shipsSelection;
-    /* 0x0070 */ ENavyFormationType activeFormation;
-    /* 0x0071 */ bool hideSpatialUi;
-    /* 0x0072 */ bool hideHudUi;
-    /* 0x0073 */ bool inPendingConfirmation;
-    /* 0x0074 */ FName confirmDescId;
-    /* 0x0080 */ FVector pendingSimFocusLoc;
+    /* 0x0000 */ FCursorCastInfo lastCursorCastInfo;
+    /* 0x00f8 */ bool isDragging;
+    /* 0x00f9 */ bool didDragMove;
+    /* 0x0100 */ FVector dragWorldStart;
+    /* 0x0118 */ FVector dragWorldNow;
+    /* 0x0130 */ FVector2D dragScreenStart;
+    /* 0x0140 */ FVector2D dragScreenNow;
+    /* 0x0150 */ bool isModifier;
+    /* 0x0158 */ FVector focus;
+    /* 0x0170 */ FVector2D focusScreen;
+    /* 0x0180 */ bool isOnGround;
+    /* 0x0188 */ TArray<ANauticalShip*> shipsSelection;
+    /* 0x0198 */ ENavyFormationType activeFormation;
+    /* 0x0199 */ bool hideSpatialUi;
+    /* 0x019a */ bool hideHudUi;
+    /* 0x01a0 */ ANauticalShip* lastHoveredShip;
+    /* 0x01a8 */ ANauticalShip* lastHoveredTarget;
+    /* 0x01b0 */ ANauticalStructure* lastHoveredStructure;
+    /* 0x01b8 */ ANauticalPoi* lastHoveredPoi;
+    /* 0x01c0 */ FVector lastPlayerForward;
+    /* 0x01d8 */ bool inActionMenu;
+    /* 0x01e0 */ FVector actionMenuWorldLoc;
+    /* 0x01f8 */ FNavyHudWindowPlan actionMenuPlan;
+    /* 0x02c0 */ bool inPendingConfirmation;
+    /* 0x02c4 */ FName confirmDescId;
+    /* 0x02d0 */ FVector pendingSimFocusLoc;
+    /* 0x02e8 */ bool inDiplomacy;
+    /* 0x02f0 */ ANauticalIsland* diplomacyIsland;
 };
 
 // Size: 0x130
@@ -84077,6 +81468,31 @@ struct FNotificationHudState {
 class UNotificationSystem : public UObject {
 
     void RemoveNotification(int32_t NotificationId);
+};
+
+// Size: 0x118
+class UOceanSwayAnimator : public UActorComponent {
+    /* 0x00c0 */ USceneComponent* animRoot;
+    /* 0x00c8 */ float BobMultiplier;
+    /* 0x00cc */ float FwdTiltMult;
+    /* 0x00d0 */ float SideTiltMult;
+    /* 0x00d4 */ float speedMult;
+    /* 0x00dc */ float ImpactAnimLength;
+    /* 0x00f0 */ float waveRaiseSin;
+    /* 0x00f4 */ float waveTiltSin;
+    /* 0x00f8 */ float waveRollSin;
+    /* 0x00fc */ float RaiseRate;
+    /* 0x0100 */ float TiltRate;
+    /* 0x0104 */ float RollRate;
+    /* 0x0108 */ float DampeningRate;
+    /* 0x010c */ float OscillationRate;
+    /* 0x0110 */ float ImpactBobScale;
+    /* 0x0114 */ float ImpactSwayScale;
+
+    void Bob(float progress, float& OutImpactBob, float& OutSwayAdd) const;
+    void ImpactHit(float PowerMultiplier);
+    void SetAnimPivot(USceneComponent* NewAnimationRoot);
+    void UpdateSway();
 };
 
 // Size: 0x1c0
@@ -84099,6 +81515,11 @@ struct FPackageDelivery_UiData {
     /* 0x00b0 */ bool canAffordOvertime;
     /* 0x00b4 */ float remainingOvertime;
     /* 0x00b8 */ FServiceRangeCfg serviceRangeInfo;
+};
+
+// Size: 0xc8
+class UPartialDamageHandler : public UActorComponent {
+    /* 0x00b8 */ FMulticastInlineDelegate onHealthChanged;
 };
 
 // Size: 0x10
@@ -84174,14 +81595,15 @@ struct FPathfinderSearchParamArgs {
     /* 0x0014 */ int32_t minHeat;
 };
 
-// Size: 0x4d8
+// Size: 0x4e8
 class APawn_Play : public APawn {
-    /* 0x0350 */ FPlayPawnCfg m_config;
+    /* 0x0348 */ FPlayPawnCfg m_config;
     /* 0x03d0 */ FVector m_desiredPanPos;
     /* 0x03e8 */ float m_desiredZoomDist;
     /* 0x03f0 */ FRotator m_desiredRot;
     /* 0x0428 */ float m_focusLockCooldown;
     /* 0x0430 */ FVector m_currentFocalPoint;
+    /* 0x04b0 */ UTextureRenderTarget2D* m_thumbnailRenderTarget;
 
     void DoApplyFocalLength(float FocalLength);
     void DoApplyVolumetricCloudsActive(bool cloudsActive);
@@ -84210,13 +81632,13 @@ struct FPhysicalDumpView_UiData {
     /* 0x0010 */ TArray<FResourceDumpValue> dumpValues_bad;
 };
 
-// Size: 0x218
+// Size: 0x220
 class UPhysicalOceanDump : public UActorComponent {
-    /* 0x00d0 */ FIntVector m_waterDumpCell_relative;
-    /* 0x00dc */ int32_t m_innerRadius;
-    /* 0x00e0 */ int32_t m_outerRadius;
-    /* 0x00e8 */ TSet<FName> m_supportedResourceCategories;
-    /* 0x0138 */ FMulticastInlineDelegate m_resourcesDumpedEvent;
+    /* 0x00d8 */ FIntVector m_waterDumpCell_relative;
+    /* 0x00e4 */ int32_t m_innerRadius;
+    /* 0x00e8 */ int32_t m_outerRadius;
+    /* 0x00f0 */ TSet<FName> m_supportedResourceCategories;
+    /* 0x0140 */ FMulticastInlineDelegate m_resourcesDumpedEvent;
 
     FVector GetDumpPosWorld();
 };
@@ -84282,20 +81704,23 @@ class APipeTool : public AActor {
     /* 0x05e8 */ UStaticMeshComponent* m_dragEndViz;
 };
 
-// Size: 0x2a0
+// Size: 0x2c8
 struct FPirateShip_UiState {
     /* 0x0000 */ FDockableShipData dockedShipState;
-    /* 0x01b8 */ TArray<FTradeRow> tradeRows;
-    /* 0x01c8 */ FResourceCollection loadedResources;
-    /* 0x0218 */ int32_t totalDebt;
-    /* 0x021c */ int32_t totalCanonballs;
-    /* 0x0220 */ int32_t canonBallsToShoot;
-    /* 0x0224 */ bool canShip;
-    /* 0x0228 */ FString currentTradeBinKey;
-    /* 0x0238 */ FString currentTradeBin_ButtonKey;
-    /* 0x0248 */ bool autopayEnabled;
-    /* 0x024c */ int32_t autopayPercentGoal;
-    /* 0x0250 */ FResourceCollection inboundResources;
+    /* 0x01d0 */ TArray<FTradeRow> tradeRows;
+    /* 0x01e0 */ FResourceCollection loadedResources;
+    /* 0x0230 */ int32_t totalDebt;
+    /* 0x0234 */ int32_t totalCanonballs;
+    /* 0x0238 */ int32_t canonBallsToShoot;
+    /* 0x023c */ bool canShip;
+    /* 0x0240 */ FString currentTradeBinKey;
+    /* 0x0250 */ FString currentTradeBin_ButtonKey;
+    /* 0x0260 */ bool autopayEnabled;
+    /* 0x0264 */ int32_t autopayPercentGoal;
+    /* 0x0268 */ FResourceCollection inboundResources;
+    /* 0x02b8 */ FName rewardUnlock;
+    /* 0x02c0 */ int32_t rewardCostGold;
+    /* 0x02c4 */ bool canAffordReward;
 };
 
 // Size: 0xf0
@@ -84306,19 +81731,19 @@ struct FPlacementResponse {
 struct FPlannedFloorSeg {
 };
 
-// Size: 0x20
+// Size: 0x10
 struct FPlannedWallSeg {
 };
 
-// Size: 0x960
+// Size: 0x988
 class UPlayHud : public UArcoWidgetBase {
     /* 0x0428 */ UClass* m_agentOverviewWidgetClass;
     /* 0x0430 */ UClass* m_resourceOverviewWidgetClass;
     /* 0x0438 */ bool m_uiHasFadedIn;
     /* 0x0440 */ FHudState m_hudState;
-    /* 0x0948 */ UToolbar* m_toolbar;
-    /* 0x0950 */ UArcoRadialMenu* M_RadialMenu;
-    /* 0x0958 */ UArcoWidgetBase* m_submenu;
+    /* 0x0970 */ UToolbar* m_toolbar;
+    /* 0x0978 */ UArcoRadialMenu* M_RadialMenu;
+    /* 0x0980 */ UArcoWidgetBase* m_submenu;
 
     void AnimateEnterNauticalUi();
     void AnimateRecentPolicyCosts(const TArray<FRecentPolicyCost>& recentPolicyCosts);
@@ -84339,10 +81764,12 @@ class UPlayHud : public UArcoWidgetBase {
     void UpdateEventQueue(FEventQueue_Hud EventQueue);
     void UpdateFactionExportSummary(FFactionExportSummary_Hud factionInfo);
     void UpdateGeneralUiValues(FHudState NewState);
+    void UpdateHighAlert(const FHighAlertState HighAlertState);
     void UpdateKeybinds_BpEvent(FKeybindHintsPanelData newHints);
     void UpdateLastModifier(FLastHappinessEffect lastEffect);
     void UpdateMidDaySummary(FMidDaySummary MidDaySummary);
     void UpdateMorningSummary(FMorningSummary MorningSummary);
+    void UpdateNauticalEvents(const FNauticalEventQueueStruct_Hud nauticalEvents);
     void UpdateNotifications(FNotificationHudState notifications);
     void UpdatePhotomode(FPhotomodeHudState State);
     void UpdatePoliciesSummary(FPolicySummary nPolicies);
@@ -84355,13 +81782,15 @@ class UPlayHud : public UArcoWidgetBase {
     void UpdateSavingOverlay(bool Show);
     void UpdateScienceValues(FHudState NewState);
     void UpdateSeasonInfo(FSeasonSummary SeasonSummary);
+    void UpdateSectionVisibilities(const FVisibilityToggles VisibilityToggles);
+    void UpdateSelectedPlayerMode(EArcoPlayerMode Mode);
     void UpdateTechProgress(FTechSummary TechSummary);
     void UpdateTimeElement(FTimeHudState timeState);
     void UpdateTimelineSummary(FTimelineSummary Timeline);
     void UpdateVictoryButton(bool victoryAllowed, bool postVictory);
 };
 
-// Size: 0x80
+// Size: 0x88
 struct FPlayPawnCfg {
     /* 0x0000 */ float panSpeed;
     /* 0x0004 */ float zoomSpeed;
@@ -84373,26 +81802,23 @@ struct FPlayPawnCfg {
     /* 0x001c */ int32_t degreesPerRot;
     /* 0x0020 */ float rotLerpSpeed;
     /* 0x0024 */ float continuousRotateSpeed;
-    /* 0x0028 */ float navyCamDist;
-    /* 0x002c */ float navyForceBoundaryDist;
-    /* 0x0030 */ float navyForceBoundarySpeed;
-    /* 0x0034 */ float navyForceBoundaryMargin;
     /* 0x0038 */ float maxPanSpeedCamDist;
-    /* 0x003c */ float panSpeedMultAtMaxZoomout;
-    /* 0x0040 */ float boundsLimitDist;
-    /* 0x0044 */ float maxZoomVelocity;
-    /* 0x0048 */ float orthoDistanceStart;
-    /* 0x004c */ float orthoDistanceFull;
-    /* 0x0050 */ float orthoFocalLenStart;
-    /* 0x0054 */ float orthoFocalLenEnd;
-    /* 0x0058 */ float volCloudDistance;
-    /* 0x005c */ float lowestTilt;
-    /* 0x0060 */ float highestTilt;
-    /* 0x0064 */ float orbitMult;
-    /* 0x0068 */ float tiltMult;
-    /* 0x006c */ float edgePanPixels;
-    /* 0x0070 */ UMaterialInterface* rtCleanerMat;
-    /* 0x0078 */ UMaterialParameterCollection* mpcPlanetViewRatio;
+    /* 0x003c */ float panSpeedMultAtNavyZoomout;
+    /* 0x0040 */ float panSpeedMultAtMaxZoomout;
+    /* 0x0044 */ float boundsLimitDist;
+    /* 0x0048 */ float maxZoomVelocity;
+    /* 0x004c */ float orthoDistanceStart;
+    /* 0x0050 */ float orthoDistanceFull;
+    /* 0x0054 */ float orthoFocalLenStart;
+    /* 0x0058 */ float orthoFocalLenEnd;
+    /* 0x005c */ float volCloudDistance;
+    /* 0x0060 */ float lowestTilt;
+    /* 0x0064 */ float highestTilt;
+    /* 0x0068 */ float orbitMult;
+    /* 0x006c */ float tiltMult;
+    /* 0x0070 */ float edgePanPixels;
+    /* 0x0078 */ UMaterialInterface* rtCleanerMat;
+    /* 0x0080 */ UMaterialParameterCollection* mpcPlanetViewRatio;
 };
 
 // Size: 0x2c0
@@ -84449,13 +81875,16 @@ struct FPlayerBankSubcategory_UI {
 class APlayerController_FootprintTool : public APlayerController {
     /* 0x0768 */ AFootprintTool* m_footprintTool;
 
+    void AssignAltGridFlagToSelectedCell(ETowerGridFlag_Alt Flag, bool Set);
     void AssignBoundaryValueToSelectedCell(int32_t wallDir, ENodeBoundary boundaryType);
     void AssignGridFlagToSelectedCell(ETowerGridFlag Flag, bool Set);
     void AssignOccupancyValueToSelectedCell(EGridOccupancy occupancyType);
     void AssignPathabilityFlagToSelectedCell(int32_t flagAsInt, bool Set);
     void ClearCell();
     void CopyFootprintToClipboard();
+    void CopyHeatFootprintToClipboard();
     void CopySelectedCell();
+    bool DoesSelectedCellHaveAltGridCellFlag(ETowerGridFlag_Alt Flag);
     bool DoesSelectedCellHaveGridCellFlag(ETowerGridFlag Flag);
     bool DoesSelectedCellHavePathabilityFlag(int32_t pathabilityflag);
     FFootprintCell GetSelectedCell_FootprintState();
@@ -84463,7 +81892,7 @@ class APlayerController_FootprintTool : public APlayerController {
     void SetFootprintActorVisible(bool Visible);
 };
 
-// Size: 0xcc8
+// Size: 0xd50
 class APlayerController_Play : public APlayerController {
     /* 0x0738 */ UClass* m_playHudClass;
     /* 0x0740 */ UPlayHud* m_playHud;
@@ -84495,44 +81924,52 @@ class APlayerController_Play : public APlayerController {
     /* 0x0828 */ TMap<FName, float> m_debugTrends;
     /* 0x0880 */ FArcoPlayerState m_state;
     /* 0x09d0 */ float m_timeToPreserveRadialDepth;
-    /* 0x09e0 */ UClass* m_bulldozeToolClass;
-    /* 0x09e8 */ UClass* m_selectToolClass;
-    /* 0x09f0 */ UClass* m_propToolClass;
-    /* 0x09f8 */ UClass* m_debugToolClass;
-    /* 0x0a00 */ UClass* m_decorativeToolClass;
-    /* 0x0a08 */ UClass* m_pipeToolClass;
-    /* 0x0a10 */ UClass* m_floorToolClass;
-    /* 0x0a18 */ UClass* m_mineToolClass;
-    /* 0x0a20 */ UClass* m_aimToolClass;
-    /* 0x0a28 */ UClass* m_farmToolClass;
-    /* 0x0a30 */ UClass* m_navyToolClass;
-    /* 0x0a38 */ UClass* m_terrainToolClass;
-    /* 0x0a40 */ UClass* m_railroadToolClass;
-    /* 0x0a48 */ UClass* m_trainToolClass;
-    /* 0x0a50 */ UClass* m_terraformToolClass;
-    /* 0x0a58 */ UClass* m_choppingPriorityToolClass;
-    /* 0x0a60 */ UClass* m_foragingPriorityToolClass;
-    /* 0x0a68 */ UClass* m_cursorGridClass;
-    /* 0x0a70 */ UClass* m_victoryCutscene;
-    /* 0x0a78 */ UClass* m_devToolView;
-    /* 0x0a80 */ UClass* m_achievementDebuggerClass;
-    /* 0x0a88 */ UArcoWidgetBase* m_achievementDebugger;
-    /* 0x0a90 */ UClass* m_packagedCanaryWarningClass;
-    /* 0x0a98 */ UArcoWidgetBase* m_packagedCanaryWarning;
-    /* 0x0aa8 */ UClass* m_spatialTextClass;
-    /* 0x0ab0 */ ASpatialTextPool* m_spatialTextPool;
-    /* 0x0ab8 */ bool useContinuousRotation;
-    /* 0x0ac0 */ ACursorGrid* m_cursorGridActor;
-    /* 0x0b78 */ ADebugTool* debugToolInst;
-    /* 0x0bb4 */ FScrollClickSoundState m_scrollClickerAudioState;
-    /* 0x0bc8 */ UDataTable* m_mainToolbarConfigured;
-    /* 0x0c20 */ bool m_autosavesEnabled;
-    /* 0x0c24 */ float m_timeUntilNextAutosave;
-    /* 0x0cc0 */ float overrideZoomSpeed;
+    /* 0x09f9 */ ENavalToolBehavior m_navyToolBehavior;
+    /* 0x0a00 */ UClass* m_bulldozeToolClass;
+    /* 0x0a08 */ UClass* m_selectToolClass;
+    /* 0x0a10 */ UClass* m_propToolClass;
+    /* 0x0a18 */ UClass* m_debugToolClass;
+    /* 0x0a20 */ UClass* m_decorativeToolClass;
+    /* 0x0a28 */ UClass* m_pipeToolClass;
+    /* 0x0a30 */ UClass* m_floorToolClass;
+    /* 0x0a38 */ UClass* m_wallToolClass;
+    /* 0x0a40 */ UClass* m_mineToolClass;
+    /* 0x0a48 */ UClass* m_aimToolClass;
+    /* 0x0a50 */ UClass* m_farmToolClass;
+    /* 0x0a58 */ UClass* m_navyToolClass;
+    /* 0x0a60 */ UClass* m_terrainToolClass;
+    /* 0x0a68 */ UClass* m_railroadToolClass;
+    /* 0x0a70 */ UClass* m_trainToolClass;
+    /* 0x0a78 */ UClass* m_terraformToolClass;
+    /* 0x0a80 */ UClass* m_choppingPriorityToolClass;
+    /* 0x0a88 */ UClass* m_foragingPriorityToolClass;
+    /* 0x0a90 */ UClass* m_cursorGridClass;
+    /* 0x0a98 */ UClass* m_victoryCutscene;
+    /* 0x0aa0 */ UClass* m_devToolView;
+    /* 0x0aa8 */ UClass* m_achievementDebuggerClass;
+    /* 0x0ab0 */ UArcoWidgetBase* m_achievementDebugger;
+    /* 0x0ab8 */ UClass* m_packagedCanaryWarningClass;
+    /* 0x0ac0 */ UArcoWidgetBase* m_packagedCanaryWarning;
+    /* 0x0ad0 */ UClass* m_spatialTextClass;
+    /* 0x0ad8 */ ASpatialTextPool* m_spatialTextPool;
+    /* 0x0ae0 */ bool useContinuousRotation;
+    /* 0x0ae4 */ float spatialUiScaling_zoomBeginShrinking;
+    /* 0x0ae8 */ float spatialUiScaling_zoomMaxShrink;
+    /* 0x0aec */ float spatialUiScaling_minScale;
+    /* 0x0af0 */ ACursorGrid* m_cursorGridActor;
+    /* 0x0bb0 */ ADebugTool* debugToolInst;
+    /* 0x0bec */ FScrollClickSoundState m_scrollClickerAudioState;
+    /* 0x0c00 */ UDataTable* m_mainToolbarConfigured;
+    /* 0x0c58 */ bool m_autosavesEnabled;
+    /* 0x0c5c */ float m_timeUntilNextAutosave;
+    /* 0x0d48 */ float overrideZoomSpeed;
 
     void Arco_AchievementDebugger(bool Show);
+    void Arco_ClawsHappinessDelta(int32_t happiness);
+    void Arco_ClearMiscEventFlag(FName Flag);
     void Arco_CreateDebt(int32_t debtVal);
     void Arco_DebugHighlightCell(int32_t X, int32_t Y, int32_t Z);
+    void Arco_DockSelectedShip();
     void Arco_GenTestShipSchedule(EShipType shipType);
     void Arco_GiveDiplomacy(int32_t diplomacy);
     void Arco_GiveInfluence(int32_t influence);
@@ -84545,12 +81982,14 @@ class APlayerController_Play : public APlayerController {
     void Arco_RemoveWorldEffect(FName effect);
     void Arco_RevokeUnlock(FName unlock);
     void Arco_SetDayPhase(EDayPhase Phase);
+    void Arco_SetMiscEventFlag(FName Flag);
     void Arco_SetTimeOfDay(float Time);
     void Arco_SetWeatherVisual(FName weatherType);
-    void Arco_ShipSchedulerRegressionTest();
+    void Arco_SinkSelectedShip();
     void Arco_SpawnAgentsAtCursor(int32_t nAgents);
     void Arco_SpawnAgentsAtDock(int32_t nAgents, EAgentEducation education);
-    void Arco_SpawnShip(EShipType shipType);
+    void Arco_SpawnShip(EShipType shipType, bool spawnAsNautical);
+    void Arco_SpawnWorkShipAtDock(FName workshipType, int32_t workDockId);
     void Arco_SpawnWorldEffect(FName effect);
     void Arco_UnlockAll(bool unlock);
     void Arco_ValidateResourceReservations();
@@ -84565,6 +82004,7 @@ class APlayerController_Play : public APlayerController {
     static void InterpretCameraView(AActor* endingViewTarget, float travelTime, EEase easingFunction, float blendFactor);
     void Load(FString saveSlot);
     void PostPawnTick(float rotationDelta);
+    void QueueSynchronizedArcPlanForFrame(FArcPlan plan);
     void Save(FString saveSlot);
 };
 
@@ -84635,14 +82075,15 @@ struct FPolicy_UiData {
     /* 0x009c */ bool showExpansionHint;
 };
 
-// Size: 0x438
+// Size: 0x488
 struct FPopulation {
     /* 0x0008 */ TMap<int32_t, APrototype_Agent*> agents;
     /* 0x0058 */ TArray<APrototype_Agent*> freeAgents;
     /* 0x0068 */ TMap<APrototype_Agent*, int32_t> agentsToId;
     /* 0x00b8 */ TSet<APrototype_Agent*> agentsWanderingIdle;
     /* 0x0108 */ TMap<FName, int32_t> m_guildCounts;
-    /* 0x01a8 */ FAgentModifierState m_globalModifiersState;
+    /* 0x0158 */ TSet<APrototype_Agent*> m_agentsOwnedByNautical;
+    /* 0x01f8 */ FAgentModifierState m_globalModifiersState;
 };
 
 // Size: 0x50
@@ -84739,6 +82180,7 @@ struct FProblemSummary {
     /* 0x0064 */ FName modifierKey;
     /* 0x006c */ int32_t Instances;
     /* 0x0070 */ int32_t nConstructions;
+    /* 0x0074 */ bool highPriority;
 };
 
 // Size: 0xc0
@@ -84765,6 +82207,7 @@ class AProjectArcoGameModeBase : public AGameModeBase {
     /* 0x0368 */ AActor* m_chameleon;
 
     EInitPhase CurrentInitPhase();
+    void GameFinishedLoading();
     void SetHighlightMode(EHighlightMode highlightMode);
 };
 
@@ -84774,7 +82217,7 @@ struct FPropCategory : public FTableRowBase {
     /* 0x0018 */ TArray<FName> debug_fakedisabled;
 };
 
-// Size: 0x5a0
+// Size: 0x608
 class APropTool : public AActor {
     /* 0x03a0 */ UWidgetComponent* m_placementUiWidget;
     /* 0x03a8 */ UChildActorComponent* m_previewComponent;
@@ -84844,7 +82287,7 @@ struct FPurchaseableColonist {
     /* 0x013a */ bool canAfford;
 };
 
-// Size: 0xc8
+// Size: 0xd8
 struct FQuestBatchDef {
     /* 0x0000 */ EQuestType questType;
     /* 0x0008 */ FString questTitle;
@@ -84864,20 +82307,21 @@ struct FQuestBatchDef {
     /* 0x00a8 */ bool demoLocked;
     /* 0x00b0 */ TArray<FName> m_unlocksOnStart;
     /* 0x00c0 */ FName m_worldEffectOnStart;
+    /* 0x00c8 */ TArray<FName> m_permanentUnlocksGiven;
 };
 
-// Size: 0x3a0
+// Size: 0x400
 struct FQuestBatchState {
     /* 0x0000 */ int32_t questId;
     /* 0x0004 */ FName questDefKey;
     /* 0x0010 */ FQuestBatchDef questDef;
-    /* 0x00d8 */ TArray<FQuestProgress> subQuestProgresses;
-    /* 0x00e8 */ int32_t daysRemaining;
-    /* 0x00ec */ bool subquestsComplete;
-    /* 0x00f0 */ FQuestWorldState worldState_postQuestStart;
+    /* 0x00e8 */ TArray<FQuestProgress> subQuestProgresses;
+    /* 0x00f8 */ int32_t daysRemaining;
+    /* 0x00fc */ bool subquestsComplete;
+    /* 0x0100 */ FQuestWorldState worldState_postQuestStart;
 };
 
-// Size: 0xf8
+// Size: 0x108
 struct FQuestDef_MasterSyncFormat : public FTableRowBase {
     /* 0x0008 */ FString questTitle;
     /* 0x0018 */ FString questDesc;
@@ -84906,6 +82350,7 @@ struct FQuestDef_MasterSyncFormat : public FTableRowBase {
     /* 0x00e0 */ FName questStartWorldEffect;
     /* 0x00e8 */ FName failureMessage;
     /* 0x00f0 */ FName successMessage;
+    /* 0x00f8 */ TArray<FName> permenantUnlocksOnStart;
 };
 
 // Size: 0x14
@@ -84934,11 +82379,11 @@ struct FQuestProgress {
     /* 0x0004 */ bool isComplete;
 };
 
-// Size: 0x378
+// Size: 0x3c8
 class UQuestTracker : public UObject {
     /* 0x0028 */ FQuestWorldState m_questWorldState;
-    /* 0x02d0 */ TMap<int32_t, FQuestBatchState> m_activeQuests;
-    /* 0x0320 */ TSet<FName> m_startedQuests;
+    /* 0x0320 */ TMap<int32_t, FQuestBatchState> m_activeQuests;
+    /* 0x0370 */ TSet<FName> m_startedQuests;
 
     int32_t GetNCompletableQuests() const;
     FQuestUiState GetQuestUiData(int32_t questId);
@@ -84946,16 +82391,16 @@ class UQuestTracker : public UObject {
     bool IsQuestUiStateDifferent(const FQuestUiState& A, const FQuestUiState& B) const;
 };
 
-// Size: 0xe8
+// Size: 0xf8
 struct FQuestUiState {
     /* 0x0000 */ int32_t questId;
     /* 0x0008 */ FQuestBatchDef questDef;
-    /* 0x00d0 */ TArray<FSubquestUiState> subquestStates;
-    /* 0x00e0 */ int32_t daysRemaining;
-    /* 0x00e4 */ bool subquestsComplete;
+    /* 0x00e0 */ TArray<FSubquestUiState> subquestStates;
+    /* 0x00f0 */ int32_t daysRemaining;
+    /* 0x00f4 */ bool subquestsComplete;
 };
 
-// Size: 0x2a8
+// Size: 0x2f8
 struct FQuestWorldState {
     /* 0x0000 */ int32_t totalPopulation;
     /* 0x0008 */ TMap<FName, int32_t> buildingCounts;
@@ -84973,6 +82418,7 @@ struct FQuestWorldState {
     /* 0x0298 */ int32_t nSlotDecoratives;
     /* 0x029c */ int32_t dayQuestStarted;
     /* 0x02a0 */ int32_t nFullTaxPayments;
+    /* 0x02a8 */ TMap<FName, int32_t> miscTrackers;
 };
 
 // Size: 0x50
@@ -85029,7 +82475,7 @@ struct FRaftRoute {
     /* 0x0018 */ int32_t routeDockA_id;
     /* 0x001c */ int32_t routeDockB_id;
     /* 0x0020 */ bool lastPathGenFailed;
-    /* 0x0028 */ TArray<FVector2f> lastPathCalculated;
+    /* 0x0028 */ TArray<FVector2D> lastPathCalculated;
 };
 
 // Size: 0x170
@@ -85230,6 +82676,13 @@ struct FResearchSummaryState {
     /* 0x0070 */ int32_t currentTierCycleTime;
 };
 
+// Size: 0x320
+class AReservedTileViz : public AActor {
+    /* 0x02a8 */ UInstancedStaticMeshComponent* m_cellMeshes;
+    /* 0x02b0 */ UInstancedStaticMeshComponent* m_previewCellMeshes;
+    /* 0x0308 */ FVector m_visOffset;
+};
+
 // Size: 0x10
 struct FResidentData_UiData {
     /* 0x0000 */ bool bedAssigned;
@@ -85345,6 +82798,7 @@ struct FResourceDef : public FTableRowBase {
     /* 0x0048 */ bool questItem;
     /* 0x004c */ int32_t SortOrder;
     /* 0x0050 */ float oceanFishNutrients;
+    /* 0x0054 */ int32_t starRatingOverride;
 };
 
 // Size: 0x60
@@ -85543,28 +82997,30 @@ struct FSeasonSummary {
     /* 0x004c */ int32_t currentHeat;
 };
 
-// Size: 0x648
+// Size: 0x670
 class ASelectTool : public AActor {
     /* 0x02b0 */ UClass* m_assignableDockWidgetClass;
-    /* 0x0308 */ UClass* m_workshipAssignmentOverlayClass;
-    /* 0x0318 */ UClass* m_raftRouteOverlayClass;
-    /* 0x0328 */ UClass* m_houseAssignmentOverlayClass;
-    /* 0x0330 */ UClass* m_indAssignmentOverlayClass;
-    /* 0x0348 */ UClass* m_housingWidgetClass;
-    /* 0x03b8 */ UClass* m_industryWidgetClass;
-    /* 0x0428 */ FMulticastInlineDelegate OnHudActionDelegate;
-    /* 0x0438 */ UClass* m_agentDetailsClass;
-    /* 0x0440 */ UContextualHoverWidgetComponent* m_buildingDetailsHoverWidget;
-    /* 0x0448 */ AGridActor* m_gridActorAtGridPos;
-    /* 0x0450 */ APrototype_Agent* m_agentAtPos;
-    /* 0x0458 */ AActor* m_currentlyHighlightedActor;
-    /* 0x0460 */ AGridActor* m_currentlySelectedGridActor;
-    /* 0x0468 */ APrototype_Agent* m_currentlySelectedAgent;
-    /* 0x0490 */ APrototype_Agent* m_currentlyPickedUpAgent;
-    /* 0x04a8 */ UArcoView* m_activeDetailWidget;
-    /* 0x04b0 */ FIntVector m_gridPos;
-    /* 0x0528 */ FMulticastInlineDelegate OnHousingSelectEnded;
-    /* 0x0538 */ FMulticastInlineDelegate OnIndustrySelectEnded;
+    /* 0x0318 */ UClass* m_workshipAssignmentOverlayClass;
+    /* 0x0328 */ UClass* m_raftRouteOverlayClass;
+    /* 0x0338 */ UClass* m_shipHoverInfoClass;
+    /* 0x0340 */ UClass* m_houseAssignmentOverlayClass;
+    /* 0x0348 */ UClass* m_indAssignmentOverlayClass;
+    /* 0x0360 */ UClass* m_housingWidgetClass;
+    /* 0x03d0 */ UClass* m_industryWidgetClass;
+    /* 0x0440 */ FMulticastInlineDelegate OnHudActionDelegate;
+    /* 0x0450 */ UClass* m_agentDetailsClass;
+    /* 0x0458 */ UContextualHoverWidgetComponent* m_buildingDetailsHoverWidget;
+    /* 0x0460 */ UWidgetComponent* m_nauticalShipHoverDetailsWidget;
+    /* 0x0468 */ AGridActor* m_gridActorAtGridPos;
+    /* 0x0470 */ APrototype_Agent* m_agentAtPos;
+    /* 0x0478 */ AActor* m_currentlyHighlightedActor;
+    /* 0x0480 */ AGridActor* m_currentlySelectedGridActor;
+    /* 0x0488 */ APrototype_Agent* m_currentlySelectedAgent;
+    /* 0x04b0 */ APrototype_Agent* m_currentlyPickedUpAgent;
+    /* 0x04c8 */ UArcoView* m_activeDetailWidget;
+    /* 0x04d0 */ FIntVector m_gridPos;
+    /* 0x0550 */ FMulticastInlineDelegate OnHousingSelectEnded;
+    /* 0x0560 */ FMulticastInlineDelegate OnIndustrySelectEnded;
 
     void ReceiveHudAction(FHudAction HudAction);
 };
@@ -85640,6 +83096,14 @@ struct FShipData_TaxShip {
     /* 0x0000 */ FPaymentBreakdown paymentState;
 };
 
+// Size: 0x10
+struct FShipData_debugTiming {
+    /* 0x0000 */ float originalEstimate_seconds;
+    /* 0x0004 */ float remainingInOriginalEstimate_seconds;
+    /* 0x0008 */ float liveNauticalEstimate;
+    /* 0x000c */ float errDelta;
+};
+
 // Size: 0x60
 struct FShipExportCfg {
     /* 0x0000 */ bool Enabled;
@@ -85657,14 +83121,35 @@ struct FShipScheduleConfig {
     /* 0x0010 */ bool skipWinters;
 };
 
-// Size: 0xd8
-struct FShipTracker {
-    /* 0x0000 */ int32_t m_dayIndexThatArrivalVariancesCanBegin;
-    /* 0x0008 */ TMap<EShipType, FShipScheduleConfig> m_shipSpawnScheduleConfig;
+// Size: 0x1c
+struct FShipTradeChoice {
+    /* 0x0000 */ FName ItemName;
+    /* 0x0008 */ int32_t goldbarCost;
+    /* 0x000c */ int32_t itemQuantity;
+    /* 0x0010 */ bool isSell;
+    /* 0x0011 */ bool isBuy;
+    /* 0x0014 */ int32_t purchaseOverflow;
+    /* 0x0018 */ bool canAfford;
 };
 
-// Size: 0x28
+// Size: 0x140
+struct FShipTradeState {
+    /* 0x0000 */ TMap<FName, int32_t> islandTradables;
+    /* 0x0050 */ FNauticalCargo shipCargo;
+    /* 0x00a0 */ FResourceCollection shipCargo_asResourceCollection;
+    /* 0x00f0 */ int32_t playerCargoCap;
+    /* 0x00f4 */ int32_t playerCargoCount;
+    /* 0x00f8 */ FName islandOfferStatus;
+    /* 0x0100 */ TArray<FShipTradeChoice> sellOffers;
+    /* 0x0110 */ TArray<FShipTradeChoice> buyOffers;
+    /* 0x0120 */ FString islandName;
+    /* 0x0130 */ FString shipName;
+};
+
+// Size: 0x38
 struct FShipWithVisual {
+    /* 0x0018 */ ABoat* associatedBoatVisual;
+    /* 0x0020 */ ANauticalShip* associatedNauticalShip;
 };
 
 // Size: 0x10
@@ -85745,24 +83230,25 @@ struct FSlideData {
     /* 0x0068 */ TArray<FSlideAgentState> ownedAgents;
 };
 
-// Size: 0x28
+// Size: 0x38
 struct FSlotDecorative : public FTableRowBase {
     /* 0x0008 */ FString LocKey;
     /* 0x0018 */ UClass* decorativeActor;
     /* 0x0020 */ EDecorativeSlotPos desiredSubSlot;
     /* 0x0021 */ ENodeBoundary pathingEffect;
+    /* 0x0028 */ TArray<FName> childVariants;
 };
 
-// Size: 0x230
+// Size: 0x248
 struct FSmugglerTraderShip_UiState {
     /* 0x0000 */ FDockableShipData dockedShipState;
-    /* 0x01b8 */ TArray<FTradeRow> tradeRows;
-    /* 0x01c8 */ FResourceCollection loadedResources;
-    /* 0x0218 */ int32_t goldEarned;
-    /* 0x021c */ int32_t totalLoadedValue;
-    /* 0x0220 */ int32_t goldBarValue;
-    /* 0x0224 */ float valueLoadedAsFractionalGoldBars;
-    /* 0x0228 */ bool canShip;
+    /* 0x01d0 */ TArray<FTradeRow> tradeRows;
+    /* 0x01e0 */ FResourceCollection loadedResources;
+    /* 0x0230 */ int32_t goldEarned;
+    /* 0x0234 */ int32_t totalLoadedValue;
+    /* 0x0238 */ int32_t goldBarValue;
+    /* 0x023c */ float valueLoadedAsFractionalGoldBars;
+    /* 0x0240 */ bool canShip;
 };
 
 // Size: 0xa8
@@ -85949,13 +83435,13 @@ struct FSupplyShipState {
     /* 0x0014 */ bool winterPenalty;
 };
 
-// Size: 0x1c0
+// Size: 0x1d8
 struct FSupplyShip_UiState {
     /* 0x0000 */ FDockableShipData dockedShipState;
-    /* 0x01b8 */ bool isEmbarkMode;
+    /* 0x01d0 */ bool isEmbarkMode;
 };
 
-// Size: 0x1b8
+// Size: 0x1d0
 struct FSupplyTradeShip_UiState {
     /* 0x0000 */ FDockableShipData dockedShipState;
 };
@@ -86032,29 +83518,29 @@ struct FTaxOfficeUiState {
     /* 0x00f9 */ bool anyPirateResourcesEnabled;
 };
 
-// Size: 0x2f0
+// Size: 0x308
 struct FTaxShip_UiState {
     /* 0x0000 */ FDockableShipData dockedShipState;
-    /* 0x01b8 */ TArray<FTradeRow> warehouseTradeRows;
-    /* 0x01c8 */ FResourceCollection loadedResources;
-    /* 0x0218 */ TArray<FTax> debts;
-    /* 0x0228 */ int32_t totalDebt;
-    /* 0x022c */ bool allowOverpayment;
-    /* 0x0230 */ int32_t currentStanding;
-    /* 0x0234 */ int32_t maxStanding;
-    /* 0x0238 */ bool dangerOfLosing;
-    /* 0x0240 */ FString standingString;
-    /* 0x0250 */ bool canShip;
-    /* 0x0254 */ int32_t nTradeBin;
-    /* 0x0258 */ FString currentTradeBinKey;
-    /* 0x0268 */ FString currentTradeBin_ButtonKey;
-    /* 0x0278 */ int32_t trustToGain;
-    /* 0x027c */ int32_t diplomacyToGain;
-    /* 0x0280 */ int32_t nGiftsGiven;
-    /* 0x0288 */ TArray<FTaxExportResult> progressBins;
-    /* 0x0298 */ bool autopayEnabled;
-    /* 0x029c */ int32_t autopayPercentGoal;
-    /* 0x02a0 */ FResourceCollection inboundResources;
+    /* 0x01d0 */ TArray<FTradeRow> warehouseTradeRows;
+    /* 0x01e0 */ FResourceCollection loadedResources;
+    /* 0x0230 */ TArray<FTax> debts;
+    /* 0x0240 */ int32_t totalDebt;
+    /* 0x0244 */ bool allowOverpayment;
+    /* 0x0248 */ int32_t currentStanding;
+    /* 0x024c */ int32_t maxStanding;
+    /* 0x0250 */ bool dangerOfLosing;
+    /* 0x0258 */ FString standingString;
+    /* 0x0268 */ bool canShip;
+    /* 0x026c */ int32_t nTradeBin;
+    /* 0x0270 */ FString currentTradeBinKey;
+    /* 0x0280 */ FString currentTradeBin_ButtonKey;
+    /* 0x0290 */ int32_t trustToGain;
+    /* 0x0294 */ int32_t diplomacyToGain;
+    /* 0x0298 */ int32_t nGiftsGiven;
+    /* 0x02a0 */ TArray<FTaxExportResult> progressBins;
+    /* 0x02b0 */ bool autopayEnabled;
+    /* 0x02b4 */ int32_t autopayPercentGoal;
+    /* 0x02b8 */ FResourceCollection inboundResources;
 };
 
 // Size: 0x58
@@ -86062,13 +83548,14 @@ struct FTaxState {
     /* 0x0054 */ bool m_taxesPaidToday;
 };
 
-// Size: 0xd0
+// Size: 0xe0
 struct FTaxTradeInformation {
     /* 0x0000 */ TArray<FName> supportedResources;
-    /* 0x0010 */ TSet<FName> highDemandResources;
-    /* 0x0060 */ TSet<FName> lowDemandResources;
-    /* 0x00b0 */ TArray<FName> supportedResources_pirates;
-    /* 0x00c0 */ TArray<FName> supportedResources_smuggler;
+    /* 0x0010 */ TArray<FName> supportedResources_tier2Unlocks;
+    /* 0x0020 */ TSet<FName> highDemandResources;
+    /* 0x0070 */ TSet<FName> lowDemandResources;
+    /* 0x00c0 */ TArray<FName> supportedResources_pirates;
+    /* 0x00d0 */ TArray<FName> supportedResources_smuggler;
 };
 
 // Size: 0x40
@@ -86133,28 +83620,29 @@ struct FTechTreeState_Hud {
     /* 0x0008 */ FResearchState ResearchState;
 };
 
-// Size: 0xa8
+// Size: 0xa0
 struct FTechUnlock_V2 : public FTableRowBase {
     /* 0x0008 */ bool useGridActorForLoc;
     /* 0x0010 */ FString Title;
     /* 0x0020 */ FString Description;
     /* 0x0030 */ bool demoLocked;
     /* 0x0031 */ bool isHidden;
-    /* 0x0038 */ FString faction;
-    /* 0x0048 */ FString subCategory;
-    /* 0x0058 */ bool giftableInDemo;
-    /* 0x0059 */ bool giftable;
-    /* 0x005c */ int32_t giftPool;
-    /* 0x0060 */ bool researchable;
-    /* 0x0064 */ int32_t scienceCost;
-    /* 0x0068 */ int32_t researchTier;
-    /* 0x006c */ bool unlockedByDefault;
-    /* 0x0070 */ TArray<FName> childUnlocks;
-    /* 0x0080 */ FName associatedGridActor;
-    /* 0x0088 */ TArray<FName> prerequisiteUnlocks;
-    /* 0x0098 */ int32_t tierSortOrder;
-    /* 0x009c */ FName associatedRecipe;
-    /* 0x00a4 */ bool isQuestRelated;
+    /* 0x0038 */ FString subCategory;
+    /* 0x0048 */ bool giftableInDemo;
+    /* 0x0049 */ bool giftable;
+    /* 0x004c */ int32_t giftPool;
+    /* 0x0050 */ bool researchable;
+    /* 0x0054 */ int32_t scienceCost;
+    /* 0x0058 */ int32_t researchTier;
+    /* 0x005c */ bool unlockedByDefault;
+    /* 0x0060 */ TArray<FName> childUnlocks;
+    /* 0x0070 */ FName associatedGridActor;
+    /* 0x0078 */ TArray<FName> prerequisiteUnlocks;
+    /* 0x0088 */ int32_t tierSortOrder;
+    /* 0x008c */ FName associatedRecipe;
+    /* 0x0094 */ bool isQuestRelated;
+    /* 0x0095 */ bool showMailEvenAsChildUnlock;
+    /* 0x0098 */ FName secretPrerequisite;
 };
 
 // Size: 0xc
@@ -86314,7 +83802,7 @@ struct FTimelineDaySummary {
     /* 0x0008 */ FName weather;
 };
 
-// Size: 0x78
+// Size: 0x80
 struct FTimelineEventDef : public FTableRowBase {
     /* 0x0008 */ ETimelineEventType EventType;
     /* 0x0010 */ FString Name;
@@ -86325,9 +83813,10 @@ struct FTimelineEventDef : public FTableRowBase {
     /* 0x0050 */ FName contextualKey;
     /* 0x0058 */ float autoExpireTotal;
     /* 0x005c */ bool autoPresentEvent;
-    /* 0x0060 */ FName Quest;
-    /* 0x0068 */ int32_t contextualInt;
-    /* 0x006c */ float autoExpireRemaining;
+    /* 0x0060 */ FName additionalSummaryString;
+    /* 0x0068 */ FName Quest;
+    /* 0x0070 */ int32_t contextualInt;
+    /* 0x0074 */ float autoExpireRemaining;
 };
 
 // Size: 0x20
@@ -86412,7 +83901,7 @@ struct FTooltipTag : public FTableRowBase {
     /* 0x001c */ FColor iconTint;
 };
 
-// Size: 0x3c0
+// Size: 0x460
 class ATowerGrid : public AActor {
 };
 
@@ -86440,6 +83929,20 @@ struct FTrackedWorkplaceRecipe {
 struct FTradeBreakdown {
     /* 0x0000 */ TArray<FInvoiceRow> fees;
     /* 0x0010 */ int32_t totalCost;
+};
+
+// Size: 0x70
+struct FTradePartnerInfo {
+    /* 0x0000 */ TArray<FName> resourcesBought;
+    /* 0x0010 */ TArray<FName> resourcesSold;
+    /* 0x0020 */ FString DisplayName;
+    /* 0x0030 */ int32_t associatedIslandId;
+    /* 0x0034 */ FName faction;
+    /* 0x003c */ int32_t cellDistanceTenths;
+    /* 0x0040 */ float estimatedTravelTime;
+    /* 0x0044 */ float estimatedTravelTimeDays;
+    /* 0x0048 */ FVector islandPos;
+    /* 0x0060 */ FString mapGridPos;
 };
 
 // Size: 0x248
@@ -86655,6 +84158,15 @@ class UUI_DebtsView : public UArcoView {
     void CycleTabs(bool tabRight);
 };
 
+// Size: 0x450
+class UUI_DefensiveTower : public UArcoView {
+    /* 0x0448 */ bool m_stockpileSelectorOpen;
+
+    FDefensiveTower_UiData CalcHudState();
+    void CycleTabs(bool tabRight);
+    void EndStockpileSelection();
+};
+
 // Size: 0x448
 class UUI_DeveloperToolView : public UArcoView {
 
@@ -86789,6 +84301,14 @@ class UUI_LevelEditorPropTool : public UArcoView {
 class UUI_LogisticsBuilding : public UArcoView {
 
     FLogisticsView_UIData CalcHudState();
+};
+
+// Size: 0x450
+class UUI_NauticalRaftDock : public UArcoView {
+
+    void BeginRaftAssignment();
+    FNauticalRaftDockHudData CalcHudState();
+    void EndRaftAssignment();
 };
 
 // Size: 0x428
@@ -86940,10 +84460,15 @@ class UUI_TriageView : public UArcoView {
     void EndStockpileSelection();
 };
 
-// Size: 0x448
+// Size: 0x450
 class UUI_WorkDockView : public UArcoView {
+    /* 0x0448 */ bool m_stockpileSelectorOpen;
+    /* 0x0449 */ bool m_traderSelectorOpen;
 
     FWorkDock_UIData CalcHudState();
+    void CycleTabs(bool tabRight);
+    void EndStockpileSelection();
+    void EndTraderSelection();
 };
 
 // Size: 0x428
@@ -86971,7 +84496,7 @@ struct FUnlockTopLevelCategory {
 
 // Size: 0x50
 struct FUnlockTree {
-    /* 0x0000 */ TMap<FName, FUnlockTopLevelCategory> unlockCategories;
+    /* 0x0000 */ FUnlockTopLevelCategory playerUnlocks;
 };
 
 // Size: 0x24
@@ -87009,6 +84534,25 @@ class UVictoryView : public UArcoView {
     FGameOverInfo CalcData();
 };
 
+// Size: 0x9
+struct FVisibilityToggles {
+    /* 0x0000 */ bool showHudRoot;
+    /* 0x0001 */ bool showToolbar;
+    /* 0x0002 */ bool showMeta;
+    /* 0x0003 */ bool showTopRightSection;
+    /* 0x0004 */ bool showTopBar;
+    /* 0x0005 */ bool showTopLeftSection;
+    /* 0x0006 */ bool showTime;
+    /* 0x0007 */ bool showBottomLeft;
+    /* 0x0008 */ bool allowEod;
+};
+
+// Size: 0xc8
+struct FVisitingShipTracker {
+    /* 0x0000 */ int32_t m_dayIndexThatArrivalVariancesCanBegin;
+    /* 0x0008 */ TMap<EShipType, FShipScheduleConfig> m_shipSpawnScheduleConfig;
+};
+
 // Size: 0x70
 struct FWaitingElevatorAgent {
     /* 0x0000 */ APrototype_Agent* Agent;
@@ -87017,14 +84561,19 @@ struct FWaitingElevatorAgent {
     /* 0x0030 */ bool animatingIn;
 };
 
-// Size: 0x2e8
+// Size: 0x6e0
 class AWallTool : public AActor {
-    /* 0x02a8 */ bool isBulldoze;
-    /* 0x02a9 */ bool isDragging;
-    /* 0x02ac */ FIntVector dragStartPos;
-    /* 0x02b8 */ FIntVector dragEndPos;
-    /* 0x02d8 */ UClass* wallSeg;
-    /* 0x02e0 */ int32_t categoryIdx;
+    /* 0x03a8 */ bool isDragging;
+    /* 0x03ac */ FIntVector dragStartPos;
+    /* 0x03b8 */ FIntVector dragEndPos;
+    /* 0x03c4 */ FName wallSegKey;
+    /* 0x03d0 */ UClass* wallSeg;
+    /* 0x03e8 */ FDetailedResourceCost currentCost;
+    /* 0x0580 */ UWidgetComponent* m_placementUiWidget;
+    /* 0x0588 */ UStaticMesh* m_arrowMesh_allDirs;
+    /* 0x0590 */ float m_arrowScale;
+    /* 0x0594 */ float m_arrowZOffset;
+    /* 0x0598 */ UStaticMeshComponent* m_arrowViz;
 };
 
 // Size: 0x80
@@ -87056,24 +84605,74 @@ struct FWeatherPreset : public FTableRowBase {
     /* 0x002c */ float sunIntensity;
 };
 
-// Size: 0x288
+// Size: 0x470
 class UWorkDock : public UActorComponent {
-    /* 0x00d8 */ TSet<FName> m_supportedResourceCategories;
-    /* 0x0128 */ TSet<FName> m_supportedResourceSubCategories;
-    /* 0x01b8 */ FStockpile m_stockpile;
-    /* 0x0210 */ FWorkerAssignment m_workers;
-    /* 0x0230 */ UWorkerViz* m_workerViz;
-    /* 0x0268 */ FIntVector m_entranceExternalCell;
-    /* 0x0274 */ FIntVector m_entranceInternalCell;
+    /* 0x00e0 */ FResourceCollection m_requiredEmbarkSupplies_dockSpecific;
+    /* 0x0130 */ FResourceCollection m_requiredEmbarkSupplies_live;
+    /* 0x0180 */ TSet<ENauticalAction> m_supportedNauticalActions;
+    /* 0x0220 */ FStockpile m_inputStockpile;
+    /* 0x0278 */ FStockpile m_repairStockpile;
+    /* 0x02d0 */ FStockpile m_stockpile_goodsFromSea;
+    /* 0x0328 */ FWorkerAssignment m_workers;
+    /* 0x0348 */ UWorkerViz* m_workerViz;
+    /* 0x0384 */ FIntVector m_entranceExternalCell;
+    /* 0x0390 */ FIntVector m_entranceInternalCell;
+    /* 0x03a8 */ UStockpileRender* m_stockpileVisual;
+    /* 0x0468 */ int32_t activeTradePartnerId;
 
-    void DockSlotChanged(int32_t newBoatId, EWorkShipState NewState);
+    void DockSlotChanged(FName newBoatId, EWorkShipState NewState);
+    void ShipArrivedFromSea(FName newBoatId);
+    void ShipDepartedDockToNautical(FName departingBoatId);
 };
 
-// Size: 0xb0
+// Size: 0xa80
 struct FWorkDock_UIData {
-    /* 0x0000 */ FWorkerAssignmentData workerData;
-    /* 0x0010 */ FStockpile Stockpile;
-    /* 0x0068 */ FArcoWorkShip assignedShipInfo;
+    /* 0x0000 */ TMap<int32_t, FTradePartnerInfo> tradePartners;
+    /* 0x0050 */ FTradePartnerInfo activeTradePartner;
+    /* 0x00c0 */ bool validTradePartner;
+    /* 0x00c4 */ int32_t estimatedTradeValue;
+    /* 0x00c8 */ int32_t totalRequested;
+    /* 0x00cc */ int32_t totalTradeCapacity;
+    /* 0x00d0 */ FWorkerAssignmentData workerData;
+    /* 0x00e0 */ FStockpile stockpile_needsStorage;
+    /* 0x0138 */ FStockpile stockpile_loadingOntoShip;
+    /* 0x0190 */ FResourceCollection resourcesOnShip;
+    /* 0x01e0 */ FResourceCollection departureResourcesRequired;
+    /* 0x0230 */ TArray<FDepartureResourceData> departureResourceRows;
+    /* 0x0240 */ FArcoWorkShip assignedShipInfo;
+    /* 0x0270 */ bool hasAnyDockStorage;
+    /* 0x0274 */ int32_t departureApprovalCost;
+    /* 0x0278 */ int32_t availableApproval;
+    /* 0x027c */ bool canAffordApproval;
+    /* 0x027d */ bool allowDeparture;
+    /* 0x0280 */ FStockpileLinkerUiStruct linkerInfo;
+    /* 0x02c0 */ FNauticalShipConfig assignedShipNauticalInfo;
+    /* 0x03e8 */ FNauticalShipState assignedShipNauticalState;
+    /* 0x0818 */ int32_t nCrewPresent;
+    /* 0x081c */ int32_t maxCrewPresent;
+    /* 0x0820 */ FName shipStatusKey;
+    /* 0x0828 */ FResourceCollection repairResourcesTotal;
+    /* 0x0878 */ FResourceCollection repairResourcesAcquired;
+    /* 0x08c8 */ FStockpile repairStockpile;
+    /* 0x0920 */ float repairProgress;
+    /* 0x0924 */ EWorkdockPhase workDockPhase;
+    /* 0x0928 */ float workerProd;
+    /* 0x092c */ float estimatedTimeOfArrival;
+    /* 0x0930 */ bool shipIsReturning;
+    /* 0x0938 */ TSet<ENauticalAction> supportedActions;
+    /* 0x0988 */ bool canReachOpenOcean;
+    /* 0x0989 */ bool hasIncompatibleRequests;
+    /* 0x0990 */ TArray<FName> incompatibleResources;
+    /* 0x09a0 */ bool shipIsDocked;
+    /* 0x09a4 */ float estimatedTimeToReturn;
+    /* 0x09a8 */ FVector shipPos;
+    /* 0x09c0 */ bool isLifeboat;
+    /* 0x09c8 */ TMap<FName, FResourceStockpileSubcategory> m_resourcesByCategory_drygoods;
+    /* 0x0a18 */ TMap<FName, FResourceStockpileSubcategory> m_cannonballsLoaded;
+    /* 0x0a68 */ int32_t dockActorId;
+    /* 0x0a6c */ bool showCheatMenu;
+    /* 0x0a6d */ bool cheatAllowSpawn;
+    /* 0x0a70 */ TArray<FCheatWorkShipHud> cheatableArcoWorkShips;
 };
 
 // Size: 0x20
@@ -87125,6 +84724,13 @@ struct FWorkerSlotData {
     /* 0x0040 */ float educationProgress;
     /* 0x0044 */ EAgentEducation nextEducation;
     /* 0x0048 */ FName nextGuild;
+};
+
+// Size: 0x3
+struct FWorkerSlotRequirements {
+    /* 0x0000 */ EAgentEducation educationRequirement;
+    /* 0x0001 */ bool bIsRequiredToRun;
+    /* 0x0002 */ bool bGivesBonus;
 };
 
 // Size: 0x2a0
@@ -87190,7 +84796,7 @@ class UWorldEffects : public UObject {
     /* 0x0078 */ TSet<FName> m_effectFlags;
 };
 
-// Size: 0x1ef8
+// Size: 0x2128
 struct FWorldMeta {
     /* 0x0050 */ TSet<AGridActor*> constructions;
     /* 0x00a0 */ TSet<AGridActor*> houses;
@@ -87215,60 +84821,63 @@ struct FWorldMeta {
     /* 0x0690 */ int32_t nDryWarehouses;
     /* 0x0694 */ int32_t nGranaries;
     /* 0x0698 */ TSet<AGridActor*> industries;
-    /* 0x06e8 */ TSet<UIndustry*> industries_components;
-    /* 0x0738 */ TSet<AGridActor*> schools;
-    /* 0x0788 */ TSet<UResearchLab*> lab_components;
-    /* 0x07d8 */ TSet<AGridActor*> factionPorts;
-    /* 0x0828 */ TSet<AGridActor*> choppables;
-    /* 0x0878 */ TSet<UChoppable*> harvestableComponents;
-    /* 0x08c8 */ TSet<UChoppable*> mineHarvestables;
-    /* 0x0918 */ TSet<UChoppable*> choppables_all_ticking;
-    /* 0x0968 */ TSet<Ugrave*> graves;
-    /* 0x09b8 */ TSet<Ugrave*> unclaimedGraves;
-    /* 0x0a08 */ TSet<AGridActor*> harvestCamps;
-    /* 0x0a58 */ TSet<AGridActor*> m_restrooms;
-    /* 0x0aa8 */ TSet<AGridActor*> m_farmBuildings;
-    /* 0x0af8 */ TSet<AGridActor*> m_farmLand;
-    /* 0x0b48 */ TSet<UFarmland*> m_farmland_components;
-    /* 0x0b98 */ TSet<UFarmland*> m_ticking_farmland_components;
-    /* 0x0be8 */ TSet<AGridActor*> m_townHalls;
-    /* 0x0c38 */ TSet<AGridActor*> m_signPosts;
-    /* 0x0c88 */ TSet<AGridActor*> m_aimMachines;
-    /* 0x0cd8 */ TSet<UAimAutoReplacementListener*> m_aimReplacementListeners;
-    /* 0x0d28 */ TSet<AGridActor*> m_aimStockpileInterfaces;
-    /* 0x0d78 */ TSet<AGridActor*> m_generators;
-    /* 0x0dc8 */ TSet<AGridActor*> m_fueledHeaters;
-    /* 0x0e18 */ TSet<AGridActor*> m_deliveryBuildings;
-    /* 0x0e68 */ TSet<AGridActor*> m_logisticsBuilding;
-    /* 0x0eb8 */ TSet<AGridActor*> m_waterFountains;
-    /* 0x0f08 */ TSet<AGridActor*> m_boilers;
-    /* 0x0f58 */ TSet<AGridActor*> m_bathhouses;
-    /* 0x0fa8 */ TSet<AGridActor*> m_triageBuildings;
-    /* 0x0ff8 */ TSet<AGridActor*> m_tradePorts;
-    /* 0x1048 */ TSet<AGridActor*> m_offices;
-    /* 0x1098 */ TSet<AGridActor*> m_elevatorSegments;
-    /* 0x10e8 */ TSet<AGridActor*> m_infiniteResourceSourceOrDrains;
-    /* 0x1138 */ TSet<Ucoordinationoffice*> m_coordinationOffices;
-    /* 0x1188 */ TSet<UDecorativeSlot*> m_decorativeSlots;
-    /* 0x11d8 */ TSet<AGridActor*> m_decoratives;
-    /* 0x1228 */ TSet<Uoceanvoid*> m_oceanVoids;
-    /* 0x1278 */ TSet<UTerraformBuilding*> m_stoneDumps;
-    /* 0x12c8 */ TSet<Uterraformcamp*> m_terraformCamps;
-    /* 0x1318 */ TSet<UTerraformCell*> m_terraformCells;
-    /* 0x1368 */ TSet<UTaxOffice*> m_taxOffices;
-    /* 0x13b8 */ TSet<UAimExtractor*> m_aimExtractors;
-    /* 0x1408 */ TSet<UraftDock*> m_raftDocks;
-    /* 0x1458 */ TSet<UConstructionSite*> m_constructionSites;
-    /* 0x14a8 */ TSet<Uconstructionyard*> m_constructionYards;
-    /* 0x14f8 */ TSet<UPhysicalOceanDump*> m_physicalOceanDumps;
-    /* 0x1548 */ TSet<UDecorative*> m_tickableDecorativeComponents;
-    /* 0x1598 */ TSet<AGridActor*> m_fluidValves;
-    /* 0x15e8 */ TSet<AGridActor*> m_railBoosters;
-    /* 0x1a08 */ FPopulation Population;
-    /* 0x1e90 */ int32_t maxPopulation;
-    /* 0x1e94 */ int32_t sessionLoadTimestamp;
-    /* 0x1e98 */ int32_t historicPlayPeriodSeconds;
-    /* 0x1ef0 */ UGranaryResourceBuilding* primaryWarehouse;
+    /* 0x06e8 */ TSet<UIndustry*> questShipyards;
+    /* 0x0738 */ TSet<UIndustry*> industries_components;
+    /* 0x0788 */ TSet<AGridActor*> schools;
+    /* 0x07d8 */ TSet<UResearchLab*> lab_components;
+    /* 0x0828 */ TSet<AGridActor*> factionPorts;
+    /* 0x0878 */ TSet<AGridActor*> choppables;
+    /* 0x08c8 */ TSet<UChoppable*> harvestableComponents;
+    /* 0x0918 */ TSet<UChoppable*> mineHarvestables;
+    /* 0x0968 */ TSet<UChoppable*> choppables_all_ticking;
+    /* 0x09b8 */ TSet<Ugrave*> graves;
+    /* 0x0a08 */ TSet<Ugrave*> unclaimedGraves;
+    /* 0x0a58 */ TSet<AGridActor*> harvestCamps;
+    /* 0x0aa8 */ TSet<AGridActor*> m_restrooms;
+    /* 0x0af8 */ TSet<AGridActor*> m_farmBuildings;
+    /* 0x0b48 */ TSet<AGridActor*> m_farmLand;
+    /* 0x0b98 */ TSet<UFarmland*> m_farmland_components;
+    /* 0x0be8 */ TSet<UFarmland*> m_ticking_farmland_components;
+    /* 0x0c38 */ TSet<AGridActor*> m_townHalls;
+    /* 0x0c88 */ TSet<AGridActor*> m_signPosts;
+    /* 0x0cd8 */ TSet<AGridActor*> m_aimMachines;
+    /* 0x0d28 */ TSet<UAimAutoReplacementListener*> m_aimReplacementListeners;
+    /* 0x0d78 */ TSet<AGridActor*> m_aimStockpileInterfaces;
+    /* 0x0dc8 */ TSet<AGridActor*> m_generators;
+    /* 0x0e18 */ TSet<AGridActor*> m_fueledHeaters;
+    /* 0x0e68 */ TSet<AGridActor*> m_deliveryBuildings;
+    /* 0x0eb8 */ TSet<AGridActor*> m_logisticsBuilding;
+    /* 0x0f08 */ TSet<AGridActor*> m_waterFountains;
+    /* 0x0f58 */ TSet<AGridActor*> m_boilers;
+    /* 0x0fa8 */ TSet<AGridActor*> m_bathhouses;
+    /* 0x0ff8 */ TSet<AGridActor*> m_triageBuildings;
+    /* 0x1048 */ TSet<AGridActor*> m_tradePorts;
+    /* 0x1098 */ TSet<AGridActor*> m_offices;
+    /* 0x10e8 */ TSet<AGridActor*> m_elevatorSegments;
+    /* 0x1138 */ TSet<AGridActor*> m_infiniteResourceSourceOrDrains;
+    /* 0x1188 */ TSet<Ucoordinationoffice*> m_coordinationOffices;
+    /* 0x11d8 */ TSet<UDecorativeSlot*> m_decorativeSlots;
+    /* 0x1228 */ TSet<AGridActor*> m_decoratives;
+    /* 0x1278 */ TSet<Uoceanvoid*> m_oceanVoids;
+    /* 0x12c8 */ TSet<UTerraformBuilding*> m_stoneDumps;
+    /* 0x1318 */ TSet<Uterraformcamp*> m_terraformCamps;
+    /* 0x1368 */ TSet<UTerraformCell*> m_terraformCells;
+    /* 0x13b8 */ TSet<UTaxOffice*> m_taxOffices;
+    /* 0x1408 */ TSet<UAimExtractor*> m_aimExtractors;
+    /* 0x1458 */ TSet<UraftDock*> m_raftDocks;
+    /* 0x14a8 */ TSet<Unauticalraftdock*> m_nauticalRaftDocks;
+    /* 0x14f8 */ TSet<UConstructionSite*> m_constructionSites;
+    /* 0x1548 */ TSet<Uconstructionyard*> m_constructionYards;
+    /* 0x1598 */ TSet<UPhysicalOceanDump*> m_physicalOceanDumps;
+    /* 0x15e8 */ TSet<UDecorative*> m_tickableDecorativeComponents;
+    /* 0x1638 */ TSet<AGridActor*> m_fluidValves;
+    /* 0x1688 */ TSet<AGridActor*> m_railBoosters;
+    /* 0x16d8 */ TSet<UDefensiveTower*> m_defensiveTower;
+    /* 0x1be8 */ FPopulation Population;
+    /* 0x20c0 */ int32_t maxPopulation;
+    /* 0x20c4 */ int32_t sessionLoadTimestamp;
+    /* 0x20c8 */ int32_t historicPlayPeriodSeconds;
+    /* 0x2120 */ UGranaryResourceBuilding* primaryWarehouse;
 };
 
 // Size: 0x420
@@ -87359,20 +84968,20 @@ class Ucoordinationoffice : public UActorComponent {
     bool FireSpecificWorker(APrototype_Agent* Agent);
 };
 
-// Size: 0x580
+// Size: 0x588
 class Aelevator : public AGridActor {
-    /* 0x0408 */ UClass* m_platformActorClass;
-    /* 0x0410 */ AElevatorPlatform* m_platformActor;
-    /* 0x0418 */ TMap<FIntVector, UElevatorSegment*> m_ownedSegments;
-    /* 0x0470 */ float m_platformStopInterval;
-    /* 0x0474 */ float m_platformMaxSpeed;
-    /* 0x0478 */ float m_platformAccel;
-    /* 0x047c */ int32_t m_maxAgentsOnPlatform;
-    /* 0x04b8 */ TMap<int32_t, FElevatorLandingData> m_landings;
-    /* 0x0508 */ bool wakeupFlag;
-    /* 0x0510 */ TArray<int32_t> m_ascendingLandingHeights;
-    /* 0x0520 */ TArray<FWaitingElevatorAgent> m_agentsOnMovingPlatform;
-    /* 0x0530 */ FColor m_debugColor;
+    /* 0x0410 */ UClass* m_platformActorClass;
+    /* 0x0418 */ AElevatorPlatform* m_platformActor;
+    /* 0x0420 */ TMap<FIntVector, UElevatorSegment*> m_ownedSegments;
+    /* 0x0478 */ float m_platformStopInterval;
+    /* 0x047c */ float m_platformMaxSpeed;
+    /* 0x0480 */ float m_platformAccel;
+    /* 0x0484 */ int32_t m_maxAgentsOnPlatform;
+    /* 0x04c0 */ TMap<int32_t, FElevatorLandingData> m_landings;
+    /* 0x0510 */ bool wakeupFlag;
+    /* 0x0518 */ TArray<int32_t> m_ascendingLandingHeights;
+    /* 0x0528 */ TArray<FWaitingElevatorAgent> m_agentsOnMovingPlatform;
+    /* 0x0538 */ FColor m_debugColor;
 };
 
 // Size: 0x230
@@ -87399,6 +85008,23 @@ class Ujumppad : public UActorComponent {
 class Ulogisticshub : public UActorComponent {
     /* 0x00c8 */ FWorkerAssignment m_workers;
     /* 0x00e8 */ UWorkerViz* m_workerViz;
+};
+
+// Size: 0x228
+class Unauticalraftdock : public UActorComponent {
+    /* 0x00d0 */ float m_minFAddWhenExitingDestinationStation;
+    /* 0x00e0 */ TArray<FAgentAtNauticalRaftDock> m_agentsAtDock;
+    /* 0x00f0 */ ENauticalRaftDockState m_raftLoadingState;
+    /* 0x00f4 */ float m_timeUntilDeparture;
+    /* 0x00f8 */ float m_maxDepartureTimer;
+    /* 0x0100 */ float m_timePerQueueLoad;
+    /* 0x0108 */ TSet<FIntVector> m_passengerWaitingCells_relative;
+    /* 0x0180 */ TSet<ENauticalAction> m_supportedNauticalActions;
+
+    void DockSlotChanged(FName newBoatId, EWorkShipState NewState);
+    int32_t GetAgentsWaiting() const;
+    void ShipArrivedFromSea(FName newBoatId);
+    void ShipDepartedDockToNautical(FName departingBoatId);
 };
 
 // Size: 0x118
@@ -89248,7 +86874,7 @@ struct FRigVMFunction_MathBoolFlipFlop : public FRigVMFunction_MathBoolBase {
     /* 0x000c */ float Duration;
     /* 0x0010 */ bool Result;
     /* 0x0011 */ bool LastValue;
-    /* 0x0014 */ float TimeLeft;
+    /* 0x0014 */ float timeLeft;
 };
 
 // Size: 0x10
@@ -89280,7 +86906,7 @@ struct FRigVMFunction_MathBoolOnce : public FRigVMFunction_MathBoolBase {
     /* 0x0008 */ float Duration;
     /* 0x000c */ bool Result;
     /* 0x000d */ bool LastValue;
-    /* 0x0010 */ float TimeLeft;
+    /* 0x0010 */ float timeLeft;
 };
 
 // Size: 0x10
@@ -91167,7 +88793,7 @@ struct FRigVMFunction_RandomFloat : public FRigVMFunction_MathBase {
     /* 0x001c */ float LastResult;
     /* 0x0020 */ int32_t LastSeed;
     /* 0x0024 */ int32_t BaseSeed;
-    /* 0x0028 */ float TimeLeft;
+    /* 0x0028 */ float timeLeft;
 };
 
 // Size: 0x58
@@ -91180,7 +88806,7 @@ struct FRigVMFunction_RandomVector : public FRigVMFunction_MathBase {
     /* 0x0030 */ FVector LastResult;
     /* 0x0048 */ int32_t LastSeed;
     /* 0x004c */ int32_t BaseSeed;
-    /* 0x0050 */ float TimeLeft;
+    /* 0x0050 */ float timeLeft;
 };
 
 // Size: 0x10
@@ -91498,7 +89124,7 @@ struct FRigVMFunction_VisualLogBox : public FRigVMFunction_VisualLogWireframeOpt
 
 // Size: 0x90
 struct FRigVMFunction_VisualLogCapsule : public FRigVMFunction_VisualLogWireframeOptional {
-    /* 0x0048 */ FVector base;
+    /* 0x0048 */ FVector Base;
     /* 0x0060 */ float HalfHeight;
     /* 0x0064 */ float Radius;
     /* 0x0070 */ FQuat Rotation;
@@ -95349,7 +92975,7 @@ struct FStateTreeTemporaryInstanceData {
 struct FStateTreeTransitionDelayedState {
     /* 0x0008 */ UStateTree* StateTree;
     /* 0x0010 */ FStateTreeSharedEvent CapturedEvent;
-    /* 0x0020 */ float TimeLeft;
+    /* 0x0020 */ float timeLeft;
     /* 0x0024 */ uint32_t CapturedEventHash;
     /* 0x0028 */ FStateTreeStateHandle StateHandle;
     /* 0x002a */ FStateTreeIndex16 TransitionIndex;
@@ -97231,6 +94857,16 @@ enum class EMetaMetricOp {
     EMetaMetricOp_MAX = 5,
 };
 
+enum class ENavMeshSearchClosestAccessible {
+    None = 0,
+    Goal = 1,
+    GoalAnyCluster = 2,
+    Start = 4,
+    StartAndGoal = 5,
+    StartAndGoalAnyCluster = 7,
+    ENavMeshSearchClosestAccessible_MAX = 8,
+};
+
 enum class ENaviFormType {
     None = 0,
     Header = 1,
@@ -97393,6 +95029,12 @@ enum class EResultRank {
     RankA = 3,
     RankS = 4,
     EResultRank_MAX = 5,
+};
+
+enum class ESeaVesselSize {
+    Small = 0,
+    Large = 1,
+    ESeaVesselSize_MAX = 2,
 };
 
 enum class ESteamWorkshopDownloadStatus {
@@ -97580,14 +95222,6 @@ enum class ETerrainMetaDataType {
     Salt = 14,
     Fish = 15,
     ETerrainMetaDataType_MAX = 16,
-};
-
-enum class ETerrainNavigationAccessibility {
-    Accessible = 0,
-    Enclosed = 1,
-    Blocked = 2,
-    Blocking = 3,
-    ETerrainNavigationAccessibility_MAX = 4,
 };
 
 enum class ETerrainRayCastResult {
@@ -98015,11 +95649,11 @@ class UGridMath : public UBlueprintFunctionLibrary {
     static float TravelDistance(FVector B, FVector A);
 };
 
-// Size: 0x80
+// Size: 0x1f0
 class UGridNavMesh : public UObject {
-    /* 0x0028 */ FIntVector Origin;
-    /* 0x0034 */ FIntVector Extent;
-    /* 0x0070 */ TArray<UProceduralMeshComponent*> DebugMeshComponents;
+    /* 0x0110 */ TArray<UProceduralMeshComponent*> DebugMeshComponents;
+    /* 0x0120 */ UMaterialInterface* StoredDebugMaterial;
+    /* 0x01d8 */ TArray<FSubordinateNavMesh> SubordinateNavMeshes;
 };
 
 // Size: 0xc8
@@ -98677,20 +96311,21 @@ struct FMailLetter {
     /* 0x0028 */ TArray<float> payloadNumbers;
 };
 
-// Size: 0x88
+// Size: 0xb0
 struct FMailLetterRow : public FTableRowBase {
     /* 0x0008 */ FName ID;
     /* 0x0010 */ FName swapGroupOverrideId;
     /* 0x0018 */ FName sender;
     /* 0x0020 */ TSoftObjectPtr<USoundBase> voiceover;
-    /* 0x0048 */ FName p1_key;
-    /* 0x0050 */ FName p1_vo;
-    /* 0x0058 */ FName p2_key;
-    /* 0x0060 */ FName p2_vo;
-    /* 0x0068 */ FName p3_key;
-    /* 0x0070 */ FName p3_vo;
-    /* 0x0078 */ FName p4_key;
-    /* 0x0080 */ FName p4_vo;
+    /* 0x0048 */ TSoftObjectPtr<USoundBase> voiceover_extra;
+    /* 0x0070 */ FName p1_key;
+    /* 0x0078 */ FName p1_vo;
+    /* 0x0080 */ FName p2_key;
+    /* 0x0088 */ FName p2_vo;
+    /* 0x0090 */ FName p3_key;
+    /* 0x0098 */ FName p3_vo;
+    /* 0x00a0 */ FName p4_key;
+    /* 0x00a8 */ FName p4_vo;
 };
 
 // Size: 0x3a8
@@ -99438,60 +97073,74 @@ class UNotify : public UBlueprintFunctionLibrary {
     static void Urgent(UObject* WorldContextObject, FString Desc, FString Title);
 };
 
-// Size: 0x468
+// Size: 0x50
+struct FOceanImpactSystem {
+    /* 0x0000 */ UTextureRenderTarget2D* Texture;
+    /* 0x0008 */ UMaterialParameterCollection* Parameters;
+    /* 0x0010 */ TArray<UOceanShipImpactComponent*> ShipImpactComponents;
+};
+
+// Size: 0x4e0
 class AOceanPlane : public AActor {
     /* 0x02a8 */ float TestMipBias;
     /* 0x02ac */ float TestWaterRoughness;
     /* 0x02b0 */ float TestFoamRoughness;
     /* 0x02b4 */ float TestWaterSpecular;
     /* 0x02b8 */ float TestFoamSpecular;
-    /* 0x02bc */ int32_t CurrentSlice;
-    /* 0x02c4 */ float Scale;
-    /* 0x02c8 */ float LengthScale0;
-    /* 0x02cc */ float LengthScale1;
-    /* 0x02d0 */ float LengthScale2;
-    /* 0x02d8 */ double MinimumCameraHeight;
-    /* 0x02e0 */ double DisplacementFadeOutHeight;
-    /* 0x02e8 */ double DisplacementFadeInHeight;
-    /* 0x02f0 */ FOceanParameters SimulationParameters;
-    /* 0x0340 */ UMaterialParameterCollection* MetaDataParameters;
-    /* 0x0348 */ UMaterialInterface* SurfaceMaterial;
-    /* 0x0350 */ UMaterialInterface* SurfaceMaterialNoMetaData;
-    /* 0x0358 */ UMaterialInterface* SurfaceMaterialLOD;
-    /* 0x0360 */ UMaterialInterface* SurfaceMaterialNoMetaDataLOD;
-    /* 0x0368 */ UMaterialInterface* SliceMaterial;
-    /* 0x0370 */ UMaterialInterface* SliceMaterialNoMetaData;
-    /* 0x0378 */ EMipFilter MipFilter;
-    /* 0x0379 */ EOceanSimulationFidelity SimulationFidelity;
-    /* 0x037a */ bool bUsePreviousFrameTextures;
-    /* 0x037c */ int32_t chunkSize;
-    /* 0x0380 */ UMaterialInstanceDynamic* DynamicSurfaceMaterial;
-    /* 0x0388 */ UMaterialInstanceDynamic* DynamicSurfaceMaterialLOD;
-    /* 0x0390 */ UMaterialInstanceDynamic* DynamicSurfaceMaterialNoMetaData;
-    /* 0x0398 */ UMaterialInstanceDynamic* DynamicSurfaceMaterialNoMetaDataLOD;
-    /* 0x03a0 */ UTextureRenderTarget2D* DisplacementAndTurbulence0;
-    /* 0x03a8 */ UTextureRenderTarget2D* Derivatives0;
-    /* 0x03b0 */ UTextureRenderTarget2D* DisplacementPreviousFrame0;
-    /* 0x03b8 */ UTextureRenderTarget2D* DerivativesPreviousFrame0;
-    /* 0x03c0 */ UTextureRenderTarget2D* DisplacementAndTurbulence1;
-    /* 0x03c8 */ UTextureRenderTarget2D* Derivatives1;
-    /* 0x03d0 */ UTextureRenderTarget2D* DisplacementPreviousFrame1;
-    /* 0x03d8 */ UTextureRenderTarget2D* DerivativesPreviousFrame1;
-    /* 0x03e0 */ UTextureRenderTarget2D* DisplacementAndTurbulence2;
-    /* 0x03e8 */ UTextureRenderTarget2D* Derivatives2;
-    /* 0x03f0 */ UTextureRenderTarget2D* DisplacementPreviousFrame2;
-    /* 0x03f8 */ UTextureRenderTarget2D* DerivativesPreviousFrame2;
-    /* 0x0400 */ int32_t MeshResolution;
-    /* 0x0404 */ float SliceHeight;
-    /* 0x0408 */ int32_t ChunkMargin;
-    /* 0x040c */ FIntVector Origin;
-    /* 0x0418 */ UStaticMesh* FullSurfaceMesh;
-    /* 0x0420 */ TArray<FOceanPlaneSlice> Slices;
+    /* 0x02c0 */ FOceanImpactSystem ImpactSystem;
+    /* 0x0310 */ int32_t CurrentSlice;
+    /* 0x0318 */ float Scale;
+    /* 0x031c */ float LengthScale0;
+    /* 0x0320 */ float LengthScale1;
+    /* 0x0324 */ float LengthScale2;
+    /* 0x0328 */ double MinimumCameraHeight;
+    /* 0x0330 */ double DisplacementFadeOutHeight;
+    /* 0x0338 */ double DisplacementFadeInHeight;
+    /* 0x0340 */ FOceanParameters SimulationParameters;
+    /* 0x0390 */ UMaterialParameterCollection* MetaDataParameters;
+    /* 0x0398 */ UMaterialInterface* SurfaceMaterial;
+    /* 0x03a0 */ UMaterialInterface* SurfaceMaterialNoMetaData;
+    /* 0x03a8 */ UMaterialInterface* SurfaceMaterialLOD;
+    /* 0x03b0 */ UMaterialInterface* SurfaceMaterialNoMetaDataLOD;
+    /* 0x03b8 */ UMaterialInterface* SliceMaterial;
+    /* 0x03c0 */ UMaterialInterface* SliceMaterialNoMetaData;
+    /* 0x03c8 */ EMipFilter MipFilter;
+    /* 0x03c9 */ EOceanSimulationFidelity SimulationFidelity;
+    /* 0x03ca */ bool bUsePreviousFrameTextures;
+    /* 0x03cc */ int32_t chunkSize;
+    /* 0x03d0 */ int32_t SeaMeshSize;
+    /* 0x03d4 */ int32_t SeaMeshExtent;
+    /* 0x03d8 */ UMaterialInstanceDynamic* DynamicSurfaceMaterial;
+    /* 0x03e0 */ UMaterialInstanceDynamic* DynamicSurfaceMaterialLOD;
+    /* 0x03e8 */ UMaterialInstanceDynamic* DynamicSurfaceMaterialNoMetaData;
+    /* 0x03f0 */ UMaterialInstanceDynamic* DynamicSurfaceMaterialNoMetaDataLOD;
+    /* 0x03f8 */ UTextureRenderTarget2D* DisplacementAndTurbulence0;
+    /* 0x0400 */ UTextureRenderTarget2D* Derivatives0;
+    /* 0x0408 */ UTextureRenderTarget2D* DisplacementPreviousFrame0;
+    /* 0x0410 */ UTextureRenderTarget2D* DerivativesPreviousFrame0;
+    /* 0x0418 */ UTextureRenderTarget2D* DisplacementAndTurbulence1;
+    /* 0x0420 */ UTextureRenderTarget2D* Derivatives1;
+    /* 0x0428 */ UTextureRenderTarget2D* DisplacementPreviousFrame1;
+    /* 0x0430 */ UTextureRenderTarget2D* DerivativesPreviousFrame1;
+    /* 0x0438 */ UTextureRenderTarget2D* DisplacementAndTurbulence2;
+    /* 0x0440 */ UTextureRenderTarget2D* Derivatives2;
+    /* 0x0448 */ UTextureRenderTarget2D* DisplacementPreviousFrame2;
+    /* 0x0450 */ UTextureRenderTarget2D* DerivativesPreviousFrame2;
+    /* 0x0458 */ int32_t MeshResolution;
+    /* 0x045c */ float SliceHeight;
+    /* 0x0460 */ int32_t ChunkMargin;
+    /* 0x0464 */ FIntVector Origin;
+    /* 0x0470 */ UStaticMesh* FullSurfaceMesh;
+    /* 0x0478 */ UStaticMesh* SeaMesh;
+    /* 0x0480 */ UStaticMesh* SeaMeshLOD;
+    /* 0x0488 */ FIntPoint SeaMeshCoreExtent;
+    /* 0x0490 */ FIntPoint CurrentSeaLocation;
+    /* 0x0498 */ TArray<FOceanPlaneSlice> Slices;
 
     void ApplyTestMipBias();
     void SetReflectionParameters(float MipBias, float WaterRoughness, float FoamRoughness, float WaterSpecular, float FoamSpecular);
     void SetSimulationFidelity(EOceanSimulationFidelity NewFidelity);
-    void SetTimeMultiplier(int32_t Multiplier);
+    void SetTimeMultiplier(int32_t MultiplierInTenths);
     void SetWindSpeed(float windSpeed);
     void ToggleSimulation();
 };
@@ -99502,7 +97151,7 @@ struct FOceanPlaneChunk {
     /* 0x0008 */ bool bFullSurface;
 };
 
-// Size: 0x48
+// Size: 0x280
 struct FOceanPlaneSlice {
     /* 0x0000 */ TArray<FOceanPlaneChunk> Chunks;
     /* 0x0010 */ UAsyncMeshBuilder* MeshBuilder;
@@ -99510,8 +97159,16 @@ struct FOceanPlaneSlice {
     /* 0x0020 */ UStaticMeshComponent* InfiniteSurfaceComponent;
     /* 0x0028 */ UStaticMesh* InfiniteSliceMesh;
     /* 0x0030 */ UStaticMeshComponent* InfiniteSliceComponent;
-    /* 0x0038 */ UInstancedStaticMeshComponent* SurroundingSurfaceComponent;
-    /* 0x0040 */ ETerrainSliceState State;
+    /* 0x0038 */ FGridInstaMesh SeaMeshes;
+    /* 0x0158 */ FGridInstaMesh SeaMeshesLOD;
+    /* 0x0278 */ ETerrainSliceState State;
+};
+
+// Size: 0x280
+class UOceanShipImpactComponent : public USceneComponent {
+    /* 0x0240 */ double ShipWidth;
+    /* 0x0248 */ double ShipLength;
+    /* 0x0250 */ double BowDepth;
 };
 
 // Size: 0x88
@@ -100606,7 +98263,7 @@ class UStaticStageConfig : public UBlueprintFunctionLibrary {
     static void PlayTheatre(const UObject* WorldContext, FString playId);
     static FName PlayWorld();
     static void QuitGame(const UObject* WorldContext);
-    static void RerollFriendGame();
+    static void RandomizeFriendGame();
     static FName Sandbox();
     static void ShowLoadCover(const UObject* WorldContext);
     static FName StoryEnd();
@@ -100716,6 +98373,11 @@ class UStoveIntegrator : public UObject {
 struct FStringPair {
     /* 0x0000 */ FName Key;
     /* 0x0008 */ FName val;
+};
+
+// Size: 0x18
+struct FSubordinateNavMesh {
+    /* 0x0000 */ UGridNavMesh* NavMesh;
 };
 
 // Size: 0x390
@@ -100851,6 +98513,35 @@ class UTeachWidget : public UUserWidget {
 struct FTerrainBlockLocation {
     /* 0x0000 */ UStaticMesh* Mesh;
     /* 0x0008 */ int32_t Index;
+};
+
+// Size: 0x38
+struct FTerrainBuildingConstraints {
+    /* 0x0000 */ uint64_t Seed;
+    /* 0x0008 */ int32_t NumberOfDocks;
+    /* 0x000c */ int32_t DockLandHalfWidth;
+    /* 0x0010 */ int32_t DockLandHalfDepth;
+    /* 0x0014 */ int32_t DockLandMaxHeight;
+    /* 0x0018 */ int32_t DockLandMaxWaterDepth;
+    /* 0x001c */ int32_t DockWaterHalfWidth;
+    /* 0x0020 */ int32_t DockWaterHalfDepth;
+    /* 0x0024 */ int32_t DockWaterToLandMargin;
+    /* 0x0028 */ int32_t NumberOfTowers;
+    /* 0x002c */ int32_t TowerRadius;
+    /* 0x0030 */ int32_t TowerMaxHeightDifference;
+    /* 0x0034 */ int32_t TowerMaxWaterDepth;
+};
+
+// Size: 0x10
+struct FTerrainBuildingSpot {
+    /* 0x0000 */ FIntVector Location;
+    /* 0x000c */ EDiscreteRotation Rotation;
+};
+
+// Size: 0x20
+struct FTerrainBuildingSpots {
+    /* 0x0000 */ TArray<FTerrainBuildingSpot> docks;
+    /* 0x0010 */ TArray<FTerrainBuildingSpot> Towers;
 };
 
 // Size: 0x1c
@@ -101144,7 +98835,8 @@ class ATiledBlockTerrain : public AActor {
     /* 0x07f8 */ float PropDensity;
     /* 0x07fc */ bool bAlwaysUseGroundLOD;
     /* 0x07fd */ bool bNavViz;
-    /* 0x07fe */ bool bFishViz;
+    /* 0x07fe */ ESeaVesselSize NavVizType;
+    /* 0x07ff */ bool bFishViz;
 };
 
 // Size: 0x78
@@ -101272,62 +98964,60 @@ class UTiledTerrainConfigMule : public UObject {
     /* 0x0028 */ FTiledTerrainConfig config;
 };
 
-// Size: 0x9e8
+// Size: 0x9d8
 struct FTiledTerrainData {
     /* 0x0000 */ FIntVector Origin;
     /* 0x000c */ FIntVector Extent;
     /* 0x0018 */ TArray<FTerrainCell> Cells;
     /* 0x0028 */ TArray<FTerrainCell2D> Cells2D;
-    /* 0x0038 */ TArray<ETerrainNavigationAccessibility> NavigationMap;
-    /* 0x0048 */ FIntPoint MainIslandDataLocation;
-    /* 0x0050 */ TArray<FTerrainCell> OriginalCells;
-    /* 0x0060 */ TArray<FTerrainCell2D> OriginalCells2D;
-    /* 0x0070 */ FTerrainCellTypeLibrary TypeLibrary;
-    /* 0x01d0 */ TArray<FName> Ores;
-    /* 0x01e0 */ int32_t SimTimeSeconds;
-    /* 0x01e4 */ float SimTimeFraction;
-    /* 0x01e8 */ float FarmTickTimer;
-    /* 0x01ec */ int32_t LastFarmCellIndex;
-    /* 0x01f0 */ TArray<FTerrainFarmCell> FarmCells;
-    /* 0x0200 */ TArray<FTerrainFarmField> FarmFields;
-    /* 0x0210 */ FFarmCropConfig FarmCropConfig;
-    /* 0x0260 */ float ExternalCropGrowthModifier;
-    /* 0x0264 */ float ExternalCropYieldModifier;
-    /* 0x0268 */ float PollutionTickTimer;
-    /* 0x026c */ bool bPollutionApplication;
-    /* 0x0270 */ int32_t LastPollutionCellIndex;
-    /* 0x0278 */ TArray<FTerrainPollutionCell> PollutionCells;
-    /* 0x0288 */ float DecayTickTimer;
-    /* 0x028c */ int32_t LastDecayCellIndex;
-    /* 0x0290 */ TArray<FTerrainDecayCell> DecayCells;
-    /* 0x02a0 */ int32_t LastHeatAnimationCellIndex;
-    /* 0x02a8 */ TArray<FTerrainHeatAnimationCell> HeatAnimationCells;
-    /* 0x02b8 */ float FishRecoveryTickTimer;
-    /* 0x02bc */ int32_t LastFishRecoveryCellIndex;
-    /* 0x02c0 */ TArray<FTerrainFishRecoveryCell> FishRecoveryCells;
-    /* 0x02d0 */ float DesalinationTickTimer;
-    /* 0x02d4 */ int32_t LastDesalinationCellIndex;
-    /* 0x02d8 */ TArray<FTerrainDesalinationCell> DesalinationCells;
-    /* 0x02e8 */ TArray<FTerrainWaterEnclosure> WaterEnclosures;
-    /* 0x02f8 */ int32_t WaterDrainIncrement;
-    /* 0x02fc */ float WaterEvaporationPerSecond;
-    /* 0x0300 */ float WaterEvaporationMultiplier;
-    /* 0x0308 */ TArray<float> TraceDistances;
-    /* 0x0318 */ FIntVector ShipPosition;
-    /* 0x0324 */ float SecondsPerYear;
-    /* 0x0328 */ float GlobalCropYieldFactor;
-    /* 0x032c */ float MineAgeDecayPeriod;
-    /* 0x0330 */ float OceanFloorDryingPeriod;
-    /* 0x0334 */ uint8_t GlobalHeat;
-    /* 0x0335 */ bool bTemperatureFalling;
-    /* 0x0338 */ int32_t SeaFloorHeight;
-    /* 0x033c */ uint8_t NewTerrainHealth;
-    /* 0x033d */ bool bRequiresNavigationUpdate;
-    /* 0x0340 */ float NutrientDifficultyModifier;
-    /* 0x0348 */ TArray<int32_t> HarvestPriorities;
-    /* 0x0358 */ TArray<int32_t> EarlyHarvestPriorities;
-    /* 0x0368 */ UGridNavMesh* NavigationMesh;
-    /* 0x0370 */ bool bNavigationMeshDirty;
+    /* 0x0038 */ FIntPoint MainIslandDataLocation;
+    /* 0x0040 */ TArray<FTerrainCell> OriginalCells;
+    /* 0x0050 */ TArray<FTerrainCell2D> OriginalCells2D;
+    /* 0x0060 */ FTerrainCellTypeLibrary TypeLibrary;
+    /* 0x01c0 */ TArray<FName> Ores;
+    /* 0x01d0 */ int32_t SimTimeSeconds;
+    /* 0x01d4 */ float SimTimeFraction;
+    /* 0x01d8 */ float FarmTickTimer;
+    /* 0x01dc */ int32_t LastFarmCellIndex;
+    /* 0x01e0 */ TArray<FTerrainFarmCell> FarmCells;
+    /* 0x01f0 */ TArray<FTerrainFarmField> FarmFields;
+    /* 0x0200 */ FFarmCropConfig FarmCropConfig;
+    /* 0x0250 */ float ExternalCropGrowthModifier;
+    /* 0x0254 */ float ExternalCropYieldModifier;
+    /* 0x0258 */ float PollutionTickTimer;
+    /* 0x025c */ bool bPollutionApplication;
+    /* 0x0260 */ int32_t LastPollutionCellIndex;
+    /* 0x0268 */ TArray<FTerrainPollutionCell> PollutionCells;
+    /* 0x0278 */ float DecayTickTimer;
+    /* 0x027c */ int32_t LastDecayCellIndex;
+    /* 0x0280 */ TArray<FTerrainDecayCell> DecayCells;
+    /* 0x0290 */ int32_t LastHeatAnimationCellIndex;
+    /* 0x0298 */ TArray<FTerrainHeatAnimationCell> HeatAnimationCells;
+    /* 0x02a8 */ float FishRecoveryTickTimer;
+    /* 0x02ac */ int32_t LastFishRecoveryCellIndex;
+    /* 0x02b0 */ TArray<FTerrainFishRecoveryCell> FishRecoveryCells;
+    /* 0x02c0 */ float DesalinationTickTimer;
+    /* 0x02c4 */ int32_t LastDesalinationCellIndex;
+    /* 0x02c8 */ TArray<FTerrainDesalinationCell> DesalinationCells;
+    /* 0x02d8 */ TArray<FTerrainWaterEnclosure> WaterEnclosures;
+    /* 0x02e8 */ int32_t WaterDrainIncrement;
+    /* 0x02ec */ float WaterEvaporationPerSecond;
+    /* 0x02f0 */ float WaterEvaporationMultiplier;
+    /* 0x02f8 */ TArray<float> TraceDistances;
+    /* 0x0308 */ FIntVector ShipPosition;
+    /* 0x0314 */ float SecondsPerYear;
+    /* 0x0318 */ float GlobalCropYieldFactor;
+    /* 0x031c */ float MineAgeDecayPeriod;
+    /* 0x0320 */ float OceanFloorDryingPeriod;
+    /* 0x0324 */ uint8_t GlobalHeat;
+    /* 0x0325 */ bool bTemperatureFalling;
+    /* 0x0328 */ int32_t SeaFloorHeight;
+    /* 0x032c */ uint8_t NewTerrainHealth;
+    /* 0x032d */ bool bRequiresNavigationUpdate;
+    /* 0x0330 */ float NutrientDifficultyModifier;
+    /* 0x0338 */ TArray<int32_t> HarvestPriorities;
+    /* 0x0348 */ TArray<int32_t> EarlyHarvestPriorities;
+    /* 0x0358 */ TArray<UGridNavMesh*> NavigationMeshes;
 };
 
 // Size: 0x50
@@ -101391,8 +99081,6 @@ class ATiledVoxelTerrain : public AActor {
     /* 0x0518 */ UMaterialInterface* SurfaceMaterial;
     /* 0x0520 */ UMaterialInterface* UnderwaterMaterial;
     /* 0x0528 */ UMaterialInterface* SliceMaterial;
-
-    void GenerateImposter();
 };
 
 // Size: 0x10
@@ -101868,37 +99556,6 @@ class UTemplateSequenceSystem : public UMovieSceneEntitySystem {
 
 // Size: 0x120
 class UTemplateSequenceTrack : public UMovieSceneSubTrack {
-};
-
-enum class ETextureImportFloatingPointFormat {
-    HDR_F16 = 0,
-    HDRCompressed_BC6 = 1,
-    HDR_F32_or_F16 = 2,
-    PreviousDefault = 0,
-    ETextureImportFloatingPointFormat_MAX = 3,
-};
-
-enum class ETextureImportPNGInfill {
-    Default = 0,
-    Never = 1,
-    OnlyOnBinaryTransparency = 2,
-    Always = 3,
-    ETextureImportPNGInfill_MAX = 4,
-};
-
-// Size: 0x48
-class UTextureImportSettings : public UDeveloperSettings {
-    /* 0x0038 */ int32_t AutoVTSize;
-    /* 0x003c */ int32_t AutoLimitDimension;
-    /* 0x0040 */ bool bEnableNormalizeNormals;
-    /* 0x0041 */ bool bEnableFastMipFilter;
-    /* 0x0042 */ ETextureImportFloatingPointFormat CompressedFormatForFloatTextures;
-    /* 0x0043 */ ETextureImportPNGInfill PNGInfill;
-};
-
-// Size: 0x40
-class UTextureImportUserSettings : public UDeveloperSettings {
-    /* 0x0038 */ ETextureImportPNGInfill PNGInfill;
 };
 
 // Size: 0x40
