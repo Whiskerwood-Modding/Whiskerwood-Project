@@ -1,7 +1,7 @@
 {
-  "ExportDate": "2026-09-07 12:22:58",
+  "ExportDate": "2026-09-12 11:41:40",
   "TotalTables": 63,
-  "TotalUniqueValues": 48998,
+  "TotalUniqueValues": 49247,
   "Tables": {
     "Whiskerwood/Content/Data/AchievementsTables": {
       "ACH.010.EMBARK": {
@@ -12739,6 +12739,53 @@
           "bridge_medium"
         ],
         "isDraggableWall": "False"
+      },
+      "navalScoutDock": {
+        "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/industries/navaldock_scout.navaldock_scout_C'",
+        "stringKey": "building.scoutDock",
+        "Description": "building.scoutDock.desc",
+        "cost1": "planks",
+        "ct1": "13",
+        "cost2": "bricks",
+        "ct2": "5",
+        "cost3": "None",
+        "ct3": "0",
+        "cost4": "None",
+        "ct4": "0",
+        "unlockPrerequisite": "unlock.navalScoutDock",
+        "toolbarGroup": "seafaring_docks",
+        "toolbarGroupSort": "5",
+        "useCustomIcon": "False",
+        "Icon": "0",
+        "detailCue": "0",
+        "SupportedImprovements": [],
+        "structureType": "Other",
+        "maxAgents_contextual": "0",
+        "asHouseTier": "0",
+        "asIndustryDef": "None",
+        "supportedIndustryRecipes": [],
+        "maxHealth": "1",
+        "minMaintenanceInterval": "0",
+        "workerColor": "FFFFFF (FColor)",
+        "limitOne": "False",
+        "customBuildCue": "0",
+        "requiresConstruction": "True",
+        "decorType": "None",
+        "guildSpecialty": "guild_explorers",
+        "hardLabor": "False",
+        "industrialLabor": "False",
+        "TooltipTags": [
+          "tag.requiresNavigation",
+          "tag.requiresShip"
+        ],
+        "constructionTime": "89",
+        "catalyst": "None",
+        "norefund": "False",
+        "randomlyRotate": "False",
+        "refundRule": "standard",
+        "Quality": "0",
+        "Variants": [],
+        "isDraggableWall": "False"
       }
     },
     "Whiskerwood/Content/Data/HarvestCampResourceGroups": {
@@ -14838,7 +14885,7 @@
         "FloatValue": "720"
       },
       "ship_catchpertrip": {
-        "FloatValue": "21"
+        "FloatValue": "5"
       },
       "ship_blubberperhunt": {
         "FloatValue": "13"
@@ -14857,6 +14904,9 @@
       },
       "pirateFavorBeforeClawPhase": {
         "FloatValue": "8"
+      },
+      "ship_firstpercatch_nonet": {
+        "FloatValue": "3"
       }
     },
     "Whiskerwood/Content/Data/TaxPaymentThresholds": {
@@ -18613,6 +18663,12 @@
         "LocKey": "None",
         "textTint": "CCB47E (FColor)",
         "iconTint": "CCB47E (FColor)"
+      },
+      "tag.food": {
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/BoardGameIcons/resource_apple.resource_apple'",
+        "LocKey": "None",
+        "textTint": "CCB47E (FColor)",
+        "iconTint": "CCB47E (FColor)"
       }
     },
     "Whiskerwood/Content/Data/WeatherDefinitions": {
@@ -20593,6 +20649,10 @@
       "gonefishing": {
         "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-fish-96.icons8-fish-96'",
         "defaultColor": "000000 (FColor)"
+      },
+      "newresearch": {
+        "iconTexture": "Texture2D'Whiskerwood/Content/ThirdParty/Icon_AssetPacks/Custom/Blueprint.Blueprint'",
+        "defaultColor": "FFFFFF (FColor)"
       }
     },
     "Whiskerwood/Content/Data/AssetLookups/CommonMaterials": {
@@ -21249,7 +21309,7 @@
         "shipToSpawn": "None"
       },
       "recipe.fishingdock": {
-        "recipeTime": "21",
+        "recipeTime": "55",
         "powerPerWorker": "0",
         "outputMode": "None",
         "in1": "None",
@@ -22269,7 +22329,7 @@
         "in4": "None",
         "inCt4": "0",
         "out1": "cannonframes",
-        "outCt1": "5",
+        "outCt1": "1",
         "out2": "None",
         "outCt2": "0",
         "out3": "None",
@@ -22431,13 +22491,13 @@
         "in1": "bronze",
         "inCt1": "5",
         "in2": "cannonframes",
-        "inCt2": "5",
+        "inCt2": "1",
         "in3": "fuel",
         "inCt3": "2",
         "in4": "None",
         "inCt4": "0",
         "out1": "bronzecannons",
-        "outCt1": "8",
+        "outCt1": "1",
         "out2": "None",
         "outCt2": "0",
         "out3": "None",
@@ -22455,13 +22515,13 @@
         "in1": "steel",
         "inCt1": "5",
         "in2": "cannonframes",
-        "inCt2": "5",
+        "inCt2": "1",
         "in3": "fuel",
         "inCt3": "4",
         "in4": "None",
         "inCt4": "0",
         "out1": "steelcannons",
-        "outCt1": "8",
+        "outCt1": "1",
         "out2": "None",
         "outCt2": "0",
         "out3": "None",
@@ -24602,9 +24662,7 @@
         "questStartWorldEffect": "None",
         "failureMessage": "None",
         "successMessage": "None",
-        "permenantUnlocksOnStart": [
-          "unlock.bribestart.smallShipard"
-        ]
+        "permenantUnlocksOnStart": []
       },
       "quest.30": {
         "questTitle": "story.quest.30.title",
@@ -24634,7 +24692,9 @@
         "questStartWorldEffect": "None",
         "failureMessage": "None",
         "successMessage": "None",
-        "permenantUnlocksOnStart": []
+        "permenantUnlocksOnStart": [
+          "unlock.bribestart.smallShipard"
+        ]
       },
       "quest.31": {
         "questTitle": "story.quest.31.title",
@@ -26668,7 +26728,7 @@
         "stackingHeight": "6",
         "storageVisualWidth": "2",
         "isNonPhysical": "False",
-        "baseTradeValue": "8702",
+        "baseTradeValue": "2584",
         "questItem": "False",
         "SortOrder": "70",
         "oceanFishNutrients": "-1",
@@ -26684,7 +26744,7 @@
         "stackingHeight": "16",
         "storageVisualWidth": "2",
         "isNonPhysical": "False",
-        "baseTradeValue": "8702",
+        "baseTradeValue": "4674",
         "questItem": "False",
         "SortOrder": "80",
         "oceanFishNutrients": "-1",
@@ -28443,7 +28503,8 @@
         "researchTier": "0",
         "unlockedByDefault": "False",
         "childUnlocks": [
-          "unlock.nauticalToolbar"
+          "unlock.nauticalToolbar",
+          "unlock.navalScoutDock"
         ],
         "associatedGridActor": "smallshipyard",
         "prerequisiteUnlocks": [],
@@ -31405,7 +31466,7 @@
         ],
         "associatedGridActor": "None",
         "prerequisiteUnlocks": [
-          "unlock.smallshipyard"
+          "unlock.navalfishingdock"
         ],
         "tierSortOrder": "20",
         "associatedRecipe": "None",
@@ -31501,7 +31562,7 @@
         "childUnlocks": [],
         "associatedGridActor": "navaltradeDock",
         "prerequisiteUnlocks": [
-          "unlock.smallshipyard"
+          "unlock.navalfishingdock"
         ],
         "tierSortOrder": "30",
         "associatedRecipe": "None",
@@ -31901,7 +31962,7 @@
         "prerequisiteUnlocks": [
           "unlock.cannonDefenses"
         ],
-        "tierSortOrder": "50",
+        "tierSortOrder": "150",
         "associatedRecipe": "recipe.bronze_cannonball",
         "isQuestRelated": "False",
         "showMailEvenAsChildUnlock": "False",
@@ -32149,6 +32210,29 @@
         "associatedRecipe": "None",
         "isQuestRelated": "False",
         "showMailEvenAsChildUnlock": "False",
+        "secretPrerequisite": "None"
+      },
+      "unlock.navalScoutDock": {
+        "useGridActorForLoc": "True",
+        "Title": "",
+        "Description": "",
+        "demoLocked": "False",
+        "isHidden": "False",
+        "subCategory": "",
+        "giftableInDemo": "False",
+        "giftable": "False",
+        "giftPool": "0",
+        "researchable": "False",
+        "scienceCost": "0",
+        "researchTier": "0",
+        "unlockedByDefault": "False",
+        "childUnlocks": [],
+        "associatedGridActor": "navalScoutDock",
+        "prerequisiteUnlocks": [],
+        "tierSortOrder": "0",
+        "associatedRecipe": "None",
+        "isQuestRelated": "False",
+        "showMailEvenAsChildUnlock": "True",
         "secretPrerequisite": "None"
       }
     },
@@ -33859,6 +33943,9 @@
       },
       "bridge_long": {
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/bridge.bridge'"
+      },
+      "navalScoutDock": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/navaldock_scout.navaldock_scout'"
       }
     },
     "Whiskerwood/Content/Data/Icons/Icons_InputIcons": {
@@ -42361,6 +42448,48 @@
       },
       "nautical.task.salvage": {
         "Value": "Zachraňuje trosky"
+      },
+      "building.scoutDock": {
+        "Value": "Průzkumnický přístav"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Vybav přiřazenou loď a posádku kvůli průzkumu moře. \n\nOstatní přístavy mohou vybavovat přístavy pro konkrétnější mise."
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "Každý člen posádky spotřebuje 1 jídlo za noc"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "Lodě se otočí, když jim bude zbývat půlka jídla"
+      },
+      "naval.defaultAction.header": {
+        "Value": "Po vyplutí:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "Rybaří u nejbližšího zásobeného rybářského místa"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "Těží u nejbližšího zásobeného guánového skaliska"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "Obchodovat s: <0>"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Vyplout z přístavu a čekat na rozkazy"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "Lze vyzkoumat nový plánek"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "Díky pirátskému plánku v ruce tvoji Fouskové cítí jiskru inspirace"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Získej plánek (<0>) od pirátů na návštěvě"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "Tvoji Fouskové jsou plní nové inspirace"
+      },
+      "ferrydock.hint": {
+        "Value": "Lodě přiřazené k přívoznímu přístavu nelze ovládat ručně"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_De": {
@@ -49967,7 +50096,7 @@
         "Value": "Kein Zugang zum Meer!"
       },
       "dock.readytodepart": {
-        "Value": "Bereit zum Ablegen!"
+        "Value": "Bereit zur Abreise!"
       },
       "resource.stone_cannonball": {
         "Value": "Steinkugeln"
@@ -50574,9 +50703,58 @@
       },
       "nautical.task.salvage": {
         "Value": "Birgt Treibgut"
+      },
+      "building.scoutDock": {
+        "Value": "Erkundungsdock"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Statte ein zugewiesenes Schiff und seine Mannschaft zur Erkundung des Ozeans aus.  \n\nAndere Docks können Schiffe für spezifischere Aufgaben ausstatten."
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "Jedes Mannschaftsmitglied verbraucht 1 Einheit Nahrung pro Nacht"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "Schiffe kehren um, sobald sie die Hälfte ihrer Nahrung verbraucht haben"
+      },
+      "naval.defaultAction.header": {
+        "Value": "Bei Abreise:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "In den nächsten vollen Fischgründen fischen"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "Am nächsten vollen Guanofelsen sammeln"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "Mit <0> handeln"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Hafen verlassen und auf Befehle warten"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "Neue Baupläne zur Erforschung verfügbar"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "Mit den Bauplänen des Piraten in der Hand fühlen sich deine Fiepser inspiriert"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Erhalte den Bauplan für „<0>“ von durchreisenden Piraten"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "Deine Fiepser sind von neuer Inspiration beseelt"
+      },
+      "ferrydock.hint": {
+        "Value": "An Fährdocks zugewiesene Schiffe können nicht manuell gesteuert werden"
       }
     },
-    "Whiskerwood/Content/Data/TextDB/Loc_Dev": {},
+    "Whiskerwood/Content/Data/TextDB/Loc_Dev": {
+      "dock.shipNeedsRepair": {
+        "Value": "Repairs Needed"
+      },
+      "dock.dockResourcesNeedStored": {
+        "Value": "Awaiting Storage"
+      }
+    },
     "Whiskerwood/Content/Data/TextDB/Loc_En": {
       "toolbar.paths": {
         "Value": "Paths"
@@ -58788,6 +58966,48 @@
       },
       "nautical.task.salvage": {
         "Value": "Salvaging"
+      },
+      "building.scoutDock": {
+        "Value": "Exploration Dock"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Outfit an assigned ship and crew for exploring the sea.  \n\nOther docks can outfit ships for more specific missions"
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "Each crew consumes 1 food per night"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "Ships will turn around upon reaching half food"
+      },
+      "naval.defaultAction.header": {
+        "Value": "Upon Departure:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "Fish at nearest stocked Fishing Grounds"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "Gather at nearest stocked Guano Rock"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "Trade with <0>"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Leave port and await orders"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "New Schematics are available for research"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "With the Pirate's schematics in hand, your Whiskers feel a spark of inspiration"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Aquire Schematic for <0> from visiting Pirates"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "Your Whiskers are filled with new inspiration"
+      },
+      "ferrydock.hint": {
+        "Value": "Ships assigned to Ferry Docks cannot be manually controlled"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Es-Mx": {
@@ -73510,6 +73730,48 @@
       },
       "nautical.task.salvage": {
         "Value": "Recuperando"
+      },
+      "building.scoutDock": {
+        "Value": "Muelle de exploración"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Lugar en el que armar un barco asignado y a su tripulación para explorar los mares.\n\nHay otros muelles que te permiten armar barcos para misiones más específicas."
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "Cada tripulante consume 1 de comida cada noche."
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "Los barcos darán media vuelta cuando se haya agotado la mitad de la comida."
+      },
+      "naval.defaultAction.header": {
+        "Value": "Al salir:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "Pesca en la zona de pesca más cercana que tenga peces."
+      },
+      "naval.defaultAction.guano": {
+        "Value": "Recolecta en el cúmulo de guano más cercano que tenga guano."
+      },
+      "naval.defaultAction.trade": {
+        "Value": "Comerciar con: <0>"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Abandonar puerto y esperar órdenes"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "Hay nuevos planos que investigar."
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "Con los planos de los piratas en mano, a los bigotines les llega la inspiración."
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Adquirir el plano «<0>» durante la estancia de los piratas."
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "Tus bigotines se han inspirado."
+      },
+      "ferrydock.hint": {
+        "Value": "No es posible el control manual de los barcos asignados a un muelle de transbordadores."
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Fr": {
@@ -81723,6 +81985,48 @@
       },
       "nautical.task.salvage": {
         "Value": "Récupère des ressources"
+      },
+      "building.scoutDock": {
+        "Value": "Ponton d’exploration"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Appareillez un bateau pour explorer les mers.\n\nDifférents types de pontons permettent d’appareiller des bateaux pour d’autres missions."
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "Chaque membre de l’équipage consomme 1\u00A0aliment chaque soir"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "Les bateaux font demi-tour après avoir consommé la moitié de leurs provisions"
+      },
+      "naval.defaultAction.header": {
+        "Value": "Une fois en mer\u00A0:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "Pêcher dans la zone de pêche la plus proche"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "Récolter du guano au rocher à guano le plus proche"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "Faire du commerce avec <0>"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Quitter le port et attendre les ordres"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "De nouveaux schémas attendent d’être recherchés"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "Les schémas des pirates en poche, vos Moustaches sentent l’inspiration les gagner"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Obtenir un nouveau schéma (<0>) en rendant visite aux pirates"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "Vos Moustaches sont gagnées par l’inspiration"
+      },
+      "ferrydock.hint": {
+        "Value": "Les bateaux affectés à un ponton de transport ne peuvent pas être contrôlés manuellement"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Hu": {
@@ -89933,6 +90237,48 @@
       },
       "nautical.task.salvage": {
         "Value": "Roncsmentés"
+      },
+      "building.scoutDock": {
+        "Value": "Felderítődokk"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Felszerel egy kijelölt hajót és legénységet a tenger felderítésére.  \n\nMás dokkok felszerelhetnek hajókat ennél specifikusabb küldetésekre."
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "A legénység minden tagja 1 ételt fogyaszt el éjszakánként"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "A hajók az élelemkészlet felét elérve visszafordulnak"
+      },
+      "naval.defaultAction.header": {
+        "Value": "Induláskor:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "Halászat a legközelebbi, készlettel rendelkező halászterületen"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "Gyűjtés a legközelebbi, készlettel rendelkező guanósziklánál"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "Kereskedés vele: <0>"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Kifutás a kikötőből, és várakozás parancsra"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "Új tervrajzok érhetők el kutatásra"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "A kalózok tervrajzaival a kezükben bajszosaid az ihlet szikráját érzik"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Tervrajz beszerzése a látogató kalózoktól ehhez: <0>"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "Bajszosaid tele vannak új inspirációval"
+      },
+      "ferrydock.hint": {
+        "Value": "A kompkikötőkhöz rendelt hajókat nem lehet manuálisan irányítani"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_It": {
@@ -98146,6 +98492,48 @@
       },
       "nautical.task.salvage": {
         "Value": "Recupero"
+      },
+      "building.scoutDock": {
+        "Value": "Molo di esplorazione"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Allestisci una nave e un equipaggio assegnati per esplorare il mare.\n\nAltri moli consentono di allestire navi per missioni più specifiche."
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "Ogni ciurma consuma 1 porzione di cibo a notte."
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "Le navi faranno inversione una volta raggiunta la metà delle scorte di cibo."
+      },
+      "naval.defaultAction.header": {
+        "Value": "Una volta in mare:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "Peschi nelle zone di pesca attive più vicine."
+      },
+      "naval.defaultAction.guano": {
+        "Value": "Raccogli dalla Roccia di guano attiva più vicina."
+      },
+      "naval.defaultAction.trade": {
+        "Value": "Commerci con <0>."
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Lasci il porto e attendi ordini."
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "Nuovi Schemi disponibili per la ricerca."
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "Con gli Schemi dei pirati tra le zampe, i tuoi Baffi si sentono ispirati."
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Ottieni uno Schema per \"<0>\" facendo visita ai pirati."
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "I tuoi Baffi si sentono ispirati."
+      },
+      "ferrydock.hint": {
+        "Value": "Le navi assegnate ai Moli dei traghetti non possono essere manovrate manualmente."
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Ja": {
@@ -106359,6 +106747,48 @@
       },
       "nautical.task.salvage": {
         "Value": "回収中"
+      },
+      "building.scoutDock": {
+        "Value": "探索用港"
+      },
+      "building.scoutDock.desc": {
+        "Value": "探検航海のための船の改装を行う。\n他の港ではより専門的な用途の船への改装が行える。"
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "毎晩、乗組員の人数分の個数の食料を消費する"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "積載した食料の半分を消費した時点で船は帰還する"
+      },
+      "naval.defaultAction.header": {
+        "Value": "出航まで:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "最寄りの漁場で操業"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "最寄りの鳥の巣の岩で糞化石を採取"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "<0>との交易"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "出航し、命令を待つ"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "新たな設計図が研究可能"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "海賊の設計図の入手により、新たな研究が可能になった"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "訪問中の海賊より<0>の設計図を獲得"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "髭の民は新たな閃きを得た"
+      },
+      "ferrydock.hint": {
+        "Value": "フェリー港に割り当てられた船は手動での操作不能"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Ko": {
@@ -114578,6 +115008,48 @@
       },
       "nautical.task.salvage": {
         "Value": "인양 중"
+      },
+      "building.scoutDock": {
+        "Value": "정찰 부두"
+      },
+      "building.scoutDock.desc": {
+        "Value": "배정된 선박과 선원으로 바다를 정찰합니다.\n\n다른 부두는 더 구체적인 임무에 맞춰 선박을 준비할 수 있습니다"
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "선원은 하룻밤에 식량 1을 소비합니다"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "선박은 식량이 절반 남으면 회항합니다"
+      },
+      "naval.defaultAction.header": {
+        "Value": "출항 시:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "재고가 있는 가장 가까운 어장에서 조업"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "재고가 있는 가장 가까운 구아노 바위에서 채취"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "<0> 교역"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "부두를 떠나 대양에서 명령 대기"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "새로운 도면을 연구할 수 있습니다"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "해적의 도면을 손에 넣자, 위스커들에게 영감이 번뜩입니다"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "해적을 방문해 <0> 도면 획득"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "위스커들이 새로운 영감으로 가득 찼습니다"
+      },
+      "ferrydock.hint": {
+        "Value": "연락선 부두에 배정된 선박은 직접 명령할 수 없습니다"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Pl": {
@@ -122797,6 +123269,48 @@
       },
       "nautical.task.salvage": {
         "Value": "Prowadzi odzysk"
+      },
+      "building.scoutDock": {
+        "Value": "Dok eksploracyjny"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Przygotuj przydzielone statek i załogę do eksploracji mórz. \n\nInne doki mogą przygotować statki na konkretne misje."
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "Każdy członek załogi spożywa każdej nocy 1 żywności."
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "Statki zawrócą, gdy ich zapasy żywności spadną do połowy."
+      },
+      "naval.defaultAction.header": {
+        "Value": "Po wypłynięciu:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "Łów ryby na najbliższym aktywnym łowisku"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "Zbieraj guano na najbliższych skałach z guano"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "Handluj z: <0>"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Opuść port i czekaj na rozkazy"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "Nowe schematy dostępne do opracowania."
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "Dzięki schematom piratów twoje wąsy czują nowy przypływ inspiracji."
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Zdobądź schemat na <0> od odwiedzających piratów"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "Twoje wąsy czują nowy przypływ inspiracji."
+      },
+      "ferrydock.hint": {
+        "Value": "Statków przydzielonych do doków promowych nie można kontrolować ręcznie."
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Pt": {
@@ -131016,11 +131530,53 @@
       },
       "nautical.task.salvage": {
         "Value": "Recuperando"
+      },
+      "building.scoutDock": {
+        "Value": "Doca de Exploração"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Prepare um navio e uma tripulação para explorar o mar.\n\nOutras docas podem preparar navios para missões mais específicas."
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "Cada membro da tripulação consome 1 comida por noite."
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "Os navios dão a volta ao ficarem com meia carga de comida."
+      },
+      "naval.defaultAction.header": {
+        "Value": "Ao partir:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "Pescar no ponto de pesca estocado mais próximo"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "Coletar na rocha de guano estocada mais próxima"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "Comerciar com <0>"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Zarpar e aguardar ordens"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "Novos diagramas estão disponíveis para pesquisa"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "Com os diagramas piratas em posse, seus Bigodes sentem centelhas de inspiração"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Obter diagrama de <0> por visitar piratas"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "Seus Bigodes estão cheios de novas inspirações"
+      },
+      "ferrydock.hint": {
+        "Value": "Navios designados a docas de transporte não podem ser controlados manualmente."
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Root": {
       "meta.version": {
-        "Value": "0.7.205.0"
+        "Value": "0.7.206.0"
       },
       "UI.MONEY": {
         "Value": "¥"
@@ -139369,6 +139925,48 @@
       },
       "nautical.task.salvage": {
         "Value": "Разбор"
+      },
+      "building.scoutDock": {
+        "Value": "Исследовательский причал"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Снарядите назначенный корабль и его экипаж для исследования моря.На других причалах можно оснастить суда для выполнения более специализированных задач."
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "Каждый экипаж за ночь тратит 1 ед. еды"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "Когда останется половина запасов еды, корабли повернут назад"
+      },
+      "naval.defaultAction.header": {
+        "Value": "При отправлении:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "Порыбачьте на ближайшем заполненном рыбном промысле"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "Соберите ресурс с ближайшей заполненной скалы гуано"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "Поторгуйте с: <0>"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Покиньте порт и дождитесь указаний"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "Для изучения доступны новые чертежи"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "Вооружившись чертежами пиратов, ваши хвостики чувствуют прилив вдохновения"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Получите у пиратов чертеж «<0>»"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "Ваши хвостики полны вдохновения"
+      },
+      "ferrydock.hint": {
+        "Value": "Кораблями, назначенными на паромный причал, нельзя управлять вручную"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Tr": {
@@ -147588,6 +148186,48 @@
       },
       "nautical.task.salvage": {
         "Value": "Hurda Topluyor"
+      },
+      "building.scoutDock": {
+        "Value": "Keşif İskelesi"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Gemileri ve mürettebatı, denizi keşfetmek üzere donatır.\n\nDiğer iskeleler, gemileri daha farklı görevler için donatabilir"
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "Her bir mürettebat üyesi, geceleri 1 yiyecek tüketir"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "Gemi, yiyeceklerin yarısı tüketildiğinde geri döner"
+      },
+      "naval.defaultAction.header": {
+        "Value": "Kalkıştan Sonra:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "En yakındaki Balıkçılık Sahasında balık tut"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "En yakındaki Guano Kayalığından guano topla"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "<0> ile ticaret yap"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Limandan ayrıl ve gelecek emirleri bekle"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "Araştırabileceğin yeni Şemalar açıldı"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "Korsanlardan şema alan Bıyıklıların zihninde yeni fikirler filizlenmeye başladı"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Korsanları ziyaret ederek <0> Şeması al"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "Bıyıklılarının aklına yepyeni fikirler geliyor"
+      },
+      "ferrydock.hint": {
+        "Value": "Feribot İskelesine atanmış gemiler manuel olarak kontrol edilemez"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Ua": {
@@ -155807,6 +156447,48 @@
       },
       "nautical.task.salvage": {
         "Value": "Збирає уламки"
+      },
+      "building.scoutDock": {
+        "Value": "Дослідницький порт"
+      },
+      "building.scoutDock.desc": {
+        "Value": "Обладнайте призначений корабель і екіпаж для дослідження моря.  \n\nІнші порти можуть обладнувати кораблі для конкретніших місій"
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "Кожен екіпаж споживає одиницю їжі на ніч"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "Коли запас їжі зменшиться наполовину, кораблі розвернуться"
+      },
+      "naval.defaultAction.header": {
+        "Value": "Після відправлення:"
+      },
+      "naval.defaultAction.fish": {
+        "Value": "Рибалити в найближчому риболовному місці із запасом риби"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "Збирати гуано біля найближчої скелі гуано із запасами"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "Торгуватися з островом <0>"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "Залишити порт і очікувати наказів"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "Для дослідження доступні нові схеми"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "Тепер у лапах ваших вусиків є піратські схеми, тож вони відчувають спалах натхнення"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "Здобудьте схему «<0>» за допомогою відвідування піратів"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "Ваші вусики переповнені новим натхненням"
+      },
+      "ferrydock.hint": {
+        "Value": "Кораблями, що призначені до поромних портів, не можна керувати вручну"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Zh-Tw": {
@@ -161367,7 +162049,7 @@
         "Value": "可惜這座島荒無人煙。不過好在沒遇上海盜。"
       },
       "nautical.decision.found.pirate": {
-        "Value": "這是一座海盜島。先別靠近，否則我們的船隻會遭到攻擊。在造出足夠的火炮和船隻前，還是繞開為好。"
+        "Value": "這是一座海盜島。先別靠近，否則我們的船隻會遭到攻擊。在造出足夠的火砲和船隻前，還是避開為妙。 "
       },
       "nautical.decision.found.title": {
         "Value": "發現新島嶼！"
@@ -164026,6 +164708,48 @@
       },
       "nautical.task.salvage": {
         "Value": "打撈"
+      },
+      "building.scoutDock": {
+        "Value": "探索碼頭"
+      },
+      "building.scoutDock.desc": {
+        "Value": "為指定船隻及船員準備物資，準備出海探索。\n\n其他碼頭可依具體任務為船隻做好相應配備"
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "每位船員每晚消耗1份食物"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "食物只剩一半時，船隻將掉頭返航"
+      },
+      "naval.defaultAction.header": {
+        "Value": "啟航時："
+      },
+      "naval.defaultAction.fish": {
+        "Value": "前往距離最近且尚未耗盡的漁場捕魚"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "前往距離最近且尚未耗盡的鳥糞岩礁採集"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "與<0>進行貿易"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "離開港口，等待命令"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "有新圖紙可供研究"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "海盜的圖紙到手後，鼠鼠頓時靈感迸發"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "從來訪的海盜手中獲得<0>圖紙"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "鼠鼠有了新靈感"
+      },
+      "ferrydock.hint": {
+        "Value": "分配至渡輪碼頭的船隻無法手動控制"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Zh": {
@@ -172245,6 +172969,48 @@
       },
       "nautical.task.salvage": {
         "Value": "正在打捞"
+      },
+      "building.scoutDock": {
+        "Value": "探索码头"
+      },
+      "building.scoutDock.desc": {
+        "Value": "为指定船只及船员备好物资，准备出海探索。\n\n其他码头可根据具体任务为船只做好相应配备"
+      },
+      "naval.foodSupply.hint1": {
+        "Value": "每名船员每晚消耗1份食物"
+      },
+      "naval.foodSupply.hint2": {
+        "Value": "食物剩余一半时，船只将掉头返航"
+      },
+      "naval.defaultAction.header": {
+        "Value": "启航时："
+      },
+      "naval.defaultAction.fish": {
+        "Value": "前往最近一处仍有鱼群的渔场捕鱼"
+      },
+      "naval.defaultAction.guano": {
+        "Value": "前往最近一处尚未采空的鸟粪岩礁采集"
+      },
+      "naval.defaultAction.trade": {
+        "Value": "与<0>进行交易"
+      },
+      "naval.defaultAction.idle": {
+        "Value": "离开港口，等待命令"
+      },
+      "notif.newResearchUnlocked": {
+        "Value": "新图纸现已可供研究"
+      },
+      "notif.newResearchUnlocked.desc": {
+        "Value": "海盗的图纸到手后，鼠鼠顿时灵感迸发"
+      },
+      "questgoal.pirateBribeTech": {
+        "Value": "从来访的海盗手中获得<0>图纸"
+      },
+      "notif.newResearchUnlocked.descGeneric": {
+        "Value": "鼠鼠有了新的灵感"
+      },
+      "ferrydock.hint": {
+        "Value": "分配至渡运码头的船只无法手动控制"
       }
     },
     "Whiskerwood/Content/ThirdParty/Chameleon/DataTables/LOOK_Presets": {
