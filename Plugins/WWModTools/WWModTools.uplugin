@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Whiskerwood Mod Tools",
+	"Description": "Editor automation for creating, cooking, and installing Whiskerwood mods.",
+	"Category": "Modding",
+	"EnabledByDefault": true,
+	"CanContainContent": false,
+	"Modules": [
+		{ "Name": "WWModTools", "Type": "Editor", "LoadingPhase": "PostEngineInit" }
+	]
+}

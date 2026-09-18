@@ -1,4 +1,7 @@
 #include "SuziePlugin.h"
+#include "SuzieGameplayTags.h"
+#include "SuzieSchemaOverride.h"
+#include "SuzieCustomSerializers.h"
 #include "Misc/FileHelper.h"
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"
@@ -17,6 +20,9 @@
 #include "SuzieDecompressionHelper.h"
 #include "Widgets/Docking/SDockTab.h"
 #include "UObject/UObjectAllocator.h"
+#include "UObject/UObjectHash.h"
+#include "UObject/SparseDelegate.h"
+#include "Serialization/AsyncLoadingEvents.h"
 #include "Misc/ScopedSlowTask.h"
 #include "Engine/NetConnection.h"
 #if ENGINE_MAJOR_VERSION == 5 && ENGINE_MINOR_VERSION >= 3
@@ -32,11 +38,28 @@ void FSuziePluginModule::StartupModule()
     UE_LOG(LogSuzie, Display, TEXT("Suzie plugin starting"));
 
     ProcessAllJsonClassDefinitions();
+
+    // Register our freshly generated /Script/ classes with the IoStore loader's global import store.
+    // The loader registered all script objects early in startup (before this PostEngineInit module
+    // ran), so cooked game packages reference our classes by a script-import hash the loader cannot
+    // yet resolve - opening such an asset fails with "Could not find class object". Re-running the
+    // registration is idempotent and additive (it only adds the new /Script/UWE* objects), and makes
+    // those hashes resolve so cooked content whose class is Suzie-generated can load.
+    NotifyRegistrationComplete();
+
+    // Must run while native tag registration is still open: DoneAddingNativeTags is bound to the
+    // OnPostEngineInit broadcast, which fires after PostEngineInit plugin modules load
+    FSuzieGameplayTags::Get().RegisterCollectedTags();
+
+    // Activate game-accurate unversioned schemas for cooked content (no-op if nothing diverges)
+    FSuzieSchemaOverrides::Get().RegisterProvider();
 }
 
 void FSuziePluginModule::ShutdownModule()
 {
     UE_LOG(LogSuzie, Display, TEXT("Suzie plugin shutting down"));
+
+    FSuzieSchemaOverrides::Get().UnregisterProvider();
 }
 
 void FSuziePluginModule::ProcessAllJsonClassDefinitions()
@@ -156,6 +179,13 @@ void FSuziePluginModule::CreateDynamicClassesForJsonObject(const TSharedPtr<FJso
     for (auto It = (*Objects)->Values.CreateConstIterator(); It; ++It)
     {
         FString ObjectPath = It.Key();
+        // Full (--all) dumps also contain game content: BlueprintGeneratedClasses show up as
+        // "Class" entries but must be loaded from their cooked packages, not generated as native
+        // classes. Only /Script/ objects describe native types.
+        if (!ObjectPath.StartsWith(TEXT("/Script/")))
+        {
+            continue;
+        }
         FString Type = It.Value()->AsObject()->GetStringField(TEXT("type"));
         if (Type == TEXT("Class"))
         {
@@ -206,6 +236,19 @@ void FSuziePluginModule::CreateDynamicClassesForJsonObject(const TSharedPtr<FJso
     {
         FinalizeClass(ClassGenerationContext, ClassPendingFinalization);
     }
+
+    // Harvest the game's per-class property order for unversioned schema overrides. This must
+    // happen after class generation so jmap property descriptors of native classes resolve their
+    // type references against already-created dynamic types.
+    FSuzieSchemaOverrides::Get().BuildFromJmap(*Objects,
+        [this, &ClassGenerationContext](FFieldVariant Owner, const TSharedPtr<FJsonObject>& PropertyJson) -> FProperty*
+        {
+            return BuildProperty(ClassGenerationContext, Owner, PropertyJson);
+        });
+
+    // Collect the game's gameplay tags from dumped GameplayTagsList instances (full dumps only);
+    // registration happens once after all files are processed
+    FSuzieGameplayTags::Get().CollectFromJmap(*Objects);
 }
 
 UPackage* FSuziePluginModule::FindOrCreatePackage(FDynamicClassGenerationContext& Context, const FString& PackageName)
@@ -261,7 +304,7 @@ UClass* FSuziePluginModule::FindOrCreateUnregisteredClass(FDynamicClassGeneratio
     UClass* ParentClass = ParentClassPath.IsEmpty() ? UClass::StaticClass() : FindOrCreateClass(Context, ParentClassPath);
     if (!ParentClass)
     {
-        UE_LOG(LogSuzie, Error, TEXT("Parent class not found: %s"), *ParentClassPath);
+        UE_LOG(LogSuzie, Warning, TEXT("Parent class not found: %s"), *ParentClassPath);
         return nullptr;
     }
     
@@ -405,14 +448,20 @@ class FDynamicStructCppStructOps : public UScriptStruct::ICppStructOps
     UScriptStruct* DynamicStruct;
     int32 ParentInitializedSize;
     bool bHasDestructor;
+    // Optional hand-written binary serializer for game structs serialized natively in the cooked data
+    // (STRUCT_SerializeNative). When set, GetCapabilities reports HasSerializer so PrepareCppStructOps
+    // flags the struct STRUCT_SerializeNative and SerializeItem routes through this instead of the
+    // tagged/unversioned property path. See SuzieCustomSerializers.
+    SuzieCustomSerializers::FStructSerializeFn CustomSerializeFn;
 
 public:
-    FDynamicStructCppStructOps(int32 InSize, int32 InAlignment, UScriptStruct::ICppStructOps* InParentOps, UScriptStruct* InStruct)
+    FDynamicStructCppStructOps(int32 InSize, int32 InAlignment, UScriptStruct::ICppStructOps* InParentOps, UScriptStruct* InStruct, SuzieCustomSerializers::FStructSerializeFn InSerializeFn = nullptr)
         : ICppStructOps(InSize, InAlignment)
         , ParentCppStructOps(InParentOps)
         , DynamicStruct(InStruct)
         , ParentInitializedSize(InParentOps ? InParentOps->GetSize() : 0)
         , bHasDestructor(false)
+        , CustomSerializeFn(InSerializeFn)
     {
         // Destructor is needed if the parent needs destruction or if any child properties need destruction
         if (InParentOps && InParentOps->HasDestructor())
@@ -439,6 +488,7 @@ public:
         Caps.HasDestructor = bHasDestructor;
         Caps.IsPlainOldData = false;
         Caps.HasNoopConstructor = false;
+        Caps.HasSerializer = (CustomSerializeFn != nullptr);
         return Caps;
     }
 
@@ -491,12 +541,20 @@ public:
         }
     }
 
-    // No-op / false-returning implementations for remaining pure virtual methods
+    // Route through the hand-written binary serializer when one is registered for this struct.
+    // We only implement the FArchive form (HasStructuredSerializer stays false), so SerializeItem
+    // adapts structured archives to an FArchive for us. Returning false falls back to default.
 #if ENGINE_MAJOR_VERSION == 5 && ENGINE_MINOR_VERSION >= 6
-    virtual bool Serialize(FArchive& Ar, void* Data, UStruct* DefaultsStruct, const void* Defaults) override { return false; }
+    virtual bool Serialize(FArchive& Ar, void* Data, UStruct* DefaultsStruct, const void* Defaults) override
+    {
+        return CustomSerializeFn ? CustomSerializeFn(Ar, Data, DynamicStruct) : false;
+    }
     virtual bool Serialize(FStructuredArchive::FSlot Slot, void* Data, UStruct* DefaultsStruct, const void* Defaults) override { return false; }
 #else
-    virtual bool Serialize(FArchive& Ar, void* Data) override { return false; }
+    virtual bool Serialize(FArchive& Ar, void* Data) override
+    {
+        return CustomSerializeFn ? CustomSerializeFn(Ar, Data, DynamicStruct) : false;
+    }
     virtual bool Serialize(FStructuredArchive::FSlot Slot, void* Data) override { return false; }
 #endif
     virtual void PostSerialize(const FArchive& Ar, void* Data) override {}
@@ -627,7 +685,7 @@ UClass* FSuziePluginModule::FindOrCreateClass(FDynamicClassGenerationContext& Co
         NewClass = FindOrCreateUnregisteredClass(Context, ClassPath);
         if (NewClass == nullptr)
         {
-            UE_LOG(LogSuzie, Error, TEXT("Failed to create dynamic class: %s"), *ClassPath);
+            UE_LOG(LogSuzie, Warning, TEXT("Failed to create dynamic class: %s"), *ClassPath);
             return nullptr;
         }
     }
@@ -804,7 +862,8 @@ UScriptStruct* FSuziePluginModule::FindOrCreateScriptStruct(FDynamicClassGenerat
     // we need to create synthetic CppStructOps for this dynamic struct. Without this, the vtable pointer at offset 0
     // would never be initialized, causing crashes when the engine calls virtual methods like OnDataTableChanged().
     UScriptStruct::ICppStructOps* AncestorCppStructOps = FindNearestAncestorCppStructOps(NewStruct);
-    if (AncestorCppStructOps)
+    SuzieCustomSerializers::FStructSerializeFn CustomSerializeFn = SuzieCustomSerializers::FindStructSerializer(StructPath);
+    if (AncestorCppStructOps || CustomSerializeFn)
     {
         // Ensure PropertiesSize is aligned so that GetStructureSize() == PropertiesSize
         // This is required because InitializeStruct checks: Stride == CppStructOps.GetSize() && PropertiesSize == CppStructOps.GetSize()
@@ -820,15 +879,26 @@ UScriptStruct* FSuziePluginModule::FindOrCreateScriptStruct(FDynamicClassGenerat
                 NewStruct->GetPropertiesSize(),
                 NewStruct->GetMinAlignment(),
                 AncestorCppStructOps,
-                NewStruct
+                NewStruct,
+                CustomSerializeFn
             ));
 
         // Reset and re-prepare so PrepareCppStructOps picks up our deferred synthetic CppStructOps
+        // (and, when CustomSerializeFn is set, flags the struct STRUCT_SerializeNative so the engine
+        // routes its cooked bytes through the hand-written serializer instead of the reflected path)
         NewStruct->ClearCppStructOps();
         NewStruct->PrepareCppStructOps();
 
-        UE_LOG(LogSuzie, Verbose, TEXT("Installed synthetic CppStructOps for struct '%s' (ancestor has vtable, size=%d)"),
-            *ObjectName, NewStruct->GetPropertiesSize());
+        if (CustomSerializeFn)
+        {
+            UE_LOG(LogSuzie, Log, TEXT("Installed hand-written binary serializer for natively-serialized struct '%s' (size=%d)"),
+                *StructPath, NewStruct->GetPropertiesSize());
+        }
+        else
+        {
+            UE_LOG(LogSuzie, Verbose, TEXT("Installed synthetic CppStructOps for struct '%s' (ancestor has vtable, size=%d)"),
+                *ObjectName, NewStruct->GetPropertiesSize());
+        }
     }
     
     UE_LOG(LogSuzie, Verbose, TEXT("Created struct: %s"), *ObjectName);
@@ -917,6 +987,11 @@ UFunction* FSuziePluginModule::FindOrCreateFunction(FDynamicClassGenerationConte
     {
         // This is a class path because it is at least two levels deep. We do not need our outer to be registered, just to exist
         FunctionOuterObject = FindOrCreateUnregisteredClass(Context, ClassPathOrPackageName);
+        if (FunctionOuterObject == nullptr)
+        {
+            UE_LOG(LogSuzie, Warning, TEXT("Skipping function %s: outer class %s could not be created (likely a re-entry cycle)"), *FunctionPath, *ClassPathOrPackageName);
+            return nullptr;
+        }
     }
     else
     {
@@ -979,7 +1054,17 @@ UFunction* FSuziePluginModule::FindOrCreateFunction(FDynamicClassGenerationConte
     }
 
     // Have to temporarily mark the function as RF_ArchetypeObject to be able to create functions with UPackage as outer
-    UFunction* NewFunction = NewObject<UFunction>(FunctionOuterObject, *ObjectName, RF_Public | RF_MarkAsRootSet | RF_ArchetypeObject);
+    // Delegate signature functions must be USparseDelegateFunction so that FMulticastSparseDelegateProperty::CastChecked succeeds.
+    // USparseDelegateFunction IS-A UFunction so all other code continues to work unmodified.
+    UFunction* NewFunction;
+    if (ObjectName.EndsWith(TEXT("__DelegateSignature")))
+    {
+        NewFunction = NewObject<USparseDelegateFunction>(FunctionOuterObject, *ObjectName, RF_Public | RF_MarkAsRootSet | RF_ArchetypeObject);
+    }
+    else
+    {
+        NewFunction = NewObject<UFunction>(FunctionOuterObject, *ObjectName, RF_Public | RF_MarkAsRootSet | RF_ArchetypeObject);
+    }
     NewFunction->ClearFlags(RF_ArchetypeObject);
     NewFunction->FunctionFlags |= FunctionFlags;
 
@@ -1268,6 +1353,22 @@ FProperty* FSuziePluginModule::BuildProperty(FDynamicClassGenerationContext& Con
         UFunction* SignatureFunction = FindOrCreateFunction(Context, PropertyJson->GetStringField(TEXT("signature_function")));
         // Fall back to FOnTimelineEvent delegate signature in the engine if real delegate signature could not be found
         MulticastDelegateProperty->SignatureFunction = SignatureFunction ? SignatureFunction : FindObject<UFunction>(nullptr, TEXT("/Script/Engine.OnTimelineEvent__DelegateSignature"));
+
+        // Sparse delegate serialization resolves the delegate's owner through the signature
+        // function's OwningClassName/DelegateName pair (see FMulticastSparseDelegateProperty::
+        // SerializeItemInternal). UHT fills these for native classes; do the same for dynamic
+        // classes. The matching member offset is registered in FinalizeClass once the CDO exists.
+        if (NewProperty->IsA<FMulticastSparseDelegateProperty>())
+        {
+            if (USparseDelegateFunction* SparseSignature = Cast<USparseDelegateFunction>(MulticastDelegateProperty->SignatureFunction))
+            {
+                if (const UClass* OwningClass = Cast<UClass>(Owner.ToUObject()); OwningClass && SparseSignature->OwningClassName.IsNone())
+                {
+                    SparseSignature->OwningClassName = OwningClass->GetFName();
+                    SparseSignature->DelegateName = NewProperty->GetFName();
+                }
+            }
+        }
     }
     else if (FFieldPathProperty* FieldPathProperty = CastField<FFieldPathProperty>(NewProperty))
     {
@@ -1618,7 +1719,17 @@ void FSuziePluginModule::PolymorphicClassConstructorInvocationHelper(const FObje
         // If no explicit archetype has been provided for this object construction, or archetype is a CDO of the current class, set it to the default object archetype instead
         // This will ensure that correct property values are copied from the CDO for all object properties and subobjects are created using correct templates and not their CDO values
         // This has to be done before we call the parent constructor and create any default subobjects
-        if ((ObjectInitializer.GetArchetype() == nullptr || ObjectInitializer.GetArchetype() == ObjectInitializer.GetClass()->ClassDefaultObject) && TopLevelClassConstructionData->DefaultObjectArchetype)
+        //
+        // Only redirect when the object being constructed is exactly the top level dynamic class. 
+        // The DefaultObjectArchetype is an instance sized to TopLevelDynamicClass; if the object is a more-derived class
+        // FObjectInitializer::InitProperties walks the derived class's property list and copies each property out of this smaller parent-sized archetype. 
+        // Properties the subclass adds live past the end of the archetype's allocation, so the engine reads out of bounds - which
+        // corrupts non-trivially-constructed values and crashes. 
+        // For derived classes we leave the engine's natural archetype (the derived class's own CDO) in place,
+        // which is full-sized and already carries the correct inherited + Blueprint-added defaults.
+        if ((ObjectInitializer.GetArchetype() == nullptr || ObjectInitializer.GetArchetype() == ObjectInitializer.GetClass()->ClassDefaultObject)
+            && TopLevelClassConstructionData->DefaultObjectArchetype
+            && TopLevelDynamicClass == ObjectInitializer.GetClass())
         {
             FObjectInitializerAccessStub* ObjectInitializerAccess = reinterpret_cast<FObjectInitializerAccessStub*>(&ObjectInitializer.Get());
             ObjectInitializerAccess->ObjectArchetype = TopLevelClassConstructionData->DefaultObjectArchetype;
@@ -1822,6 +1933,17 @@ void FSuziePluginModule::FinalizeClass(FDynamicClassGenerationContext& Context, 
     // Create class default object now that we have class object construction data
     UObject* ClassDefaultObject = Class->GetDefaultObject(true);
 
+    // Register sparse delegate member offsets for this class. UHT-generated code does this for
+    // native classes; without it FSparseDelegateStorage::ResolveSparseOwner check-fails when a
+    // cooked asset deserializes a bound sparse delegate of a dynamic class.
+    for (FField* Field = Class->ChildProperties; Field; Field = Field->Next)
+    {
+        if (const FMulticastSparseDelegateProperty* SparseDelegateProperty = CastField<FMulticastSparseDelegateProperty>(Field))
+        {
+            FSparseDelegateStorage::RegisterDelegateOffset(ClassDefaultObject, SparseDelegateProperty->GetFName(), SparseDelegateProperty->GetOffset_ForInternal());
+        }
+    }
+
     // Recursively deserialize property values for the default object and its subobjects (and their nested subobjects)
     DeserializeObjectAndSubobjectPropertyValuesRecursive(Context, ClassDefaultObject, ClassDefaultObjectDefinition);
 
@@ -1829,7 +1951,12 @@ void FSuziePluginModule::FinalizeClass(FDynamicClassGenerationContext& Context, 
     // Do not create archetypes for NetConnection-derived classes, they have faulty shutdown logic leading to a crash on exit
     // Do not create archetypes for GameInstance-derived classes, EndPlayMap iterates all UGameInstance objects and calls
     // MarkAsGarbage on them which asserts !IsRooted(), but our archetypes are rooted via AddToRoot to prevent GC
-    if (!Class->IsChildOf<UNetConnection>() && !Class->IsChildOf<UGameInstance>())
+    // Do not create archetypes for WaterBody-derived classes: PostDuplicate on UWaterBodyComponent calls UpdateWaterBody->OnUpdateBody
+    // which calls RegisterComponent on dynamically-created collision components. RegisterComponent requires a valid world,
+    // but the archetype actor is not part of any world, triggering an ensure failure.
+    static const UClass* WaterBodyClass = FindObject<UClass>(nullptr, TEXT("/Script/Water.WaterBody"));
+    const bool bIsWaterBodyClass = WaterBodyClass && Class->IsChildOf(WaterBodyClass);
+    if (!Class->IsChildOf<UNetConnection>() && !Class->IsChildOf<UGameInstance>() && !bIsWaterBodyClass)
     {
         const FString ArchetypeObjectName = TEXT("InitializationArchetype__") + Class->GetName();
         {

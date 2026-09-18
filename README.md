@@ -1,7 +1,26 @@
-# Whiskerwood-Project
-Template UE5.6 project for Whiskerwood, including reflected headers and example mods.
+# Whiskerwood Project
 
-## If you are brand new to modding
+The official modkit for creating Whiskerwood mods!
+
+## FAQ
+
+### What is the purpose of this project?
+
+This project makes it as easy to make Whiskerwood content as it is for the developers themselves! Add in your own logic, modify other game content at runtime, add new buildings, decorations, UI elements, recipes, technologies, change game balance and such much more!
+
+### Can I play the game in the project?
+
+No. This project contains no source code from Whiskerwood - not in C++, nor in blueprint code. All code that exists in the project are "stubs" - dummy code that defines the signature of game code, only used for references when making content. These references then point to the actual game code when the mod is loaded.
+
+### Does this project contain Whiskerwood source assets?
+
+No. This project only contains assets from within the Whiskerwood's install directory. You also need to own the game and have it installed.
+
+### Wait, but then how can I see the game's assets in the editor?
+
+More on this later, but in a nutshell, the editor is directly loading and showing the contents in Whiskerwood's game install files, including its shaders!
+
+### I am new to Unreal modding, where do I start?
 
 Please get familiar with the basics of modding with this excellent set of guides:
 
@@ -9,42 +28,90 @@ https://github.com/Dmgvol/UE_Modding/
 
 Also start with a basic mod idea, such as changing a data table value (those that can be found in `Whiskerwood > Content > Data` in FModel).
 
-## Tools
-
 Get started with [basic mod tooling](./Docs/Tools.md) as outlined in the above UE Modding guides.
-
-## Wiki
 
 Some great docs about the inner workings of the game and how they work are being written up on the [Whiskerwood Wiki](https://wiki.hoodedhorse.com/Whiskerwood/Modding)
 
-## How to open the project
+## Setup
 
-If you haven't already, install Unreal Engine 5.6.
+<details>
+<summary><span style="font-size: 1.5em">Prerequisites</span><hr></summary>
 
-To use, [clone](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop), fork or download the repository as .zip, and follow these steps, then double click on `Whiskerwood.uproject` to open the project!
+You need to own Whiskerwood and have the game installed.
 
-**(Optional):** If you want to generate a `.sln` file to build the project from its source, right click the `Whiskerwood.uproject` file and click `Generate Visual Studio project files` (requires the correct build tools, there are plenty of docs online on how to build UE projects).
+The disk space that will be used - including custom engine and any intermediate folders created while using the project - is **40GB**. 
 
-## Making mods
+If you haven't done so already, [follow these instructions on linking your Epic Games and GitHub accounts](https://www.epicgames.com/help/en-US/c-Category_EpicAccount/c-ConnectedAccounts/how-do-i-link-my-unreal-engine-account-with-my-github-account-a000084938?sessionInvalidated=true). If you don't do this, the below custom engine link will return a 404 not found.
 
-This project starts off with some example mod files inside of `Content/Mods`. 
+## Windows users
 
-As you can see, each mod has its own folder, then there are one or more of:
+You need to install a [custom build of Unreal Engine 5.6](https://github.com/Buckminsterfullerene02/UnrealEngine/releases) (don't worry, you don't need to build or compile anything!). This build is approximately 10GB smaller than the vanilla build from Epic Games Store and is **necessary** to enable loading and working with the game content in the editor.
 
-* `BP_Startup` - This blueprint is spawned by the game **the first time** the game loads into the main menu. This is the best place to register mod options or write values to a data table. See the "Some notes" below for more info.
-* `BP_MapLoad` - This blueprint is spawned by the game while loading into a save. This is the place to do your game logic.
-* `BP_MainMenuLoad` - Triggered after `BP_Startup` but unlike startup, it will be triggered every time the main menu loads, not just the first time. This is good for doing modding on the main menu widgets/logic themselves.
+It is best to install the engine:
+- Closer to the root of the drive (if file paths get too long, things break)
+- On a file path containing no spaces (some issues occur from not quoting paths correctly)
+- Onto an SSD or NVMe
 
-So, to make your own mod:
+You also need to install Visual Studio 2022 and select the MSVC `v14.38` toolchain to be able to open the project.
+- [Helpful guide](https://dev.epicgames.com/documentation/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.6)
+- [Reddit post in case you get stuck](https://www.reddit.com/r/unrealengine/comments/1i0bopv/detected_compiler_newer_than_visual_studio_2022/)
 
-1. Inside of `Content/Mods`, make a new folder with your mod's name, ideally in UpperCamelCase. E.g. `MyMod`.
-2. Create a new blueprint with the base as `Actor` in the mod's folder you created and call it one of the above three names, depending on what you want to do. E.g. `BP_Startup` which would have the path `Content/Mods/MyMod/BP_Startup`.
+## Linux users
 
-## ModAPI
+While I haven't tested it, this project should also work on Linux - you can package mods for Win64 and Linux platforms from here, and the mods will work exactly the same way.
+
+To keep the custom engine build size minimal, it is only built for Win64 platform. Therefore, on Linux, you will need to build the engine from source.
+
+Build the engine version for the latest tag that this project is against - for example, if this project's last tag is `ww-v0.7.207.0`, build on the engine commit on the same tag `ww-v0.7.207.0`. 
+https://github.com/Buckminsterfullerene02/UnrealEngine/tags
+
+The instructions for building the engine and project is the same as any other Unreal Engine project on Linux - plenty of tutorials out there.
+
+Note: I haven't tested any of the automation (Suzie or Whiskerwood Mod Tools) on Linux. Results may vary, or require fixups. Please contribute with fixes if required!
+
+</details>
+
+<details>
+<summary><span style="font-size: 1.5em">Setting up and opening the project</span><hr></summary>
+
+1. [Clone](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop) or fork this repository. You may choose to download as `.zip`, but it will be much harder to get updates to the project if you do not clone it using `git` directly.
+
+2. Open `GameInstallDirectory.txt` and paste in the location of your game install files (doesn't matter where you bought the game from) like the example path. This should be the folder containing the `Whiskerwood.exe` file.
+
+**Note:** Content in the editor is read-only, meaning that even if it allows you to edit the asset, the package cannot be saved and the value will be lost the next time you open the editor. Later on, I will show you how to create uncooked copies of some assets which you can use in your mods.
+
+3. Now right click on `Whiskerwood.uproject`, select **Switch Unreal Engine version**, then select to the folder containing the `Engine` folder from the custom engine.
+
+![Switch engine ver](Docs/Images/Switch-Version.png)
+
+For example mine is here (obviously pick the path where you installed the engine to):
+
+![Select engine ver](Docs/Images/Select-Version.png)
+
+4. Open `Whiskerwood.uproject`. It may spend some time compiling some plugins and shaders on the first time you open the project (5-10 mins depending on your hardware).
+
+</details>
+
+<details>
+<summary><span style="font-size: 1.5em">Navigating the project</span><hr></summary>
+
+Once the project is open and you can see all the content, there are some additional tips you need to know to use it properly (aside from common UE editor actions):
+- When opening blueprints and widgets, you will just see a properties view. To see more info about the asset:
+    - Right click on blueprints and click "Make Uncooked Bluepriny Copy", this then allows you to see the component tree, variables, functions and event stubs
+    - Right click on widgets and click "Make Uncooked Widget Copy", this makes a copy of the cooked widget into an uncooked one with the full widget tree and animations
+    - Right click on animation blueprints and click "Make Uncooked Animation Blueprint Copy", this does the same as blueprints and widgets
+- If you want a mod blueprint to inherit from a game blueprint, you can right click on it and click "Make child blueprint"
+- You can make new material instances from an existing game material by right clicking the material or material instance and clicking "Create Material Instance". You can then adjust the parameters and see how it will look in the editor, in real-time
+- You can see how game assets reference each other by right clicking on an asset and clicking "Reference Viewer..."
+
+</details>
+
+## Mod API
 
 The modding API provided by the game is pretty special, because the lead developer of Whiskerwood has added some awesome functions and delegates that help make modding easier. The game is also really moddable, because the game's architecture is using [data driven gameplay](https://dev.epicgames.com/documentation/en-us/unreal-engine/data-driven-gameplay-elements-in-unreal-engine?application_version=5.6) - much of the "hardcoded" values are actually in [Data Tables](https://dev.epicgames.com/documentation/en-us/unreal-engine/data-driven-gameplay-elements-in-unreal-engine?application_version=5.6#datatables)!
 
-### Properties
+<details>
+<summary><span style="font-size: 1.5em">Properties</span><hr></summary>
 
 These are available properties that allows you to get references to some of the core game systems.
 
@@ -61,7 +128,10 @@ UPROPERTY(EditAnywhere)
     FModApiState state;
 ```
 
-### Functions
+</details>
+
+<details>
+<summary><span style="font-size: 1.5em">Functions</span><hr></summary>
 
 These are functions that can be called. This extract includes developer comments.
 
@@ -146,7 +216,10 @@ UFUNCTION(BlueprintCallable, meta = (WorldContext = "worldContext"), Category = 
     void DumpEnglishToLogFolder(class UObject *worldContext);
 ```
 
-### Delegates
+</details>
+
+<details>
+<summary><span style="font-size: 1.5em">Delegates</span><hr></summary>
 
 These are delegates that you can bind to in your mod, then fire an event from that.
 
@@ -184,6 +257,31 @@ For example, in `Content/Mods/ShortNights/BP_MapLoad`, if the player changes the
 ![Example-ShortNight](Docs/Images/Example-ShortNight-1.png)
 
 It simply checks if the returned `OptionId` is the one used by the mod, and if it is, then the user has changed that option value.
+
+</details>
+
+## Guides
+
+<details>
+<summary><span style="font-size: 1.5em">Making your first blueprint mod</span><hr></summary>
+
+This project starts off with some example mod files inside of `Content/Mods`. 
+
+As you can see, each mod has its own folder, then there are one or more of:
+
+* `BP_Startup` - This blueprint is spawned by the game **the first time** the game loads into the main menu. This is the best place to register mod options or write values to a data table. See the "Some notes" below for more info.
+* `BP_MapLoad` - This blueprint is spawned by the game while loading into a save. This is the place to do your game logic.
+* `BP_MainMenuLoad` - Triggered after `BP_Startup` but unlike startup, it will be triggered every time the main menu loads, not just the first time. This is good for doing modding on the main menu widgets/logic themselves.
+
+So, to make your own mod:
+
+1. Inside of `Content/Mods`, make a new folder with your mod's name, ideally in UpperCamelCase. E.g. `MyMod`.
+2. Create a new blueprint with the base as `Actor` in the mod's folder you created and call it one of the above three names, depending on what you want to do. E.g. `BP_Startup` which would have the path `Content/Mods/MyMod/BP_Startup`.
+
+</details>
+
+<details>
+<summary><span style="font-size: 1.5em">Packaging the mod (manual)</span><hr></summary>
 
 ## Packaging your mod
 
@@ -232,11 +330,14 @@ Now navigate to the `Windows/Whiskerwood/Content/Paks` folder, you should see al
 
 ![Paking-Step-7](Docs/Images/Paking-Step-7.png)
 
-## Installing the packaged mod
+</details>
+
+<details>
+<summary><span style="font-size: 1.5em">Installing the packaged mod (manual)</span><hr></summary>
 
 First copy the pakchunk id file, for the number you entered for your mod files. E.g. you set your id to 42, so copy `pakchunk42-Windows.pak`. 
 
-Navigate to `%localappdata\Whiskerwood\Saved\mods\` and create a folder for your mod. It should have the same name as the mod folder in the unreal engine project.
+Navigate to `%localappdata%\Whiskerwood\Saved\mods\` and create a folder for your mod. It should have the same name as the mod folder in the unreal engine project.
 
 Now paste your `.pak` file into the mod folder.
 
@@ -266,46 +367,44 @@ So just to check, you should have the following mod file structure:
    |- MyMod.uplugin
 ```
 
-## Automating the installation
+</details>
 
-The above steps are too manual, so let's make a windows .bat script to automate the above (ish - an editor plugin to automate packaging and install of mod will be made eventually so you can do it all from inside the editor).
+<details>
+<summary><span style="font-size: 1.5em">Automation: Whiskerwood Mod Tools</span><hr></summary>
 
-Let's say your mod is pakchunk-42 and your mod name is `DemoMod`. 
+The above steps are too manual to repeat over and over, but I explained them first so that you understand what the automation is actually doing (in case something breaks and you need to look at why).
 
-Replace `%localappdata%` and `%pathtoyourtemplateproject%` with the relevant full paths if needs be or make it even better!
+So this is where the Whiskerwood Mod Tools plugin comes in to help reduce the load.
 
-```bat
-@echo off
-mkdir "%localappdata%\Whiskerwood\Saved\mods\DemoMod" 2>nul
+In the editor, in the play in editor toolbar, you will notice the button for Mod Tools:
 
-copy /Y "%pathtoyourtemplateproject%\Whiskerwood\Windows\Whiskerwood\Content\Paks\pakchunk42-Windows.pak" "%localappdata%\Whiskerwood\Saved\mods\DemoMod\DemoMod.pak"
+![alt text](Docs/Images/Mod-Tools-Menu.png)
 
-echo Copy completed.
-start "" "steam://rungameid/2489330"
-```
+To make a new mod, simply click `New mod...` and type in mod name, and it will create the mod folder, the PAL, and assign an unused chunkid to it.
 
-To explain:
-1. It makes the directory if it doesn't exist yet
-2. It copies the pakchunk file to the mods folder while simultaneously renaming it to the mod name
-3. It loads the game from steam (if you don't have the game on steam remove this part)
+Then to cook the project and install a mod, right click on the mod folder and select `Cook & Install`. 
 
-You can add as many as you like here, though if you don't want to run the game with certain mods, you might want to comment out those lines temporarily.
+![alt text](Docs/Images/Right-click-menu.png)
 
-This is my batch script now:
+If you have multiple mods that you want to install after a single cook, you may also click on `Install` and that will install that mod's packaged files without having to recook again. And to uninstall the mod, just `Uninstall` button.
 
-![Automation-1](Docs/Images/Automation-1.png)
+Finally, you can quickly launch Whiskerwood by clicking the Mod Tools button and clicking `Launch Whiskerwood`. **Note:** auto-launch currently only works when the game is installed through steam.
 
-So when packaging the mod is done, I run the bat and the game launches with all the mod paks installed!
+</details>
 
-## Adding localizations into your mod
+<details>
+<summary><span style="font-size: 1.5em">Adding localization support</span><hr></summary>
 
 [Please follow the guide](Docs/Localization.md)
 
-## Some notes
+</details>
+
+<details>
+<summary><span style="font-size: 1.5em">Extra notes (please read!)</span><hr></summary>
 
 If you want to run the same or similar logic in both `BP_Startup` and `BP_MapLoad`, it is recommended to create a third blueprint which the first two can spawn. 
 
-### Mod Options
+## Mod Options
 
 If changing a data table value, you must do it **as soon as possible in `BP_Startup`**, NOT in `BP_MapLoad`, otherwise the **changes may not take effect** - some things load values from the tables at runtime, some things only load values from them once at level initialisation before mods are loaded.
 
@@ -317,62 +416,44 @@ It is recommended to **make variables for storing your Option Ids** because it r
 
 If you want to update your mod to **change the values of an option** (for example, seconds to minutes), you should **change the optionId to a new one**. This is because when an option Id is loaded in-game, the player's selection is loaded in from the previous option value, which would likely cause unintended behaviour. 
 
-### Getting game content into the project (optional, not for beginners)
+</details>
 
-[Info on working with cooked content in the editor](https://dev.epicgames.com/documentation/en-us/unreal-engine/working-with-cooked-content-in-the-unreal-engine). Note that this project already contains the correct configurations to enable this. 
+<details>
+<summary><span style="font-size: 1.5em">Updating the project yourself</span><hr></summary>
 
-Cooked content cannot be opened (with exceptions of meshes) or edited. However they are there to easily get references. This is why cooked blueprints and widgets are not included (they are also quite unstable/fragile). If you need to open a cooked asset, delete the `.uasset`/`.uexp` file in its path in file explorer, then remake the asset manually. 
+## Updating
 
-Do not include cooked content in your mods folders as they will fail to cook/package (you cannot cook cooked assets).
+If the game updates and the project breaks for whatever reason, you need to update at the minimum:
+- `Content/DynamicClasses/Whiskerwood-x.x.xxx.x.jmap`
+- `AssetRegistry.bin`
 
-> [!IMPORTANT]
-> It is highly recommended to make a backup of your existing project `Content` folder before copying cooked content into your project.
+You can run the [`update.bat`](Automation\update.bat) script (change install dir variable at the top if your game install is not the default steam one) which will automatically re-generate the jmap file, the usmap for FModel, the asset registry file and diff files to get parity with the game. Make sure you check what it does first before running it!
 
-To get game content in your template, I have created a script to read the game's `.pak` file in the game install directory and copy all the most stable cooked files into your specified project location.
-
-You can download [the Cooked Export zip](https://github.com/Buckminsterfullerene02/CUE4Parse/blob/mass-export/CookedExport/) for the exe and input files or clone the repo for the same thing in dist folder to be safe.
-
-Source code is [here](https://github.com/Buckminsterfullerene02/CUE4Parse/blob/mass-export/CookedExport/Program.cs).
-
-```
-~$ CookedExport.exe -h
-CookedExport - Export cooked assets from Unreal Engine pak files
-
-Usage: CookedExport [options]
-
-Required options:
-  --pakdir, -p <path>       Path to the directory containing .pak files
-  --output, -o <path>       Output directory for exported assets
-
-Optional options:
-  --mapping, -m <path>      Path to .usmap mapping file
-  --aeskey, -k <key>        AES encryption key (if required)
-  --version, -v <version>   Game version (e.g., GAME_UE5_6, GAME_UE5_5)
-  --replace, -r             Replace existing files
-  --no-multithread          Disable multi-threading
-  --threads, -t <num>       Max number of threads (-1 for all cores)
-  --print-success           Print successful copies (default: true)
-  --no-print-success        Don't print successful copies
-  --print-skipped           Print skipped assets
-  --list-asset-types, -l    List all asset types in pak files and exit
-  --help, -h                Show this help message
-
-Asset types to export should be listed in AssetTypes.txt (one per line)
-in the same directory as the executable
-```
-
-Example:
-
-`.\CookedExport.exe -p "C:\Program Files (x86)\Steam\steamapps\common\Whiskerwood\Whiskerwood\Content\Paks" -o "F:\Whiskerwood Modding\projects\Whiskerwood-Project" -m "F:\Whiskerwood Modding\projects\Whiskerwood-Project\Automation\Whiskerwood-0.6.175.0.usmap"`
-
-### Updating the template headers yourself
-
-You can run the [`update.bat`](Automation\update.bat) script (change install dir variable at the top if your game install is not the default steam one) which will automatically re-generate all of the template classes, usmap and diff files to get parity with the game. Make sure you check what it does first before running it!
-
-### How to check what C++ headers have changed between updates
+## How to check what has changed between updates
 
 In the `Automation` folder, there is a `diff.hpp` file which is also generated using [jmap_dumper](https://github.com/trumank/jmap) and it is just one file for everything. So when this file updates, you can run a `git diff` on it or go to the github website and click on the file history to see a diff of the file in the website (if it isn't too long to be loaded).
+
+</details>
+
+<details>
+<summary><span style="font-size: 1.5em">How the "cooked editor" project works</span><hr></summary>
+
+I have written a guide containing all of the technical information required for this to be replicated for other games - and that it has! Due to this work, the Palworld modkit is reaching this level of completeness, which serves an even greater audience of modders for years to come!
+
+https://buckminsterfullerene02.github.io/dev-guide/ModSupport/ModKits/DeveloperModkits/CookedEngine.html
+
+</details>
 
 ## Credits
 
 Project headers are generated by [Suzie](https://github.com/trumank/Suzie) and [jmap_dumper](https://github.com/trumank/jmap). Thank you so much Archengius and trumank for working on these incredible tools!
+
+### Please return the favour!
+
+Speaking of credits... if you release a mod using this project, I only ask that you add a credit to the project in your mod description - something like
+
+> Created using the Whiskerwood modkit https://github.com/Whiskerwood-Modding/Whiskerwood-Project
+
+## Thanks and happy modding!
+
+\- Buckminsterfullerene

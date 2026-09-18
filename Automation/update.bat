@@ -2,9 +2,10 @@
 setlocal enabledelayedexpansion
 
 set "INSTALL_DIR=C:\Program Files (x86)\Steam\steamapps\common\Whiskerwood"
+set "PAKS_DIR=%INSTALL_DIR%\Whiskerwood\Content\Paks"
 set "GAME_ID=2489330"
 set "PROCESS_NAME=Whiskerwood-Win64-Shipping"
-set "JMAP_DUMPER_PATH=jmap_dumper.exe"
+set "JMAP_DUMPER_PATH=jmap_dumper\jmap_dumper.exe"
 set "WAIT_TIME=20"
 set "VERSION_FILE_PATH=%INSTALL_DIR%\Whiskerwood\Content\Movies\Version.txt"
 set "UE4SS_PROXY_NAME=dwmapi.dll"
@@ -33,13 +34,19 @@ if "%GAME_VERSION%"=="" (
 )
 
 echo Game version detected: %GAME_VERSION%
-set "OUTPUT_JMAP_PATH=../Content/DynamicClasses/Whiskerwood-%GAME_VERSION%.jmap"
+set "OUTPUT_JMAP_PATH=../Content/DynamicClasses/Whiskerwood-%GAME_VERSION%.jmap.gz"
 set "OUTPUT_USMAP_PATH=Whiskerwood-%GAME_VERSION%.usmap"
-set "OUTPUT_DIFF_JMAP_PATH=diff.hpp"
+set "OUTPUT_HEADERS_PATH=diff.hpp"
+set "INDEX_PATH=DataTableIndex.json"
+set "ASSET_SNAPSHOT_PATH=%~dp0AssetSnapshot.txt"
+set "AR_PATH=%~dp0../AssetRegistry.bin"
 echo Output files will be: 
 echo   - %OUTPUT_JMAP_PATH%
 echo   - %OUTPUT_USMAP_PATH%
-echo   - %OUTPUT_DIFF_JMAP_PATH%
+echo   - %OUTPUT_HEADERS_PATH%
+echo   - %ASSET_SNAPSHOT_PATH%
+echo   - %INDEX_PATH%
+echo   - %AR_PATH%
 
 echo Checking for UE4SS proxy DLL at: "%UE4SS_PROXY_PATH%"
 if exist "%UE4SS_PROXY_PATH%" (
@@ -57,14 +64,14 @@ if exist "%UE4SS_PROXY_PATH%" (
 )
 echo.
 
-echo Deleting existing Whiskerwood*.jmap files...
-dir "..\Content\DynamicClasses\Whiskerwood*.jmap" /b 2>nul
+echo Deleting existing Whiskerwood*.jmap.gz files...
+dir "..\Content\DynamicClasses\Whiskerwood*.jmap.gz" /b 2>nul
 if errorlevel 1 (
-    echo No Whiskerwood*.jmap files found in DynamicClasses folder
+    echo No Whiskerwood*.jmap.gz files found in DynamicClasses folder
 ) else (
-    echo Deleting Whiskerwood*.jmap files from DynamicClasses folder...
+    echo Deleting Whiskerwood*.jmap.gz files from DynamicClasses folder...
     @REM this utter baboonery is needed to handle this relative path for some reason, otherwise it fails silently
-    for %%f in ("..\Content\DynamicClasses\Whiskerwood*.jmap") do (
+    for %%f in ("..\Content\DynamicClasses\Whiskerwood*.jmap.gz") do (
         echo Deleting: %%f
         del "%%f"
         if errorlevel 1 (
@@ -128,63 +135,19 @@ echo Target .usmap path: "%OUTPUT_USMAP_PATH%"
 echo.
 
 echo Running jmap_dumper for .jmap output...
-echo Command: %JMAP_DUMPER_PATH% --pid %PID% "%OUTPUT_JMAP_PATH%"
+echo Command: %JMAP_DUMPER_PATH% --pid %PID% --suzie "%OUTPUT_JMAP_PATH%"
 %JMAP_DUMPER_PATH% --pid %PID% "%OUTPUT_JMAP_PATH%"
 if errorlevel 1 (
-    echo WARNING: jmap_dumper for .jmap file failed or returned an error
+    echo WARNING: jmap_dumper for .jmap.gz file failed or returned an error
 ) else (
-    echo SUCCESS: .jmap dump completed successfully
+    echo SUCCESS: .jmap.gz dump completed successfully
     if exist "%OUTPUT_JMAP_PATH%" (
         echo File created: "%OUTPUT_JMAP_PATH%"
     ) else (
-        echo ERROR: .jmap file not found after dump!
+        echo ERROR: .jmap.gz file not found after dump!
     )
 )
 echo.
-
-echo Running jmap_dumper for .usmap output...
-echo Command: %JMAP_DUMPER_PATH% --pid %PID% "%OUTPUT_USMAP_PATH%"
-%JMAP_DUMPER_PATH% --pid %PID% "%OUTPUT_USMAP_PATH%"
-if errorlevel 1 (
-    echo WARNING: jmap_dumper for .usmap file failed or returned an error
-) else (
-    echo SUCCESS: .usmap dump completed successfully
-    if exist "%OUTPUT_USMAP_PATH%" (
-        echo File created: "%OUTPUT_USMAP_PATH%"
-    ) else (
-        echo ERROR: .usmap file not found after dump!
-    )
-)
-echo.
-
-echo Running jmap_dumper for diff.jmap output...
-echo Command: %JMAP_DUMPER_PATH% --pid %PID% "%OUTPUT_DIFF_JMAP_PATH%"
-%JMAP_DUMPER_PATH% --pid %PID% "%OUTPUT_DIFF_JMAP_PATH%"
-if errorlevel 1 (
-    echo WARNING: jmap_dumper for diff.jmap file failed or returned an error
-) else (
-    echo SUCCESS: diff.jmap dump completed successfully
-    if exist "%OUTPUT_DIFF_JMAP_PATH%" (
-        echo File created: "%OUTPUT_DIFF_JMAP_PATH%"
-    ) else (
-        echo ERROR: diff.jmap file not found after dump!
-    )
-)
-echo.
-
-echo Running TableGraph.exe for DataTable dumps...
-echo Command: DTDumps/TableGraph.exe --pak-dir "%INSTALL_DIR%\Whiskerwood\Content\Paks" --mappings "%OUTPUT_USMAP_PATH%" --version GAME_UE5_6 --include-loc --export "DataTableIndex.json"
-DTDumps\TableGraph.exe --pak-dir "%INSTALL_DIR%\Whiskerwood\Content\Paks" --mappings "%OUTPUT_USMAP_PATH%" --version GAME_UE5_6 --include-loc --export "DataTableIndex.json"
-if errorlevel 1 (
-    echo WARNING: TableGraph.exe failed or returned an error
-) else (
-    echo SUCCESS: TableGraph.exe completed successfully
-    if exist "DataTableIndex.json" (
-        echo File created: "DataTableIndex.json"
-    ) else (
-        echo ERROR: DataTableIndex.json file not found after export!
-    )
-)
 
 echo Closing game process (PID: %PID%)...
 taskkill /pid %PID% /f >nul 2>&1
@@ -208,6 +171,83 @@ if "%UE4SS_DISABLED%"=="1" (
     )
     echo.
 )
+
+echo Running jmap_dumper for .usmap output...
+echo Command: %JMAP_DUMPER_PATH% --jmap "%OUTPUT_JMAP_PATH%" "%OUTPUT_USMAP_PATH%"
+%JMAP_DUMPER_PATH% --jmap "%OUTPUT_JMAP_PATH%" "%OUTPUT_USMAP_PATH%"
+if errorlevel 1 (
+    echo WARNING: jmap_dumper for .usmap file failed or returned an error
+) else (
+    echo SUCCESS: .usmap dump completed successfully
+    if exist "%OUTPUT_USMAP_PATH%" (
+        echo File created: "%OUTPUT_USMAP_PATH%"
+    ) else (
+        echo ERROR: .usmap file not found after dump!
+    )
+)
+echo.
+
+echo Running jmap_dumper for Headers.hpp output...
+echo Command: %JMAP_DUMPER_PATH% --jmap "%OUTPUT_JMAP_PATH%" --no-offsets "%OUTPUT_HEADERS_PATH%"
+%JMAP_DUMPER_PATH% --jmap "%OUTPUT_JMAP_PATH%" --no-offsets "%OUTPUT_HEADERS_PATH%"
+if errorlevel 1 (
+    echo WARNING: jmap_dumper for Headers.hpp file failed or returned an error
+) else (
+    echo SUCCESS: Headers.hpp dump completed successfully
+    if exist "%OUTPUT_HEADERS_PATH%" (
+        echo File created: "%OUTPUT_HEADERS_PATH%"
+    ) else (
+        echo ERROR: Headers.hpp file not found after dump!
+    )
+)
+echo.
+
+set "TABLE_DUMPER_PATH=TableGraph/TableGraph.exe"
+echo Running TableGraph.exe for DataTable/DataAsset dumps...
+echo Command: "%TABLE_DUMPER_PATH%" --pak-dir "%PAKS_DIR%" --mappings "%OUTPUT_USMAP_PATH%" --version GAME_UE5_6 --export "%INDEX_PATH%"
+"%TABLE_DUMPER_PATH%" --pak-dir "%PAKS_DIR%" --mappings "%OUTPUT_USMAP_PATH%" --version GAME_UE5_6 --export "%INDEX_PATH%"
+if errorlevel 1 (
+    echo WARNING: TableGraph.exe failed or returned an error
+) else (
+    echo SUCCESS: TableGraph.exe completed successfully
+    if exist "%INDEX_PATH%" (
+        echo File created: "%INDEX_PATH%"
+    ) else (
+        echo ERROR: "%INDEX_PATH%" file not found after export!
+    )
+)
+echo.
+
+set "COOKED_EXPORT_PATH=CookedExport/CookedExport.exe"
+echo Running CookedExport.exe for asset list snapshot...
+echo Command: "%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -m "%OUTPUT_USMAP_PATH%" -dra -ipp "Engine/" -ro "%ASSET_SNAPSHOT_PATH%"
+"%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -m "%OUTPUT_USMAP_PATH%" -dra -ipp "Engine/" -ro "%ASSET_SNAPSHOT_PATH%"
+if errorlevel 1 (
+    echo WARNING: CookedExport.exe failed or returned an error
+) else (
+    echo SUCCESS: CookedExport.exe completed successfully
+    if exist "%ASSET_SNAPSHOT_PATH%" (
+        echo File created: "%ASSET_SNAPSHOT_PATH%"
+    ) else (
+        echo ERROR: "%ASSET_SNAPSHOT_PATH%" file not found after export!
+    )
+)
+echo.
+
+echo Running CookedExport.exe for asset registry...
+echo Command: "%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -erb -arbo "%AR_PATH%"
+"%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -erb -arbo "%AR_PATH%"
+if errorlevel 1 (
+    echo WARNING: CookedExport.exe failed or returned an error
+) else (
+    echo SUCCESS: CookedExport.exe completed successfully
+    if exist "%AR_PATH%" (
+        echo File created: "%AR_PATH%"
+    ) else (
+        echo ERROR: "%AR_PATH%" file not found after export!
+    )
+)
+echo.
 
 echo Done
 pause
