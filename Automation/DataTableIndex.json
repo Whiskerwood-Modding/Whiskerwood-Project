@@ -1,7 +1,7 @@
 {
-  "ExportDate": "2026-09-12 11:41:40",
+  "ExportDate": "2026-09-18 09:29:48",
   "TotalTables": 63,
-  "TotalUniqueValues": 49247,
+  "TotalUniqueValues": 49262,
   "Tables": {
     "Whiskerwood/Content/Data/AchievementsTables": {
       "ACH.010.EMBARK": {
@@ -8410,8 +8410,8 @@
       },
       "rail.90": {
         "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/aim/Rail_Turn.Rail_Turn_C'",
-        "stringKey": "",
-        "Description": "",
+        "stringKey": "building.rail",
+        "Description": "building.rail.desc",
         "cost1": "planks",
         "ct1": "1",
         "cost2": "ironbar",
@@ -8454,8 +8454,8 @@
       },
       "rail.ramp": {
         "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/aim/Rail_Ramp.Rail_Ramp_C'",
-        "stringKey": "",
-        "Description": "",
+        "stringKey": "building.rail",
+        "Description": "building.rail.desc",
         "cost1": "planks",
         "ct1": "1",
         "cost2": "ironbar",
@@ -9837,8 +9837,8 @@
       },
       "aim.left": {
         "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/aim/AimBeltLeft.AimBeltLeft_C'",
-        "stringKey": "",
-        "Description": "",
+        "stringKey": "aim.flat",
+        "Description": "aim.flat.desc",
         "cost1": "planks",
         "ct1": "1",
         "cost2": "wood",
@@ -9881,8 +9881,8 @@
       },
       "aim.right": {
         "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/aim/AimBeltRight.AimBeltRight_C'",
-        "stringKey": "",
-        "Description": "",
+        "stringKey": "aim.flat",
+        "Description": "aim.flat.desc",
         "cost1": "planks",
         "ct1": "1",
         "cost2": "wood",
@@ -12786,6 +12786,53 @@
         "Quality": "0",
         "Variants": [],
         "isDraggableWall": "False"
+      },
+      "navalStorageDock": {
+        "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/industries/navaldock_storagePier.navaldock_storagePier_C'",
+        "stringKey": "building.storageDock",
+        "Description": "building.desc.storageDock",
+        "cost1": "planks",
+        "ct1": "13",
+        "cost2": "None",
+        "ct2": "0",
+        "cost3": "None",
+        "ct3": "0",
+        "cost4": "None",
+        "ct4": "0",
+        "unlockPrerequisite": "unlock.navalStorageDock",
+        "toolbarGroup": "seafaring_docks",
+        "toolbarGroupSort": "50",
+        "useCustomIcon": "False",
+        "Icon": "0",
+        "detailCue": "0",
+        "SupportedImprovements": [],
+        "structureType": "Other",
+        "maxAgents_contextual": "0",
+        "asHouseTier": "0",
+        "asIndustryDef": "None",
+        "supportedIndustryRecipes": [],
+        "maxHealth": "1",
+        "minMaintenanceInterval": "0",
+        "workerColor": "FFFFFF (FColor)",
+        "limitOne": "False",
+        "customBuildCue": "0",
+        "requiresConstruction": "True",
+        "decorType": "None",
+        "guildSpecialty": "None",
+        "hardLabor": "False",
+        "industrialLabor": "False",
+        "TooltipTags": [
+          "tag.nautical.storage",
+          "tag.nautical.scuttle"
+        ],
+        "constructionTime": "89",
+        "catalyst": "None",
+        "norefund": "False",
+        "randomlyRotate": "False",
+        "refundRule": "standard",
+        "Quality": "0",
+        "Variants": [],
+        "isDraggableWall": "False"
       }
     },
     "Whiskerwood/Content/Data/HarvestCampResourceGroups": {
@@ -14834,7 +14881,7 @@
         "FloatValue": "1.35"
       },
       "debt_cannonballReimbursement": {
-        "FloatValue": "25"
+        "FloatValue": "13"
       },
       "ship_fishpercatch": {
         "FloatValue": "34"
@@ -14907,6 +14954,9 @@
       },
       "ship_firstpercatch_nonet": {
         "FloatValue": "3"
+      },
+      "ship_shakedownnegotiationmaxeffort": {
+        "FloatValue": "7200"
       }
     },
     "Whiskerwood/Content/Data/TaxPaymentThresholds": {
@@ -18669,6 +18719,18 @@
         "LocKey": "None",
         "textTint": "CCB47E (FColor)",
         "iconTint": "CCB47E (FColor)"
+      },
+      "tag.nautical.storage": {
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-spider-web-96.icons8-spider-web-96'",
+        "LocKey": "tab.storage",
+        "textTint": "CCB47E (FColor)",
+        "iconTint": "CCB47E (FColor)"
+      },
+      "tag.nautical.scuttle": {
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-explosion-100.icons8-explosion-100'",
+        "LocKey": "action.scuttleShip",
+        "textTint": "9B3A41 (FColor)",
+        "iconTint": "9B3A41 (FColor)"
       }
     },
     "Whiskerwood/Content/Data/WeatherDefinitions": {
@@ -32234,6 +32296,31 @@
         "isQuestRelated": "False",
         "showMailEvenAsChildUnlock": "True",
         "secretPrerequisite": "None"
+      },
+      "unlock.navalStorageDock": {
+        "useGridActorForLoc": "True",
+        "Title": "",
+        "Description": "",
+        "demoLocked": "True",
+        "isHidden": "False",
+        "subCategory": "techcategory.naval",
+        "giftableInDemo": "False",
+        "giftable": "False",
+        "giftPool": "0",
+        "researchable": "True",
+        "scienceCost": "34",
+        "researchTier": "1",
+        "unlockedByDefault": "False",
+        "childUnlocks": [],
+        "associatedGridActor": "navalStorageDock",
+        "prerequisiteUnlocks": [
+          "unlock.smallshipyard"
+        ],
+        "tierSortOrder": "40",
+        "associatedRecipe": "None",
+        "isQuestRelated": "False",
+        "showMailEvenAsChildUnlock": "False",
+        "secretPrerequisite": "unlock.smallshipyard"
       }
     },
     "Whiskerwood/Content/Data/AssetLookups/TimelineEventTemplates": {
@@ -32918,6 +33005,21 @@
             "canAfford": "False"
           }
         ],
+        "contextualKey": "None",
+        "autoExpireTotal": "0",
+        "autoPresentEvent": "False",
+        "additionalSummaryString": "None",
+        "Quest": "None",
+        "contextualInt": "0",
+        "autoExpireRemaining": "0"
+      },
+      "repairReport": {
+        "EventType": "ETimelineEventType::DAMAGE_REPORT",
+        "Name": "nautical.action.repair",
+        "Description": "",
+        "Icon": "Texture2D'Whiskerwood/Content/ThirdParty/Icon_AssetPacks/SpellBookPage06/Textures/Tex_SpellBook06_30.Tex_SpellBook06_30'",
+        "audioCue": "SoundCue'Whiskerwood/Content/Audio/misc/Sonniss_gdc/DamageReportCue.DamageReportCue'",
+        "choices": [],
         "contextualKey": "None",
         "autoExpireTotal": "0",
         "autoPresentEvent": "False",
@@ -33946,6 +34048,21 @@
       },
       "navalScoutDock": {
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/navaldock_scout.navaldock_scout'"
+      },
+      "navalStorageDock": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/navaldock_storage.navaldock_storage'"
+      },
+      "rail.90": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/rail_straight.rail_straight'"
+      },
+      "rail.ramp": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/rail_straight.rail_straight'"
+      },
+      "aim.left": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/aim_flat.aim_flat'"
+      },
+      "aim.right": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/aim_flat.aim_flat'"
       }
     },
     "Whiskerwood/Content/Data/Icons/Icons_InputIcons": {
@@ -50753,6 +50870,9 @@
       },
       "dock.dockResourcesNeedStored": {
         "Value": "Awaiting Storage"
+      },
+      "event.damageReport": {
+        "Value": "Damage Report"
       }
     },
     "Whiskerwood/Content/Data/TextDB/Loc_En": {
@@ -131576,7 +131696,7 @@
     },
     "Whiskerwood/Content/Data/TextDB/Loc_Root": {
       "meta.version": {
-        "Value": "0.7.206.0"
+        "Value": "0.7.207.0"
       },
       "UI.MONEY": {
         "Value": "¥"
