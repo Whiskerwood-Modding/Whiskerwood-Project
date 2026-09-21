@@ -283,7 +283,7 @@ void FSuzieSchemaOverrides::BuildFromJmap(const TSharedPtr<FJsonObject>& GlobalO
 
     for (auto It = GlobalObjectMap->Values.CreateConstIterator(); It; ++It)
     {
-        const FString& ObjectPath = It.Key();
+        const FString ObjectPath = *It.Key();
         if (!ObjectPath.StartsWith(TEXT("/Script/")))
         {
             continue;
