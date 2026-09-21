@@ -178,7 +178,7 @@ void FSuziePluginModule::CreateDynamicClassesForJsonObject(const TSharedPtr<FJso
     // Create classes, script structs and global delegate functions
     for (auto It = (*Objects)->Values.CreateConstIterator(); It; ++It)
     {
-        FString ObjectPath = It.Key();
+        FString ObjectPath = *It.Key();
         // Full (--all) dumps also contain game content: BlueprintGeneratedClasses show up as
         // "Class" entries but must be loaded from their cooked packages, not generated as native
         // classes. Only /Script/ objects describe native types.
@@ -1654,7 +1654,8 @@ void FSuziePluginModule::DeserializeStructProperties(const UStruct* Struct, void
         const FProperty* Property = *PropertyIterator;
         if (!PropertyValues->HasField(Property->GetName())) continue;
 
-        const TSharedPtr<FJsonValue> PropertyJsonValue = PropertyValues->Values.FindChecked(Property->GetName());
+        using FJsonKeyType = decltype(PropertyValues->Values)::KeyType;
+        const TSharedPtr<FJsonValue> PropertyJsonValue = PropertyValues->Values.FindChecked(FJsonKeyType(*Property->GetName()));
         if (Property->ArrayDim != 1)
         {
             // Handle static array properties here to avoid special handling in DeserializePropertyValue
