@@ -12,6 +12,7 @@
 #include "UObject/ObjectMacros.h"
 #include "UObject/UnrealType.h"
 #include "UObject/PropertyPortFlags.h"
+#include <utility>
 #include "HAL/PlatformFileManager.h"
 #include "Editor/EditorEngine.h"
 #include "Framework/Commands/UICommandList.h"
@@ -178,7 +179,7 @@ void FSuziePluginModule::CreateDynamicClassesForJsonObject(const TSharedPtr<FJso
     // Create classes, script structs and global delegate functions
     for (auto It = (*Objects)->Values.CreateConstIterator(); It; ++It)
     {
-        FString ObjectPath = It.Key();
+        FString ObjectPath = *It.Key();
         // Full (--all) dumps also contain game content: BlueprintGeneratedClasses show up as
         // "Class" entries but must be loaded from their cooked packages, not generated as native
         // classes. Only /Script/ objects describe native types.
@@ -442,6 +443,221 @@ public:
 // Ensures proper vtable initialization when struct memory is allocated, preventing crashes on virtual function calls.
 // Without this, structs like DataTable row types that inherit from FTableRowBase would have a null vtable pointer,
 // causing crashes when the engine calls virtual methods like OnDataTableChanged().
+#if ENGINE_MAJOR_VERSION == 5 && ENGINE_MINOR_VERSION >= 8
+
+// This interface is a "fake vtable": a flags word, a capabilities block and a trailing array of
+// plain function pointers, indexed by the number of set flags below each one's bit. None of those
+// pointers receives the ops object, so an operation has no way to reach the struct it belongs to,
+// which Construct and Destruct both need.
+//
+// Each slot below is a set of thunks instantiated at compile time under its own slot number.
+// A dynamic struct claims a slot and recovers its ops object from the registry through it.
+class FDynamicStructCppStructOps;
+
+namespace SuzieDynamicStructOps
+{
+    using EVTableFlags = UE::CoreUObject::Private::EStructOpsFakeVTableFlags;
+    using FFakeVTable = UE::CoreUObject::Private::FStructOpsFakeVTable;
+    using FCapabilities = UScriptStruct::ICppStructOps::FCapabilities;
+
+    // Bounds the number of dynamic structs that can carry their own ops.
+    static constexpr int32 MaxSlots = 1024;
+
+    int32 ClaimSlot(FDynamicStructCppStructOps* Ops);
+    const FFakeVTable* BuildVTable(int32 Slot, const FCapabilities& Caps, bool bWantSerializer);
+}
+
+class FDynamicStructCppStructOps : public UScriptStruct::ICppStructOps
+{
+    UScriptStruct::ICppStructOps* ParentCppStructOps;
+    UScriptStruct* DynamicStruct;
+    int32 ParentInitializedSize;
+    bool bHasDestructor;
+    // Optional hand-written binary serializer for game structs serialized natively in the cooked
+    // data (STRUCT_SerializeNative). When set, the capabilities report HasSerializer so
+    // PrepareCppStructOps flags the struct STRUCT_SerializeNative and SerializeItem routes
+    // through this instead of the tagged/unversioned property path. See SuzieCustomSerializers.
+    SuzieCustomSerializers::FStructSerializeFn CustomSerializeFn;
+
+public:
+    FDynamicStructCppStructOps(int32 InSize, int32 InAlignment, UScriptStruct::ICppStructOps* InParentOps, UScriptStruct* InStruct, SuzieCustomSerializers::FStructSerializeFn InSerializeFn = nullptr)
+        : ICppStructOps(InSize, InAlignment)
+        , ParentCppStructOps(InParentOps)
+        , DynamicStruct(InStruct)
+        , ParentInitializedSize(InParentOps ? InParentOps->GetSize() : 0)
+        , bHasDestructor(false)
+        , CustomSerializeFn(InSerializeFn)
+    {
+        // Destructor is needed if the parent needs destruction or if any child properties need destruction
+        if (InParentOps && InParentOps->HasDestructor())
+        {
+            bHasDestructor = true;
+        }
+        if (!bHasDestructor && InStruct)
+        {
+            for (FProperty* P = InStruct->DestructorLink; P; P = P->DestructorLinkNext)
+            {
+                if (!P->IsInContainer(ParentInitializedSize) && !P->HasAnyPropertyFlags(CPF_NoDestructor))
+                {
+                    bHasDestructor = true;
+                    break;
+                }
+            }
+        }
+
+        SuzieDynamicStructOps::FCapabilities Caps = {};
+        Caps.HasZeroConstructor = false;
+        Caps.HasDestructor = bHasDestructor;
+        Caps.IsPlainOldData = false;
+        Caps.HasNoopConstructor = false;
+        Caps.HasSerializer = (CustomSerializeFn != nullptr);
+
+        const int32 Slot = SuzieDynamicStructOps::ClaimSlot(this);
+        FakeVPtr = SuzieDynamicStructOps::BuildVTable(Slot, Caps, CustomSerializeFn != nullptr);
+    }
+
+    // Called through this struct's own thunks.
+    void DoConstruct(void* Dest)
+    {
+        // Zero the entire buffer to ensure deterministic initialization regardless of prior memory content
+        FMemory::Memzero(Dest, GetSize());
+
+        // Call parent's constructor to initialize the vtable pointer
+        if (ParentCppStructOps && !ParentCppStructOps->HasZeroConstructor())
+        {
+            ParentCppStructOps->Construct(Dest);
+        }
+
+        // Initialize child properties that need non-zero construction
+        if (DynamicStruct)
+        {
+            for (FProperty* Property = DynamicStruct->PropertyLink; Property; Property = Property->PropertyLinkNext)
+            {
+                if (!Property->IsInContainer(ParentInitializedSize) && !Property->HasAnyPropertyFlags(CPF_ZeroConstructor))
+                {
+                    Property->InitializeValue_InContainer(Dest);
+                }
+            }
+        }
+    }
+
+    void DoDestruct(void* Dest)
+    {
+        // Destroy child properties that need destruction
+        if (DynamicStruct)
+        {
+            for (FProperty* P = DynamicStruct->DestructorLink; P; P = P->DestructorLinkNext)
+            {
+                if (!P->IsInContainer(ParentInitializedSize) && !P->HasAnyPropertyFlags(CPF_NoDestructor))
+                {
+                    P->DestroyValue_InContainer(Dest);
+                }
+            }
+        }
+        // Call parent's destructor for C++ cleanup (vtable, etc.)
+        if (ParentCppStructOps && ParentCppStructOps->HasDestructor())
+        {
+            ParentCppStructOps->Destruct(Dest);
+        }
+    }
+
+    bool DoSerialize(FArchive& Ar, void* Data, UStruct* DefaultsStruct, const void* Defaults)
+    {
+        return CustomSerializeFn ? CustomSerializeFn(Ar, Data, DynamicStruct) : false;
+    }
+};
+
+namespace SuzieDynamicStructOps
+{
+    static FDynamicStructCppStructOps* GSlots[MaxSlots] = {};
+    static int32 GNumSlots = 0;
+
+    // Slots are claimed while classes are being generated, which happens on the game thread,
+    // so no locking is needed here.
+    int32 ClaimSlot(FDynamicStructCppStructOps* Ops)
+    {
+        if (GNumSlots >= MaxSlots)
+        {
+            UE_LOG(LogSuzie, Fatal,
+                TEXT("Ran out of dynamic struct ops slots (%d). Raise SuzieDynamicStructOps::MaxSlots."),
+                MaxSlots);
+            return 0;
+        }
+        const int32 Slot = GNumSlots++;
+        GSlots[Slot] = Ops;
+        return Slot;
+    }
+
+    template <int32 N> static void ConstructThunk(void* Address) { GSlots[N]->DoConstruct(Address); }
+    template <int32 N> static void DestructThunk(void* Address) { GSlots[N]->DoDestruct(Address); }
+    template <int32 N> static bool SerializeThunk(FArchive& Ar, void* Data, UStruct* DefaultsStruct, const void* Defaults)
+    {
+        return GSlots[N]->DoSerialize(Ar, Data, DefaultsStruct, Defaults);
+    }
+
+    // Every operation is stored as the same pointer type, as the engine's own table does, and
+    // cast back to its real signature on the way out.
+    using FAnyFn = void (*)();
+    struct FThunkTable { FAnyFn Fns[MaxSlots]; };
+
+    template <std::size_t... Is>
+    static FThunkTable MakeConstructThunks(std::index_sequence<Is...>)
+    {
+        return FThunkTable{ { reinterpret_cast<FAnyFn>(&ConstructThunk<static_cast<int32>(Is)>)... } };
+    }
+    template <std::size_t... Is>
+    static FThunkTable MakeDestructThunks(std::index_sequence<Is...>)
+    {
+        return FThunkTable{ { reinterpret_cast<FAnyFn>(&DestructThunk<static_cast<int32>(Is)>)... } };
+    }
+    template <std::size_t... Is>
+    static FThunkTable MakeSerializeThunks(std::index_sequence<Is...>)
+    {
+        return FThunkTable{ { reinterpret_cast<FAnyFn>(&SerializeThunk<static_cast<int32>(Is)>)... } };
+    }
+
+    static const FThunkTable GConstructThunks = MakeConstructThunks(std::make_index_sequence<MaxSlots>{});
+    static const FThunkTable GDestructThunks = MakeDestructThunks(std::make_index_sequence<MaxSlots>{});
+    static const FThunkTable GSerializeThunks = MakeSerializeThunks(std::make_index_sequence<MaxSlots>{});
+
+    // The engine reads this table as a header followed by one function pointer per set flag, in
+    // ascending flag order. It outlives the editor, like the ops object it belongs to, so it is
+    // never freed.
+    const FFakeVTable* BuildVTable(int32 Slot, const FCapabilities& Caps, bool bWantSerializer)
+    {
+        struct FEntry { EVTableFlags Flag; FAnyFn Fn; };
+        FEntry Entries[3];
+        int32 NumEntries = 0;
+
+        Entries[NumEntries++] = { EVTableFlags::Construct, GConstructThunks.Fns[Slot] };
+        Entries[NumEntries++] = { EVTableFlags::Destruct, GDestructThunks.Fns[Slot] };
+        if (bWantSerializer)
+        {
+            Entries[NumEntries++] = { EVTableFlags::SerializeArchive, GSerializeThunks.Fns[Slot] };
+        }
+
+        EVTableFlags Flags = EVTableFlags::None;
+        for (int32 Index = 0; Index < NumEntries; ++Index)
+        {
+            Flags |= Entries[Index].Flag;
+        }
+
+        void* Memory = FMemory::Malloc(sizeof(FFakeVTable) + NumEntries * sizeof(FAnyFn), alignof(FFakeVTable));
+        FFakeVTable* Table = static_cast<FFakeVTable*>(Memory);
+        Table->Flags = Flags;
+        Table->Capabilities = Caps;
+
+        FAnyFn* Functions = reinterpret_cast<FAnyFn*>(reinterpret_cast<uint8*>(Table) + sizeof(FFakeVTable));
+        for (int32 Index = 0; Index < NumEntries; ++Index)
+        {
+            Functions[Index] = Entries[Index].Fn;
+        }
+        return Table;
+    }
+}
+
+#else
+
 class FDynamicStructCppStructOps : public UScriptStruct::ICppStructOps
 {
     UScriptStruct::ICppStructOps* ParentCppStructOps;
@@ -581,6 +797,8 @@ public:
     virtual EPropertyVisitorControlFlow Visit(FPropertyVisitorContext& Context, const TFunctionRef<EPropertyVisitorControlFlow(const FPropertyVisitorContext& Context)> InFunc) const override { return EPropertyVisitorControlFlow::StepOver; }
     virtual void* ResolveVisitedPathInfo(void* Data, const FPropertyVisitorInfo& Info) const override { return nullptr; }
 };
+
+#endif
 
 // Helper: walks the super struct chain to find the nearest ancestor with CppStructOps
 static UScriptStruct::ICppStructOps* FindNearestAncestorCppStructOps(UScriptStruct* Struct)
@@ -1654,7 +1872,8 @@ void FSuziePluginModule::DeserializeStructProperties(const UStruct* Struct, void
         const FProperty* Property = *PropertyIterator;
         if (!PropertyValues->HasField(Property->GetName())) continue;
 
-        const TSharedPtr<FJsonValue> PropertyJsonValue = PropertyValues->Values.FindChecked(Property->GetName());
+        using FJsonKeyType = decltype(PropertyValues->Values)::KeyType;
+        const TSharedPtr<FJsonValue> PropertyJsonValue = PropertyValues->Values.FindChecked(FJsonKeyType(*Property->GetName()));
         if (Property->ArrayDim != 1)
         {
             // Handle static array properties here to avoid special handling in DeserializePropertyValue

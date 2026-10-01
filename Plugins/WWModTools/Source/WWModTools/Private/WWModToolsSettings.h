@@ -15,6 +15,6 @@ public:
 
 	UPROPERTY(Config, EditAnywhere, Category="Build",
 		meta=(DisplayName="RunUAT.bat Path (override)",
-			ToolTip="Leave blank to use the engine this project was opened with."))
+			ToolTip="Leave blank to use the engine this project was opened with"))
 	FFilePath RunUATOverride;
 };

@@ -25,7 +25,7 @@
 #include "Dom/JsonObject.h"
 #include "Serialization/JsonWriter.h"
 #include "Serialization/JsonSerializer.h"
-#include "TextInputDialog.h"
+#include "NewModDialog.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogWWModTools, Log, All);
 
@@ -47,7 +47,7 @@ static int32 FindNextChunkId()
 	IAssetRegistry& AR =
 		FModuleManager::LoadModuleChecked<FAssetRegistryModule>(TEXT("AssetRegistry")).Get();
 
-	// Chunk IDs from Primary Asset Labels anywhere in the project.
+	// Chunk IDs from PAL anywhere in the project
 	{
 		FARFilter Filter;
 		Filter.PackagePaths.Add(TEXT("/Game"));
@@ -68,7 +68,7 @@ static int32 FindNextChunkId()
 		}
 	}
 
-	// Chunk IDs assigned directly to assets (Asset Actions > Assign to Chunk), e.g. mods without a PAL.
+	// Chunk IDs assigned directly to assets (Asset Actions > Assign to Chunk), e.g. mods without a PAL
 	{
 		FARFilter Filter;
 		Filter.PackagePaths.Add(TEXT("/Game"));
@@ -86,7 +86,7 @@ static int32 FindNextChunkId()
 		}
 	}
 
-	// Anything already present in the cook output.
+	// Anything already present in the cook output
 	{
 		const FString PaksDir = FPaths::ConvertRelativePathToFull(FPaths::ProjectDir())
 			/ TEXT("Windows/Whiskerwood/Content/Paks");
@@ -111,29 +111,89 @@ static int32 FindNextChunkId()
 	return -1;
 }
 
-// Where the game loads mods from: %LOCALAPPDATA%/Whiskerwood/Saved/mods
-static FString GetModsInstallRoot()
+FString ModActions::GetModsInstallRoot()
 {
 	const FString LocalAppData = FPlatformMisc::GetEnvironmentVariable(TEXT("LOCALAPPDATA"));
 	if (LocalAppData.IsEmpty()) return FString();
 	return LocalAppData / TEXT("Whiskerwood/Saved/mods");
 }
 
-// The project-side copy of the .uplugin, kept next to the mod's assets so it can be edited.
-static FString GetSourceUPluginPath(const FString& ModName)
+FString ModActions::GetSourceUPluginPath(const FString& ModName)
 {
 	return FPaths::ConvertRelativePathToFull(FPaths::ProjectContentDir())
 		/ TEXT("Mods") / ModName / (ModName + TEXT(".uplugin"));
 }
 
+const TArray<FModFieldDef>& ModActions::GetModFieldDefs()
+{
+	static const TArray<FModFieldDef> Defs =
+	{
+		{ ModFields::Name,          TEXT("Display Name"),   TEXT("{ModName}"), TEXT("My Awesome Mod"), true  },
+		{ ModFields::Description,   TEXT("Description"),    TEXT(""),          TEXT("The best mod ever!"),   true  },
+		{ ModFields::Version,       TEXT("Version"),        TEXT("1.0"),       TEXT("1.0"),            true  },
+		{ ModFields::CreatedBy,     TEXT("Created by"),     TEXT(""),          TEXT("Your name"),      true  },
+		{ ModFields::EngineVersion, TEXT("Engine version"), TEXT("5.8"),       TEXT("5.8"),            false },
+	};
+	return Defs;
+}
+
+FString ModActions::ResolveFieldDefault(const FModFieldDef& Def, const FString& ModName)
+{
+	return Def.DefaultValue.Replace(TEXT("{ModName}"), *ModName);
+}
+
+void ModActions::ApplyFieldDefaults(FModInfo& Info)
+{
+	for (const FModFieldDef& Def : GetModFieldDefs())
+	{
+		const FString Default = ResolveFieldDefault(Def, Info.FolderName);
+
+		if (!Def.bUserEditable)
+		{
+			Info.Set(Def.Key, Default);
+			continue;
+		}
+
+		if (!Info.Has(Def.Key) || (Info.Get(Def.Key).IsEmpty() && !Default.IsEmpty()))
+		{
+			Info.Set(Def.Key, Default);
+		}
+	}
+}
+
+bool ModActions::NeedsDetailsPrompt(const FModInfo& Info)
+{
+	for (const FModFieldDef& Def : GetModFieldDefs())
+	{
+		if (Def.bUserEditable && !Info.Has(Def.Key))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 static bool WriteUPlugin(const FModInfo& Info, const FString& Path)
 {
+	FModInfo Normalised = Info;
+	ModActions::ApplyFieldDefaults(Normalised);
+
 	TSharedRef<FJsonObject> Json = MakeShared<FJsonObject>();
-	Json->SetStringField(TEXT("Name"),
-		Info.DisplayName.IsEmpty() ? Info.FolderName : Info.DisplayName);
-	Json->SetStringField(TEXT("Description"), Info.Description);
-	Json->SetStringField(TEXT("Version"), Info.Version.IsEmpty() ? TEXT("1.0") : Info.Version);
-	Json->SetStringField(TEXT("CreatedBy"), Info.CreatedBy);
+
+	TSet<FString> Written;
+	for (const FModFieldDef& Def : ModActions::GetModFieldDefs())
+	{
+		Json->SetStringField(Def.Key, Normalised.Get(Def.Key));
+		Written.Add(Def.Key);
+	}
+
+	for (const TPair<FString, FString>& Pair : Normalised.Values)
+	{
+		if (!Written.Contains(Pair.Key))
+		{
+			Json->SetStringField(Pair.Key, Pair.Value);
+		}
+	}
 
 	FString Out;
 	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Out);
@@ -141,6 +201,154 @@ static bool WriteUPlugin(const FModInfo& Info, const FString& Path)
 
 	IFileManager::Get().MakeDirectory(*FPaths::GetPath(Path), true);
 	return FFileHelper::SaveStringToFile(Out, *Path, FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM);
+}
+
+static bool CopyInstalledFile(const FString& Src, const FString& Dest, FString& OutError);
+
+static TSharedPtr<FJsonObject> ReadUPlugin(const FString& Path)
+{
+	FString Contents;
+	if (!FFileHelper::LoadFileToString(Contents, *Path)) return nullptr;
+
+	TSharedPtr<FJsonObject> Json;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Contents);
+	if (!FJsonSerializer::Deserialize(Reader, Json) || !Json.IsValid()) return nullptr;
+	return Json;
+}
+
+static bool ReadModInfoFromFile(const FString& Path, const FString& ModName, FModInfo& OutInfo)
+{
+	TSharedPtr<FJsonObject> Json = ReadUPlugin(Path);
+	if (!Json.IsValid()) return false;
+
+	OutInfo = FModInfo();
+	OutInfo.FolderName = ModName;
+
+	// ReSharper disable once CppRangeBasedForIncompatibleReference
+	for (const TPair<FString, TSharedPtr<FJsonValue>>& Pair : Json->Values)
+	{
+		FString Value;
+		if (Pair.Value.IsValid() && Pair.Value->TryGetString(Value))
+		{
+			OutInfo.Set(Pair.Key, Value);
+		}
+	}
+
+	return true;
+}
+
+bool ModActions::LoadModInfo(const FString& ModName, FModInfo& OutInfo)
+{
+	return ReadModInfoFromFile(GetSourceUPluginPath(ModName), ModName, OutInfo);
+}
+
+bool ModActions::SaveModInfo(const FModInfo& Info)
+{
+	const FString SourcePath = GetSourceUPluginPath(Info.FolderName);
+	if (!WriteUPlugin(Info, SourcePath))
+	{
+		UE_LOG(LogWWModTools, Warning, TEXT("Failed to write %s"), *SourcePath);
+		return false;
+	}
+
+	// Keep an already installed copy in sync
+	const FString ModsRoot = GetModsInstallRoot();
+	if (!ModsRoot.IsEmpty())
+	{
+		const FString InstalledPath =
+			ModsRoot / Info.FolderName / (Info.FolderName + TEXT(".uplugin"));
+		if (FPaths::FileExists(InstalledPath))
+		{
+			FString CopyError;
+			if (!CopyInstalledFile(SourcePath, InstalledPath, CopyError))
+			{
+				UE_LOG(LogWWModTools, Warning, TEXT("Failed to update installed %s (%s)"),
+					*InstalledPath, *CopyError);
+			}
+		}
+	}
+
+	return true;
+}
+
+static bool PromptForModDetails(const FString& ModName, FModInfo& InOutInfo)
+{
+	InOutInfo.FolderName = ModName;
+	ModActions::ApplyFieldDefaults(InOutInfo);
+
+	if (!SNewModDialog::ShowModal(
+			InOutInfo,
+			FText::FromString(FString::Printf(TEXT("Mod Details for '%s'"), *ModName)),
+			/*bLockName=*/true))
+	{
+		return false;
+	}
+
+	InOutInfo.FolderName = ModName;
+	if (!ModActions::SaveModInfo(InOutInfo))
+	{
+		ShowNotification(FString::Printf(TEXT("Failed to write %s.uplugin"), *ModName), false);
+		return false;
+	}
+
+	return true;
+}
+
+bool ModActions::EnsureModInfo(const FString& ModName, FModInfo& OutInfo)
+{
+	bool bFound = LoadModInfo(ModName, OutInfo);
+
+	// Mods made before this plugin existed have no project side .uplugin, but may have been installed by hand already
+	if (!bFound)
+	{
+		const FString ModsRoot = GetModsInstallRoot();
+		if (!ModsRoot.IsEmpty())
+		{
+			const FString InstalledPath = ModsRoot / ModName / (ModName + TEXT(".uplugin"));
+			if (ReadModInfoFromFile(InstalledPath, ModName, OutInfo))
+			{
+				UE_LOG(LogWWModTools, Display, TEXT("Adopted existing %s into the project"), *InstalledPath);
+				bFound = true;
+			}
+		}
+	}
+
+	if (!bFound)
+	{
+		OutInfo = FModInfo();
+		OutInfo.FolderName = ModName;
+	}
+
+	// A mod recorded before a field was added has no value for it
+	if (!bFound || NeedsDetailsPrompt(OutInfo))
+	{
+		return PromptForModDetails(ModName, OutInfo);
+	}
+
+	// Nothing to ask for, but the file may still need the owned fields refreshing, such as after an engine upgrade
+	FModInfo Normalised = OutInfo;
+	ApplyFieldDefaults(Normalised);
+	if (Normalised.Values.OrderIndependentCompareEqual(OutInfo.Values)
+		&& FPaths::FileExists(GetSourceUPluginPath(ModName)))
+	{
+		return true;
+	}
+
+	OutInfo = Normalised;
+	return SaveModInfo(OutInfo);
+}
+
+void ModActions::GetModFolderNames(TArray<FString>& OutModNames)
+{
+	OutModNames.Reset();
+
+	const FString ModsDir =
+		FPaths::ConvertRelativePathToFull(FPaths::ProjectContentDir()) / TEXT("Mods");
+
+	TArray<FString> Dirs;
+	IFileManager::Get().FindFiles(Dirs, *(ModsDir / TEXT("*")), false, true);
+	OutModNames = MoveTemp(Dirs);
+	OutModNames.Sort();
 }
 
 bool ModActions::CreateMod(const FModInfo& Info)
@@ -158,7 +366,7 @@ bool ModActions::CreateMod(const FModInfo& Info)
 		if (Existing.Num() > 0)
 		{
 			ShowNotification(
-				FString::Printf(TEXT("Mod '%s' already exists."), *ModName), false);
+				FString::Printf(TEXT("Mod '%s' already exists"), *ModName), false);
 			return false;
 		}
 	}
@@ -166,7 +374,7 @@ bool ModActions::CreateMod(const FModInfo& Info)
 	const int32 ChunkId = FindNextChunkId();
 	if (ChunkId < 0)
 	{
-		ShowNotification(TEXT("No free ChunkID available in range 1-300."), false);
+		ShowNotification(TEXT("No free ChunkID available in range 1-300"), false);
 		return false;
 	}
 
@@ -187,6 +395,7 @@ bool ModActions::CreateMod(const FModInfo& Info)
 			Label->Rules.ChunkId = ChunkId;
 			Label->Rules.CookRule = EPrimaryAssetCookRule::AlwaysCook;
 			Label->bLabelAssetsInMyDirectory = true;
+			// ReSharper disable once CppExpressionWithoutSideEffects
 			Label->MarkPackageDirty();
 
 			UPackage* Pkg = Label->GetOutermost();
@@ -204,16 +413,15 @@ bool ModActions::CreateMod(const FModInfo& Info)
 		}
 	}
 
-	if (bAllOk && !WriteUPlugin(Info, GetSourceUPluginPath(ModName)))
+	if (bAllOk && !SaveModInfo(Info))
 	{
-		UE_LOG(LogWWModTools, Warning, TEXT("Failed to write %s"), *GetSourceUPluginPath(ModName));
 		bAllOk = false;
 	}
 
 	if (bAllOk)
 	{
 		ShowNotification(
-			FString::Printf(TEXT("Mod '%s' created (ChunkID %d)."), *ModName, ChunkId), true);
+			FString::Printf(TEXT("Mod '%s' created (ChunkID %d)"), *ModName, ChunkId), true);
 	}
 	return bAllOk;
 }
@@ -290,7 +498,7 @@ static bool CopyInstalledFile(const FString& Src, const FString& Dest, FString& 
 	}
 
 	OutError = FString::Printf(
-		TEXT("Copy failed (IFileManager=%u, cmd exit=%d)."),
+		TEXT("Copy failed (IFileManager=%u, cmd exit=%d)"),
 		CopyResult, ExitCode);
 	if (!StdErr.IsEmpty())
 	{
@@ -313,10 +521,10 @@ static bool InstallCookedChunkFiles(
 	OutInstalled = 0;
 	OutError.Reset();
 
-	const FString ModsRoot = GetModsInstallRoot();
+	const FString ModsRoot = ModActions::GetModsInstallRoot();
 	if (ModsRoot.IsEmpty())
 	{
-		OutError = TEXT("Could not resolve %LOCALAPPDATA%.");
+		OutError = TEXT("Could not resolve %LOCALAPPDATA%");
 		return false;
 	}
 
@@ -342,17 +550,11 @@ static bool InstallCookedChunkFiles(
 	++OutInstalled;
 	UE_LOG(LogWWModTools, Display, TEXT("Installed: %s"), *PakDest);
 
-	const FString UPluginSrc = GetSourceUPluginPath(ModName);
+	const FString UPluginSrc = ModActions::GetSourceUPluginPath(ModName);
 	if (!FPaths::FileExists(UPluginSrc))
 	{
-		FModInfo Defaults;
-		Defaults.FolderName = ModName;
-		if (!WriteUPlugin(Defaults, UPluginSrc))
-		{
-			OutError = FString::Printf(TEXT("Failed to write %s"), *UPluginSrc);
-			return false;
-		}
-		UE_LOG(LogWWModTools, Display, TEXT("Generated default %s"), *UPluginSrc);
+		OutError = FString::Printf(TEXT("No mod details recorded (%s missing)"), *UPluginSrc);
+		return false;
 	}
 
 	const FString UPluginDest = ModInstallDir / (ModName + TEXT(".uplugin"));
@@ -370,10 +572,13 @@ static bool InstallCookedChunkFiles(
 
 void ModActions::CookAndInstallMod(const FString& ModName)
 {
+	FModInfo Info;
+	if (!EnsureModInfo(ModName, Info)) return;
+
 	const FString RunUAT = GetRunUATPath();
 	if (RunUAT.IsEmpty())
 	{
-		ShowNotification(TEXT("RunUAT.bat not found. Check Whiskerwood Mod Tools settings."), false);
+		ShowNotification(TEXT("RunUAT.bat not found. Check Whiskerwood Mod Tools settings"), false);
 		return;
 	}
 
@@ -381,7 +586,7 @@ void ModActions::CookAndInstallMod(const FString& ModName)
 	if (ChunkId < 0)
 	{
 		ShowNotification(
-			FString::Printf(TEXT("Cannot find PAL_%s or its ChunkID."), *ModName), false);
+			FString::Printf(TEXT("Cannot find PAL_%s or its ChunkID"), *ModName), false);
 		return;
 	}
 
@@ -398,22 +603,23 @@ void ModActions::CookAndInstallMod(const FString& ModName)
 			" -build -cook -stage -pak"
 			" -archive -archivedirectory=\"%s\""
 			" -nocompileeditor -installed -iterativecooking -cookincremental"
-			" -nop4 -utf8output -unattended"),
+			" -nop4 -utf8output -unattended"
+			" -WaitForUATMutex"),
 		*ProjectPath, *OutputDir);
 
 	const TSharedRef<TAtomic<bool>, ESPMode::ThreadSafe> bCancelRequested =
 		MakeShared<TAtomic<bool>, ESPMode::ThreadSafe>(false);
 
-	FNotificationInfo Info(
+	FNotificationInfo NotificationInfo(
 		FText::FromString(FString::Printf(TEXT("Cooking '%s'"), *ModName)));
-	Info.bFireAndForget = false;
-	Info.bUseThrobber = true;
-	Info.bUseSuccessFailIcons = true;
-	Info.FadeOutDuration = 3.f;
-	Info.ExpireDuration = 6.f;
-	Info.ButtonDetails.Add(FNotificationButtonInfo(
+	NotificationInfo.bFireAndForget = false;
+	NotificationInfo.bUseThrobber = true;
+	NotificationInfo.bUseSuccessFailIcons = true;
+	NotificationInfo.FadeOutDuration = 3.f;
+	NotificationInfo.ExpireDuration = 6.f;
+	NotificationInfo.ButtonDetails.Add(FNotificationButtonInfo(
 		FText::FromString(TEXT("Cancel")),
-		FText::FromString(TEXT("Cancel cooking and installation.")),
+		FText::FromString(TEXT("Cancel cooking and installation")),
 		FSimpleDelegate::CreateLambda([bCancelRequested]()
 		{
 			bCancelRequested->Store(true);
@@ -421,7 +627,7 @@ void ModActions::CookAndInstallMod(const FString& ModName)
 		SNotificationItem::CS_Pending));
 
 	TSharedPtr<SNotificationItem> Notification =
-		FSlateNotificationManager::Get().AddNotification(Info);
+		FSlateNotificationManager::Get().AddNotification(NotificationInfo);
 	Notification->SetCompletionState(SNotificationItem::CS_Pending);
 
 	TWeakPtr<SNotificationItem> WeakNotif = Notification;
@@ -510,7 +716,7 @@ void ModActions::CookAndInstallMod(const FString& ModName)
 		if (!Proc.IsValid())
 		{
 			FPlatformProcess::ClosePipe(PipeRead, PipeWrite);
-			FinishNotif(TEXT("Failed to launch RunUAT."), false);
+			FinishNotif(TEXT("Failed to launch RunUAT"), false);
 			return;
 		}
 
@@ -551,15 +757,15 @@ void ModActions::CookAndInstallMod(const FString& ModName)
 
 		if (bCancelRequested->Load())
 		{
-			FinishNotif(FString::Printf(TEXT("Cancelled '%s'."), *ModName), false);
-			UE_LOG(LogWWModTools, Warning, TEXT("Cook cancelled by user."));
+			FinishNotif(FString::Printf(TEXT("Cancelled '%s'"), *ModName), false);
+			UE_LOG(LogWWModTools, Warning, TEXT("Cook cancelled for '%s'"), *ModName);
 			return;
 		}
 
 		if (ExitCode != 0)
 		{
 			FinishNotif(
-				FString::Printf(TEXT("Cook failed (exit %d). See Output Log."), ExitCode), false);
+				FString::Printf(TEXT("Cook failed (exit %d). See output log!"), ExitCode), false);
 			return;
 		}
 
@@ -583,11 +789,14 @@ void ModActions::CookAndInstallMod(const FString& ModName)
 
 void ModActions::InstallMod(const FString& ModName)
 {
+	FModInfo Info;
+	if (!EnsureModInfo(ModName, Info)) return;
+
 	const int32 ChunkId = GetChunkIdForMod(ModName);
 	if (ChunkId < 0)
 	{
 		ShowNotification(
-			FString::Printf(TEXT("Cannot find PAL_%s or its ChunkID."), *ModName), false);
+			FString::Printf(TEXT("Cannot find PAL_%s or its ChunkID"), *ModName), false);
 		return;
 	}
 
@@ -609,38 +818,41 @@ void ModActions::InstallMod(const FString& ModName)
 
 void ModActions::UninstallMod(const FString& ModName)
 {
-	const FString ModsRoot = GetModsInstallRoot();
+	const FString ModsRoot = ModActions::GetModsInstallRoot();
 	if (ModsRoot.IsEmpty())
 	{
-		ShowNotification(TEXT("Could not resolve %LOCALAPPDATA%."), false);
+		ShowNotification(TEXT("Could not resolve %LOCALAPPDATA%"), false);
 		return;
 	}
 
 	const FString ModInstallDir = ModsRoot / ModName;
 
-	if (!IFileManager::Get().DirectoryExists(*ModInstallDir))
+	FModInfo Info;
+	if (!EnsureModInfo(ModName, Info)) return;
+
+	const FString PakPath = ModInstallDir / (ModName + TEXT(".pak"));
+	if (!FPaths::FileExists(PakPath))
 	{
-		ShowNotification(
-			FString::Printf(TEXT("No installed files found for '%s'."), *ModName), false);
+		ShowNotification(FString::Printf(TEXT("No installed pak found for '%s'"), *ModName), false);
 		return;
 	}
 
-	const bool bRemoved =
-		IFileManager::Get().DeleteDirectory(*ModInstallDir, false, true);
+	// Only the pak is removed, since the mod folder can also hold config files, localisation strings and anything else the modder makes
+	const bool bRemoved = IFileManager::Get().Delete(*PakPath, false, true);
 
 	ShowNotification(
 		bRemoved
-			? FString::Printf(TEXT("'%s' uninstalled."), *ModName)
-			: FString::Printf(TEXT("Failed to remove '%s'. Is the game running?"), *ModName),
+			? FString::Printf(TEXT("'%s' uninstalled"), *ModName)
+			: FString::Printf(TEXT("Failed to remove %s.pak, is the game running?"), *ModName),
 		bRemoved);
 }
 
 void ModActions::OpenInstalledModsDir()
 {
-	const FString ModsRoot = GetModsInstallRoot();
+	const FString ModsRoot = ModActions::GetModsInstallRoot();
 	if (ModsRoot.IsEmpty())
 	{
-		ShowNotification(TEXT("Could not resolve %LOCALAPPDATA%."), false);
+		ShowNotification(TEXT("Could not resolve %LOCALAPPDATA%"), false);
 		return;
 	}
 
@@ -648,87 +860,18 @@ void ModActions::OpenInstalledModsDir()
 	FPlatformProcess::ExploreFolder(*FPaths::ConvertRelativePathToFull(ModsRoot));
 }
 
-static TSharedPtr<FJsonObject> ReadUPlugin(const FString& Path)
+void ModActions::UpdateModDetails(const FString& ModName)
 {
-	FString Contents;
-	if (!FFileHelper::LoadFileToString(Contents, *Path)) return nullptr;
+	FModInfo Info;
+	LoadModInfo(ModName, Info);
+	Info.FolderName = ModName;
 
-	TSharedPtr<FJsonObject> Json;
-	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Contents);
-	if (!FJsonSerializer::Deserialize(Reader, Json) || !Json.IsValid()) return nullptr;
-	return Json;
-}
-
-// Sets "Version" in an existing .uplugin, keeping its other fields.
-static bool SetUPluginVersion(const FString& Path, const FString& Version)
-{
-	TSharedPtr<FJsonObject> Json = ReadUPlugin(Path);
-	if (!Json.IsValid()) return false;
-
-	Json->SetStringField(TEXT("Version"), Version);
-
-	FString Out;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Out);
-	if (!FJsonSerializer::Serialize(Json.ToSharedRef(), Writer)) return false;
-	return FFileHelper::SaveStringToFile(Out, *Path, FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM);
-}
-
-void ModActions::UpdateModVersion(const FString& ModName)
-{
-	const FString SourcePath = GetSourceUPluginPath(ModName);
-
-	FString CurrentVersion;
-	if (TSharedPtr<FJsonObject> Json = ReadUPlugin(SourcePath))
-	{
-		Json->TryGetStringField(TEXT("Version"), CurrentVersion);
-	}
-	if (CurrentVersion.IsEmpty())
-	{
-		CurrentVersion = TEXT("1.0");
-	}
-
-	FString NewVersion;
-	if (!STextInputDialog::ShowModal(
-			FText::FromString(FString::Printf(TEXT("Update '%s' Version"), *ModName)),
-			FText::FromString(TEXT("Mod version:")),
-			CurrentVersion,
-			NewVersion))
+	if (!PromptForModDetails(ModName, Info))
 	{
 		return;
 	}
 
-	if (!FPaths::FileExists(SourcePath))
-	{
-		FModInfo Defaults;
-		Defaults.FolderName = ModName;
-		Defaults.Version = NewVersion;
-		if (!WriteUPlugin(Defaults, SourcePath))
-		{
-			ShowNotification(FString::Printf(TEXT("Failed to write %s"), *SourcePath), false);
-			return;
-		}
-	}
-	else if (!SetUPluginVersion(SourcePath, NewVersion))
-	{
-		ShowNotification(FString::Printf(TEXT("Failed to update %s"), *SourcePath), false);
-		return;
-	}
-
-	// Keep an already-installed copy in sync.
-	const FString ModsRoot = GetModsInstallRoot();
-	const FString InstalledPath = ModsRoot / ModName / (ModName + TEXT(".uplugin"));
-	if (!ModsRoot.IsEmpty() && FPaths::FileExists(InstalledPath))
-	{
-		FString CopyError;
-		if (!CopyInstalledFile(SourcePath, InstalledPath, CopyError))
-		{
-			UE_LOG(LogWWModTools, Warning, TEXT("Failed to update installed %s (%s)"),
-				*InstalledPath, *CopyError);
-		}
-	}
-
-	ShowNotification(
-		FString::Printf(TEXT("'%s' version set to %s."), *ModName, *NewVersion), true);
+	ShowNotification(FString::Printf(TEXT("'%s' details updated"), *ModName), true);
 }
 
 FString ModActions::ModNameFromFolderPath(const FString& FolderPath)
