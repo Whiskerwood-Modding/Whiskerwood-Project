@@ -224,13 +224,12 @@ static bool ReadModInfoFromFile(const FString& Path, const FString& ModName, FMo
 	OutInfo = FModInfo();
 	OutInfo.FolderName = ModName;
 
-	// ReSharper disable once CppRangeBasedForIncompatibleReference
-	for (const TPair<FString, TSharedPtr<FJsonValue>>& Pair : Json->Values)
+	for (const auto& Pair : Json->Values)
 	{
 		FString Value;
 		if (Pair.Value.IsValid() && Pair.Value->TryGetString(Value))
 		{
-			OutInfo.Set(Pair.Key, Value);
+			OutInfo.Set(FString(*Pair.Key), Value);
 		}
 	}
 
