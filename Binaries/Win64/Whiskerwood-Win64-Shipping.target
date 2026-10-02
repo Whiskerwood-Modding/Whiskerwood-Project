@@ -2,6 +2,8 @@
 	"TargetName": "Whiskerwood",
 	"Platform": "Win64",
 	"Configuration": "Shipping",
+	"BuildSettingsVersion": "V7",
+	"TargetBuildEnvironment": "Shared",
 	"TargetType": "Game",
 	"IsTestTarget": false,
 	"Architecture": "x64",
@@ -10,14 +12,14 @@
 	"Version": 
 	{
 		"MajorVersion": 5,
-		"MinorVersion": 6,
-		"PatchVersion": 1,
+		"MinorVersion": 8,
+		"PatchVersion": 3,
 		"Changelist": 0,
-		"CompatibleChangelist": 43139311,
+		"CompatibleChangelist": 55116800,
 		"IsLicenseeVersion": 0,
 		"IsPromotedBuild": 0,
 		"BranchName": "UE5",
-		"BuildId": "f7abf506-32ec-4bad-8363-be5269c7a0b9"
+		"BuildId": "c4622891-3e12-4ce5-a624-a6015507522b"
 	},
 	"BuildProducts": [
 		{
@@ -964,6 +966,54 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Icons/Empty_14x.png",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/candidate-arrow-down.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/candidate-arrow-left.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/candidate-arrow-right.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/candidate-arrow-up.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/focus-arrow-down.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/focus-arrow-left.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/focus-arrow-right.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/focus-arrow-up.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/target-arrow-down.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/target-arrow-left.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/target-arrow-right.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/target-arrow-up.svg",
 			"Type": "UFS"
 		},
 		{
@@ -1923,6 +1973,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/ResetToDefault.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Common/Role.svg",
 			"Type": "UFS"
 		},
@@ -1959,6 +2013,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/TagCollection_16.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Common/TagSimple_16.svg",
 			"Type": "UFS"
 		},
@@ -1968,6 +2026,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Common/TokenTextBox_16.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/TranslationPicker.svg",
 			"Type": "UFS"
 		},
 		{
@@ -2023,7 +2085,15 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/alert-triangle-badge.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Common/alert-triangle-large.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/alert-triangle-red-outlined.svg",
 			"Type": "UFS"
 		},
 		{
@@ -2036,6 +2106,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Common/arrow-left.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/arrow-leftright.svg",
 			"Type": "UFS"
 		},
 		{
@@ -2455,6 +2529,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/CoreWidgets/TableView/PinnedItemShadow.png",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/CoreWidgets/TableView/sort-down-arrow.svg",
 			"Type": "UFS"
 		},
@@ -2511,6 +2589,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Docking/OpenTabInWindow.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Docking/drawer-shadow.png",
 			"Type": "UFS"
 		},
@@ -2524,6 +2606,14 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/AllTracks_20.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/Annotation.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/Annotation_20.svg",
 			"Type": "UFS"
 		},
 		{
@@ -2671,6 +2761,14 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/MemoryAnalysisSnapshot_16.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/MemoryAnalysis_16.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/NetStats.svg",
 			"Type": "UFS"
 		},
@@ -2680,6 +2778,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/Networking.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/Object.svg",
 			"Type": "UFS"
 		},
 		{
@@ -2843,11 +2945,31 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_Branch.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_BranchCircle_Branch.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_BranchCircle_Circle.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_BranchExplorer.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_BranchModifiedBadge.svg",
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_CheckCircleLine.svg",
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_CheckCircleLine_Check.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_CheckCircleLine_Circle.svg",
 			"Type": "UFS"
 		},
 		{
@@ -2915,11 +3037,19 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_Merged.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_Modified.svg",
 			"Type": "UFS"
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_ModifiedLocally.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_NewBranch.svg",
 			"Type": "UFS"
 		},
 		{
@@ -2976,6 +3106,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_VerticalLineDashed.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_VerticalLineEnd.svg",
 			"Type": "UFS"
 		},
 		{
@@ -3067,6 +3201,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/StaticMeshEditor/DisabledOverlay_x16.png",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/StatusBar/drawer-shadow-bottom.png",
 			"Type": "UFS"
 		},
@@ -3123,6 +3261,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Animation/AnimatorKit/AnimatorKit.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Animation/ControlRigModules/ControlRigModules.uplugin",
 			"Type": "UFS"
 		},
@@ -3139,7 +3281,15 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Animation/GameplayInsights/GameplayInsights.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Animation/IKRig/IKRig.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Animation/PhysicsControl/PhysicsControl.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3152,6 +3302,22 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Animation/TweeningUtils/TweeningUtils.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AudioInsightsRuntime/AudioInsightsRuntime.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AudioInsights/AudioInsights.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/AudioModulationInsights/AudioModulationInsights.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/BaseMaterial/BaseMaterial.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3171,7 +3337,31 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Compositing/CompositeCore/CompositeCore.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Compression/OodleNetwork/OodleNetwork.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Dataflow/Dataflow.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Developer/Concert/ConcertMain/ConcertMain.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Developer/Concert/ConcertSync/ConcertSyncClient/ConcertSyncClient.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Developer/Concert/ConcertSync/ConcertSyncCore/ConcertSyncCore.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Developer/Concert/ConcertUI/ConcertSharedSlate/ConcertSharedSlate.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3180,6 +3370,14 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Developer/PluginUtils/PluginUtils.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Developer/ProjectLauncher/ProjectLauncher.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Developer/Sandbox/FileSandbox/FileSandbox.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3195,7 +3393,15 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Editor/BlueprintMaterialTextureNodes/BlueprintMaterialTextureNodes.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Editor/ColorGrading/ColorGrading.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Editor/ConsoleVariablesEditor/ConsoleVariables.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3227,6 +3433,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Editor/MaterialAssetWizard/MaterialAssetWizard.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Editor/ModelingToolsEditorMode/ModelingToolsEditorMode.uplugin",
 			"Type": "UFS"
 		},
@@ -3236,6 +3446,14 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Editor/ObjectMixer/ObjectMixer/ObjectMixer.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Editor/PluginBrowser/PluginBrowser.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Editor/ProxyLODPlugin/ProxyLODPlugin.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3263,7 +3481,19 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/AIAssistant/AIAssistant.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Animation/Scribble/Scribble.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Experimental/AutomationUtils/AutomationUtils.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Buoyancy/Buoyancy.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3271,27 +3501,11 @@
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Experimental/ChaosEditor/ChaosEditor.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(EngineDir)/Plugins/Experimental/ChaosNiagara/ChaosNiagara.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(EngineDir)/Plugins/Experimental/ChaosSolverPlugin/ChaosSolverPlugin.uplugin",
-			"Type": "UFS"
-		},
-		{
 			"Path": "$(EngineDir)/Plugins/Experimental/ChaosUserDataPT/ChaosUserDataPT.uplugin",
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Experimental/Compositing/CompositeCore/CompositeCore.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(EngineDir)/Plugins/Experimental/Dataflow/Dataflow.uplugin",
+			"Path": "$(EngineDir)/Plugins/Experimental/ControlRigPhysics/ControlRigPhysics.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3303,7 +3517,11 @@
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Experimental/Fracture/Fracture.uplugin",
+			"Path": "$(EngineDir)/Plugins/Experimental/EditorPerformance/EditorPerformance.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/EditorTRSGizmo/EditorTRSGizmo.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3311,11 +3529,19 @@
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Experimental/GeometryCollectionPlugin/GeometryCollectionPlugin.uplugin",
+			"Path": "$(EngineDir)/Plugins/Experimental/GizmoFramework/GizmoFramework.uplugin",
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Experimental/GeometryDataflow/GeometryDataflow.uplugin",
+			"Path": "$(EngineDir)/Plugins/Experimental/GlobalConfigurationData/GlobalConfigurationData.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/InterchangeAxF/Assets/InterchangeAxfAssets.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Landmass/Landmass.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3327,11 +3553,23 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/ModelContextProtocol/ModelContextProtocol.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/MutableAssetUserData/MutableAssetUserData.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Experimental/NFORDenoise/NFORDenoise.uplugin",
 			"Type": "UFS"
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Experimental/PlanarCutPlugin/PlanarCut.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/PluginReferenceViewer/PluginReferenceViewer.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3347,7 +3585,51 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/ToolsetRegistry/ToolsetRegistry.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Toolsets/ConfigSettingsToolset/ConfigSettingsToolset.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Toolsets/EditorToolset/EditorToolset.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Toolsets/LiveCodingToolset/LiveCodingToolset.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Toolsets/MCPClientToolset/MCPClientToolset.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Toolsets/MVVMToolset/MVVMToolset.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Toolsets/PluginToolset/PluginToolset.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Toolsets/SlateInspectorToolset/SlateInspectorToolset.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Toolsets/UMGToolSet/UMGToolSet.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Water/Water.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/FX/Cascade/Cascade.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/FX/NiagaraPreviewContent/NiagaraPreviewContent.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3359,7 +3641,15 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Interchange/Assets/InterchangeAssets.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Media/ImgMedia/ImgMedia.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Media/MP4Utilities/MP4Utilities.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3368,6 +3658,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Media/MediaPlate/MediaPlate.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Media/TmvMedia/TmvMedia.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3391,11 +3685,19 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/MovieScene/SequenceValidator/SequenceValidator.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/MovieScene/SequencerScripting/SequencerScripting.uplugin",
 			"Type": "UFS"
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/MovieScene/TemplateSequence/TemplateSequence.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Mutable/Mutable.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3428,6 +3730,14 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Online/OnlineSubsystem/OnlineSubsystem.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/PCG/PCG.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Performance/AutomatedPerfTestTools/AutomatedPerfTestTools.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3471,6 +3781,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Runtime/Database/SQLiteCore/SQLiteCore.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Runtime/ExampleDeviceProfileSelector/ExampleDeviceProfileSelector.uplugin",
 			"Type": "UFS"
 		},
@@ -3487,7 +3801,15 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Runtime/MeshModelingToolset/MeshModelingToolset.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Runtime/Metasound/Metasound.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/ModelViewViewModel/ModelViewViewModel.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3508,6 +3830,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Runtime/RigVM/RigVM.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Runtime/SkeletalMerging/SkeletalMerging.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3536,10 +3862,6 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/TraceUtilities/TraceUtilities.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(EngineDir)/Plugins/VirtualProduction/CameraCalibrationCore/CameraCalibrationCore.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -3585,28 +3907,33 @@
 	],
 	"BuildPlugins": [
 		"ACLPlugin",
+		"AIAssistant",
 		"ActorLayerUtilities",
 		"AdvancedRenamer",
 		"AnimationBudgetAllocator",
 		"AnimationData",
 		"AnimationModifierLibrary",
+		"AnimatorKit",
 		"AssetManagerEditor",
 		"AudioCapture",
+		"AudioInsights",
+		"AudioInsightsRuntime",
+		"AudioModulationInsights",
 		"AudioSynesthesia",
 		"AudioWidgets",
+		"AutomatedPerfTestTools",
 		"AutomationUtils",
+		"BaseMaterial",
 		"BlendSpaceMotionAnalysis",
 		"BlueprintHeaderView",
+		"BlueprintMaterialTextureNodes",
+		"Buoyancy",
 		"CableComponent",
-		"CameraCalibrationCore",
 		"Cascade",
 		"ChangelistReview",
 		"ChaosCaching",
 		"ChaosCloth",
-		"ChaosEditor",
 		"ChaosInsights",
-		"ChaosNiagara",
-		"ChaosSolverPlugin",
 		"ChaosUserDataPT",
 		"ChaosVD",
 		"ChunkDownloader",
@@ -3614,10 +3941,17 @@
 		"ColorGrading",
 		"CompositeCore",
 		"ComputeFramework",
+		"ConcertMain",
+		"ConcertSharedSlate",
+		"ConcertSyncClient",
+		"ConcertSyncCore",
+		"ConfigSettingsToolset",
+		"ConsoleVariables",
 		"ContentBrowserAssetDataSource",
 		"ContentBrowserClassDataSource",
 		"ControlRig",
 		"ControlRigModules",
+		"ControlRigPhysics",
 		"ControlRigSpline",
 		"CryptoKeys",
 		"CurveEditorTools",
@@ -3625,56 +3959,76 @@
 		"DataValidation",
 		"Dataflow",
 		"DeformerGraph",
+		"DerivedDataBuildController",
 		"DumpGPUServices",
 		"EditorDataStorage",
 		"EditorDataStorageFeatures",
 		"EditorDebugTools",
 		"EditorPerformance",
 		"EditorScriptingUtilities",
+		"EditorTRSGizmo",
 		"EditorTelemetry",
+		"EditorToolset",
 		"EngineAssetDefinitions",
 		"EngineCameras",
 		"EnhancedInput",
 		"ExampleDeviceProfileSelector",
 		"FacialAnimation",
-		"FastBuildController",
-		"Fracture",
+		"FileSandbox",
 		"FullBodyIK",
+		"GPUReshape",
 		"GameplayCameras",
+		"GameplayInsights",
 		"GameplayTagsEditor",
 		"GeometryCache",
-		"GeometryCollectionPlugin",
-		"GeometryDataflow",
 		"GeometryMode",
 		"GeometryProcessing",
 		"GitSourceControl",
+		"GizmoFramework",
+		"GlobalConfigurationData",
 		"HairStrands",
+		"HttpInsights",
 		"IKRig",
 		"ImgMedia",
 		"InputDebugging",
+		"InterchangeAssets",
+		"InterchangeAxfAssets",
 		"IoStoreInsights",
 		"KDevelopSourceCodeAccess",
+		"Landmass",
 		"LauncherChunkInstaller",
 		"LevelSequenceEditor",
 		"LevelSequenceNavigatorBridge",
 		"LightMixer",
+		"LiveCodingToolset",
 		"LocalizableMessage",
+		"MCPClientToolset",
+		"MP4Utilities",
+		"MVVMToolset",
 		"MacGraphicsSwitching",
 		"MassInsights",
 		"MaterialAnalyzer",
+		"MaterialAssetWizard",
 		"MediaCompositing",
 		"MediaPlate",
 		"MediaPlayerEditor",
+		"MeshModelingToolset",
 		"MetaHumanSDK",
 		"Metasound",
+		"ModelContextProtocol",
+		"ModelViewViewModel",
 		"ModelingToolsEditorMode",
 		"MsQuic",
+		"Mutable",
+		"MutableAssetUserData",
 		"N10XSourceCodeAccess",
 		"NFORDenoise",
 		"NNEDenoiser",
 		"NNERuntimeORT",
 		"NamingTokens",
 		"Niagara",
+		"NiagaraInsights",
+		"NiagaraPreviewContent",
 		"NiagaraSimCaching",
 		"ObjectMixer",
 		"OnlineBase",
@@ -3683,8 +4037,12 @@
 		"OnlineSubsystemNull",
 		"OnlineSubsystemUtils",
 		"OodleNetwork",
+		"PCG",
+		"PhysicsControl",
 		"PlanarCut",
 		"PluginBrowser",
+		"PluginReferenceViewer",
+		"PluginToolset",
 		"PluginUtils",
 		"PortableObjectFileDataSource",
 		"ProceduralMeshComponent",
@@ -3692,16 +4050,23 @@
 		"PropertyAccessEditor",
 		"PropertyAccessNode",
 		"PropertyBindingUtils",
+		"ProxyLODPlugin",
 		"PythonScriptPlugin",
 		"RenderDocPlugin",
 		"RenderGraphInsights",
+		"RenderTraceInsights",
 		"RigLogic",
 		"RigVM",
 		"RuntimeTelemetry",
+		"SQLiteCore",
+		"Scribble",
 		"SequenceNavigator",
+		"SequenceValidator",
 		"SequencerAnimTools",
 		"SequencerScripting",
+		"SkeletalMerging",
 		"SkeletalMeshModelingTools",
+		"SlateInspectorToolset",
 		"SoundFields",
 		"SpeedTreeImporter",
 		"StateTree",
@@ -3709,10 +4074,12 @@
 		"Takes",
 		"TcpMessaging",
 		"TemplateSequence",
-		"TextureFormatOodle",
+		"TmvMedia",
 		"ToolPresets",
+		"ToolsetRegistry",
 		"TraceUtilities",
 		"TweeningUtils",
+		"UMGToolSet",
 		"UMGWidgetPreview",
 		"UObjectPlugin",
 		"UVEditor",
@@ -3722,6 +4089,7 @@
 		"VisualStudioCodeSourceCodeAccess",
 		"VisualStudioSourceCodeAccess",
 		"WWModTools",
+		"Water",
 		"WaveTable",
 		"WebMMedia",
 		"WebMMoviePlayer",

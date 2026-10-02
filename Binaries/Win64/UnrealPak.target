@@ -2,6 +2,8 @@
 	"TargetName": "UnrealPak",
 	"Platform": "Win64",
 	"Configuration": "Development",
+	"BuildSettingsVersion": "V7",
+	"TargetBuildEnvironment": "Shared",
 	"TargetType": "Program",
 	"IsTestTarget": false,
 	"Architecture": "x64",
@@ -10,14 +12,14 @@
 	"Version": 
 	{
 		"MajorVersion": 5,
-		"MinorVersion": 6,
-		"PatchVersion": 1,
+		"MinorVersion": 8,
+		"PatchVersion": 3,
 		"Changelist": 0,
-		"CompatibleChangelist": 43139311,
+		"CompatibleChangelist": 55116800,
 		"IsLicenseeVersion": 0,
 		"IsPromotedBuild": 0,
 		"BranchName": "UE5",
-		"BuildId": "b2fa11b8-fc04-4c39-b043-bbb2c79f024c"
+		"BuildId": "73bec366-a36a-4586-a7a6-4d4410f30607"
 	},
 	"BuildProducts": [
 		{
@@ -149,6 +151,38 @@
 			"Type": "SymbolFile"
 		},
 		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-AnalyticsCSV.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-AnalyticsCSV.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-AnalyticsET.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-AnalyticsET.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-AnalyticsHorde.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-AnalyticsHorde.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-AnalyticsLog.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-AnalyticsLog.pdb",
+			"Type": "SymbolFile"
+		},
+		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-ApplicationCore.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -202,14 +236,6 @@
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-CookMetadata.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-CookOnTheFly.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-CookOnTheFly.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -285,11 +311,19 @@
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-FileUtilities.dll",
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-EventLoop.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-FileUtilities.pdb",
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-EventLoop.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-HTTP.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-HTTP.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -365,14 +399,6 @@
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-MetalShaderFormat.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-MetalShaderFormat.pdb",
-			"Type": "SymbolFile"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-Nanosvg.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -394,14 +420,6 @@
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-Networking.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-OpenColorIOWrapper.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-OpenColorIOWrapper.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -493,30 +511,6 @@
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-Settings.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-Settings.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-ShaderCompilerCommon.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-ShaderCompilerCommon.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-ShaderPreprocessor.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-ShaderPreprocessor.pdb",
-			"Type": "SymbolFile"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-Slate.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -541,19 +535,27 @@
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-SourceCodeAccess.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-SourceCodeAccess.pdb",
-			"Type": "SymbolFile"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-SourceControl.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-SourceControl.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-StateStream.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-StateStream.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-StudioTelemetry.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-StudioTelemetry.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -573,67 +575,11 @@
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureBuild.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureBuild.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureBuildUtilities.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureBuildUtilities.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureCompressor.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureCompressor.pdb",
-			"Type": "SymbolFile"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureFormat.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureFormat.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureFormatASTC.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureFormatASTC.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureFormatDXT.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureFormatDXT.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureFormatETC2.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureFormatETC2.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureFormatIntelISPCTexComp.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-TextureFormatIntelISPCTexComp.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -701,6 +647,14 @@
 			"Type": "SymbolFile"
 		},
 		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-WindowsD3D.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-WindowsD3D.pdb",
+			"Type": "SymbolFile"
+		},
+		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealPak-WindowsTargetPlatform.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -749,18 +703,6 @@
 			"Type": "RequiredResource"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/astcenc_thunk_win64_4.2.0.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/astcenc_thunk_win64_5.0.1.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/metalirconverter.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/tbb12.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -795,42 +737,6 @@
 	],
 	"RuntimeDependencies": [
 		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/Intel/ISPCTexComp/Win64-Release/ispc_texcomp.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/ShaderConductor/Win64/ShaderConductor.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/ShaderConductor/Win64/ShaderConductor.pdb",
-			"Type": "DebugNonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/ShaderConductor/Win64/dxcompiler.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/nvTextureTools/Win64/AVX2/nvtt_64.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/nvTextureTools/Win64/nvtt_64.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/astcenc_thunk_win64_4.2.0.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/astcenc_thunk_win64_5.0.1.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/metalirconverter.dll",
-			"Type": "NonUFS"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/tbb12.dll",
 			"Type": "NonUFS"
 		},
@@ -851,9 +757,16 @@
 			"Type": "DebugNonUFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Messaging/TcpMessaging/TcpMessaging.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(ProjectDir)/Whiskerwood.uproject",
 			"Type": "UFS"
 		}
+	],
+	"BuildPlugins": [
+		"TcpMessaging"
 	],
 	"AdditionalProperties": [
 		{

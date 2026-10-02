@@ -61055,6 +61055,7 @@ struct FGridInstaMesh {
     bool bLightingChannel2;
     bool bLightingChannel3;
     double WpoDisableDistance;
+    EShadowCacheInvalidationBehavior ShadowCacheInvalidationBehavior;
     TMap<UStaticMesh*, FGridInstaMeshInstances> Meshes;
     TMap<FIntVector, FGridInstaMeshLocation> Locations;
     TArray<UMaterialInstance*> OverrideMaterials;
@@ -61078,7 +61079,9 @@ class UInstaMesh : public USceneComponent {
 struct FInstaMeshConfig {
     bool disableCollisions;
     FName CollisionProfileName;
-    int32_t chunkSize;
+    int32_t CullDistance;
+    bool CastShadow;
+    int32_t NumCustomDataFloats;
 };
 
 struct FInstaMeshIndexTracker {
@@ -73325,6 +73328,7 @@ struct FNauticalCannonBallState {
     double planarDistance;
     double planarVelocity;
     double planarRange;
+    double terrainHitDistance;
 };
 
 struct FNauticalCannonState {
@@ -73393,7 +73397,7 @@ class ANauticalIsland : public AActor {
     USceneComponent* Root;
     UStaticMeshComponent* land;
     AActor* terrain;
-    UGridNavMesh* NavMesh;
+    UGridNavMeshWithAvoidance* NavMesh;
     ANauticalOcean* ocean;
     FNauticalIslandState State;
     FNauticalIslandInterframe interframe;
@@ -90226,6 +90230,7 @@ class UAimMachine : public UActorComponent {
     bool anime_callDelegateOnly;
     FMulticastInlineDelegate anime_delegate;
     TArray<USceneComponent*> anime_rotatables;
+    UMaterialInterface* anime_spinMaterial;
 
     void RegisterAnimationAsDelegateBased();
     void RegisterAnimationRotables(TArray<USceneComponent*> rotables);
@@ -90256,6 +90261,7 @@ class UAimSystem : public UActorComponent {
     float systemMomentum;
     FAimSpace AimSpace;
     FAimGlobalState globalState;
+    UMaterialParameterCollection* m_rollerSpinCollection;
 };
 
 struct FAimSystemConfig {
@@ -90264,6 +90270,7 @@ struct FAimSystemConfig {
     UDataTable* itemTable;
     float camDistanceSquaredToStopAnim;
     float camDistanceSquaredToStopItemRender;
+    TSoftObjectPtr<UMaterialParameterCollection> rollerSpinCollection;
 };
 
 class AAimTool : public AActor {
@@ -90580,6 +90587,7 @@ class AArcoSystems : public AActor {
     UClass* m_scaffoldClass;
     AScaffoldRenderer* m_scaffoldRenderer;
     ALadderRenderer* m_ladderRenderer;
+    AGridActorInstanceRenderer* m_gridActorInstanceRenderer;
     UClass* m_reservedTileVizClass;
     AReservedTileViz* m_reservedTileViz;
     UClass* m_radiusRendererClass;
@@ -90734,6 +90742,7 @@ class UArcoTabList : public UArcoWidgetBase {
 class UArcoUi_Utils : public UObject {
 
     static FString SecondsToCountdown(float Seconds);
+    static int32_t ShipSpeedToDisplay(double shipSpeed);
 };
 
 class UArcoView : public UArcoWidgetBase {
@@ -92569,8 +92578,11 @@ enum class ESimAction {
     RENAME_SHIP = 151,
     NAUTICALRAFT_ROUTE_ASSIGN = 152,
     NAUTICALRAFT_ROUTE_CLEAR = 153,
-    FINAL_ACTION = 154,
-    ESimAction_MAX = 155,
+    NAUTICALRAFT_SET_DEPARTURE_DELAY = 154,
+    NAUTICALRAFT_SET_MAX_WAIT = 155,
+    NAUTICALRAFT_DEPART_NOW = 156,
+    FINAL_ACTION = 157,
+    ESimAction_MAX = 158,
 };
 
 enum class ESimPauseReason {
@@ -93386,6 +93398,15 @@ struct FGridActorDoorwayRender {
     TArray<FDoorway> steamAdapters;
     TArray<FDoorway> aimEntrances;
     TArray<FDoorway> aimExits;
+};
+
+struct FGridActorInstanceLevel {
+    UInstaMesh* m_shadowed;
+    UInstaMesh* m_unshadowed;
+};
+
+class AGridActorInstanceRenderer : public AActor {
+    TMap<int32_t, FGridActorInstanceLevel> m_levels;
 };
 
 struct FGridFootprint {
@@ -94232,6 +94253,9 @@ class UNauticalRaftDock : public UActorComponent {
     ENauticalRaftDockState m_raftLoadingState;
     float m_timeUntilDeparture;
     float m_maxDepartureTimer;
+    float m_playerDepartureDelay;
+    float m_maxWaitWithPassengers;
+    float m_timeWaitedWithPassengers;
     float m_timePerQueueLoad;
     TSet<FIntVector> m_passengerWaitingCells_relative;
     TSet<ENauticalAction> m_supportedNauticalActions;
@@ -94256,6 +94280,10 @@ struct FNauticalRaftDockHudData {
     FNauticalShipState assignedShipNauticalState;
     FName assignedShipActionKey;
     float timeToArrival;
+    float departureDelay;
+    float maxWaitTime;
+    bool canDepartNow;
+    float remainingDepartureDelay;
 };
 
 struct FNauticalRaftRoute {
@@ -95183,6 +95211,7 @@ struct FProblemIndicatorGroup {
     UWidgetComponent* Render;
     bool ShowDetails;
     FVector position;
+    bool hidden;
 };
 
 class IProblemIndicatorInterface : public UInterface {
@@ -95917,6 +95946,7 @@ class USchool : public UActorComponent {
     FWorkerAssignment m_workers;
     EAgentEducation m_educationTarget;
     bool m_isTeachingGuild;
+    float m_agentDispatchCooldown;
 };
 
 class USchoolDetails : public UArcoView {
@@ -97723,7 +97753,7 @@ struct FWorldMeta {
     TSet<AGridActor*> m_elevatorSegments;
     TSet<UInfiniteResourceSourceOrDrain*> m_infiniteResourceSourceOrDrains_components;
     TSet<UCoordinationOffice*> m_coordinationOffices;
-    TSet<UDecorativeSlot*> m_decorativeSlots;
+    TMap<AGridActor*, UDecorativeSlot*> m_decorativeSlots;
     TSet<AGridActor*> m_decoratives;
     TSet<UOceanVoid*> m_oceanVoids;
     TSet<UTerraformBuilding*> m_stoneDumps;
@@ -107641,7 +107671,8 @@ enum class ETerrainRayCastResult {
     Vegetation = 1,
     Terrain = 2,
     VegetationAndTerrain = 3,
-    ETerrainRayCastResult_MAX = 4,
+    Actor = 4,
+    ETerrainRayCastResult_MAX = 5,
 };
 
 enum class ETerrainSliceState {
@@ -108028,6 +108059,9 @@ class UGridMath : public UBlueprintFunctionLibrary {
 };
 
 class UGridNavMesh : public UNavMesh {
+};
+
+class UGridNavMeshWithAvoidance : public UGridNavMesh {
 };
 
 class UGridNavigation : public UActorComponent {
@@ -108877,9 +108911,14 @@ struct FModTag {
     FString Name;
     int32_t byteSize;
     FString author;
+    FString DisplayName;
+    FString Description;
+    FString Version;
+    FString EngineVersion;
     FString folder;
     FString pakFilePath;
     FString pakName;
+    FString pluginFilePath;
     bool IsEnabled;
     int32_t Priority;
     bool isMounted;
@@ -109337,7 +109376,7 @@ class AOceanPlane : public AActor {
     EMipFilter MipFilter;
     EOceanSimulationFidelity SimulationFidelity;
     bool bUsePreviousFrameTextures;
-    int32_t chunkSize;
+    int32_t ChunkSize;
     int32_t SeaMeshSize;
     int32_t SeaMeshExtent;
     UMaterialInstanceDynamic* DynamicSurfaceMaterial;
@@ -109701,6 +109740,7 @@ class UPlatformManager : public UObject {
     void OnSwitchModeChange(bool isBoosted);
     void PS4_SetupPlatformHooks();
     bool ReportRequiredPlayerCount(int32_t playerCount);
+    void ReportVersion(FString currentVersionLabel);
     bool Switch_CheckControllers(int32_t& desiredCount);
     static float TranslateAudoVolumeToNonLinear(float linearRatio);
 };
@@ -110894,6 +110934,9 @@ class ATiledBlockTerrain : public AActor {
     int32_t SliceIndex;
     ATiledBlockTerrainHighlight* Highlight;
     FIntVector HighlightDataLocation;
+    ATiledBlockTerrainHighlight* CollisionProxy;
+    FIntVector CollisionProxyDataLocation;
+    ATiledTerrainActorProxy* ActorProxy;
     FFarmCropConfig FarmCropConfig;
     TSet<FIntPoint> FoamDataLocations;
     TSet<FIntPoint> FoamUpdateDataLocations;
@@ -110926,10 +110969,8 @@ struct FTiledBlockTerrainCover {
 };
 
 class ATiledBlockTerrainHighlight : public AActor {
-    bool bVisibility;
     TArray<UStaticMeshComponent*> Meshes;
     TArray<UStaticMesh*> TrackedMeshes;
-    TArray<uint8_t> TrackedGrowth;
     bool bHasContent;
 };
 
@@ -110983,6 +111024,15 @@ class UTiledBlockTerrainTiles : public UObject {
     UStaticMesh* MineCeiling;
     double MineOffset;
     UStaticMesh* PollutionTile;
+};
+
+struct FTiledTerrainActorCopies {
+    TArray<UStaticMeshComponent*> Meshes;
+    TArray<UBoxComponent*> Boxes;
+};
+
+class ATiledTerrainActorProxy : public AActor {
+    TArray<FTiledTerrainActorCopies> Cache;
 };
 
 struct FTiledTerrainBounds {

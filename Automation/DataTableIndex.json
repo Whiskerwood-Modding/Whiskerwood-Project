@@ -1,8 +1,8 @@
 {
-  "ExportDate": "2026-09-30 16:08:41",
+  "ExportDate": "2026-10-02 22:23:10",
   "TotalDataTables": 45,
   "TotalDataAssets": 19,
-  "TotalUniqueValues": 9917,
+  "TotalUniqueValues": 9922,
   "DataTables": {
     "Whiskerwood/Content/Data/AchievementsTables": {
       "ACH.010.EMBARK": {
@@ -6964,7 +6964,7 @@
         "inCt1": "21",
         "inCt2": "34",
         "inCt3": "34",
-        "inCt4": "12",
+        "inCt4": "14",
         "out1": "None",
         "out2": "None",
         "out3": "None",
@@ -30065,6 +30065,9 @@
       "approvalcost_overtime": {
         "FloatValue": "13"
       },
+      "approvalcost_shipdeparture": {
+        "FloatValue": "20"
+      },
       "approvalcost_tweezers": {
         "FloatValue": "1"
       },
@@ -30461,16 +30464,28 @@
       "ship_catchpertrip": {
         "FloatValue": "5"
       },
+      "ship_ferrySpeedMultiplier": {
+        "FloatValue": "1.25"
+      },
+      "ship_ferryaccelerationmultiplier": {
+        "FloatValue": "1.5"
+      },
       "ship_firstpercatch_nonet": {
         "FloatValue": "3"
       },
       "ship_fishpercatch": {
         "FloatValue": "34"
       },
+      "ship_fishpercatch_nonet": {
+        "FloatValue": "3"
+      },
       "ship_guanoperharvest": {
         "FloatValue": "21"
       },
       "ship_harpooncostperhunt": {
+        "FloatValue": "1"
+      },
+      "ship_harpoonperhunt": {
         "FloatValue": "1"
       },
       "ship_netcostpercatch": {
