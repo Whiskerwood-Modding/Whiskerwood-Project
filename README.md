@@ -45,7 +45,7 @@ If you haven't done so already, [follow these instructions on linking your Epic 
 
 ## Windows users
 
-You need to install a [custom build of Unreal Engine 5.6](https://github.com/Buckminsterfullerene02/UnrealEngine/releases) (don't worry, you don't need to build or compile anything!). This build is approximately 10GB smaller than the vanilla build from Epic Games Store and is **necessary** to enable loading and working with the game content in the editor.
+You need to install a [custom build of Unreal Engine 5.8](https://github.com/Buckminsterfullerene02/UnrealEngine/releases) (don't worry, you don't need to build or compile anything!). This build is approximately 10GB smaller than the vanilla build from Epic Games Store and is **necessary** to enable loading and working with the game content in the editor.
 
 It is best to install the engine:
 - Closer to the root of the drive (if file paths get too long, things break)
@@ -53,8 +53,7 @@ It is best to install the engine:
 - Onto an SSD or NVMe
 
 You also need to install Visual Studio 2022 and select the MSVC `v14.38` toolchain to be able to open the project.
-- [Helpful guide](https://dev.epicgames.com/documentation/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.6)
-- [Reddit post in case you get stuck](https://www.reddit.com/r/unrealengine/comments/1i0bopv/detected_compiler_newer_than_visual_studio_2022/)
+- [Helpful guide](https://dev.epicgames.com/documentation/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.8)
 
 ## Linux users
 
@@ -62,7 +61,7 @@ While I haven't tested it, this project should also work on Linux - you can pack
 
 To keep the custom engine build size minimal, it is only built for Win64 platform. Therefore, on Linux, you will need to build the engine from source.
 
-Build the engine version for the latest tag that this project is against - for example, if this project's last tag is `ww-v0.7.207.0`, build on the engine commit on the same tag `ww-v0.7.207.0`. 
+Build the engine version for the latest tag that this project is against - for example, if this project's last tag is `ww-v0.7.208.0`, build on the engine commit on the same tag `ww-v0.7.208.0`. 
 https://github.com/Buckminsterfullerene02/UnrealEngine/tags
 
 The instructions for building the engine and project is the same as any other Unreal Engine project on Linux - plenty of tutorials out there.
@@ -108,7 +107,7 @@ Once the project is open and you can see all the content, there are some additio
 
 ## Mod API
 
-The modding API provided by the game is pretty special, because the lead developer of Whiskerwood has added some awesome functions and delegates that help make modding easier. The game is also really moddable, because the game's architecture is using [data driven gameplay](https://dev.epicgames.com/documentation/en-us/unreal-engine/data-driven-gameplay-elements-in-unreal-engine?application_version=5.6) - much of the "hardcoded" values are actually in [Data Tables](https://dev.epicgames.com/documentation/en-us/unreal-engine/data-driven-gameplay-elements-in-unreal-engine?application_version=5.6#datatables)!
+The modding API provided by the game is pretty special, because the lead developer of Whiskerwood has added some awesome functions and delegates that help make modding easier. The game is also really moddable, because the game's architecture is using [data driven gameplay](https://dev.epicgames.com/documentation/en-us/unreal-engine/data-driven-gameplay-elements-in-unreal-engine?application_version=5.8) - much of the "hardcoded" values are actually in [Data Tables](https://dev.epicgames.com/documentation/en-us/unreal-engine/data-driven-gameplay-elements-in-unreal-engine?application_version=5.8#datatables)!
 
 <details>
 <summary><span style="font-size: 1.5em">Properties</span><hr></summary>
@@ -346,7 +345,7 @@ Rename the `.pak` file to the same name as the mod folder in the project, keepin
 > [!IMPORTANT]
 > The `.pak` file must be the same name as the mod folder in the unreal engine project! If you change the mod folder name in the project later, make sure the update the `.pak` file name to match it! E.g. if the mod folder in the project is `MyMod`, the `.pak` must be called `MyMod.pak`.
 
-Now your mod is installed! You should also make a `<yourmodname>.uplugin` file and fill in the details, but this is not strictly necessary right now.
+Now your mod is installed! You need to also make a `<yourmodname>.uplugin` file and fill in the details, otherwise the mod will not be loaded by the game.
 
 Here is an example one:
 ```json
@@ -354,7 +353,8 @@ Here is an example one:
     "Name" : "Prettier Path",
     "Description" : "Makes the stone path look prettier!",
     "Version" : "1.0",
-    "CreatedBy" : "Buckminsterfullerene"
+    "CreatedBy" : "Buckminsterfullerene",
+    "EngineVersion": "5.8"
 }
 ```
 

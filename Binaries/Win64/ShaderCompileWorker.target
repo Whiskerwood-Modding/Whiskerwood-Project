@@ -2,6 +2,8 @@
 	"TargetName": "ShaderCompileWorker",
 	"Platform": "Win64",
 	"Configuration": "Development",
+	"BuildSettingsVersion": "V7",
+	"TargetBuildEnvironment": "Shared",
 	"TargetType": "Program",
 	"IsTestTarget": false,
 	"Architecture": "x64",
@@ -10,22 +12,62 @@
 	"Version": 
 	{
 		"MajorVersion": 5,
-		"MinorVersion": 6,
-		"PatchVersion": 1,
+		"MinorVersion": 8,
+		"PatchVersion": 3,
 		"Changelist": 0,
-		"CompatibleChangelist": 43139311,
+		"CompatibleChangelist": 55116800,
 		"IsLicenseeVersion": 0,
 		"IsPromotedBuild": 0,
 		"BranchName": "UE5",
-		"BuildId": "00cae680-49dc-40db-9964-c44e822730a1"
+		"BuildId": "a033efb3-6114-47b9-99ea-085981c85d14"
 	},
 	"BuildProducts": [
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/D3D12/x64/D3D12Core.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/D3D12/x64/d3d12SDKLayers.dll",
+			"Type": "DynamicLibrary"
+		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-Analytics.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-Analytics.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-AnalyticsCSV.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-AnalyticsCSV.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-AnalyticsET.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-AnalyticsET.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-AnalyticsHorde.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-AnalyticsHorde.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-AnalyticsLog.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-AnalyticsLog.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -74,14 +116,6 @@
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-Cbor.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-CookOnTheFly.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-CookOnTheFly.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -157,11 +191,35 @@
 			"Type": "SymbolFile"
 		},
 		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-EventLoop.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-EventLoop.pdb",
+			"Type": "SymbolFile"
+		},
+		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-FileUtilities.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-FileUtilities.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-HTTP.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-HTTP.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-HlslParser.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-HlslParser.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -237,19 +295,11 @@
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-Networking.dll",
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-PakFile.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-Networking.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-OpenColorIOWrapper.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-OpenColorIOWrapper.pdb",
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-PakFile.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -266,6 +316,14 @@
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-RHI.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-RSA.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-RSA.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -298,14 +356,6 @@
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-SessionMessages.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-Settings.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-Settings.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -373,19 +423,27 @@
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-SourceCodeAccess.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-SourceCodeAccess.pdb",
-			"Type": "SymbolFile"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-SourceControl.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-SourceControl.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-StateStream.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-StateStream.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-StudioTelemetry.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-StudioTelemetry.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -405,67 +463,11 @@
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureBuild.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureBuild.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureBuildUtilities.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureBuildUtilities.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureCompressor.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureCompressor.pdb",
-			"Type": "SymbolFile"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureFormat.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureFormat.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureFormatASTC.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureFormatASTC.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureFormatDXT.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureFormatDXT.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureFormatETC2.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureFormatETC2.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureFormatIntelISPCTexComp.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-TextureFormatIntelISPCTexComp.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -533,6 +535,14 @@
 			"Type": "SymbolFile"
 		},
 		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-WindowsD3D.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-WindowsD3D.pdb",
+			"Type": "SymbolFile"
+		},
+		{
 			"Path": "$(EngineDir)/Binaries/Win64/ShaderCompileWorker-Zen.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -561,14 +571,6 @@
 			"Type": "RequiredResource"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/astcenc_thunk_win64_4.2.0.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/astcenc_thunk_win64_5.0.1.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/metalirconverter.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -584,10 +586,6 @@
 	"RuntimeDependencies": [
 		{
 			"Path": "$(EngineDir)/Binaries/ThirdParty/DbgHelp/dbghelp.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/Intel/ISPCTexComp/Win64-Release/ispc_texcomp.dll",
 			"Type": "NonUFS"
 		},
 		{
@@ -615,19 +613,11 @@
 			"Type": "NonUFS"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/nvTextureTools/Win64/AVX2/nvtt_64.dll",
+			"Path": "$(EngineDir)/Binaries/Win64/D3D12/x64/D3D12Core.dll",
 			"Type": "NonUFS"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/ThirdParty/nvTextureTools/Win64/nvtt_64.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/astcenc_thunk_win64_4.2.0.dll",
-			"Type": "NonUFS"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/astcenc_thunk_win64_5.0.1.dll",
+			"Path": "$(EngineDir)/Binaries/Win64/D3D12/x64/d3d12SDKLayers.dll",
 			"Type": "NonUFS"
 		},
 		{
@@ -1524,6 +1514,54 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Icons/Empty_14x.png",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/candidate-arrow-down.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/candidate-arrow-left.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/candidate-arrow-right.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/candidate-arrow-up.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/focus-arrow-down.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/focus-arrow-left.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/focus-arrow-right.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/focus-arrow-up.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/target-arrow-down.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/target-arrow-left.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/target-arrow-right.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Icons/Navigation/target-arrow-up.svg",
 			"Type": "UFS"
 		},
 		{
@@ -2483,6 +2521,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/ResetToDefault.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Common/Role.svg",
 			"Type": "UFS"
 		},
@@ -2519,6 +2561,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/TagCollection_16.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Common/TagSimple_16.svg",
 			"Type": "UFS"
 		},
@@ -2528,6 +2574,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Common/TokenTextBox_16.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/TranslationPicker.svg",
 			"Type": "UFS"
 		},
 		{
@@ -2583,7 +2633,15 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/alert-triangle-badge.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Common/alert-triangle-large.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/alert-triangle-red-outlined.svg",
 			"Type": "UFS"
 		},
 		{
@@ -2596,6 +2654,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Common/arrow-left.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Common/arrow-leftright.svg",
 			"Type": "UFS"
 		},
 		{
@@ -3015,6 +3077,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/CoreWidgets/TableView/PinnedItemShadow.png",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/CoreWidgets/TableView/sort-down-arrow.svg",
 			"Type": "UFS"
 		},
@@ -3071,6 +3137,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Docking/OpenTabInWindow.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Docking/drawer-shadow.png",
 			"Type": "UFS"
 		},
@@ -3084,6 +3154,14 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/AllTracks_20.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/Annotation.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/Annotation_20.svg",
 			"Type": "UFS"
 		},
 		{
@@ -3231,6 +3309,14 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/MemoryAnalysisSnapshot_16.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/MemoryAnalysis_16.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/NetStats.svg",
 			"Type": "UFS"
 		},
@@ -3240,6 +3326,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/Networking.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/Insights/Object.svg",
 			"Type": "UFS"
 		},
 		{
@@ -3403,11 +3493,31 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_Branch.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_BranchCircle_Branch.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_BranchCircle_Circle.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_BranchExplorer.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_BranchModifiedBadge.svg",
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_CheckCircleLine.svg",
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_CheckCircleLine_Check.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_CheckCircleLine_Circle.svg",
 			"Type": "UFS"
 		},
 		{
@@ -3475,11 +3585,19 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_Merged.svg",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_Modified.svg",
 			"Type": "UFS"
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_ModifiedLocally.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_NewBranch.svg",
 			"Type": "UFS"
 		},
 		{
@@ -3536,6 +3654,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_VerticalLineDashed.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/RC_VerticalLineEnd.svg",
 			"Type": "UFS"
 		},
 		{
@@ -3624,6 +3746,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Content/Slate/Starship/SourceControl/icon_SCC_Revert.svg",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Content/Slate/Starship/StaticMeshEditor/DisabledOverlay_x16.png",
 			"Type": "UFS"
 		},
 		{

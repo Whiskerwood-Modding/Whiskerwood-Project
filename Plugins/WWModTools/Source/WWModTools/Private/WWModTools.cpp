@@ -17,6 +17,7 @@
 
 #include "NewModDialog.h"
 #include "ModActions.h"
+#include "WWModToolsSettings.h"
 
 class FWWModToolsModule : public IModuleInterface
 {
@@ -32,7 +33,6 @@ public:
 		FContentBrowserModule& CBModule =
 			FModuleManager::LoadModuleChecked<FContentBrowserModule>(TEXT("ContentBrowser"));
 
-		// No `this` capture, so the delegate survives module unload.
 		auto Extender = FContentBrowserMenuExtender_SelectedPaths::CreateStatic(
 			&FWWModToolsModule::ExtendPathContextMenu);
 		PathExtenderHandle = Extender.GetHandle();
@@ -158,7 +158,7 @@ private:
 			FUIAction(FExecuteAction::CreateLambda([]()
 			{
 				FModInfo Info;
-				if (SNewModDialog::ShowModal(Info))
+				if (SNewModDialog::ShowModal(Info, FText::FromString(TEXT("New Mod"))))
 				{
 					ModActions::CreateMod(Info);
 				}
@@ -223,13 +223,13 @@ private:
 					})));
 
 				Builder.AddMenuEntry(
-					FText::FromString(TEXT("Update Mod Version...")),
+					FText::FromString(TEXT("Update Mod Details...")),
 					FText::FromString(FString::Printf(
-						TEXT("Change the Version in %s.uplugin"), *ModName)),
+						TEXT("Edit the name, description, version and author in %s.uplugin"), *ModName)),
 					FSlateIcon(FAppStyle::GetAppStyleSetName(), TEXT("Icons.Edit")),
 					FUIAction(FExecuteAction::CreateLambda([ModName]()
 					{
-						ModActions::UpdateModVersion(ModName);
+						ModActions::UpdateModDetails(ModName);
 					})));
 
 				Builder.EndSection();

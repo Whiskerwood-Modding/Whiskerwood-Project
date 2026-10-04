@@ -1,8 +1,8 @@
 {
-  "ExportDate": "2026-09-18 13:21:08",
+  "ExportDate": "2026-10-04 17:46:02",
   "TotalDataTables": 45,
   "TotalDataAssets": 19,
-  "TotalUniqueValues": 9922,
+  "TotalUniqueValues": 9923,
   "DataTables": {
     "Whiskerwood/Content/Data/AchievementsTables": {
       "ACH.010.EMBARK": {
@@ -6964,7 +6964,7 @@
         "inCt1": "21",
         "inCt2": "34",
         "inCt3": "34",
-        "inCt4": "12",
+        "inCt4": "14",
         "out1": "None",
         "out2": "None",
         "out3": "None",
@@ -11476,6 +11476,7 @@
     "Whiskerwood/Content/Data/AssetLookups/TechUnlocksV2": {
       "unlock.aim.clift": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "aim.clift",
         "associatedRecipe": "None",
@@ -11484,7 +11485,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11499,6 +11499,7 @@
       },
       "unlock.aim.extractor": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "aim.extractor",
         "associatedRecipe": "None",
@@ -11507,7 +11508,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11522,6 +11522,7 @@
       },
       "unlock.aim.flat": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "aim.flat",
         "associatedRecipe": "None",
@@ -11530,7 +11531,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11545,6 +11545,7 @@
       },
       "unlock.aim.inbox": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "aim.inbox",
         "associatedRecipe": "None",
@@ -11553,7 +11554,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11568,6 +11568,7 @@
       },
       "unlock.aim.lift": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "aim.lift",
         "associatedRecipe": "None",
@@ -11576,7 +11577,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11591,6 +11591,7 @@
       },
       "unlock.aim.oceanDump": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "aim.oceandump",
         "associatedRecipe": "None",
@@ -11599,7 +11600,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.aimAdvanced"
@@ -11616,6 +11616,7 @@
       },
       "unlock.aim.slide": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "aim.slide",
         "associatedRecipe": "None",
@@ -11624,7 +11625,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11639,6 +11639,7 @@
       },
       "unlock.aim.sorter": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "aim.sorter",
         "associatedRecipe": "None",
@@ -11647,7 +11648,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11662,6 +11662,7 @@
       },
       "unlock.aim.splitter": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "aim.splitter",
         "associatedRecipe": "None",
@@ -11670,7 +11671,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11685,6 +11685,7 @@
       },
       "unlock.aimAdvanced": {
         "Description": "unlock.aimAdvanced.desc",
+        "IsHidden": "False",
         "Title": "unlock.aimAdvanced",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -11699,7 +11700,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.aimBasic"
@@ -11716,6 +11716,7 @@
       },
       "unlock.aimBasic": {
         "Description": "unlock.aimBasic.desc",
+        "IsHidden": "False",
         "Title": "unlock.aimBasic.title",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -11729,7 +11730,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.oresmelter"
@@ -11746,6 +11746,7 @@
       },
       "unlock.anchoredplatform": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "anchoredplatform",
         "associatedRecipe": "None",
@@ -11754,7 +11755,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -11769,6 +11769,7 @@
       },
       "unlock.apothecary": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "apothecary",
         "associatedRecipe": "recipe.medicine",
@@ -11777,7 +11778,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.laboratory",
@@ -11795,6 +11795,7 @@
       },
       "unlock.archive": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "archive",
         "associatedRecipe": "None",
@@ -11803,7 +11804,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11818,6 +11818,7 @@
       },
       "unlock.bakery": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "bakery",
         "associatedRecipe": "recipe.bakery",
@@ -11826,7 +11827,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.mill",
@@ -11844,6 +11844,7 @@
       },
       "unlock.bathhouse": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "bathhouse",
         "associatedRecipe": "None",
@@ -11852,7 +11853,6 @@
         "giftPool": "3",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.waterpumping",
@@ -11870,6 +11870,7 @@
       },
       "unlock.bedding": {
         "Description": "unlock.bedding.desc",
+        "IsHidden": "False",
         "Title": "unlock.bedding.title",
         "associatedGridActor": "tailor",
         "associatedRecipe": "recipe.bedding",
@@ -11878,7 +11879,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.supplier",
@@ -11896,6 +11896,7 @@
       },
       "unlock.blacksmith": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "blacksmith",
         "associatedRecipe": "recipe.ironpots",
@@ -11904,7 +11905,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.recipe.ironsmelting"
@@ -11921,6 +11921,7 @@
       },
       "unlock.bonfire": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "bonfire",
         "associatedRecipe": "None",
@@ -11929,7 +11930,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11944,6 +11944,7 @@
       },
       "unlock.brickDec": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -11952,7 +11953,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11967,6 +11967,7 @@
       },
       "unlock.brickmaker": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "brickmaker",
         "associatedRecipe": "None",
@@ -11977,7 +11978,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -11992,6 +11992,7 @@
       },
       "unlock.bridge_medium": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "bridge_medium",
         "associatedRecipe": "None",
@@ -12000,7 +12001,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12015,6 +12015,7 @@
       },
       "unlock.bronzecannons": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "cannonfoundry",
         "associatedRecipe": "recipe.bronzecannon",
@@ -12023,7 +12024,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12038,6 +12038,7 @@
       },
       "unlock.cannery": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "cannery",
         "associatedRecipe": "None",
@@ -12046,7 +12047,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.recipe.bronzesmelter"
@@ -12063,6 +12063,7 @@
       },
       "unlock.cannonDefenses": {
         "Description": "unlock.cannonDefenses.desc",
+        "IsHidden": "False",
         "Title": "unlock.cannonDefenses.title",
         "associatedGridActor": "defensiveTower_small",
         "associatedRecipe": "None",
@@ -12076,7 +12077,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12091,6 +12091,7 @@
       },
       "unlock.cannonframes": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "furnituremaker",
         "associatedRecipe": "recipe.cannonframe",
@@ -12099,7 +12100,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12114,6 +12114,7 @@
       },
       "unlock.charcoalfurnace": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "charcoalfurnace",
         "associatedRecipe": "recipe.charcoalfurnace",
@@ -12122,7 +12123,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "True",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12137,6 +12137,7 @@
       },
       "unlock.chimes": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "chimes",
         "associatedRecipe": "None",
@@ -12145,7 +12146,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "True",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12160,6 +12160,7 @@
       },
       "unlock.civicoffice": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "civicoffice",
         "associatedRecipe": "None",
@@ -12168,7 +12169,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.townhall"
@@ -12185,6 +12185,7 @@
       },
       "unlock.claw_expandedtaxes": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -12193,7 +12194,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12208,6 +12208,7 @@
       },
       "unlock.coalsifter": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "coalProcessor",
         "associatedRecipe": "recipe.coalprocessor",
@@ -12216,7 +12217,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.waterpumping"
@@ -12233,6 +12233,7 @@
       },
       "unlock.constructionyard": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "constructionyard",
         "associatedRecipe": "None",
@@ -12241,7 +12242,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -12256,6 +12256,7 @@
       },
       "unlock.conveyor": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "conveyor",
         "associatedRecipe": "None",
@@ -12264,7 +12265,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12279,6 +12279,7 @@
       },
       "unlock.cottongin": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "cottongin",
         "associatedRecipe": "recipe.cotton",
@@ -12287,7 +12288,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.fabric"
@@ -12304,6 +12304,7 @@
       },
       "unlock.decorativetree": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "decorativetree",
         "associatedRecipe": "None",
@@ -12312,7 +12313,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12327,6 +12327,7 @@
       },
       "unlock.defensiveTower_small": {
         "Description": "",
+        "IsHidden": "True",
         "Title": "",
         "associatedGridActor": "defensiveTower_small",
         "associatedRecipe": "None",
@@ -12335,7 +12336,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "True",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12350,6 +12350,7 @@
       },
       "unlock.dryLogistics": {
         "Description": "Internal -- Indicates 2 or more warehouses have been built -- enablind intra-warehouse logistisc",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -12358,7 +12359,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12373,6 +12373,7 @@
       },
       "unlock.earthworks": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "earthworks",
         "associatedRecipe": "None",
@@ -12381,7 +12382,6 @@
         "giftPool": "1",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12396,6 +12396,7 @@
       },
       "unlock.elevator": {
         "Description": "unlock.elevator.desc",
+        "IsHidden": "False",
         "Title": "unlock.elevator.tile",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -12407,7 +12408,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.flaxspinner"
@@ -12424,6 +12424,7 @@
       },
       "unlock.elevatorEntrance": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "elevatorEntrance",
         "associatedRecipe": "None",
@@ -12432,7 +12433,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12447,6 +12447,7 @@
       },
       "unlock.elevatorShaft": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "elevatorShaft",
         "associatedRecipe": "None",
@@ -12455,7 +12456,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12470,6 +12470,7 @@
       },
       "unlock.exploration": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "Exploration",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -12478,7 +12479,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12493,6 +12493,7 @@
       },
       "unlock.fabric": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "resource.fabric",
         "associatedGridActor": "weaver",
         "associatedRecipe": "recipe.weaver",
@@ -12503,7 +12504,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.flaxspinner",
@@ -12521,6 +12521,7 @@
       },
       "unlock.fancyeatery": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "fancyEatery",
         "associatedRecipe": "None",
@@ -12529,7 +12530,6 @@
         "giftPool": "3",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "2",
@@ -12544,6 +12544,7 @@
       },
       "unlock.farm": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "farm",
         "associatedRecipe": "None",
@@ -12552,7 +12553,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12567,6 +12567,7 @@
       },
       "unlock.farming": {
         "Description": "unlock.farming.desc",
+        "IsHidden": "False",
         "Title": "unlock.farming.title",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -12577,7 +12578,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12592,6 +12592,7 @@
       },
       "unlock.fastfloor": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "fastfloor",
         "associatedRecipe": "None",
@@ -12600,7 +12601,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -12615,6 +12615,7 @@
       },
       "unlock.finekitchen": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "finekitchen",
         "associatedRecipe": "None",
@@ -12623,7 +12624,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.spicegrinder",
@@ -12643,6 +12643,7 @@
       },
       "unlock.finetea": {
         "Description": "unlock.finetea.desc",
+        "IsHidden": "False",
         "Title": "unlock.finetea.title",
         "associatedGridActor": "teaprocessor",
         "associatedRecipe": "recipe.finetea",
@@ -12651,7 +12652,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.tearoaster",
@@ -12669,6 +12669,7 @@
       },
       "unlock.firetender": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "firetender",
         "associatedRecipe": "None",
@@ -12677,7 +12678,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12692,6 +12692,7 @@
       },
       "unlock.firetongs": {
         "Description": "unlock.firetongs.desc",
+        "IsHidden": "False",
         "Title": "resource.firetongs",
         "associatedGridActor": "toolmaker",
         "associatedRecipe": "recipe.firetongs",
@@ -12700,7 +12701,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.toolmaker",
@@ -12718,6 +12718,7 @@
       },
       "unlock.firstrate": {
         "Description": "",
+        "IsHidden": "True",
         "Title": "resource.firstrate",
         "associatedGridActor": "smallshipyard",
         "associatedRecipe": "recipe.firstrate",
@@ -12726,7 +12727,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "True",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.steelcannons"
@@ -12743,6 +12743,7 @@
       },
       "unlock.fishery": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "fishery",
         "associatedRecipe": "recipe.fishery",
@@ -12751,7 +12752,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "True",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.charcoalfurnace"
@@ -12768,6 +12768,7 @@
       },
       "unlock.fishingdock": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "fishingdock",
         "associatedRecipe": "None",
@@ -12776,7 +12777,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12791,6 +12791,7 @@
       },
       "unlock.fishskewers": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "resource.fishskewers",
         "associatedGridActor": "fishery",
         "associatedRecipe": "recipe.fishskewers",
@@ -12799,7 +12800,6 @@
         "giftPool": "3",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.fishery",
@@ -12817,6 +12817,7 @@
       },
       "unlock.flaxspinner": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "flaxspinner",
         "associatedRecipe": "recipe.rope",
@@ -12825,7 +12826,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12840,6 +12840,7 @@
       },
       "unlock.flowerbed": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "flowerbed",
         "associatedRecipe": "None",
@@ -12848,7 +12849,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12863,6 +12863,7 @@
       },
       "unlock.freedom": {
         "Description": "The Claws have promised to release you from your contract once they are happy with your progress.  Perhaps next year..",
+        "IsHidden": "False",
         "Title": "Freedom",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -12871,7 +12872,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12886,6 +12886,7 @@
       },
       "unlock.frigate": {
         "Description": "",
+        "IsHidden": "True",
         "Title": "resource.frigate",
         "associatedGridActor": "smallshipyard",
         "associatedRecipe": "recipe.frigate",
@@ -12894,7 +12895,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "True",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.bronzecannons"
@@ -12911,6 +12911,7 @@
       },
       "unlock.furniture": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "resource.furniture",
         "associatedGridActor": "furnituremaker",
         "associatedRecipe": "recipe.furnituremaker",
@@ -12919,7 +12920,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.supplier",
@@ -12938,6 +12938,7 @@
       },
       "unlock.furnitureMaker": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "furnituremaker",
         "associatedRecipe": "recipe.vises",
@@ -12946,7 +12947,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -12961,6 +12961,7 @@
       },
       "unlock.gatherer": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "gatherer",
         "associatedRecipe": "None",
@@ -12969,7 +12970,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -12984,6 +12984,7 @@
       },
       "unlock.giantshipyard": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "giantShipyard",
         "associatedRecipe": "None",
@@ -12992,7 +12993,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.largeshipyard"
@@ -13009,6 +13009,7 @@
       },
       "unlock.giantwarehouse": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "giantwarehouse",
         "associatedRecipe": "None",
@@ -13017,7 +13018,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "3",
@@ -13032,6 +13032,7 @@
       },
       "unlock.granaryLogistics": {
         "Description": "Internal -- Indicates 2 or more granaries have been built -- enablind intra-warehouse logistisc",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -13040,7 +13041,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13055,6 +13055,7 @@
       },
       "unlock.guanoCollection": {
         "Description": "unlock.guanocollection.desc",
+        "IsHidden": "False",
         "Title": "unlock.guanoCollection.title",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -13066,7 +13067,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.navalfishingdock"
@@ -13083,6 +13083,7 @@
       },
       "unlock.guanoFertilizer": {
         "Description": "unlock.guanocollection.desc",
+        "IsHidden": "False",
         "Title": "unlock.guanoCollection.title",
         "associatedGridActor": "coalProcessor",
         "associatedRecipe": "recipe.guanoFertilizer",
@@ -13091,7 +13092,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13106,6 +13106,7 @@
       },
       "unlock.heater": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "heater",
         "associatedRecipe": "None",
@@ -13114,7 +13115,6 @@
         "giftPool": "3",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.organizedHeating",
@@ -13132,6 +13132,7 @@
       },
       "unlock.house1": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "house1",
         "associatedRecipe": "None",
@@ -13140,7 +13141,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "True",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13155,6 +13155,7 @@
       },
       "unlock.house2": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "house2",
         "associatedRecipe": "None",
@@ -13163,7 +13164,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -13178,6 +13178,7 @@
       },
       "unlock.house3": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "house3",
         "associatedRecipe": "None",
@@ -13186,7 +13187,6 @@
         "giftPool": "3",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "2",
@@ -13201,6 +13201,7 @@
       },
       "unlock.incinerator": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "incinerator",
         "associatedRecipe": "None",
@@ -13209,7 +13210,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13224,6 +13224,7 @@
       },
       "unlock.industry": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -13232,7 +13233,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13247,6 +13247,7 @@
       },
       "unlock.jampastry": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "resource.jampastry",
         "associatedGridActor": "bakery",
         "associatedRecipe": "recipe.jampastry",
@@ -13255,7 +13256,6 @@
         "giftPool": "3",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.bakery"
@@ -13272,6 +13272,7 @@
       },
       "unlock.jumppad": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "jumppad",
         "associatedRecipe": "None",
@@ -13280,7 +13281,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.steam"
@@ -13297,6 +13297,7 @@
       },
       "unlock.laboratory": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "laboratory",
         "associatedRecipe": "recipe.salinesolution",
@@ -13305,7 +13306,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.triagebeds",
@@ -13323,6 +13323,7 @@
       },
       "unlock.largershipments": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -13331,7 +13332,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13346,6 +13346,7 @@
       },
       "unlock.largeshipyard": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "largeshipyard",
         "associatedRecipe": "None",
@@ -13354,7 +13355,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.cannonDefenses"
@@ -13371,6 +13371,7 @@
       },
       "unlock.largewarehouse": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "largewarehouse",
         "associatedRecipe": "None",
@@ -13379,7 +13380,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "2",
@@ -13394,6 +13394,7 @@
       },
       "unlock.logistics": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -13404,7 +13405,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13419,6 +13419,7 @@
       },
       "unlock.lumbermill": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "lumbermill",
         "associatedRecipe": "None",
@@ -13429,7 +13430,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13444,6 +13444,7 @@
       },
       "unlock.machinist": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "machinist",
         "associatedRecipe": "recipe.machinery",
@@ -13452,7 +13453,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.recipe.steelsmelting",
@@ -13471,6 +13471,7 @@
       },
       "unlock.mediumwarehouse": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "mediumwarehouse",
         "associatedRecipe": "None",
@@ -13479,7 +13480,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -13494,6 +13494,7 @@
       },
       "unlock.mill": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "mill",
         "associatedRecipe": "recipe.wheatflour",
@@ -13502,7 +13503,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.wheat"
@@ -13519,6 +13519,7 @@
       },
       "unlock.miningladder": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "miningladder",
         "associatedRecipe": "None",
@@ -13527,7 +13528,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13542,6 +13542,7 @@
       },
       "unlock.mousewheel": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "mousewheel",
         "associatedRecipe": "None",
@@ -13552,7 +13553,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13567,6 +13567,7 @@
       },
       "unlock.mushroom": {
         "Description": "unlock.mushroom.desc",
+        "IsHidden": "False",
         "Title": "unlock.mushroom.title",
         "associatedGridActor": "farm",
         "associatedRecipe": "recipe.mushroom",
@@ -13575,7 +13576,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.farming"
@@ -13592,6 +13592,7 @@
       },
       "unlock.mushroomstew": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "resource.stew",
         "associatedGridActor": "stewery",
         "associatedRecipe": "recipe.mushroomstew",
@@ -13600,7 +13601,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.stewery",
@@ -13619,6 +13619,7 @@
       },
       "unlock.nails": {
         "Description": "unlock.nails.desc",
+        "IsHidden": "False",
         "Title": "resource.nails",
         "associatedGridActor": "toolmaker",
         "associatedRecipe": "recipe.nailor",
@@ -13627,7 +13628,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.toolmaker",
@@ -13645,6 +13645,7 @@
       },
       "unlock.nauticalRaftDock": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "nauticalRaftDock",
         "associatedRecipe": "None",
@@ -13653,7 +13654,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13668,6 +13668,7 @@
       },
       "unlock.navalGuanoDock": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "navalguanodock",
         "associatedRecipe": "None",
@@ -13676,7 +13677,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13691,6 +13691,7 @@
       },
       "unlock.navalScoutDock": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "navalScoutDock",
         "associatedRecipe": "None",
@@ -13699,7 +13700,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13714,6 +13714,7 @@
       },
       "unlock.navalStorageDock": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "navalStorageDock",
         "associatedRecipe": "None",
@@ -13722,7 +13723,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.smallshipyard"
@@ -13739,6 +13739,7 @@
       },
       "unlock.navalfishingdock": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "navalfishingdock",
         "associatedRecipe": "None",
@@ -13747,7 +13748,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.smallshipyard"
@@ -13764,6 +13764,7 @@
       },
       "unlock.navalhuntingdock": {
         "Description": "",
+        "IsHidden": "True",
         "Title": "",
         "associatedGridActor": "navalhuntingdock",
         "associatedRecipe": "None",
@@ -13772,7 +13773,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "True",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.largeshipyard"
@@ -13789,6 +13789,7 @@
       },
       "unlock.navaltradeDock": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "navaltradeDock",
         "associatedRecipe": "None",
@@ -13797,7 +13798,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.navalfishingdock"
@@ -13814,6 +13814,7 @@
       },
       "unlock.navalwarDock": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "navalwarDock",
         "associatedRecipe": "None",
@@ -13822,7 +13823,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.largeshipyard"
@@ -13839,6 +13839,7 @@
       },
       "unlock.netter": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "netter",
         "associatedRecipe": "recipe.fishingnet",
@@ -13847,7 +13848,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.flaxspinner"
@@ -13864,6 +13864,7 @@
       },
       "unlock.oceanvoid": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "oceanVoid",
         "associatedRecipe": "None",
@@ -13872,7 +13873,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.waterPumping"
@@ -13889,6 +13889,7 @@
       },
       "unlock.oilpress": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "oilpress",
         "associatedRecipe": "recipe.fishoil",
@@ -13897,7 +13898,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.steam"
@@ -13914,6 +13914,7 @@
       },
       "unlock.oresmelter": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "oresmelter",
         "associatedRecipe": "recipe.coppersmelter",
@@ -13922,7 +13923,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.charcoalfurnace"
@@ -13939,6 +13939,7 @@
       },
       "unlock.organizedHeating": {
         "Description": "unlock.organizedHeating.desc",
+        "IsHidden": "False",
         "Title": "unlock.organizedHeating.title",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -13950,7 +13951,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.charcoalfurnace"
@@ -13967,6 +13967,7 @@
       },
       "unlock.overpayment": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -13975,7 +13976,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -13990,6 +13990,7 @@
       },
       "unlock.policies": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "Town Hall Built",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -13998,7 +13999,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14013,6 +14013,7 @@
       },
       "unlock.policy.improvedscience": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "Policy - Rodent Brains",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -14021,7 +14022,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14036,6 +14036,7 @@
       },
       "unlock.potashProcessing": {
         "Description": "unlock.potashProcessing.desc",
+        "IsHidden": "False",
         "Title": "unlock.potashProcessing.title",
         "associatedGridActor": "coalProcessor",
         "associatedRecipe": "recipe.potashfertilizer",
@@ -14044,7 +14045,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.coalsifter"
@@ -14061,6 +14061,7 @@
       },
       "unlock.precisionscales": {
         "Description": "unlock.precisionscales.desc",
+        "IsHidden": "False",
         "Title": "resource.precisionscales",
         "associatedGridActor": "blacksmith",
         "associatedRecipe": "recipe.precisionscales",
@@ -14069,7 +14070,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.blacksmith",
@@ -14087,6 +14087,7 @@
       },
       "unlock.priorityExports": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -14095,7 +14096,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14110,6 +14110,7 @@
       },
       "unlock.questRepairDock": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "questRepairDock",
         "associatedRecipe": "None",
@@ -14121,7 +14122,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14136,6 +14136,7 @@
       },
       "unlock.questship1": {
         "Description": "ship_tier1_Quest1.desc",
+        "IsHidden": "False",
         "Title": "ship_tier1_Quest1.title",
         "associatedGridActor": "questRepairDock",
         "associatedRecipe": "recipe.questship1",
@@ -14146,7 +14147,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14161,6 +14161,7 @@
       },
       "unlock.radiator": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "radiator",
         "associatedRecipe": "None",
@@ -14169,7 +14170,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.steam"
@@ -14186,6 +14186,7 @@
       },
       "unlock.raftdock": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "raftdock",
         "associatedRecipe": "None",
@@ -14196,7 +14197,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.flaxspinner"
@@ -14213,6 +14213,7 @@
       },
       "unlock.rail": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "rail.straight",
         "associatedRecipe": "None",
@@ -14221,7 +14222,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14236,6 +14236,7 @@
       },
       "unlock.railTech": {
         "Description": "unlock.railTech.desc",
+        "IsHidden": "False",
         "Title": "unlock.railTech.title",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -14247,7 +14248,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.recipe.ironsmelting"
@@ -14264,6 +14264,7 @@
       },
       "unlock.rail_station": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "rail_station",
         "associatedRecipe": "None",
@@ -14272,7 +14273,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14287,6 +14287,7 @@
       },
       "unlock.rail_steambooster": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "rail_steambooster",
         "associatedRecipe": "None",
@@ -14295,7 +14296,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.railTech",
@@ -14313,6 +14313,7 @@
       },
       "unlock.recipe.advancedResearch": {
         "Description": "unlock.recipe.advancedResearch.desc",
+        "IsHidden": "False",
         "Title": "unlock.recipe.advancedResearch.title",
         "associatedGridActor": "None",
         "associatedRecipe": "recipe.advancedResearch",
@@ -14321,7 +14322,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14336,6 +14336,7 @@
       },
       "unlock.recipe.bronze_cannonball": {
         "Description": "resource.desc.bronze_cannonball",
+        "IsHidden": "False",
         "Title": "resource.bronze_cannonball",
         "associatedGridActor": "blacksmith",
         "associatedRecipe": "recipe.bronze_cannonball",
@@ -14344,7 +14345,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.cannonDefenses"
@@ -14361,6 +14361,7 @@
       },
       "unlock.recipe.bronzesmelter": {
         "Description": "unlock.recipe.bronzesmelter.desc",
+        "IsHidden": "False",
         "Title": "unlock.recipe.bronzesmelter.title",
         "associatedGridActor": "oresmelter",
         "associatedRecipe": "recipe.bronzesmelter",
@@ -14369,7 +14370,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.oresmelter"
@@ -14386,6 +14386,7 @@
       },
       "unlock.recipe.chainshot_cannonball": {
         "Description": "resource.desc.chainshot_cannonball",
+        "IsHidden": "True",
         "Title": "resource.chainshot_cannonball",
         "associatedGridActor": "machinist",
         "associatedRecipe": "recipe.chainshot_cannonball",
@@ -14394,7 +14395,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "True",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14409,6 +14409,7 @@
       },
       "unlock.recipe.goldsmelter": {
         "Description": "unlock.recipe.goldsmelter.desc",
+        "IsHidden": "False",
         "Title": "unlock.recipe.goldsmelter.title",
         "associatedGridActor": "oresmelter",
         "associatedRecipe": "recipe.goldsmelter",
@@ -14417,7 +14418,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.oresmelter"
@@ -14434,6 +14434,7 @@
       },
       "unlock.recipe.iron_cannonball": {
         "Description": "resource.desc.iron_cannonball",
+        "IsHidden": "False",
         "Title": "resource.iron_cannonball",
         "associatedGridActor": "blacksmith",
         "associatedRecipe": "recipe.iron_cannonball",
@@ -14442,7 +14443,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.smallshipyard"
@@ -14459,6 +14459,7 @@
       },
       "unlock.recipe.ironsmelting": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "blastfurnace",
         "associatedRecipe": "recipe.smelter",
@@ -14467,7 +14468,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.charcoalfurnace"
@@ -14484,6 +14484,7 @@
       },
       "unlock.recipe.mousetrap_rope": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "resource.mousetrap",
         "associatedGridActor": "tailor",
         "associatedRecipe": "recipe.mousetrap_rope",
@@ -14492,7 +14493,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "True",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14507,6 +14507,7 @@
       },
       "unlock.recipe.mousetrap_wood": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "resource.mousetrap",
         "associatedGridActor": "lumbermill",
         "associatedRecipe": "recipe.mousetrap_wood",
@@ -14515,7 +14516,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "True",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14530,6 +14530,7 @@
       },
       "unlock.recipe.steelsmelting": {
         "Description": "unlock.recipe.steelsmelting.desc",
+        "IsHidden": "False",
         "Title": "unlock.recipe.steelsmelting.title",
         "associatedGridActor": "blastfurnace",
         "associatedRecipe": "recipe.steelsmelter",
@@ -14538,7 +14539,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.recipe.ironsmelting"
@@ -14555,6 +14555,7 @@
       },
       "unlock.recipe.stone_cannonball": {
         "Description": "resource.desc.stone_cannonball",
+        "IsHidden": "False",
         "Title": "resource.stone_cannonball",
         "associatedGridActor": "brickmaker",
         "associatedRecipe": "recipe.stone_cannonball",
@@ -14563,7 +14564,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14578,6 +14578,7 @@
       },
       "unlock.relaxedseas": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -14586,7 +14587,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14601,6 +14601,7 @@
       },
       "unlock.rerollWhiskers": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -14609,7 +14610,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14624,6 +14624,7 @@
       },
       "unlock.researchBuilding": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "researchBuilding",
         "associatedRecipe": "None",
@@ -14634,7 +14635,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14649,6 +14649,7 @@
       },
       "unlock.researchTier1": {
         "Description": "tier.description",
+        "IsHidden": "False",
         "Title": "tier.1",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -14657,7 +14658,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -14672,6 +14672,7 @@
       },
       "unlock.researchTier2": {
         "Description": "tier.description",
+        "IsHidden": "False",
         "Title": "tier.2",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -14680,7 +14681,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "2",
@@ -14695,6 +14695,7 @@
       },
       "unlock.researchTier3": {
         "Description": "tier.description",
+        "IsHidden": "False",
         "Title": "tier.3",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -14703,7 +14704,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "3",
@@ -14718,6 +14718,7 @@
       },
       "unlock.researchTier4": {
         "Description": "tier.description",
+        "IsHidden": "False",
         "Title": "tier.4",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -14726,7 +14727,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "4",
@@ -14741,6 +14741,7 @@
       },
       "unlock.rowhouse1": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "rowhouse1",
         "associatedRecipe": "None",
@@ -14749,7 +14750,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "True",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14764,6 +14764,7 @@
       },
       "unlock.rowhouse2": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "rowhouse2",
         "associatedRecipe": "None",
@@ -14772,7 +14773,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -14787,6 +14787,7 @@
       },
       "unlock.rowhouse3": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "rowhouse3",
         "associatedRecipe": "None",
@@ -14795,7 +14796,6 @@
         "giftPool": "3",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "2",
@@ -14810,6 +14810,7 @@
       },
       "unlock.sail": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "sailmanufactory",
         "associatedRecipe": "recipe.sail",
@@ -14818,7 +14819,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.fabric"
@@ -14835,6 +14835,7 @@
       },
       "unlock.sailmanufactory": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "sailmanufactory",
         "associatedRecipe": "recipe.sail",
@@ -14845,7 +14846,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "True",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14860,6 +14860,7 @@
       },
       "unlock.science": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "Science Facilities",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -14870,7 +14871,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -14885,6 +14885,7 @@
       },
       "unlock.seafaring": {
         "Description": "unlock.seafaring.desc",
+        "IsHidden": "False",
         "Title": "unlock.seafaring.title",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -14897,7 +14898,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.fabric"
@@ -14914,6 +14914,7 @@
       },
       "unlock.ship_tier1_A": {
         "Description": "playerShip_tier1_A.desc",
+        "IsHidden": "False",
         "Title": "playerShip_tier1_A.title",
         "associatedGridActor": "smallshipyard",
         "associatedRecipe": "recipe.ship_tier1_A",
@@ -14922,7 +14923,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.smallshipyard"
@@ -14939,6 +14939,7 @@
       },
       "unlock.ship_tier1_B": {
         "Description": "playerShip_tier1_B.desc",
+        "IsHidden": "False",
         "Title": "playerShip_tier1_B.title",
         "associatedGridActor": "smallshipyard",
         "associatedRecipe": "recipe.ship_tier1_B",
@@ -14947,7 +14948,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.smallshipyard"
@@ -14964,6 +14964,7 @@
       },
       "unlock.ship_tier1_C": {
         "Description": "playerShip_tier1_C.desc",
+        "IsHidden": "False",
         "Title": "playerShip_tier1_C.title",
         "associatedGridActor": "smallshipyard",
         "associatedRecipe": "recipe.ship_tier1_C",
@@ -14972,7 +14973,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.smallshipyard"
@@ -14989,6 +14989,7 @@
       },
       "unlock.ship_tier2_A": {
         "Description": "playerShip_tier2_A.desc",
+        "IsHidden": "False",
         "Title": "playerShip_tier2_A.title",
         "associatedGridActor": "largeshipyard",
         "associatedRecipe": "recipe.ship_tier2_A",
@@ -14997,7 +14998,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.largeshipyard"
@@ -15014,6 +15014,7 @@
       },
       "unlock.ship_tier2_B": {
         "Description": "playerShip_tier2_B.desc",
+        "IsHidden": "False",
         "Title": "playerShip_tier2_B.title",
         "associatedGridActor": "largeshipyard",
         "associatedRecipe": "recipe.ship_tier2_B",
@@ -15022,7 +15023,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.largeshipyard"
@@ -15039,6 +15039,7 @@
       },
       "unlock.ship_tier2_C": {
         "Description": "playerShip_tier2_C.desc",
+        "IsHidden": "True",
         "Title": "playerShip_tier2_C.title",
         "associatedGridActor": "largeshipyard",
         "associatedRecipe": "recipe.ship_tier2_C",
@@ -15047,7 +15048,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "True",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.largeshipyard"
@@ -15064,6 +15064,7 @@
       },
       "unlock.ship_tier3_A": {
         "Description": "playerShip_tier3_A.desc",
+        "IsHidden": "True",
         "Title": "playerShip_tier3_A.title",
         "associatedGridActor": "giantShipyard",
         "associatedRecipe": "recipe.ship_tier3_A",
@@ -15072,7 +15073,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "True",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.giantshipyard"
@@ -15089,6 +15089,7 @@
       },
       "unlock.ship_tier3_B": {
         "Description": "playerShip_tier3_B.desc",
+        "IsHidden": "True",
         "Title": "playerShip_tier3_B.title",
         "associatedGridActor": "giantShipyard",
         "associatedRecipe": "recipe.ship_tier3_B",
@@ -15097,7 +15098,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "True",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.giantshipyard"
@@ -15114,6 +15114,7 @@
       },
       "unlock.ship_tier3_C": {
         "Description": "playerShip_tier3_C.desc",
+        "IsHidden": "True",
         "Title": "playerShip_tier3_C.title",
         "associatedGridActor": "giantShipyard",
         "associatedRecipe": "recipe.ship_tier3_C",
@@ -15122,7 +15123,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "True",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.giantshipyard"
@@ -15139,6 +15139,7 @@
       },
       "unlock.shortstairs": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "shortstairs",
         "associatedRecipe": "None",
@@ -15147,7 +15148,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15162,6 +15162,7 @@
       },
       "unlock.showers": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "showers",
         "associatedRecipe": "None",
@@ -15170,7 +15171,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.waterpumping"
@@ -15187,6 +15187,7 @@
       },
       "unlock.signpost": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "signpost",
         "associatedRecipe": "None",
@@ -15195,7 +15196,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "True",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15210,6 +15210,7 @@
       },
       "unlock.slide": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "slide",
         "associatedRecipe": "None",
@@ -15218,7 +15219,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15233,6 +15233,7 @@
       },
       "unlock.smallplanter": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "smallplanter",
         "associatedRecipe": "None",
@@ -15241,7 +15242,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15256,6 +15256,7 @@
       },
       "unlock.smallshipyard": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "smallshipyard",
         "associatedRecipe": "None",
@@ -15267,7 +15268,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15282,6 +15282,7 @@
       },
       "unlock.smallstatue": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "smallstatue",
         "associatedRecipe": "None",
@@ -15290,7 +15291,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "True",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -15305,6 +15305,7 @@
       },
       "unlock.smallwarehouse": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "smallwarehouse",
         "associatedRecipe": "None",
@@ -15313,7 +15314,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "True",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15328,6 +15328,7 @@
       },
       "unlock.soap": {
         "Description": "unlock.soap.desc",
+        "IsHidden": "False",
         "Title": "unlock.soap.title",
         "associatedGridActor": "laboratory",
         "associatedRecipe": "recipe.soap",
@@ -15336,7 +15337,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.laboratory",
@@ -15354,6 +15354,7 @@
       },
       "unlock.spice": {
         "Description": "unlock.spice.desc",
+        "IsHidden": "False",
         "Title": "unlock.spice.title",
         "associatedGridActor": "farm",
         "associatedRecipe": "recipe.peppers",
@@ -15362,7 +15363,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.farming"
@@ -15379,6 +15379,7 @@
       },
       "unlock.spicegrinder": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "spicegrinder",
         "associatedRecipe": "recipe.spice",
@@ -15387,7 +15388,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.spice"
@@ -15404,6 +15404,7 @@
       },
       "unlock.stairs": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "stairs",
         "associatedRecipe": "None",
@@ -15412,7 +15413,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15427,6 +15427,7 @@
       },
       "unlock.steam": {
         "Description": "unlock.steam.desc",
+        "IsHidden": "False",
         "Title": "unlock.steam.title",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -15439,7 +15440,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.recipe.ironsmelting",
@@ -15458,6 +15458,7 @@
       },
       "unlock.steam.valve": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "steamvalve",
         "associatedRecipe": "None",
@@ -15466,7 +15467,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15481,6 +15481,7 @@
       },
       "unlock.steamboiler": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "steamboiler",
         "associatedRecipe": "recipe.boiler",
@@ -15489,7 +15490,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15504,6 +15504,7 @@
       },
       "unlock.steamengine": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "steamengine",
         "associatedRecipe": "None",
@@ -15512,7 +15513,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.steam"
@@ -15529,6 +15529,7 @@
       },
       "unlock.steampipe": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "pipe.steam",
         "associatedRecipe": "None",
@@ -15537,7 +15538,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15552,6 +15552,7 @@
       },
       "unlock.steamtank": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "steamtank",
         "associatedRecipe": "None",
@@ -15560,7 +15561,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15575,6 +15575,7 @@
       },
       "unlock.steelcannons": {
         "Description": "unlock.steelcannons.desc",
+        "IsHidden": "False",
         "Title": "unlock.steelcannons.title",
         "associatedGridActor": "cannonfoundry",
         "associatedRecipe": "recipe.steelcannon",
@@ -15583,7 +15584,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.bronzecannons",
@@ -15601,6 +15601,7 @@
       },
       "unlock.steelplates": {
         "Description": "unlock.steelplates.desc",
+        "IsHidden": "False",
         "Title": "resource.steelplates",
         "associatedGridActor": "blacksmith",
         "associatedRecipe": "recipe.steelplates",
@@ -15609,7 +15610,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.blacksmith",
@@ -15627,6 +15627,7 @@
       },
       "unlock.stewery": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "stewery",
         "associatedRecipe": "recipe.stewery",
@@ -15635,7 +15636,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.waterpumping",
@@ -15653,6 +15653,7 @@
       },
       "unlock.stonedec_fullarch": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "stonedec_fullarch",
         "associatedRecipe": "None",
@@ -15661,7 +15662,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "2",
@@ -15676,6 +15676,7 @@
       },
       "unlock.stonegate": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "stonegate",
         "associatedRecipe": "None",
@@ -15684,7 +15685,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15699,6 +15699,7 @@
       },
       "unlock.stonestairs": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "stonestairs_variant1",
         "associatedRecipe": "None",
@@ -15707,7 +15708,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "True",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -15722,6 +15722,7 @@
       },
       "unlock.stonewall": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "stonewall",
         "associatedRecipe": "None",
@@ -15730,7 +15731,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15745,6 +15745,7 @@
       },
       "unlock.supplier": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "supplier",
         "associatedRecipe": "None",
@@ -15753,7 +15754,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -15768,6 +15768,7 @@
       },
       "unlock.tablesalt": {
         "Description": "unlock.tablesalt.desc",
+        "IsHidden": "False",
         "Title": "unlock.tablesalt.title",
         "associatedGridActor": "coalProcessor",
         "associatedRecipe": "recipe.salt",
@@ -15776,7 +15777,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.coalsifter"
@@ -15793,6 +15793,7 @@
       },
       "unlock.tailor": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "tailor",
         "associatedRecipe": "None",
@@ -15801,7 +15802,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15816,6 +15816,7 @@
       },
       "unlock.tea": {
         "Description": "unlock.tea.desc",
+        "IsHidden": "False",
         "Title": "unlock.tea.title",
         "associatedGridActor": "farm",
         "associatedRecipe": "recipe.tealeaves",
@@ -15824,7 +15825,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.farming"
@@ -15841,6 +15841,7 @@
       },
       "unlock.tearoaster": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "teaprocessor",
         "associatedRecipe": "recipe.tea",
@@ -15849,7 +15850,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.tea",
@@ -15867,6 +15867,7 @@
       },
       "unlock.terraformCamp": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "terraformcamp",
         "associatedRecipe": "None",
@@ -15875,7 +15876,6 @@
         "giftPool": "1",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15890,6 +15890,7 @@
       },
       "unlock.textiles": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "tailor",
         "associatedRecipe": "recipe.tailor",
@@ -15898,7 +15899,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.fabric"
@@ -15915,6 +15915,7 @@
       },
       "unlock.thread": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "flaxspinner",
         "associatedRecipe": "recipe.flax",
@@ -15923,7 +15924,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15938,6 +15938,7 @@
       },
       "unlock.tinyaimwarehouse": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "tinyaimwarehouse",
         "associatedRecipe": "None",
@@ -15946,7 +15947,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15961,6 +15961,7 @@
       },
       "unlock.tinyhouse1": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "tinyhouse1",
         "associatedRecipe": "None",
@@ -15969,7 +15970,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "True",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -15984,6 +15984,7 @@
       },
       "unlock.tinyhouse2": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "tinyhouse2",
         "associatedRecipe": "None",
@@ -15992,7 +15993,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "1",
@@ -16007,6 +16007,7 @@
       },
       "unlock.tinyhouse3": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "tinyhouse3",
         "associatedRecipe": "None",
@@ -16015,7 +16016,6 @@
         "giftPool": "3",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "2",
@@ -16030,6 +16030,7 @@
       },
       "unlock.tinywarehouse": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "tinwarehouse",
         "associatedRecipe": "None",
@@ -16040,7 +16041,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -16055,6 +16055,7 @@
       },
       "unlock.toolmaker": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "toolmaker",
         "associatedRecipe": "recipe.scissors",
@@ -16063,7 +16064,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.oresmelter"
@@ -16080,6 +16080,7 @@
       },
       "unlock.townhall": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "townhall",
         "associatedRecipe": "None",
@@ -16090,7 +16091,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -16105,6 +16105,7 @@
       },
       "unlock.triagebeds": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "triageBeds",
         "associatedRecipe": "None",
@@ -16113,7 +16114,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -16128,6 +16128,7 @@
       },
       "unlock.valves": {
         "Description": "unlock.valves.desc",
+        "IsHidden": "False",
         "Title": "unlock.valves.title",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -16139,7 +16140,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.waterPumping",
@@ -16157,6 +16157,7 @@
       },
       "unlock.victory": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "Colony Victory",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -16165,7 +16166,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -16180,6 +16180,7 @@
       },
       "unlock.water.valve": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "watervalve",
         "associatedRecipe": "None",
@@ -16188,7 +16189,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -16203,6 +16203,7 @@
       },
       "unlock.waterPumping": {
         "Description": "unlock.waterPumping.desc",
+        "IsHidden": "False",
         "Title": "unlock.waterPumping.title",
         "associatedGridActor": "None",
         "associatedRecipe": "None",
@@ -16215,7 +16216,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.oresmelter"
@@ -16232,6 +16232,7 @@
       },
       "unlock.waterfountain_piped": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "waterfountain_piped",
         "associatedRecipe": "None",
@@ -16240,7 +16241,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.waterpumping"
@@ -16257,6 +16257,7 @@
       },
       "unlock.waterpipe": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "pipe.liquid",
         "associatedRecipe": "None",
@@ -16265,7 +16266,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -16280,6 +16280,7 @@
       },
       "unlock.waterpump": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "waterpump",
         "associatedRecipe": "recipe.waterpump",
@@ -16288,7 +16289,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -16303,6 +16303,7 @@
       },
       "unlock.waterstatue": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "waterstatue",
         "associatedRecipe": "None",
@@ -16311,7 +16312,6 @@
         "giftPool": "1",
         "giftable": "True",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.waterpumping"
@@ -16328,6 +16328,7 @@
       },
       "unlock.watertower": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "watertower",
         "associatedRecipe": "None",
@@ -16336,7 +16337,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -16351,6 +16351,7 @@
       },
       "unlock.weaver": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "weaver",
         "associatedRecipe": "recipe.simpleclothes",
@@ -16359,7 +16360,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -16374,6 +16374,7 @@
       },
       "unlock.wheat": {
         "Description": "unlock.wheat.desc",
+        "IsHidden": "False",
         "Title": "unlock.wheat.title",
         "associatedGridActor": "farm",
         "associatedRecipe": "recipe.wheat",
@@ -16382,7 +16383,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [
           "unlock.farming"
@@ -16399,6 +16399,7 @@
       },
       "unlock.windsock": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "windsock",
         "associatedRecipe": "None",
@@ -16407,7 +16408,6 @@
         "giftPool": "2",
         "giftable": "True",
         "giftableInDemo": "True",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -16422,6 +16422,7 @@
       },
       "unlock.woodcutter": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "woodcutter",
         "associatedRecipe": "None",
@@ -16430,7 +16431,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -16445,6 +16445,7 @@
       },
       "unlock.woodenbench": {
         "Description": "",
+        "IsHidden": "False",
         "Title": "",
         "associatedGridActor": "woodenBench",
         "associatedRecipe": "None",
@@ -16453,7 +16454,6 @@
         "giftPool": "0",
         "giftable": "False",
         "giftableInDemo": "False",
-        "isHidden": "False",
         "isQuestRelated": "False",
         "prerequisiteUnlocks": [],
         "researchTier": "0",
@@ -17584,7 +17584,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.mechanical"
           },
           {
@@ -17602,7 +17602,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.food"
           },
           {
@@ -17620,7 +17620,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.materialWood"
           },
           {
@@ -17638,7 +17638,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.materialStone"
           },
           {
@@ -17655,7 +17655,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.fuel"
           },
           {
@@ -17673,7 +17673,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.metals"
           },
           {
@@ -17688,7 +17688,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::AgentReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.whisker"
           },
           {
@@ -17707,7 +17707,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.medicine"
           },
           {
@@ -17725,7 +17725,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.farmSupplies"
           },
           {
@@ -17743,7 +17743,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.clothes"
           },
           {
@@ -17761,7 +17761,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.metalsalt"
           }
         ],
@@ -17778,7 +17778,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::EffectSpawn"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "None"
           },
           {
@@ -17793,7 +17793,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::EffectSpawn"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "None"
           },
           {
@@ -17808,7 +17808,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::EffectSpawn"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "None"
           }
         ],
@@ -17846,7 +17846,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.food"
           },
           {
@@ -17864,7 +17864,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.materialWood"
           },
           {
@@ -17882,7 +17882,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.materialStone"
           },
           {
@@ -17899,7 +17899,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.fuel"
           },
           {
@@ -17914,7 +17914,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::AgentReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.whisker"
           },
           {
@@ -17931,7 +17931,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.clothes"
           }
         ],
@@ -17969,7 +17969,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.mechanical"
           },
           {
@@ -17987,7 +17987,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.food"
           },
           {
@@ -18005,7 +18005,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.materialWood"
           },
           {
@@ -18023,7 +18023,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.materialStone"
           },
           {
@@ -18040,7 +18040,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.fuel"
           },
           {
@@ -18058,7 +18058,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.metals"
           },
           {
@@ -18073,7 +18073,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::AgentReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.whisker"
           },
           {
@@ -18091,7 +18091,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.clothes"
           },
           {
@@ -18109,7 +18109,7 @@
               "mustHaveResourceToTrigger": "False",
               "resultType": "EActionResultType::ResourceReward"
             },
-            "chosen": "False",
+            "Chosen": "False",
             "titleKey": "reward.metalsalt"
           }
         ],
@@ -30065,6 +30065,9 @@
       "approvalcost_overtime": {
         "FloatValue": "13"
       },
+      "approvalcost_shipdeparture": {
+        "FloatValue": "20"
+      },
       "approvalcost_tweezers": {
         "FloatValue": "1"
       },
@@ -30461,16 +30464,28 @@
       "ship_catchpertrip": {
         "FloatValue": "5"
       },
+      "ship_ferrySpeedMultiplier": {
+        "FloatValue": "1.25"
+      },
+      "ship_ferryaccelerationmultiplier": {
+        "FloatValue": "1.5"
+      },
       "ship_firstpercatch_nonet": {
         "FloatValue": "3"
       },
       "ship_fishpercatch": {
         "FloatValue": "34"
       },
+      "ship_fishpercatch_nonet": {
+        "FloatValue": "3"
+      },
       "ship_guanoperharvest": {
         "FloatValue": "21"
       },
       "ship_harpooncostperhunt": {
+        "FloatValue": "1"
+      },
+      "ship_harpoonperhunt": {
         "FloatValue": "1"
       },
       "ship_netcostpercatch": {
@@ -34360,7 +34375,7 @@
         "Value": "Fishing"
       },
       "nautical.task.fleeing": {
-        "Value": "Starving!"
+        "Value": "Low Food!"
       },
       "nautical.task.gonefishing": {
         "Value": "Sailing to Fishing Grounds"
@@ -43103,9 +43118,7 @@
       "GameTuning": {}
     },
     "Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Occlusion/OcclusionState/Sky_Occlusion_State": {
-      "Sky_Occlusion_State": {
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/System/UDS_OcclusionState.UDS_OcclusionState_C'"
-      }
+      "Sky_Occlusion_State": {}
     },
     "Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Occlusion/OcclusionState/Weather_Occlusion_State": {
       "Weather_Occlusion_State": {
@@ -43305,7 +43318,6 @@
         "Global Occlusion Total": "61",
         "Increment Time": "0.005737704918032787",
         "Last Trace Location": "X=-5706.250 Y=-2990.010 Z=2050.610 (FVector)",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/System/UDS_OcclusionState.UDS_OcclusionState_C'",
         "Occlusion Settings": "UDS_OcclusionSettings_C'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Occlusion/Occlusion_Settings/UDS_Standard_Occlusion_Settings.UDS_Standard_Occlusion_Settings'",
         "Target Directional Occlusion": "FFFFFF (FLinearColor)",
         "Time of Last Editor Cache": "90.03027041256428",
@@ -43508,28 +43520,23 @@
       }
     },
     "Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Occlusion/Occlusion_Settings/UDS_Standard_Occlusion_Settings": {
-      "UDS_Standard_Occlusion_Settings": {
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/System/UDS_OcclusionSettings.UDS_OcclusionSettings_C'"
-      }
+      "UDS_Standard_Occlusion_Settings": {}
     },
     "Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/System/Calendars/Gregorian_Calendar": {
       "Gregorian_Calendar": {
         "Months": {
           "February": "28"
-        },
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/System/UDS_Calendar.UDS_Calendar_C'"
+        }
       }
     },
     "Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/System/Editor_UI/UDS_CurrentVersion": {
       "UDS_CurrentVersion": {
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/System/Editor_UI/UDS_VersionInfo.UDS_VersionInfo_C'",
         "Version Label": "8.1C"
       }
     },
     "Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/Weather_Presets/Clear_Skies": {
       "Clear_Skies": {
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/Clear_Skies.Clear_Skies",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "User Friendly Name": "Clear Skies",
         "Wind Intensity": "2"
       }
@@ -43539,7 +43546,6 @@
         "Cloud Coverage": "5",
         "Fog": "1",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/Cloudy.Cloudy",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "User Friendly Name": "Cloudy",
         "Wind Intensity": "2.5"
       }
@@ -43549,7 +43555,6 @@
         "Fog": "10",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/Foggy.Foggy",
         "Material Wetness": "0.55",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "User Friendly Name": "Foggy",
         "Wind Intensity": "1"
       }
@@ -43559,7 +43564,6 @@
         "Cloud Coverage": "7.5",
         "Fog": "1.5",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/Overcast.Overcast",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "User Friendly Name": "Overcast",
         "Wind Intensity": "3"
       }
@@ -43569,7 +43573,6 @@
         "Cloud Coverage": "3.799999952316284",
         "Fog": "1",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/PartlyCloudy.PartlyCloudy",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "User Friendly Name": "Partly Cloudy",
         "Wind Intensity": "2"
       }
@@ -43580,7 +43583,6 @@
         "Fog": "3",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/Rain.Rain",
         "Material Wetness": "1",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "Rain": "7",
         "Thunder/Lightning": "4",
         "User Friendly Name": "Rain",
@@ -43593,7 +43595,6 @@
         "Fog": "1.5",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/LightRain.LightRain",
         "Material Wetness": "0.75",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "Rain": "3",
         "Thunder/Lightning": "1",
         "User Friendly Name": "Light Rain",
@@ -43606,7 +43607,6 @@
         "Fog": "6.5",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/Thunderstorms.Thunderstorms",
         "Material Wetness": "1",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "Rain": "10",
         "Thunder/Lightning": "10",
         "User Friendly Name": "Thunderstorm",
@@ -43619,7 +43619,6 @@
         "Fog": "1",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/Dust.Dust",
         "Material Dust Coverage": "1",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "User Friendly Name": "Sand/Dust",
         "Wind Intensity": "1"
       }
@@ -43630,7 +43629,6 @@
         "Fog": "1",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/DustStorm.DustStorm",
         "Material Dust Coverage": "1",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "User Friendly Name": "Sand/Dust Storm",
         "Wind Intensity": "10"
       }
@@ -43641,7 +43639,6 @@
         "Fog": "5",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/Snow.Snow",
         "Material Snow Coverage": "1",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "Snow": "6",
         "User Friendly Name": "Snow",
         "Wind Intensity": "4"
@@ -43653,7 +43650,6 @@
         "Fog": "10",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/Blizzard.Blizzard",
         "Material Snow Coverage": "1",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "Snow": "10",
         "User Friendly Name": "Blizzard",
         "Wind Intensity": "10"
@@ -43665,7 +43661,6 @@
         "Fog": "3",
         "Icon Texture": "/Game/ThirdParty/UltraDynamicSky/Textures/Icons/Weather/Light_Snow.Light_Snow",
         "Material Snow Coverage": "0.5",
-        "NativeClass": "BlueprintGeneratedClass'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/System/UDS_Weather_Settings.UDS_Weather_Settings_C'",
         "Snow": "3",
         "User Friendly Name": "Light Snow",
         "Wind Intensity": "1"

@@ -11,6 +11,7 @@ set "VERSION_FILE_PATH=%INSTALL_DIR%\Whiskerwood\Content\Movies\Version.txt"
 set "UE4SS_PROXY_NAME=dwmapi.dll"
 set "UE4SS_PROXY_PATH=%INSTALL_DIR%\Whiskerwood\Binaries\Win64\%UE4SS_PROXY_NAME%"
 set "UE4SS_DISABLED=0"
+set "ENGINE_VERSION=GAME_UE5_8"
 
 echo Starting Whiskerwood automation script...
 echo.
@@ -34,6 +35,7 @@ if "%GAME_VERSION%"=="" (
 )
 
 echo Game version detected: %GAME_VERSION%
+echo Engine version: %ENGINE_VERSION%
 set "OUTPUT_JMAP_PATH=../Content/DynamicClasses/Whiskerwood-%GAME_VERSION%.jmap.gz"
 set "OUTPUT_USMAP_PATH=Whiskerwood-%GAME_VERSION%.usmap"
 set "OUTPUT_HEADERS_PATH=diff.hpp"
@@ -204,8 +206,8 @@ echo.
 
 set "TABLE_DUMPER_PATH=TableGraph/TableGraph.exe"
 echo Running TableGraph.exe for DataTable/DataAsset dumps...
-echo Command: "%TABLE_DUMPER_PATH%" --pak-dir "%PAKS_DIR%" --mappings "%OUTPUT_USMAP_PATH%" --version GAME_UE5_6 --export "%INDEX_PATH%"
-"%TABLE_DUMPER_PATH%" --pak-dir "%PAKS_DIR%" --mappings "%OUTPUT_USMAP_PATH%" --version GAME_UE5_6 --export "%INDEX_PATH%"
+echo Command: "%TABLE_DUMPER_PATH%" --pak-dir "%PAKS_DIR%" --mappings "%OUTPUT_USMAP_PATH%" --version %ENGINE_VERSION% --export "%INDEX_PATH%"
+"%TABLE_DUMPER_PATH%" --pak-dir "%PAKS_DIR%" --mappings "%OUTPUT_USMAP_PATH%" --version %ENGINE_VERSION% --export "%INDEX_PATH%"
 if errorlevel 1 (
     echo WARNING: TableGraph.exe failed or returned an error
 ) else (
@@ -220,8 +222,8 @@ echo.
 
 set "COOKED_EXPORT_PATH=CookedExport/CookedExport.exe"
 echo Running CookedExport.exe for asset list snapshot...
-echo Command: "%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -m "%OUTPUT_USMAP_PATH%" -dra -ipp "Engine/" -ro "%ASSET_SNAPSHOT_PATH%"
-"%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -m "%OUTPUT_USMAP_PATH%" -dra -ipp "Engine/" -ro "%ASSET_SNAPSHOT_PATH%"
+echo Command: "%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -m "%OUTPUT_USMAP_PATH%" -dra -ipp "Engine/" -ro "%ASSET_SNAPSHOT_PATH%" -v %ENGINE_VERSION%
+"%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -m "%OUTPUT_USMAP_PATH%" -dra -ipp "Engine/" -ro "%ASSET_SNAPSHOT_PATH%" -v %ENGINE_VERSION%
 if errorlevel 1 (
     echo WARNING: CookedExport.exe failed or returned an error
 ) else (
@@ -235,8 +237,8 @@ if errorlevel 1 (
 echo.
 
 echo Running CookedExport.exe for asset registry...
-echo Command: "%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -erb -arbo "%AR_PATH%"
-"%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -erb -arbo "%AR_PATH%"
+echo Command: "%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -erb -arbo "%AR_PATH%" -v %ENGINE_VERSION%
+"%COOKED_EXPORT_PATH%" -p "%PAKS_DIR%" -erb -arbo "%AR_PATH%" -v %ENGINE_VERSION%
 if errorlevel 1 (
     echo WARNING: CookedExport.exe failed or returned an error
 ) else (
