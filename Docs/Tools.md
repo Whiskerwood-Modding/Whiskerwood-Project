@@ -7,10 +7,9 @@
 If you don't have UE4SS installed already:
 1. Grab the `UE4SS_v3.0.1-xx.zip` file from [the bottom of this releases page](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental-latest) under "Assets"
 2. Navigate to your game directory:
-`\steamapps\common\Wiskerwood\Wiskerwood\Binaries\Win64\`
+`\steamapps\common\Whiskerwood\Whiskerwood\Binaries\Win64\`
 3. Extract all files from the zip directly into the Win64 folder
-4. Create a folder named `UE4SS_Signatures` inside `ue4ss/`, then download and place the 2 required `.lua` signature files (`FText_Constructor.lua` and `StaticConstructObject.lua`) from the [RE-UE4SS GitHub repository (`Assets/CustomGameConfigs/Whiskerwood/UE4SS_Signatures`)](https://github.com/UE4SS-RE/RE-UE4SS) into it
-5. Launch game
+4. Launch game
 
 If you get window flickering issues, disable discord overlay, they broke something recently.
 
@@ -18,7 +17,7 @@ If you get window flickering issues, disable discord overlay, they broke somethi
 
 If you want to uninstall or disable UE4SS:
 1. Navigate to game directory
-`\steamapps\common\Wiskerwood\Wiskerwood\Binaries\Win64\`
+`\steamapps\common\Whiskerwood\Whiskerwood\Binaries\Win64\`
 2. Delete or rename file `dwmapi.dll`
 
 ### Usage
