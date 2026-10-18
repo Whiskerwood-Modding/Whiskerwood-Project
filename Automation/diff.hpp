@@ -18970,7 +18970,7 @@ struct FDataflowLinearGradientFloatSampler : public FDataflowFloatSamplerBase {
 
 struct FDataflowLinearGradientFloatSamplerNode : public FDataflowNode {
     FDataflowFloatSampler Sampler;
-    FDataflowLinearGradientFloatSampler Gradient;
+    FDataflowLinearGradientFloatSampler gradient;
 };
 
 struct FDataflowLinearGradientFromBoxFloatSampler : public FDataflowFloatSamplerBase {
@@ -18983,7 +18983,7 @@ struct FDataflowLinearGradientFromBoxFloatSampler : public FDataflowFloatSampler
 
 struct FDataflowLinearGradientFromBoxFloatSamplerNode : public FDataflowNode {
     FDataflowFloatSampler Sampler;
-    FDataflowLinearGradientFromBoxFloatSampler Gradient;
+    FDataflowLinearGradientFromBoxFloatSampler gradient;
 };
 
 struct FDataflowMaxFloatSampler : public FDataflowFloatSamplerBase {
@@ -19149,7 +19149,7 @@ struct FDataflowRadialGradientFloatSampler : public FDataflowFloatSamplerBase {
 
 struct FDataflowRadialGradientFloatSamplerNode : public FDataflowNode {
     FDataflowFloatSampler Sampler;
-    FDataflowRadialGradientFloatSampler Gradient;
+    FDataflowRadialGradientFloatSampler gradient;
 };
 
 struct FDataflowRandomFloatSampler : public FDataflowFloatSamplerBase {
@@ -60968,12 +60968,15 @@ class UAsyncMeshBuilder : public USceneComponent {
     TArray<UStaticMeshComponent*> MeshComponents;
     TArray<UStaticMesh*> BuildingMeshes;
     TArray<UStaticMesh*> BuiltMeshes;
+    TArray<UStaticMesh*> DiscardedMeshes;
+    TArray<UStaticMesh*> DestroyedMeshes;
 };
 
 struct FAsyncMeshBuilderMeshConfig {
     int32_t NumberOfUVChannels;
     UMaterialInterface* Material;
     bool bVisible;
+    bool bCastShadow;
 };
 
 class UCustomBoundsMeshComponent : public UStaticMeshComponent {
@@ -61050,6 +61053,7 @@ struct FGridInstaMesh {
     EGridInstaMeshShadow Shadow;
     bool bAntiZFighting;
     bool bHierarchical;
+    bool bKeepEmptyLocations;
     EGridInstaMeshVisibility Visibility;
     bool bLightingChannel1;
     bool bLightingChannel2;
@@ -72911,130 +72915,6 @@ class INNERuntimeNPU : public UInterface {
 class INNERuntimeRDG : public UInterface {
 };
 
-enum class EDenoiserRuntimeType {
-    CPU = 0,
-    GPU = 1,
-    RDG = 2,
-    EDenoiserRuntimeType_MAX = 3,
-};
-
-enum class EInputResourceName {
-    Color = 0,
-    Albedo = 1,
-    Normal = 2,
-    Output = 3,
-    EInputResourceName_MAX = 4,
-};
-
-enum class EOutputResourceName {
-    Output = 0,
-    EOutputResourceName_MAX = 1,
-};
-
-enum class EResourceName {
-    Color = 0,
-    Albedo = 1,
-    Normal = 2,
-    Flow = 3,
-    Output = 4,
-    EResourceName_MAX = 5,
-};
-
-enum class ETemporalInputResourceName {
-    Color = 0,
-    Albedo = 1,
-    Normal = 2,
-    Flow = 3,
-    Output = 4,
-    ETemporalInputResourceName_MAX = 5,
-};
-
-enum class ETemporalOutputResourceName {
-    Output = 0,
-    ETemporalOutputResourceName_MAX = 1,
-};
-
-class UNNEDenoiserAsset : public UDataAsset {
-    TSoftObjectPtr<UNNEModelData> ModelData;
-    TSoftObjectPtr<UDataTable> InputMapping;
-    TSoftObjectPtr<UDataTable> OutputMapping;
-    FTilingConfig TilingConfig;
-};
-
-struct FNNEDenoiserBaseMappingData : public FTableRowBase {
-    int32_t TensorIndex;
-    int32_t TensorChannel;
-    int32_t ResourceChannel;
-};
-
-struct FNNEDenoiserInputMappingData : public FNNEDenoiserBaseMappingData {
-    EInputResourceName Resource;
-};
-
-struct FNNEDenoiserOutputMappingData : public FNNEDenoiserBaseMappingData {
-    EOutputResourceName Resource;
-};
-
-class UNNEDenoiserSettings : public UDeveloperSettingsBackedByCVars {
-    TSoftObjectPtr<UNNEDenoiserAsset> DenoiserAsset;
-    int32_t MaximumTileSizeOverride;
-    uint8_t RuntimeType;
-    FString RuntimeName;
-};
-
-class UNNEDenoiserTemporalAsset : public UDataAsset {
-    TSoftObjectPtr<UNNEModelData> ModelData;
-    TSoftObjectPtr<UDataTable> InputMapping;
-    TSoftObjectPtr<UDataTable> OutputMapping;
-    FTilingConfig TilingConfig;
-};
-
-struct FNNEDenoiserTemporalInputMappingData : public FNNEDenoiserBaseMappingData {
-    ETemporalInputResourceName Resource;
-    int32_t FrameIndex;
-};
-
-struct FNNEDenoiserTemporalOutputMappingData : public FNNEDenoiserBaseMappingData {
-    ETemporalOutputResourceName Resource;
-};
-
-struct FTilingConfig {
-    int32_t Alignment;
-    int32_t Overlap;
-    int32_t MaxSize;
-    int32_t MinSize;
-};
-
-enum class EExecutionMode {
-    SEQUENTIAL = 0,
-    PARALLEL = 1,
-    EExecutionMode_MAX = 2,
-};
-
-class UNNERuntimeORTCpu : public UObject {
-};
-
-class UNNERuntimeORTDmlProxy : public UObject {
-};
-
-class UNNERuntimeORTDml_GPU : public UNNERuntimeORTDmlProxy {
-};
-
-class UNNERuntimeORTDml_GPU_RDG : public UNNERuntimeORTDmlProxy {
-};
-
-class UNNERuntimeORTSettings : public UDeveloperSettings {
-    FThreadingOptions EditorThreadingOptions;
-    FThreadingOptions GameThreadingOptions;
-};
-
-struct FThreadingOptions {
-    bool bUseGlobalThreadPool;
-    int32_t IntraOpNumThreads;
-    int32_t InterOpNumThreads;
-    uint8_t ExecutionMode;
-};
-
 class UGlobalNamingTokens : public UNamingTokens {
 };
 
@@ -73843,6 +73723,7 @@ struct FOceanConfig {
     TArray<FOceanDesignPlan> procGenPlans;
     int32_t goalPoiCount;
     bool doProcGen;
+    int32_t simRandSeed;
     bool startHidden;
     FOceanVision visionConfig;
     FString bannedIslandName;
@@ -89989,6 +89870,7 @@ class UAgentSelector : public UArcoWidgetBase {
     FName m_guildFilter;
     FName m_teacherGuild;
     EAgentEducation m_educationFilter;
+    FName m_traitFilter;
     bool m_student;
     EAgentSortOrder m_sortOrder;
     TArray<FName> m_workFilter;
@@ -90001,6 +89883,7 @@ class UAgentSelector : public UArcoWidgetBase {
     FAgentSelectorState CalcState();
     void EducationFilterUpdated();
     int32_t GetDefaultAgentForSlot(FName preferredGuild);
+    TArray<FName> GetTraitFilterOptions() const;
     void GuildFilterUpdated();
     void SetEducationFilter(EAgentEducation education);
     void SetFilter(EAgentFilter Filter, EAgentSortOrder SortOrder);
@@ -90009,7 +89892,9 @@ class UAgentSelector : public UArcoWidgetBase {
     void SetShowAgentUnassignerOption(bool Show, int32_t associatedAgentId);
     void SetStudentSlot(bool bStudent);
     void SetTeacherGuild(FName guild);
+    void SetTraitFilter(FName trait);
     void SetWorkFilter(const TArray<FName>& work, FName recipe);
+    void TraitFilterUpdated();
 };
 
 struct FAgentSelectorState {
@@ -90331,6 +90216,38 @@ class AArcoCamInterpolator : public AActor {
     AActor* m_endActor;
 };
 
+class UArcoDropdown : public UArcoWidgetBase {
+    UMenuAnchor* dropdownAnchor;
+    UButton* dropdownButton;
+    UClass* m_listClass;
+    UClass* m_rowClass;
+    FMulticastInlineDelegate OnOpening;
+    FMulticastInlineDelegate OnOptionPicked;
+    UArcoDropdownList* m_list;
+
+    void Close();
+    FName GetSelectedOption() const;
+    bool IsOpen() const;
+    void Open();
+    void PickOption(FName Option);
+    void SetOptions(const TArray<FName>& Options);
+    void SetSelectedOption(FName Option);
+    UUserWidget* _getListWidget();
+    void _onDropdownButtonClicked();
+};
+
+class UArcoDropdownList : public UArcoWidgetBase {
+    UPanelWidget* rowContainer;
+};
+
+class UArcoDropdownRow : public UArcoWidgetBase {
+    UButton* rowButton;
+
+    FName GetOption() const;
+    void ShowOption(FName Option, bool IsSelected);
+    void _onRowClicked();
+};
+
 class AArcoFreeCamPawn : public APawn {
     UCameraComponent* m_camera;
     FVector m_desiredPos;
@@ -90555,6 +90472,9 @@ struct FArcoScenario {
     FResourceCollection startingResources;
 };
 
+class UArcoSmokeTest : public UGameInstanceSubsystem {
+};
+
 struct FArcoSystemConfig {
     FAimSystemConfig aimConfig;
     FNavySystemConfig navyConfig;
@@ -90587,6 +90507,7 @@ class AArcoSystems : public AActor {
     UClass* m_scaffoldClass;
     AScaffoldRenderer* m_scaffoldRenderer;
     ALadderRenderer* m_ladderRenderer;
+    ULadderSystem* m_ladderSystem;
     AGridActorInstanceRenderer* m_gridActorInstanceRenderer;
     UClass* m_reservedTileVizClass;
     AReservedTileViz* m_reservedTileViz;
@@ -90605,6 +90526,7 @@ class AArcoSystems : public AActor {
     UJobSystem* m_jobSystem;
     UClass* m_giftPoolCalculatorClass;
     UGiftPools* m_giftPoolCalculator;
+    UComputerPlayerSystem* m_computerPlayer;
     FTiledTerrainData m_terrain;
     UClass* m_tiledTerrainClass;
     UClass* m_tiledTerrainConfigMule;
@@ -90697,6 +90619,7 @@ class AArcoSystems : public AActor {
     float GetCycleTimeForTier(int32_t tier) const;
     int32_t GetDaysUntilTaxDay() const;
     float GetDebtMultiplier() const;
+    FDockedShipAutoSendInfo GetDockedShipAutoSendInfo() const;
     FVector GetDockingPosForMainDock() const;
     FTimelineEventDef GetEventLiveData(int32_t eventId);
     FGlobalRepairsData GetGlobalRepairsData() const;
@@ -90714,6 +90637,7 @@ class AArcoSystems : public AActor {
     int32_t GetResourceValue(FName Resource, EResourceValueContext Context) const;
     double GetSessionPlaySeconds();
     FDiplomaticStandingSummary GetStandingInfo();
+    FTaxBillEstimate GetTaxBillEstimate() const;
     int32_t GetTotalDebt() const;
     double GetTotalPlaySeconds();
     double GetUnixTimestamp();
@@ -90847,8 +90771,7 @@ class IAttachableUpgradeReceiver : public UInterface {
 };
 
 struct FAutoExportResourceCfg {
-    bool Enabled;
-    int32_t minHold;
+    int32_t requested;
 };
 
 struct FAutoExportState {
@@ -90963,12 +90886,13 @@ class ABulldozeTool : public AActor {
     UStaticMesh* m_arrowMesh_oneDir;
     UStaticMeshComponent* m_arrowViz;
     TArray<AGridActor*> m_gridActorsUnderDrag;
-    TArray<AGridActor*> m_linkedGridActorsUnderDrag;
+    TArray<AActor*> m_decorativesUnderDrag;
     UStaticMeshComponent* m_bulldozeMesh;
     UWidgetComponent* m_bulldozeUiWidget;
     UContextualHoverWidgetComponent* m_buildingDetailsHoverWidget;
     float m_requiredHoldTime_large;
     float m_requiredHoldTime_small;
+    TArray<UStaticMeshComponent*> m_ladderHighlightMeshes;
 
     FVector GetCursorPos() const;
 };
@@ -91080,6 +91004,9 @@ struct FCombinedStatsForDay {
 };
 
 class ICommonPlayerToolInterface : public UInterface {
+};
+
+class UComputerPlayerSystem : public UObject {
 };
 
 struct FConstructionDetailsState {
@@ -91356,6 +91283,9 @@ class UDecorativeSlot : public USceneComponent {
 class ADecorativeSlotTool : public AActor {
     UChildActorComponent* m_previewComponent;
     UStaticMeshComponent* m_quadrantWedge;
+    UStaticMeshComponent* m_dragAxisArrow;
+    TArray<AActor*> m_dragPreviewActors;
+    UWidgetComponent* m_placementUiWidget;
 };
 
 class UDefensiveTower : public UActorComponent {
@@ -91493,6 +91423,16 @@ enum class DirectionEnum {
     DirectionEnum_MAX = 7,
 };
 
+struct FDockAutoExport_UiState {
+    bool Enabled;
+    int32_t percentThreshold;
+    bool anyResourcesRequested;
+    int32_t requestedValue;
+    int32_t storedValue;
+    FResourceCollection stockpiledAtDock;
+    int32_t stockpiledAtDockValue;
+};
+
 struct FDockableShipData {
     FShipData_debugTiming debugTimingInfo;
     int32_t shipId;
@@ -91549,6 +91489,16 @@ class UDockedBoatPanel_SupplyTrader : public UArcoWidgetBase {
 class UDockedBoatPanel_Taxes : public UArcoWidgetBase {
 
     FTaxShip_UiState CalcState();
+};
+
+struct FDockedShipAutoSendInfo {
+    EShipType shipType;
+    bool autoSendEnabled;
+    int32_t percentThreshold;
+    int32_t loadedValue;
+    int32_t targetValue;
+    float loadProgress;
+    float secondsUntilAutoSend;
 };
 
 struct FDoorway {
@@ -91788,7 +91738,8 @@ enum class EArco_PlayerAction {
     COPY_SETTINGS = 33,
     PASTE_SETTINGS = 34,
     NAVAL_SHORTCUT = 35,
-    EArco_MAX = 36,
+    CONTEXTUAL_ACTION = 36,
+    EArco_MAX = 37,
 };
 
 enum class EArco_PlayerVerb {
@@ -91829,8 +91780,9 @@ enum class EArco_PlayerVerb {
     ISSUE_ORDER = 34,
     NAVAL_TOGGLE_TO_NAVAL = 35,
     NAVAL_TOGGLE_TO_COLONY = 36,
-    INVALID = 37,
-    EArco_MAX = 38,
+    PICKUP_AGENT = 37,
+    INVALID = 38,
+    EArco_MAX = 39,
 };
 
 enum class EAudioSoundPhase {
@@ -92270,7 +92222,7 @@ enum class EPathableNodeFlag {
     IGNORE_BLOCKING_CONSTRUCTION = 4096,
     BLOCK_TO_MINE = 8192,
     SUPPLIABLE = 16384,
-    UNUSED_15 = 32768,
+    LADDER_SITE = 32768,
     EPathableNodeFlag_MAX = 32769,
 };
 
@@ -92558,10 +92510,10 @@ enum class ESimAction {
     TOGGLE_PRECONSTRUCTION_DISABLE = 131,
     SET_PRODUCTION_LIMIT = 132,
     FORCE_TRAIN_NETWORK_UPDATES = 133,
-    EXPORTS_SET_RESOURCE_ENABLED = 134,
-    EXPORTS_SET_RESOURCE_MINHOLD = 135,
+    UNUSED_134 = 134,
+    UNUSED_135 = 135,
     EXPORTS_SET_PERCENT_PAY = 136,
-    EXPORTS_SET_ENABLE_FOR_SHIPTYPE = 137,
+    UNUSED_137 = 137,
     SET_WORK_RADIUS = 138,
     TOGGLE_PRECONSTRUCTION_DISABLE_GLOBAL = 139,
     REORDER_TRACKED_RESOURCE = 140,
@@ -92581,8 +92533,15 @@ enum class ESimAction {
     NAUTICALRAFT_SET_DEPARTURE_DELAY = 154,
     NAUTICALRAFT_SET_MAX_WAIT = 155,
     NAUTICALRAFT_DEPART_NOW = 156,
-    FINAL_ACTION = 157,
-    ESimAction_MAX = 158,
+    WORKDOCK_DISPATCH_SHIP = 157,
+    NAUTICALRAFT_REDIRECT_FERRY = 158,
+    RAZE_LADDER_SIDE = 159,
+    EXPORTS_SET_RESOURCE_REQUEST = 160,
+    EXPORTS_RETURN_STAGED = 161,
+    EXPORTS_MOVE_PRIORITY = 162,
+    SET_SCHOOL_EDUCATION = 163,
+    FINAL_ACTION = 164,
+    ESimAction_MAX = 165,
 };
 
 enum class ESimPauseReason {
@@ -92593,7 +92552,8 @@ enum class ESimPauseReason {
     PAUSE_BLOCKING_EVENT = 4,
     PAUSE_RADIAL_MENU = 5,
     PAUSE_DOCK_MOVE = 6,
-    PAUSE_MAX = 7,
+    PAUSE_SHIP_CONFIG_ACTION = 7,
+    PAUSE_MAX = 8,
 };
 
 enum class EStatResourceFlowType {
@@ -92958,6 +92918,7 @@ class UFactionDock : public UActorComponent {
     int32_t m_maxStanding;
     bool m_dangerOfLosing;
     EDockState m_dockState;
+    UStockpileRender* m_stockpileVisual;
     UClass* m_widgetDef;
     UWidgetComponent* m_hintWidget;
     FMulticastInlineDelegate TickDockVisuals;
@@ -92990,6 +92951,11 @@ struct FFactionDock_UiState {
     bool canAffordMove;
     bool showMoveOption;
     bool blockedTravel;
+    FDockAutoExport_UiState autoExport_tax;
+    FDockAutoExport_UiState autoExport_pirate;
+    FResourceCollection autoExportInbound;
+    int32_t autoExportInboundValue;
+    int32_t lastTaxBill;
 };
 
 struct FFactionExportSummary_Hud {
@@ -93128,8 +93094,6 @@ class UFarmland : public UActorComponent {
     FFarmingAgent m_farmingAgent;
     float m_earlyHarvestWeightPenalty;
     bool reservedByAgent;
-
-    void HandleArcoPhaseBegan(EDayPhase newPhase);
 };
 
 struct FFertilityInfo {
@@ -93935,6 +93899,7 @@ class ULadder : public UActorComponent {
     FLadderData m_data;
     TArray<FTransform> m_ladderTransforms;
     int32_t nValidLadders;
+    uint8_t m_shownFaces;
 };
 
 struct FLadderData {
@@ -93953,6 +93918,9 @@ struct FLadderMeshCategory {
 
 class ALadderRenderer : public AActor {
     TArray<FLadderMeshCategory> m_categories;
+};
+
+class ULadderSystem : public UObject {
 };
 
 struct FLastHappinessEffect {
@@ -94464,6 +94432,7 @@ struct FNavySystemConfig {
     int32_t playerIslandSize;
     float distancePastColonyEdgeForNauticalCombat;
     FString playerIslandName;
+    int32_t rngSeed;
     UClass* configMule;
 };
 
@@ -95732,6 +95701,7 @@ class UResourceBuilding : public UActorComponent {
     bool m_aimCanPush;
     bool m_canExternalMachinesPull;
     bool m_whiteListReceiving;
+    bool m_whitelistDefaultRejectAll;
     bool m_useSharedCapacity;
     TSet<FName> m_whitelist;
     bool m_allowPlayerAccess;
@@ -96008,6 +95978,8 @@ struct FSeasonSummary {
 };
 
 class ASelectTool : public AActor {
+    UClass* m_shipCommandMenuClass;
+    UWidgetComponent* m_shipCommandMenuWidget;
     UClass* m_assignableDockWidgetClass;
     UClass* m_workshipAssignmentOverlayClass;
     UClass* m_raftRouteOverlayClass;
@@ -96068,6 +96040,26 @@ struct FSettings_ModTab {
     TArray<FOptionChoice> optionChoices;
 };
 
+struct FShipCommandMenuEntry {
+    FName commandId;
+    FName labelKey;
+    FName iconKey;
+    bool Enabled;
+    FName disabledReasonKey;
+    int32_t targetGridActorId;
+    int32_t approvalCost;
+};
+
+struct FShipCommandMenuUiData {
+    FName shipId;
+    TArray<FShipCommandMenuEntry> Entries;
+};
+
+class UShipCommandMenuWidget : public UArcoWidgetBase {
+
+    void SetData(const FShipCommandMenuUiData Data);
+};
+
 struct FShipData_Colonists {
     TArray<FPurchaseableColonist> arrivalsData;
     int32_t extraCostPerAcceptance;
@@ -96101,10 +96093,10 @@ struct FShipData_debugTiming {
 };
 
 struct FShipExportCfg {
-    bool Enabled;
     int32_t percentThreshold;
     int32_t maxThreshold;
     TMap<FName, FAutoExportResourceCfg> m_perResourceConfigs;
+    TArray<FName> m_priorityOrder;
 };
 
 struct FShipScheduleConfig {
@@ -96163,6 +96155,7 @@ struct FSimAction {
     float FloatValue;
     FString StringValue;
     bool boolValue;
+    uint8_t ownerId;
 };
 
 struct FSimFrame {
@@ -96473,6 +96466,15 @@ struct FTax {
     int32_t pendingDelta;
 };
 
+struct FTaxBillEstimate {
+    int32_t estimate;
+    int32_t plannedPayment;
+    int32_t currentDebt;
+    int32_t projectedIncrease;
+    int32_t daysUntilTaxShip;
+    int32_t lastTaxBill;
+};
+
 struct FTaxExportResult : public FTableRowBase {
     float percentForReward;
     int32_t trustDelta;
@@ -96494,14 +96496,56 @@ class UTaxOffice : public UActorComponent {
     bool FireSpecificWorker(APrototype_Agent* Agent);
 };
 
+struct FTaxOfficeExportRow {
+    FName Resource;
+    int32_t inStorage;
+    int32_t requested;
+    int32_t unitValue;
+    int32_t requestedValue;
+    int32_t atDock;
+    int32_t inbound;
+    int32_t returnable;
+    bool requestExceedsSupply;
+};
+
+class UTaxOfficeExportRowDragOp : public UDragDropOperation {
+    FName Resource;
+    EShipType shipType;
+};
+
 struct FTaxOfficeUiState {
     FWorkerAssignmentData agentsInfo;
     FStockpileLinkerUiStruct linkerInfo;
     bool controlsUnlocked;
     FAutoExportState taxExportsState;
     TMap<FName, int32_t> liveCounts;
-    bool anyTaxResourcesEnabled;
-    bool anyPirateResourcesEnabled;
+    bool anyTaxResourcesRequested;
+    bool anyPirateResourcesRequested;
+    bool pirateAutoExportEnabled;
+    TArray<FTaxOfficeExportRow> rows_tax;
+    TArray<FTaxOfficeExportRow> rows_pirate;
+    TMap<FName, int32_t> exportValues;
+    TMap<FName, int32_t> requestedRowValues_tax;
+    TMap<FName, int32_t> requestedRowValues_pirate;
+    int32_t requestedValue_tax;
+    int32_t requestedValue_pirate;
+    FTaxBillEstimate taxEstimate;
+    bool autoExportStaffed;
+    int32_t lastTaxBill;
+    int32_t currentTaxDebt;
+    int32_t nextPirateDemand;
+    TArray<FTax> debts;
+    int32_t clawsStanding;
+    int32_t clawsStandingMax;
+    FResourceCollection stagedResources_tax;
+    FResourceCollection stagedResources_pirate;
+    int32_t totalStaged;
+    FResourceCollection returnableFromDock;
+    FResourceCollection inboundResources;
+    int32_t totalInbound;
+    int32_t stagedValue_tax;
+    int32_t stagedValue_pirate;
+    int32_t inboundValue;
 };
 
 struct FTaxShip_UiState {
@@ -96526,6 +96570,11 @@ struct FTaxShip_UiState {
     bool autopayEnabled;
     int32_t autopayPercentGoal;
     FResourceCollection inboundResources;
+    FResourceCollection stockpiledAtDock;
+    int32_t stockpiledAtDockValue;
+    bool autoDeparting;
+    float secondsUntilAutoDepart;
+    bool autoPayPaused;
 };
 
 struct FTaxState {
@@ -96987,6 +97036,7 @@ struct FTraversal {
     FDir entryDir;
     FIntVector exitCell;
     FDir exitDir;
+    bool viaPlannedLadder;
 };
 
 struct FTriageBedState_UI {
@@ -97326,7 +97376,22 @@ class UUI_TaxOffice : public UArcoView {
     bool m_stockpileSelectorOpen;
 
     FTaxOfficeUiState CalcState();
+    void CycleTabs(bool tabRight);
     void EndStockpileSelection();
+};
+
+class UUI_TaxOfficeExportRow : public UArcoWidgetBase {
+    FTaxOfficeExportRow m_exportRow;
+    EShipType m_shipType;
+    UWidget* DragGrip;
+
+    UWidget* CreateDragVisual();
+    void HideDropIndicator();
+    void MoveExportRow(bool Up);
+    void OnExportRowSet();
+    void OnRowDragChanged(bool isDragging);
+    void SetExportRow(const FTaxOfficeExportRow& Row, EShipType shipType);
+    void ShowDropIndicator(bool below);
 };
 
 class UUI_TechTreeView : public UArcoView {
@@ -97797,7 +97862,7 @@ class AWorldTime : public AActor {
     AActor* m_weatherRef;
     FName m_currentWeather;
     TArray<FName> m_weatherForecast;
-    float m_totalWorldTimeElapsed;
+    double m_totalWorldTimeElapsed;
     TArray<FDayEventData> m_dayEvents;
     float m_basePhaseChangeAnimSpan;
 
@@ -99140,7 +99205,7 @@ struct FRigVMFunction_AccumulateFloatAdd : public FRigVMFunction_AccumulateBase 
 };
 
 struct FRigVMFunction_AccumulateFloatLerp : public FRigVMFunction_AccumulateBase {
-    float TargetValue;
+    float targetValue;
     float InitialValue;
     float Blend;
     bool bIntegrateDeltaTime;
@@ -99168,7 +99233,7 @@ struct FRigVMFunction_AccumulateFloatRange : public FRigVMFunction_AccumulateBas
 };
 
 struct FRigVMFunction_AccumulateQuatLerp : public FRigVMFunction_AccumulateBase {
-    FQuat TargetValue;
+    FQuat targetValue;
     FQuat InitialValue;
     float Blend;
     bool bIntegrateDeltaTime;
@@ -99188,7 +99253,7 @@ struct FRigVMFunction_AccumulateQuatMul : public FRigVMFunction_AccumulateBase {
 };
 
 struct FRigVMFunction_AccumulateTransformLerp : public FRigVMFunction_AccumulateBase {
-    FTransform TargetValue;
+    FTransform targetValue;
     FTransform InitialValue;
     float Blend;
     bool bIntegrateDeltaTime;
@@ -99217,7 +99282,7 @@ struct FRigVMFunction_AccumulateVectorAdd : public FRigVMFunction_AccumulateBase
 };
 
 struct FRigVMFunction_AccumulateVectorLerp : public FRigVMFunction_AccumulateBase {
-    FVector TargetValue;
+    FVector targetValue;
     FVector InitialValue;
     float Blend;
     bool bIntegrateDeltaTime;
@@ -106410,6 +106475,7 @@ struct FBlockTerrainSlice {
     FGridInstaMesh CliffMeshes;
     FGridInstaMesh SliceMeshes;
     FGridInstaMesh CoverMeshes;
+    UAsyncMeshBuilder* FullCoverBuilder;
     FGridInstaMesh OreFullMeshes;
     FGridInstaMesh OreSliceMeshes;
     FGridInstaMesh OreTopMeshes;
