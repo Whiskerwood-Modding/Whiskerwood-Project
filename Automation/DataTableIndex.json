@@ -1,8 +1,8 @@
 {
-  "ExportDate": "2026-10-04 17:46:02",
-  "TotalDataTables": 45,
+  "ExportDate": "2026-10-18 20:47:57",
+  "TotalDataTables": 44,
   "TotalDataAssets": 19,
-  "TotalUniqueValues": 9923,
+  "TotalUniqueValues": 9703,
   "DataTables": {
     "Whiskerwood/Content/Data/AchievementsTables": {
       "ACH.010.EMBARK": {
@@ -3759,6 +3759,9 @@
       "assignMines": {
         "Sound": "MetaSoundSource'Whiskerwood/Content/Audio/SFX/Characters/MS_character_harvest_stone_ui.MS_character_harvest_stone_ui'"
       },
+      "autopaycomplete": {
+        "Sound": "SoundCue'Whiskerwood/Content/Audio/misc/UltimateSfxLib/Pirate_Sounds_Pro/Closing_chest/nautical_buy.nautical_buy'"
+      },
       "boatAutoDeparted": {
         "Sound": "SoundCue'Whiskerwood/Content/Audio/misc/wavs/DropChains.DropChains'"
       },
@@ -4110,6 +4113,9 @@
       "setWorkRange": {
         "Sound": "SoundCue'Whiskerwood/Content/Audio/InterfaceAndItemSounds/Cues/DullClick.DullClick'"
       },
+      "shiftPriority": {
+        "Sound": "SoundCue'Whiskerwood/Content/Audio/misc/UltimateSfxLib/UI_Clicks/Click_sound_40_Cue.Click_sound_40_Cue'"
+      },
       "shipSplashUi": {
         "Sound": "SoundCue'Whiskerwood/Content/Audio/misc/UltimateSfxLib/Pirate_Sounds_Pro/Cannon_hitting_water/Drydock_splash.Drydock_splash'"
       },
@@ -4136,6 +4142,9 @@
       },
       "snip": {
         "Sound": "SoundCue'Whiskerwood/Content/Audio/Commission_Sounds/cues/Com_EnableSliceView_Cue.Com_EnableSliceView_Cue'"
+      },
+      "spendApprovalTick": {
+        "Sound": "SoundCue'Whiskerwood/Content/Audio/Commission_Sounds/cues/SpendInfluence_Cue.SpendInfluence_Cue'"
       },
       "startDrag": {
         "Sound": "SoundCue'Whiskerwood/Content/Audio/Commission_Sounds/cues/Com_BeginDrag_Cue.Com_BeginDrag_Cue'"
@@ -4815,6 +4824,10 @@
       "trading": {
         "defaultColor": "000000 (FColor)",
         "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-handshake-52.icons8-handshake-52'"
+      },
+      "turnAround": {
+        "defaultColor": "FFFFFF (FColor)",
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/BoardGameIcons/arrow_counterclockwise.arrow_counterclockwise'"
       },
       "water": {
         "defaultColor": "000000 (FColor)",
@@ -15814,6 +15827,31 @@
         "unlockedByDefault": "False",
         "useGridActorForLoc": "True"
       },
+      "unlock.taxoffice": {
+        "Description": "",
+        "IsHidden": "False",
+        "Title": "",
+        "associatedGridActor": "taxoffice",
+        "associatedRecipe": "None",
+        "childUnlocks": [],
+        "demoLocked": "True",
+        "giftPool": "0",
+        "giftable": "False",
+        "giftableInDemo": "False",
+        "isQuestRelated": "False",
+        "prerequisiteUnlocks": [
+          "unlock.townhall"
+        ],
+        "researchTier": "3",
+        "researchable": "True",
+        "scienceCost": "144",
+        "secretPrerequisite": "None",
+        "showMailEvenAsChildUnlock": "False",
+        "subCategory": "techCategory.housing",
+        "tierSortOrder": "30",
+        "unlockedByDefault": "False",
+        "useGridActorForLoc": "True"
+      },
       "unlock.tea": {
         "Description": "unlock.tea.desc",
         "IsHidden": "False",
@@ -17197,7 +17235,8 @@
         "TooltipTags": [
           "tag.guildtrait.common",
           "tag.guildtrait.insulated",
-          "tag.guildtrait.hiker"
+          "tag.guildtrait.hiker",
+          "tag.guildtrait.shipBonus"
         ],
         "agentScale": "X=0.700 Y=0.700 Z=0.700 (FVector)",
         "associatedModifier": "None",
@@ -26175,6 +26214,50 @@
         "useCustomIcon": "False",
         "workerColor": "FFFFFF (FColor)"
       },
+      "taxoffice": {
+        "Description": "building.taxoffice.desc",
+        "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/TaxOffice.TaxOffice_C'",
+        "Icon": "0",
+        "Quality": "0",
+        "SupportedImprovements": [],
+        "TooltipTags": [],
+        "Variants": [],
+        "asHouseTier": "0",
+        "asIndustryDef": "None",
+        "catalyst": "None",
+        "constructionTime": "233",
+        "cost1": "planks",
+        "cost2": "bricks",
+        "cost3": "None",
+        "cost4": "None",
+        "ct1": "21",
+        "ct2": "21",
+        "ct3": "0",
+        "ct4": "0",
+        "customBuildCue": "0",
+        "decorType": "None",
+        "detailCue": "0",
+        "guildSpecialty": "None",
+        "hardLabor": "False",
+        "industrialLabor": "False",
+        "isDraggableWall": "False",
+        "limitOne": "False",
+        "maxAgents_contextual": "0",
+        "maxHealth": "1",
+        "minMaintenanceInterval": "0",
+        "norefund": "False",
+        "randomlyRotate": "False",
+        "refundRule": "standard",
+        "requiresConstruction": "True",
+        "stringKey": "building.taxoffice",
+        "structureType": "Other",
+        "supportedIndustryRecipes": [],
+        "toolbarGroup": "civic",
+        "toolbarGroupSort": "30",
+        "unlockPrerequisite": "unlock.taxoffice",
+        "useCustomIcon": "False",
+        "workerColor": "FFFFFF (FColor)"
+      },
       "teaprocessor": {
         "Description": "building.teaprocessor.desc",
         "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/industries/Teaprocessor.Teaprocessor_C'",
@@ -28040,6 +28123,9 @@
       "tailor": {
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/tailor.tailor'"
       },
+      "taxoffice": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/taxoffice.taxoffice'"
+      },
       "teahouse": {
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/teahouse.teahouse'"
       },
@@ -29673,6 +29759,11 @@
         "TintColor": "FFFFFF (FColor)",
         "detailString": "hoverNotif.noValidHarvestable"
       },
+      "noValidLogisticsDropoff": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-logout-rounded-100.icons8-logout-rounded-100'",
+        "TintColor": "D9C6C7 (FColor)",
+        "detailString": "hovernotif.noValidLogisticsDropoff"
+      },
       "noValidStorage": {
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-warehouse-96.icons8-warehouse-96'",
         "TintColor": "FFFFFF (FColor)",
@@ -30067,6 +30158,12 @@
       },
       "approvalcost_shipdeparture": {
         "FloatValue": "20"
+      },
+      "approvalcost_shipdeparture_explorermult": {
+        "FloatValue": "0.5"
+      },
+      "approvalcost_shipdeparture_perslot": {
+        "FloatValue": "6"
       },
       "approvalcost_tweezers": {
         "FloatValue": "1"
@@ -30678,6 +30775,9 @@
       "action.closeValve": {
         "Value": "Close Valve"
       },
+      "action.controlShipOnNavalMap": {
+        "Value": "Control on Naval Map"
+      },
       "action.copyToAllTowers": {
         "Value": "Shared ammunition orders"
       },
@@ -30819,6 +30919,9 @@
       "action.selectEducation.desc": {
         "Value": "Select the skill that students will learn. Requires a teacher who has already attained that level of education."
       },
+      "action.selectHomeDock": {
+        "Value": "Select Home Dock"
+      },
       "action.sendToSea": {
         "Value": "Send to sea"
       },
@@ -30845,6 +30948,9 @@
       },
       "action.toggleResource.desc": {
         "Value": "Workers will only gather checked resources."
+      },
+      "action.turnFerryAround": {
+        "Value": "Turn ferry around"
       },
       "action.turninquest": {
         "Value": "Complete Quest"
@@ -30995,6 +31101,9 @@
       },
       "approval.tutorial.title": {
         "Value": "Using Approval"
+      },
+      "autopay.notif": {
+        "Value": "Tax Office could not pay desired taxes"
       },
       "autosave.1": {
         "Value": "1 Minute"
@@ -31818,6 +31927,12 @@
       "building.tailor.desc": {
         "Value": "Sews insulated cloaks and other refined textiles."
       },
+      "building.taxoffice": {
+        "Value": "Tax Office"
+      },
+      "building.taxoffice.desc": {
+        "Value": "Allows configuring automated tax payments. Workers will deliver desired resources to the dock and load the tax ship on arrival."
+      },
       "building.teahouse": {
         "Value": "Teahouse"
       },
@@ -32517,6 +32632,9 @@
       "dock.departureChecklist": {
         "Value": "Departure Checklist"
       },
+      "dock.dockResourcesNeedStored": {
+        "Value": "Awaiting Storage"
+      },
       "dock.missionPlan": {
         "Value": "Mission"
       },
@@ -32542,7 +32660,7 @@
         "Value": "Lifeboat is returning with survivors"
       },
       "dock.shipNeedsRepair": {
-        "Value": "Needs Repair"
+        "Value": "Repairs Needed"
       },
       "dock.shipPreparing": {
         "Value": "Awaiting Supplies"
@@ -32997,6 +33115,9 @@
       "error.underwater": {
         "Value": "Underwater!"
       },
+      "event.damageReport": {
+        "Value": "Damage Report"
+      },
       "event.dockedShip": {
         "Value": "Docked Ship"
       },
@@ -33183,8 +33304,17 @@
       "ferry.shipsAssigned": {
         "Value": "Ships Assigned"
       },
+      "ferrydock.action.departImmediately": {
+        "Value": "Depart Immediately"
+      },
       "ferrydock.hint": {
         "Value": "Ships assigned to Ferry Docks cannot be manually controlled"
+      },
+      "ferrydock.setting.maxWaitTime": {
+        "Value": "Wait for more whiskers (seconds)"
+      },
+      "ferrydock.setting.maxWaitTime.desc": {
+        "Value": "How long to wait for more Whiskers after a Whisker boards"
       },
       "field.removeRocks": {
         "Value": "Remove Rocks"
@@ -33392,6 +33522,9 @@
       },
       "hovernotif.noConnectedStorage": {
         "Value": "No adjacent storage"
+      },
+      "hovernotif.noValidLogisticsDropoff": {
+        "Value": "Output has no valid assigned destination"
       },
       "hovernotif.nofish": {
         "Value": "Low Fish Population"
@@ -33866,6 +33999,9 @@
       },
       "menu.wiki": {
         "Value": "Wiki"
+      },
+      "message.cantReachWork": {
+        "Value": "<0> can't reach <1>!"
       },
       "message.colonyUnderAttack": {
         "Value": "Cannonfire near colony!"
@@ -36003,6 +36139,12 @@
       "setting.attackPirates.desc": {
         "Value": "All defenses will automatically attack pirate ships. Pirates are likely to escalate!"
       },
+      "setting.showStockpile": {
+        "Value": "Render Stockpiles"
+      },
+      "setting.showSupports": {
+        "Value": "Render Building Supports"
+      },
       "setting.workRange": {
         "Value": "Work Radius"
       },
@@ -36185,6 +36327,9 @@
       },
       "settings.keybind.clone": {
         "Value": "Clone"
+      },
+      "settings.keybind.contextualBuildingHoverAction": {
+        "Value": "Contextual Action"
       },
       "settings.keybind.copySettings": {
         "Value": "Copy Settings"
@@ -37101,6 +37246,9 @@
       "tag.guildtrait.reducedwear": {
         "Value": "Slower machinery wear in industries"
       },
+      "tag.guildtrait.shipBonus": {
+        "Value": "Lower approval cost for sailing"
+      },
       "tag.hardlabor": {
         "Value": "Hard Labor"
       },
@@ -37181,6 +37329,42 @@
       },
       "tag.unlockProductionLimits": {
         "Value": "Unlocks Production Limits"
+      },
+      "taxoffice.estimate": {
+        "Value": "Estimate"
+      },
+      "taxoffice.new.autopayDesc": {
+        "Value": "Workers stockpile selected goods at the dock to automatically pay the Tax Ship"
+      },
+      "taxoffice.new.autopayHeader": {
+        "Value": "Tax Ship Auto-Pay"
+      },
+      "taxoffice.new.currentRequest": {
+        "Value": "Requested"
+      },
+      "taxoffice.new.estimatedCost": {
+        "Value": "Required Payment Estimate"
+      },
+      "taxoffice.new.insufficientRequests": {
+        "Value": "Insufficient Requests"
+      },
+      "taxoffice.new.insufficientStockpile": {
+        "Value": "Insufficient Deliveries"
+      },
+      "taxoffice.new.resourcesReady": {
+        "Value": "Ready at Dock"
+      },
+      "taxoffice.notif.automaticPayments": {
+        "Value": "Auto-Pay"
+      },
+      "taxoffice.noworker": {
+        "Value": "Office not staffed"
+      },
+      "taxoffice.off": {
+        "Value": "Off"
+      },
+      "taxoffice.prioritySort": {
+        "Value": "Taxes will be paid from the top of the list first"
       },
       "techCategory.Beauty": {
         "Value": "Beauty"
@@ -37776,6 +37960,9 @@
       "tooltip.requiresTechnology": {
         "Value": "Requires Schematic"
       },
+      "tooltip.shipMaxSpeed": {
+        "Value": "Ship Max Speed"
+      },
       "tooltip.shipStorage": {
         "Value": "Ship Hold"
       },
@@ -38099,6 +38286,9 @@
       },
       "trait.weakknees.desc": {
         "Value": "Strongly dislikes heavy labor and is more likely to get hurt"
+      },
+      "traitFilter.allTraits": {
+        "Value": "Any Trait"
       },
       "triage.ejectPatients": {
         "Value": "Will eject patients"
@@ -38600,6 +38790,12 @@
       },
       "whiskerActivity.service.healing": {
         "Value": "Healing"
+      },
+      "whiskerActivity.taxwork": {
+        "Value": "Filing Taxes"
+      },
+      "whiskerActivity.taxwork.delivery": {
+        "Value": "Delivering Tax Payments"
       },
       "whiskerActivity.terraforming": {
         "Value": "Filling in terrain"
@@ -42313,6 +42509,12 @@
         "iconTint": "CCB47E (FColor)",
         "textTint": "FFFFFF (FColor)"
       },
+      "tag.guildtrait.shipBonus": {
+        "LocKey": "tag.guildtrait.shipBonus",
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-sail-boat-100.icons8-sail-boat-100'",
+        "iconTint": "CCB47E (FColor)",
+        "textTint": "FFFFFF (FColor)"
+      },
       "tag.hardlabor": {
         "LocKey": "tag.hardlabor",
         "iconTexture": "Texture2D'Whiskerwood/Content/ThirdParty/Icon_AssetPacks/ForestIcons/Textures/Tex_ForestIcons_51_t.Tex_ForestIcons_51_t'",
@@ -42617,458 +42819,6 @@
         "terrainWindIntensity": "0.2",
         "terrainWindSpeed": "0.1",
         "udsWeatherPreset": "UDS_Weather_Settings_C'Whiskerwood/Content/ThirdParty/UltraDynamicSky/Blueprints/Weather_Effects/Weather_Presets/Snow.Snow'"
-      }
-    },
-    "Whiskerwood/Content/ThirdParty/Chameleon/DataTables/LOOK_Presets": {
-      "Alienize1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Alienize1.LUT_Alienize1'"
-      },
-      "Alienize2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Alienize2.LUT_Alienize2'"
-      },
-      "Alienize3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Alienize3.LUT_Alienize3'"
-      },
-      "Alienize4": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Alienize4.LUT_Alienize4'"
-      },
-      "Alienize5": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Alienize5.LUT_Alienize5'"
-      },
-      "Alienize6": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Alienize6.LUT_Alienize6'"
-      },
-      "Bloom1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Bloom1.LUT_Bloom1'"
-      },
-      "Bloom2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Bloom2.LUT_Bloom2'"
-      },
-      "Bloom3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Bloom3.LUT_Bloom3'"
-      },
-      "CLayerAqua": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_CLayerAqua.LUT_CLayerAqua'"
-      },
-      "CLayerBlue": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_CLayerBlue.LUT_CLayerBlue'"
-      },
-      "CLayerGreen": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_CLayerGreen.LUT_CLayerGreen'"
-      },
-      "CLayerOrange": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_CLayerOrange.LUT_CLayerOrange'"
-      },
-      "CLayerPurple": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_CLayerPurple.LUT_CLayerPurple'"
-      },
-      "CLayerRed": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_CLayerRed.LUT_CLayerRed'"
-      },
-      "CLayerYellow": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_CLayerYellow.LUT_CLayerYellow'"
-      },
-      "Classic1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic1.LUT_Classic1'"
-      },
-      "Classic10": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic10.LUT_Classic10'"
-      },
-      "Classic11": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic11.LUT_Classic11'"
-      },
-      "Classic12": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic12.LUT_Classic12'"
-      },
-      "Classic13": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic13.LUT_Classic13'"
-      },
-      "Classic14": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic14.LUT_Classic14'"
-      },
-      "Classic2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic2.LUT_Classic2'"
-      },
-      "Classic3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic3.LUT_Classic3'"
-      },
-      "Classic4": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic4.LUT_Classic4'"
-      },
-      "Classic5": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic5.LUT_Classic5'"
-      },
-      "Classic6": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic6.LUT_Classic6'"
-      },
-      "Classic7": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic7.LUT_Classic7'"
-      },
-      "Classic8": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic8.LUT_Classic8'"
-      },
-      "Classic9": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Classic9.LUT_Classic9'"
-      },
-      "Color1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Color1.LUT_Color1'"
-      },
-      "Color2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Color2.LUT_Color2'"
-      },
-      "Color3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Color3.LUT_Color3'"
-      },
-      "Color4": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Color4.LUT_Color4'"
-      },
-      "Color5": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Color5.LUT_Color5'"
-      },
-      "Color6": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Color6.LUT_Color6'"
-      },
-      "Dark1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Dark1.LUT_Dark1'"
-      },
-      "Dark2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Dark2.LUT_Dark2'"
-      },
-      "Dark3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Dark3.LUT_Dark3'"
-      },
-      "Dark4": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Dark4.LUT_Dark4'"
-      },
-      "Dark5": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Dark5.LUT_Dark5'"
-      },
-      "Dark6": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Dark6.LUT_Dark6'"
-      },
-      "Dark7": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Dark7.LUT_Dark7'"
-      },
-      "Dark8": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Dark8.LUT_Dark8'"
-      },
-      "Draw1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Draw1.LUT_Draw1'"
-      },
-      "Draw2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Draw2.LUT_Draw2'"
-      },
-      "Draw3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Draw3.LUT_Draw3'"
-      },
-      "Draw4": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Draw4.LUT_Draw4'"
-      },
-      "Draw5": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Draw5.LUT_Draw5'"
-      },
-      "Draw6": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Draw6.LUT_Draw6'"
-      },
-      "Draw7": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Draw7.LUT_Draw7'"
-      },
-      "Draw8": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Draw8.LUT_Draw8'"
-      },
-      "Draw9": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Draw9.LUT_Draw9'"
-      },
-      "Emulation_3_Strip": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_3_Strip.LUT_U1_Emulation_3_Strip'"
-      },
-      "Emulation_Bleach_Bypass": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Bleach_Bypass.LUT_U1_Emulation_Bleach_Bypass'"
-      },
-      "Emulation_Cineon": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Cineon.LUT_U1_Emulation_Cineon'"
-      },
-      "Emulation_Film2Vid_1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Film2Vid_1.LUT_U1_Emulation_Film2Vid_1'"
-      },
-      "Emulation_Film2Vid_2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Film2Vid_2.LUT_U1_Emulation_Film2Vid_2'"
-      },
-      "Emulation_Fuj_3510_1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Fuj_3510_1.LUT_U1_Emulation_Fuj_3510_1'"
-      },
-      "Emulation_Fuj_3510_2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Fuj_3510_2.LUT_U1_Emulation_Fuj_3510_2'"
-      },
-      "Emulation_Fuj_3510_3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Fuj_3510_3.LUT_U1_Emulation_Fuj_3510_3'"
-      },
-      "Emulation_General_Filmstock": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_General_Filmstock.LUT_U1_Emulation_General_Filmstock'"
-      },
-      "Emulation_JR45": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_JR45.LUT_U1_Emulation_JR45'"
-      },
-      "Emulation_Kodachrome": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Kodachrome.LUT_U1_Emulation_Kodachrome'"
-      },
-      "Emulation_Kodk_2383": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Kodk_2383.LUT_U1_Emulation_Kodk_2383'"
-      },
-      "Emulation_Kodk_2393_1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Kodk_2393_1.LUT_U1_Emulation_Kodk_2393_1'"
-      },
-      "Emulation_Kodk_2393_2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Kodk_2393_2.LUT_U1_Emulation_Kodk_2393_2'"
-      },
-      "Emulation_Kodk_2395_1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Kodk_2395_1.LUT_U1_Emulation_Kodk_2395_1'"
-      },
-      "Emulation_Kodk_2395_2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_Kodk_2395_2.LUT_U1_Emulation_Kodk_2395_2'"
-      },
-      "Emulation_SA5": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_SA5.LUT_U1_Emulation_SA5'"
-      },
-      "Emulation_SA6": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_SA6.LUT_U1_Emulation_SA6'"
-      },
-      "Emulation_SA7_1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_SA7_1.LUT_U1_Emulation_SA7_1'"
-      },
-      "Emulation_SA7_2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_SA7_2.LUT_U1_Emulation_SA7_2'"
-      },
-      "Emulation_SA7_3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_SA7_3.LUT_U1_Emulation_SA7_3'"
-      },
-      "Emulation_SA7_4": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_SA7_4.LUT_U1_Emulation_SA7_4'"
-      },
-      "Emulation_SA8": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_SA8.LUT_U1_Emulation_SA8'"
-      },
-      "Emulation_SA9": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Emulation_SA9.LUT_U1_Emulation_SA9'"
-      },
-      "Enhance1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Enhance1.LUT_Enhance1'"
-      },
-      "Enhance10": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Enhance10.LUT_Enhance10'"
-      },
-      "Enhance2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Enhance2.LUT_Enhance2'"
-      },
-      "Enhance3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Enhance3.LUT_Enhance3'"
-      },
-      "Enhance4": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Enhance4.LUT_Enhance4'"
-      },
-      "Enhance5": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Enhance5.LUT_Enhance5'"
-      },
-      "Enhance6": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Enhance6.LUT_Enhance6'"
-      },
-      "Enhance7": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Enhance7.LUT_Enhance7'"
-      },
-      "Enhance8": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Enhance8.LUT_Enhance8'"
-      },
-      "Enhance9": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Enhance9.LUT_Enhance9'"
-      },
-      "FakeHDR1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_FakeHDR1.LUT_FakeHDR1'"
-      },
-      "FakeHDR2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_FakeHDR2.LUT_FakeHDR2'"
-      },
-      "FakeHDR3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_FakeHDR3.LUT_FakeHDR3'"
-      },
-      "Filmic_Abduction": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Abduction.LUT_U1_Filmic_Abduction'"
-      },
-      "Filmic_Cold_Blood_Murderer": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Cold_Blood_Murderer.LUT_U1_Filmic_Cold_Blood_Murderer'"
-      },
-      "Filmic_First_Date": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_First_Date.LUT_U1_Filmic_First_Date'"
-      },
-      "Filmic_Futurama": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Futurama.LUT_U1_Filmic_Futurama'"
-      },
-      "Filmic_Gladiators": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Gladiators.LUT_U1_Filmic_Gladiators'"
-      },
-      "Filmic_Golden_Age": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Golden_Age.LUT_U1_Filmic_Golden_Age'"
-      },
-      "Filmic_Hacker_Room": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Hacker_Room.LUT_U1_Filmic_Hacker_Room'"
-      },
-      "Filmic_Hazard": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Hazard.LUT_U1_Filmic_Hazard'"
-      },
-      "Filmic_Holy_TealOrange": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Holy_TealOrange.LUT_U1_Filmic_Holy_TealOrange'"
-      },
-      "Filmic_Horror_Night": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Horror_Night.LUT_U1_Filmic_Horror_Night'"
-      },
-      "Filmic_Last_hope": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Last_hope.LUT_U1_Filmic_Last_hope'"
-      },
-      "Filmic_Middle_Earth": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Middle_Earth.LUT_U1_Filmic_Middle_Earth'"
-      },
-      "Filmic_Nature_Rise": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Nature_Rise.LUT_U1_Filmic_Nature_Rise'"
-      },
-      "Filmic_Pandora": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Pandora.LUT_U1_Filmic_Pandora'"
-      },
-      "Filmic_Rogue": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Filmic_Rogue.LUT_U1_Filmic_Rogue'"
-      },
-      "Invert": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Invert.LUT_Invert'"
-      },
-      "InvertGray": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_InvertGray.LUT_InvertGray'"
-      },
-      "Lighting_Candle_Light": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Lighting_Candle_Light.LUT_U1_Lighting_Candle_Light'"
-      },
-      "Lighting_Day_to_Night": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Lighting_Day_to_Night.LUT_U1_Lighting_Day_to_Night'"
-      },
-      "Lighting_Moonlight": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Lighting_Moonlight.LUT_U1_Lighting_Moonlight'"
-      },
-      "Mono1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Mono1.LUT_Mono1'"
-      },
-      "Mono10": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Mono10.LUT_Mono10'"
-      },
-      "Mono2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Mono2.LUT_Mono2'"
-      },
-      "Mono3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Mono3.LUT_Mono3'"
-      },
-      "Mono4": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Mono4.LUT_Mono4'"
-      },
-      "Mono5": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Mono5.LUT_Mono5'"
-      },
-      "Mono6": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Mono6.LUT_Mono6'"
-      },
-      "Mono7": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Mono7.LUT_Mono7'"
-      },
-      "Mono8": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Mono8.LUT_Mono8'"
-      },
-      "Mono9": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Mono9.LUT_Mono9'"
-      },
-      "Movie1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Movie1.LUT_Movie1'"
-      },
-      "Movie2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Movie2.LUT_Movie2'"
-      },
-      "Movie3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Movie3.LUT_Movie3'"
-      },
-      "Movie4": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Movie4.LUT_Movie4'"
-      },
-      "Movie5": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Movie5.LUT_Movie5'"
-      },
-      "Movie6": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Movie6.LUT_Movie6'"
-      },
-      "Movie7": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Movie7.LUT_Movie7'"
-      },
-      "Old1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Old1.LUT_Old1'"
-      },
-      "Old2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Old2.LUT_Old2'"
-      },
-      "Old3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Old3.LUT_Old3'"
-      },
-      "Old4": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Old4.LUT_Old4'"
-      },
-      "Posterize1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Posterize1.LUT_Posterize1'"
-      },
-      "Saturate1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Saturate1.LUT_Saturate1'"
-      },
-      "Saturate2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Saturate2.LUT_Saturate2'"
-      },
-      "Saturate3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Saturate3.LUT_Saturate3'"
-      },
-      "Steam1": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Steam1.LUT_Steam1'"
-      },
-      "Steam2": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Steam2.LUT_Steam2'"
-      },
-      "Steam3": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Steam3.LUT_Steam3'"
-      },
-      "Steam4": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Steam4.LUT_Steam4'"
-      },
-      "Steam5": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Steam5.LUT_Steam5'"
-      },
-      "Steam6": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Steam6.LUT_Steam6'"
-      },
-      "Steam7": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_Steam7.LUT_Steam7'"
-      },
-      "Weather_Everest_H": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Weather_Everest_H.LUT_U1_Weather_Everest_H'"
-      },
-      "Weather_Everest_L": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Weather_Everest_L.LUT_U1_Weather_Everest_L'"
-      },
-      "Weather_Everest_M": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Weather_Everest_M.LUT_U1_Weather_Everest_M'"
-      },
-      "Weather_Heavy_Sunset": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Weather_Heavy_Sunset.LUT_U1_Weather_Heavy_Sunset'"
-      },
-      "Weather_Late_Sunset": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Weather_Late_Sunset.LUT_U1_Weather_Late_Sunset'"
-      },
-      "Weather_Lightning": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Weather_Lightning.LUT_U1_Weather_Lightning'"
-      },
-      "Weather_Underwater": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Weather_Underwater.LUT_U1_Weather_Underwater'"
-      },
-      "Weather_Winter": {
-        "File_13_63DC650B4BDD73EBAA9B97AAB0ABE957": "Texture2D'Whiskerwood/Content/ThirdParty/Chameleon/LUTs/LUT_U1_Weather_Winter.LUT_U1_Weather_Winter'"
       }
     },
     "Whiskerwood/Content/ThirdParty/GenericRadialMenus/Example/BuildMenuSample/Categories": {
