@@ -7,10 +7,9 @@
 If you don't have UE4SS installed already:
 1. Grab the `UE4SS_v3.0.1-xx.zip` file from [the bottom of this releases page](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental-latest) under "Assets"
 2. Navigate to your game directory:
-`\steamapps\common\Wiskerwood\Wiskerwood\Binaries\Win64\`
+`\steamapps\common\Whiskerwood\Whiskerwood\Binaries\Win64\`
 3. Extract all files from the zip directly into the Win64 folder
-4. copy the 2 `.lua` files from `ue4ss/CustomGameConfigs/Whiskerwood/UE4SS_Signatures` into `ue4ss/UE4SS_Signatures`
-5. Launch game
+4. Launch game
 
 If you get window flickering issues, disable discord overlay, they broke something recently.
 
