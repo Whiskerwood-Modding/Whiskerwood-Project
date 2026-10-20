@@ -599,7 +599,7 @@ void ModActions::CookAndInstallMod(const FString& ModName)
 			" -project=\"%s\""
 			" -platform=Win64"
 			" -clientconfig=Shipping"
-			" -cook -stage -pak -SkipStagingTargets"
+			" -build -cook -stage -pak"
 			" -archive -archivedirectory=\"%s\""
 			" -nocompileeditor -installed -iterativecooking -cookincremental"
 			" -nop4 -utf8output -unattended"
