@@ -1,8 +1,8 @@
 {
-  "ExportDate": "2026-10-18 20:47:57",
+  "ExportDate": "2026-11-15 18:48:04",
   "TotalDataTables": 44,
-  "TotalDataAssets": 19,
-  "TotalUniqueValues": 9703,
+  "TotalDataAssets": 20,
+  "TotalUniqueValues": 9779,
   "DataTables": {
     "Whiskerwood/Content/Data/AchievementsTables": {
       "ACH.010.EMBARK": {
@@ -1998,7 +1998,7 @@
         "Icon": "0",
         "approvalActive": "0",
         "approvalCozy": "6",
-        "approvalDefault": "4",
+        "approvalDefault": "5",
         "approvalDire": "2",
         "approvalHard": "3",
         "nStacks": "0",
@@ -2011,9 +2011,9 @@
         "Icon": "0",
         "approvalActive": "0",
         "approvalCozy": "3",
-        "approvalDefault": "2",
+        "approvalDefault": "3",
         "approvalDire": "1",
-        "approvalHard": "1",
+        "approvalHard": "2",
         "nStacks": "0",
         "tintIcon": "False",
         "useResourceData": "True"
@@ -4892,6 +4892,9 @@
       "basket": {
         "Mesh": "StaticMesh'Whiskerwood/Content/Assets/Characters/Meshes/Tools/Basket.Basket'"
       },
+      "bonnethat": {
+        "Mesh": "StaticMesh'Whiskerwood/Content/Assets/Meshes/Equipment/SKM_Bonnet.SKM_Bonnet'"
+      },
       "constructionscaffold": {
         "Mesh": "StaticMesh'Whiskerwood/Content/Assets/Meshes/Kitbash_new/Scaffolds/constructionScaffold_thin.constructionScaffold_thin'"
       },
@@ -6045,7 +6048,7 @@
         "out1": "finetea",
         "out2": "None",
         "out3": "None",
-        "outCt1": "8",
+        "outCt1": "13",
         "outCt2": "0",
         "outCt3": "0",
         "outputMode": "None",
@@ -7389,7 +7392,7 @@
         "out1": "tea",
         "out2": "None",
         "out3": "None",
-        "outCt1": "5",
+        "outCt1": "8",
         "outCt2": "0",
         "outCt3": "0",
         "outputMode": "None",
@@ -13116,6 +13119,29 @@
         "tierSortOrder": "0",
         "unlockedByDefault": "False",
         "useGridActorForLoc": "False"
+      },
+      "unlock.harbormaster": {
+        "Description": "",
+        "IsHidden": "False",
+        "Title": "",
+        "associatedGridActor": "harbormaster",
+        "associatedRecipe": "None",
+        "childUnlocks": [],
+        "demoLocked": "True",
+        "giftPool": "0",
+        "giftable": "False",
+        "giftableInDemo": "False",
+        "isQuestRelated": "False",
+        "prerequisiteUnlocks": [],
+        "researchTier": "2",
+        "researchable": "True",
+        "scienceCost": "34",
+        "secretPrerequisite": "unlock.smallshipyard",
+        "showMailEvenAsChildUnlock": "False",
+        "subCategory": "techCategory.naval",
+        "tierSortOrder": "500",
+        "unlockedByDefault": "False",
+        "useGridActorForLoc": "True"
       },
       "unlock.heater": {
         "Description": "",
@@ -21701,6 +21727,52 @@
         "useCustomIcon": "False",
         "workerColor": "FFFFFF (FColor)"
       },
+      "harbormaster": {
+        "Description": "building.harbormaster.desc",
+        "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/Harbormaster.Harbormaster_C'",
+        "Icon": "0",
+        "Quality": "0",
+        "SupportedImprovements": [],
+        "TooltipTags": [
+          "tag.unlockShipAutomation"
+        ],
+        "Variants": [],
+        "asHouseTier": "0",
+        "asIndustryDef": "None",
+        "catalyst": "None",
+        "constructionTime": "233",
+        "cost1": "planks",
+        "cost2": "bricks",
+        "cost3": "None",
+        "cost4": "None",
+        "ct1": "21",
+        "ct2": "21",
+        "ct3": "0",
+        "ct4": "0",
+        "customBuildCue": "0",
+        "decorType": "None",
+        "detailCue": "0",
+        "guildSpecialty": "None",
+        "hardLabor": "False",
+        "industrialLabor": "False",
+        "isDraggableWall": "False",
+        "limitOne": "True",
+        "maxAgents_contextual": "0",
+        "maxHealth": "1",
+        "minMaintenanceInterval": "0",
+        "norefund": "False",
+        "randomlyRotate": "False",
+        "refundRule": "standard",
+        "requiresConstruction": "True",
+        "stringKey": "building.harbormaster",
+        "structureType": "Other",
+        "supportedIndustryRecipes": [],
+        "toolbarGroup": "civic",
+        "toolbarGroupSort": "50",
+        "unlockPrerequisite": "unlock.harbormaster",
+        "useCustomIcon": "False",
+        "workerColor": "FFFFFF (FColor)"
+      },
       "heater": {
         "Description": "building.heater.desc",
         "GridActor": "BlueprintGeneratedClass'Whiskerwood/Content/GridActors/Heater.Heater_C'",
@@ -27835,6 +27907,9 @@
       "hanginggarden": {
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/hangingGarden.hangingGarden'"
       },
+      "harbormaster": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/harbormaster.harbormaster'"
+      },
       "heater": {
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Rendered/Icons/Building/heater.heater'"
       },
@@ -29619,6 +29694,11 @@
         "TintColor": "FFFFFF (FColor)",
         "detailString": "hoverNotif.cantReachWork"
       },
+      "cartStalled": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-bootkick.icons8-bootkick'",
+        "TintColor": "949090 (FColor)",
+        "detailString": "hovernotif.cartStalled"
+      },
       "choppingPriority": {
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-hatchet-100.icons8-hatchet-100'",
         "TintColor": "CDBDA820 (FColor)",
@@ -29858,6 +29938,16 @@
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-starving-64.icons8-starving-64'",
         "TintColor": "FFBA3C (FColor)",
         "detailString": "mod.starvation"
+      },
+      "tooManyCarts_loop": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-minecart-96.icons8-minecart-96'",
+        "TintColor": "CA8B3E (FColor)",
+        "detailString": "error.loopfull"
+      },
+      "tooManyCarts_straight": {
+        "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-minecart-96.icons8-minecart-96'",
+        "TintColor": "CA8B3E (FColor)",
+        "detailString": "error.limitOneCartOnStraightRail"
       },
       "trash": {
         "Icon": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-trash-can-64.icons8-trash-can-64'",
@@ -30615,6 +30705,15 @@
       "unrest_uponBuildingDestroyed": {
         "FloatValue": "3"
       },
+      "wanderDecorRadius": {
+        "FloatValue": "3"
+      },
+      "wanderPollutionAvoidFraction": {
+        "FloatValue": "0.5"
+      },
+      "wanderPollutionSpotsCompared": {
+        "FloatValue": "3"
+      },
       "whiskerPollutionAveragingResponsiveness": {
         "FloatValue": "0.1"
       },
@@ -30766,6 +30865,9 @@
       "action.changeRecipe": {
         "Value": "Change Recipe"
       },
+      "action.changeTargetPoi": {
+        "Value": "Change Destination"
+      },
       "action.changeTradePartner": {
         "Value": "Choose Trade Partner"
       },
@@ -30911,7 +31013,7 @@
         "Value": "Scuttle Ship"
       },
       "action.scuttleShip.desc": {
-        "Value": "Permenantly destroys ship"
+        "Value": "Permanently destroys ship"
       },
       "action.selectEducation": {
         "Value": "Select Education Target"
@@ -31413,6 +31515,12 @@
       },
       "building.hangingGarden.desc": {
         "Value": "Overflowing garden with ivy hanging down to the area below."
+      },
+      "building.harbormaster": {
+        "Value": "Harbormaster"
+      },
+      "building.harbormaster.desc": {
+        "Value": "Allows automated departures for Whisker ships"
       },
       "building.heater": {
         "Value": "Heating Stove"
@@ -33022,6 +33130,9 @@
       "error.alreadyLivesHere": {
         "Value": "Already lives here!"
       },
+      "error.alreadyPlacedHere": {
+        "Value": "Already Placed Here"
+      },
       "error.alreadySentWhiskers": {
         "Value": "Whiskers inbound"
       },
@@ -33046,11 +33157,23 @@
       "error.cantFindPathForRoute": {
         "Value": "No valid path between docks"
       },
+      "error.cartoverlap": {
+        "Value": "Overlaps cart"
+      },
       "error.insufficientdockingspace": {
         "Value": "Not enough clear space for ships"
       },
       "error.invalidLocation": {
         "Value": "Invalid location."
+      },
+      "error.limitOneCartOnStraightRail": {
+        "Value": "Only one cart allowed on non-looping rail"
+      },
+      "error.loopOverCapacity": {
+        "Value": "Too many carts for track"
+      },
+      "error.loopfull": {
+        "Value": "Stations on loop at capacity"
       },
       "error.mustbeempty": {
         "Value": "Must be empty."
@@ -33060,6 +33183,9 @@
       },
       "error.needsAdmin": {
         "Value": "Assign an educated Whisker to enable production limits"
+      },
+      "error.needsHarbormaster": {
+        "Value": "Assign an educated whisker to enable automated ship commands"
       },
       "error.noAvailableWhiskers": {
         "Value": "No available Whiskers."
@@ -33391,6 +33517,18 @@
       "guild.miners.desc": {
         "Value": "Large Field Whiskers skilled at mining & refining."
       },
+      "harbormaster.approvalReserve": {
+        "Value": "Minimum Approval Limit"
+      },
+      "harbormaster.approvalReserve.desc": {
+        "Value": "Ships will not be sent out if approval would dip below limit"
+      },
+      "harbormaster.header": {
+        "Value": "Automate Ship Departures"
+      },
+      "harbormaster.required": {
+        "Value": "Staffed Harbormaster Required"
+      },
       "header.constructionConfigHint": {
         "Value": "After construction:"
       },
@@ -33513,6 +33651,9 @@
       },
       "hovernotif.buildingStop_freezing": {
         "Value": "Too cold to operate!"
+      },
+      "hovernotif.cartStalled": {
+        "Value": "Cart needs push"
       },
       "hovernotif.dockBlocked": {
         "Value": "Docking area blocked"
@@ -34609,11 +34750,20 @@
       "nautical.war.wave": {
         "Value": "Wave"
       },
+      "naval.autodepart.requiresHarbormaster": {
+        "Value": "Requires Harbormaster"
+      },
       "naval.defaultAction.fish": {
         "Value": "Fish at nearest stocked Fishing Grounds"
       },
+      "naval.defaultAction.fishAt": {
+        "Value": "Fish around assigned Fishing Grounds"
+      },
       "naval.defaultAction.guano": {
         "Value": "Gather at nearest stocked Guano Rock"
+      },
+      "naval.defaultAction.guanoAt": {
+        "Value": "Harvest at assigned Guano Rock"
       },
       "naval.defaultAction.header": {
         "Value": "Upon Departure:"
@@ -34629,6 +34779,30 @@
       },
       "naval.foodSupply.hint2": {
         "Value": "Ships will turn around upon reaching half food"
+      },
+      "naval.insufficientFoodForVoyage": {
+        "Value": "Insufficient food for planned voyage!"
+      },
+      "naval.setting.sendToSeaAuto": {
+        "Value": "Auto-depart"
+      },
+      "naval.setting.sendToSeaAuto.desc": {
+        "Value": "Send ship out to sea when fully prepared"
+      },
+      "naval.setting.sendToSeaAuto.repeat": {
+        "Value": "Repeat"
+      },
+      "naval.setting.sendToSeaAuto.repeat.desc": {
+        "Value": "Always send ship out when prepared"
+      },
+      "naval.setting.sendToSeaAutoAndRepeating": {
+        "Value": "Auto-depart (Repeating)"
+      },
+      "navalhud.filterShips": {
+        "Value": "Filter Ships"
+      },
+      "navalhud.nFiltered": {
+        "Value": "<0> Hidden"
       },
       "navy.actionmenu": {
         "Value": "Command"
@@ -34826,7 +35000,7 @@
         "Value": "Send Volunteer"
       },
       "pirateSendOff.warning": {
-        "Value": "Whisker will permenantly leave your colony"
+        "Value": "Whisker will permanently leave your colony"
       },
       "pirateSendoff.noWhisker": {
         "Value": "No Whisker selected"
@@ -34950,6 +35124,12 @@
       },
       "poi.salvage": {
         "Value": "Salvage"
+      },
+      "poiInfo.shipsAssigned": {
+        "Value": "Ships directly assigned"
+      },
+      "poiInfo.shipsInbound": {
+        "Value": "Ships assigned or interacting"
       },
       "policies.activePolicies": {
         "Value": "Active Policies"
@@ -35370,6 +35550,15 @@
       },
       "raft.storage.hint": {
         "Value": "Increases available rafts for route"
+      },
+      "rail.cart.waitingClearance": {
+        "Value": "Awaiting Clearance"
+      },
+      "rail.reverseLoopDir": {
+        "Value": "Reverse loop direction"
+      },
+      "rail.routeReversed": {
+        "Value": "Launch direction reversed"
       },
       "rating.bathingQuality": {
         "Value": "Bathing Quality"
@@ -36243,6 +36432,9 @@
       },
       "settings.g.mode.xess": {
         "Value": "XeSS Mode"
+      },
+      "settings.g.oceanq": {
+        "Value": "Ocean Quality"
       },
       "settings.g.ppq": {
         "Value": "Post-Process Quality"
@@ -37329,6 +37521,9 @@
       },
       "tag.unlockProductionLimits": {
         "Value": "Unlocks Production Limits"
+      },
+      "tag.unlockShipAutomation": {
+        "Value": "Unlock Ship Automation"
       },
       "taxoffice.estimate": {
         "Value": "Estimate"
@@ -42754,6 +42949,12 @@
         "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-combo-chart-100.icons8-combo-chart-100'",
         "iconTint": "CCB47E (FColor)",
         "textTint": "A9A9A9 (FColor)"
+      },
+      "tag.unlockShipAutomation": {
+        "LocKey": "tag.unlockShipAutomation",
+        "iconTexture": "Texture2D'Whiskerwood/Content/Assets/Icons/icons8-sail-boat-100.icons8-sail-boat-100'",
+        "iconTint": "CCB47E (FColor)",
+        "textTint": "A9A9A9 (FColor)"
       }
     },
     "Whiskerwood/Content/Data/WeatherDefinitions": {
@@ -43415,6 +43616,9 @@
         "User Friendly Name": "Light Snow",
         "Wind Intensity": "1"
       }
+    },
+    "Whiskerwood/Content/UI/Style/ArcoUiStyle": {
+      "ArcoUiStyle": {}
     }
   }
 }

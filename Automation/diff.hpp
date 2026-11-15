@@ -10919,12 +10919,12 @@ struct FRigUnit_CCDIKPerItem : public FRigUnit_HighlevelBaseMutable {
 
 struct FRigUnit_CCDIK_RotationLimit {
     FName bone;
-    float Limit;
+    float limit;
 };
 
 struct FRigUnit_CCDIK_RotationLimitPerItem {
     FRigElementKey Item;
-    float Limit;
+    float limit;
 };
 
 struct FRigUnit_CCDIK_WorkData {
@@ -12137,7 +12137,7 @@ struct FRigUnit_HierarchyAddControlFloat : public FRigUnit_HierarchyAddControlEl
 };
 
 struct FRigUnit_HierarchyAddControlFloat_LimitSettings {
-    FRigControlLimitEnabled Limit;
+    FRigControlLimitEnabled limit;
     float MinValue;
     float MaxValue;
     bool bDrawLimits;
@@ -12157,7 +12157,7 @@ struct FRigUnit_HierarchyAddControlInteger : public FRigUnit_HierarchyAddControl
 };
 
 struct FRigUnit_HierarchyAddControlInteger_LimitSettings {
-    FRigControlLimitEnabled Limit;
+    FRigControlLimitEnabled limit;
     int32_t MinValue;
     int32_t MaxValue;
     bool bDrawLimits;
@@ -24813,7 +24813,7 @@ class UConstraintInstanceBlueprintLibrary : public UBlueprintFunctionLibrary {
     static bool GetDisableCollsion(FConstraintInstanceAccessor& Accessor);
     static void GetLinearBreakable(FConstraintInstanceAccessor& Accessor, bool& bLinearBreakable, float& LinearBreakThreshold);
     static void GetLinearDriveParams(FConstraintInstanceAccessor& Accessor, float& OutPositionStrength, float& OutVelocityStrength, float& OutForceLimit);
-    static void GetLinearLimits(FConstraintInstanceAccessor& Accessor, uint8_t& XMotion, uint8_t& YMotion, uint8_t& ZMotion, float& Limit);
+    static void GetLinearLimits(FConstraintInstanceAccessor& Accessor, uint8_t& XMotion, uint8_t& YMotion, uint8_t& ZMotion, float& limit);
     static void GetLinearPlasticity(FConstraintInstanceAccessor& Accessor, bool& bLinearPlasticity, float& LinearPlasticityThreshold, uint8_t& PlasticityType);
     static void GetLinearPositionDrive(FConstraintInstanceAccessor& Accessor, bool& bOutEnableDriveX, bool& bOutEnableDriveY, bool& bOutEnableDriveZ);
     static void GetLinearPositionTarget(FConstraintInstanceAccessor& Accessor, FVector& OutPosTarget);
@@ -24840,7 +24840,7 @@ class UConstraintInstanceBlueprintLibrary : public UBlueprintFunctionLibrary {
     static void SetDisableCollision(FConstraintInstanceAccessor& Accessor, bool bDisableCollision);
     static void SetLinearBreakable(FConstraintInstanceAccessor& Accessor, bool bLinearBreakable, float LinearBreakThreshold);
     static void SetLinearDriveParams(FConstraintInstanceAccessor& Accessor, float PositionStrength, float VelocityStrength, float InForceLimit);
-    static void SetLinearLimits(FConstraintInstanceAccessor& Accessor, uint8_t XMotion, uint8_t YMotion, uint8_t ZMotion, float Limit);
+    static void SetLinearLimits(FConstraintInstanceAccessor& Accessor, uint8_t XMotion, uint8_t YMotion, uint8_t ZMotion, float limit);
     static void SetLinearPlasticity(FConstraintInstanceAccessor& Accessor, bool bLinearPlasticity, float LinearPlasticityThreshold, uint8_t PlasticityType);
     static void SetLinearPositionDrive(FConstraintInstanceAccessor& Accessor, bool bEnableDriveX, bool bEnableDriveY, bool bEnableDriveZ);
     static void SetLinearPositionTarget(FConstraintInstanceAccessor& Accessor, const FVector& InPosTarget);
@@ -36142,7 +36142,7 @@ struct FLinearColorRamp {
 };
 
 struct FLinearConstraint : public FConstraintBaseParams {
-    float Limit;
+    float limit;
     uint8_t XMotion;
     uint8_t YMotion;
     uint8_t ZMotion;
@@ -51146,7 +51146,7 @@ struct FFBIKBoneLimit {
     EFBIKBoneLimitType LimitType_X;
     EFBIKBoneLimitType LimitType_Y;
     EFBIKBoneLimitType LimitType_Z;
-    FVector Limit;
+    FVector limit;
 };
 
 struct FFBIKConstraintOption {
@@ -61357,6 +61357,7 @@ class USpecialFlags : public UBlueprintFunctionLibrary {
     static bool IsImagesWrapped();
     static bool IsLowPerfPlatform();
     static bool IsMac();
+    static bool IsMacOSMajorVersion(int32_t Major);
     static bool IsMobile();
     static bool IsModdingAllowed();
     static bool IsMouseAllowed();
@@ -73553,6 +73554,7 @@ struct FNauticalShipState {
     TSet<ENauticalAction> allowedActionsFilter;
     FString shipName;
     FNauticalPlan plan;
+    int32_t commandedPoiId;
     FNauticalCargo cargo;
     FNauticalCrew crew;
     int32_t ammoCount;
@@ -73897,6 +73899,7 @@ struct FSyncDockState {
     FVector dockLoc;
     FRotator dockRot;
     int32_t islandId;
+    int32_t poiId;
 };
 
 struct FSyncEvent {
@@ -89929,6 +89932,7 @@ struct FAgentState {
     float heavyPollutionThoughtCooldown;
     float rapidConstructionCooldown;
     float hygiene;
+    bool missedPartOfNight;
     bool pendingRemoval;
     EAgentDeleteReason removalReason;
     TArray<FName> m_foodEatenToday;
@@ -90387,6 +90391,9 @@ class UArcoGameInstance : public UBackbone {
 class UArcoGameTunes : public UPrimaryDataAsset {
 };
 
+class UArcoGfxBench : public UGameInstanceSubsystem {
+};
+
 class AArcoHUD : public AHUD {
     FHudConfig config;
     TArray<FArcPlan> activeArcs;
@@ -90729,6 +90736,9 @@ struct FArcoWorkShipDef : public FTableRowBase {
 
 struct FArcoWorkShipTracker {
     TMap<FName, FArcoWorkShip> m_allWorkships;
+};
+
+class UArcoZoomSweep : public UGameInstanceSubsystem {
 };
 
 struct FArco_PlayerActionUnrealKeybindMapper {
@@ -92113,6 +92123,14 @@ enum class EMailType {
     EMailType_MAX = 6,
 };
 
+enum class EMinecartStatus {
+    MOVING = 0,
+    LOADING = 1,
+    WAITING_CLEARANCE = 2,
+    STALLED = 3,
+    EMinecartStatus_MAX = 4,
+};
+
 enum class EMusicOverridePriority {
     NONE = 0,
     EMBARK = 1,
@@ -92180,6 +92198,16 @@ enum class ENavyHudWindowType {
     Diplomacy = 3,
     Trade = 4,
     ENavyHudWindowType_MAX = 5,
+};
+
+enum class ENavyShipCardFilter {
+    Ferry = 0,
+    Scout = 1,
+    Fishing = 2,
+    Guano = 3,
+    Trade = 4,
+    NavalCombat = 5,
+    ENavyShipCardFilter_MAX = 6,
 };
 
 enum class ENavySubWidget {
@@ -92540,8 +92568,18 @@ enum class ESimAction {
     EXPORTS_RETURN_STAGED = 161,
     EXPORTS_MOVE_PRIORITY = 162,
     SET_SCHOOL_EDUCATION = 163,
-    FINAL_ACTION = 164,
-    ESimAction_MAX = 165,
+    REVERSE_RAIL_ROUTE = 164,
+    FLUSH_PAUSED_NAVIGATION = 165,
+    WORKDOCK_SET_AUTO_DEPART = 166,
+    SET_NAVAL_PRODUCTION_LIMIT = 167,
+    SET_NAVAL_APPROVAL_RESERVE = 168,
+    SET_RESEARCH_GOAL = 169,
+    WORKDOCK_SET_TARGET_POI = 170,
+    WORKDOCK_SET_TRADE_PARTNER = 171,
+    WORKDOCK_SET_LOAD_REQUEST = 172,
+    WORKDOCK_CLEAR_INCOMPATIBLE_REQUESTS = 173,
+    FINAL_ACTION = 174,
+    ESimAction_MAX = 175,
 };
 
 enum class ESimPauseReason {
@@ -94114,6 +94152,19 @@ class UMineViz : public USceneComponent {
     TArray<UStaticMesh*> Meshes;
 };
 
+struct FMinecartHoverInfo {
+    EMinecartStatus Status;
+    FString statusText;
+    int32_t passengers;
+    int32_t capacity;
+    bool tooManyCarts;
+};
+
+class UMinecartHoverWidget : public UArcoWidgetBase {
+
+    FMinecartHoverInfo CalcHudInfo();
+};
+
 struct FMissionShip_UiState {
     FDockableShipData dockedShipState;
 };
@@ -94269,6 +94320,51 @@ class UNauticalRaftRouteAssignments : public UObject {
     FName nauticalShipId;
 };
 
+class UNavalOffice : public UActorComponent {
+    FWorkerAssignment m_workers;
+    UWorkerViz* m_workerViz;
+
+    bool AssignWorkerToSlot(int32_t Slot, APrototype_Agent* Agent);
+    bool FireSpecificWorker(APrototype_Agent* Agent);
+};
+
+struct FNavalOfficeDockRow_UI {
+    int32_t dockId;
+    bool hasShip;
+    FString shipName;
+    UTexture2D* shipIcon;
+    bool shipAtSea;
+    float secondsTillGoal;
+    FName statusKey;
+    bool autoDepart;
+    bool autoDepartRepeat;
+    bool heldByNavalProductionLimit;
+    int32_t departureApprovalCost;
+    bool heldByNavalApprovalReserve;
+};
+
+struct FNavalOfficeDockSection_UI {
+    FName dockPrefabKey;
+    FString dockTypeName;
+    UTexture2D* dockIcon;
+    FName navalProductionResource;
+    bool allAutoDepart;
+    bool anyAutoDepart;
+    bool allAutoDepartRepeat;
+    bool anyAutoDepartRepeat;
+    TArray<FNavalOfficeDockRow_UI> docks;
+};
+
+struct FNavalOfficeState_UI {
+    FWorkerAssignmentData agentsInfo;
+    bool controlsUnlocked;
+    TMap<FName, FResourceStockpileSubcategory> m_resourcesByCategory_naval;
+    int32_t navalApprovalReserve;
+    int32_t approval;
+    int32_t approvalCapacity;
+    TArray<FNavalOfficeDockSection_UI> dockSections;
+};
+
 class ANavyConfigMule : public AActor {
     FOceanConfig OceanConfig;
 };
@@ -94288,10 +94384,14 @@ class UNavyHudBase : public UArcoWidgetBase {
     ANauticalOcean* ocean;
     int32_t initRand;
     FNavyHudInterframe interframe;
+    TSet<ENavyShipCardFilter> hiddenShipCardTypes;
 
     void ApplyWindowChoice(FNavyHudSubWindow windowData, FName choiceStirngId);
     FNavyHudState CalcState();
+    bool IsShipCardShown(const FNavyHudShipCard& card) const;
+    bool IsShipCardTypeShown(ENavyShipCardFilter Type) const;
     void RunAging(float deltaTime);
+    void SetShipCardTypeShown(ENavyShipCardFilter Type, bool shown);
 };
 
 struct FNavyHudCannonReloadStatus {
@@ -94364,9 +94464,21 @@ struct FNavyHudShipCard {
     float secondsTillGoal;
 };
 
+struct FNavyHudShipFilterOption {
+    ENavyShipCardFilter Filter;
+    FName tooltipTagId;
+    UTexture2D* Icon;
+    FName LocKey;
+    int32_t shipCount;
+    bool isShown;
+};
+
 struct FNavyHudState {
     TArray<FNavyHudSubWindow> Windows;
     TArray<FNavyHudShipCard> ships;
+    TArray<FNavyHudShipFilterOption> shipFilterOptions;
+    int32_t totalShipCount;
+    int32_t hiddenShipCount;
     FNavyHudWarState warState;
     FNavyHudDynamicState dynamics;
     FNavyHudDrag Drag;
@@ -94873,6 +94985,8 @@ struct FPlayPawnCfg {
 
 class UPlayerBank : public UObject {
     TMap<FName, int32_t> m_productionLimit;
+    TMap<FName, int32_t> m_navalProductionLimit;
+    int32_t m_navalApprovalReserve;
     FResourceFlowTracker m_flowTracker;
     TMap<FName, FPlayerBankResource> m_bankResources;
     int32_t m_influenceCurrency;
@@ -95020,8 +95134,10 @@ class APlayerController_Play : public APlayerController {
     void Arco_GiveResource(FString ResourceName, int32_t count);
     void Arco_GiveScience(int32_t count);
     void Arco_GiveUnlock(FName Unlock);
+    void Arco_HoldKey(FString KeyName, int32_t Mode, float Axis);
     void Arco_KillSelectedWhisker();
     void Arco_NoCost(bool actionsAreFree);
+    void Arco_OpenBuildingPanel(FString Selector, int32_t Index);
     void Arco_PauseDayCycle(bool Pause);
     void Arco_RemoveWorldEffect(FName effect);
     void Arco_RevokeUnlock(FName Unlock);
@@ -95546,6 +95662,21 @@ class URailStation : public UActorComponent {
     int32_t GetAgentsWaiting() const;
 };
 
+struct FRailStationHoverInfo {
+    bool canReverseRoute;
+    bool routeIsSet;
+    bool hasDepartureDirection;
+    int32_t cartsOnRoute;
+    int32_t maxCarts;
+    bool tooManyCarts;
+    int32_t agentsWaiting;
+};
+
+class URailStationHoverWidget : public UArcoWidgetBase {
+
+    FRailStationHoverInfo CalcHudInfo();
+};
+
 class URailSteamBooster : public UActorComponent {
     int32_t steamPerLaunch;
     FTrainBoostParams boostParams;
@@ -95569,6 +95700,7 @@ class ARailroadTool : public AActor {
     FIntVector dragStartPos;
     FIntVector dragEndPos;
     FDir m_cursorFacing_player;
+    FTrackBuilderConfig m_trackBuilderConfig;
     FDetailedResourceCost currentCost;
     UWidgetComponent* m_placementUiWidget;
     UStaticMesh* m_railPreviewMesh;
@@ -95668,6 +95800,7 @@ struct FResearchState {
     FName activeResearch;
     int32_t activeResearchTier;
     int32_t activeResearchRequiredProgress;
+    FName researchGoal;
 };
 
 struct FResearchSummaryState {
@@ -95676,6 +95809,7 @@ struct FResearchSummaryState {
     float progress;
     FResearchState ResearchState;
     int32_t currentTierCycleTime;
+    int32_t researchQueueLength;
 };
 
 class AReservedTileViz : public AActor {
@@ -95992,6 +96126,8 @@ class ASelectTool : public AActor {
     UClass* m_agentDetailsClass;
     UContextualHoverWidgetComponent* m_buildingDetailsHoverWidget;
     UWidgetComponent* m_nauticalShipHoverDetailsWidget;
+    UWidgetComponent* m_minecartHoverWidget;
+    UStaticMeshComponent* m_routeArrowMesh;
     AGridActor* m_gridActorAtGridPos;
     APrototype_Agent* m_agentAtPos;
     AActor* m_currentlyHighlightedActor;
@@ -96115,6 +96251,8 @@ struct FShipTradeChoice {
     bool isBuy;
     int32_t purchaseOverflow;
     bool canAfford;
+    FName changeItemName;
+    int32_t changeItemQuantity;
 };
 
 struct FShipTradeState {
@@ -96460,6 +96598,25 @@ struct FSystemTuneRow : public FTableRowBase {
     float FloatValue;
 };
 
+struct FTargetPoiInfo {
+    int32_t associatedPoiId;
+    ENauticalPoiType poiType;
+    FString nameLocKey;
+    FString DisplayName;
+    FName Resource;
+    int32_t stockCount;
+    int32_t stockMax;
+    bool isStocked;
+    bool isPlayerKnown;
+    int32_t nAssignedShips;
+    int32_t nShipsEnRouteOrWorking;
+    int32_t cellDistanceTenths;
+    float estimatedTravelTime;
+    float estimatedTravelTimeDays;
+    FVector poiPos;
+    FString mapGridPos;
+};
+
 struct FTax {
     FName nameKey;
     int32_t amount;
@@ -96598,6 +96755,10 @@ struct FTechCardState {
     ETechCardSlotType cardType;
     TArray<FString> missingPrerequisites;
     bool isActiveResearch;
+    int32_t researchQueueIndex;
+    bool isResearchGoal;
+    int32_t techsToReach;
+    TArray<FString> researchPlanNames;
 };
 
 struct FTechCategoryState {
@@ -96916,6 +97077,28 @@ class ATowerGrid : public AActor {
 class UTownHall : public UActorComponent {
 };
 
+struct FTrackBuilderConfig {
+    float MaxDistance;
+    int32_t NodeLimitPerStep;
+    int32_t PruningLimit;
+    int32_t IterationLimit;
+    bool bHeuristicOnlyPruning;
+    bool bPreventOneDistanceLoops;
+    FTrackBuilderGraphConfig GraphConfig;
+};
+
+struct FTrackBuilderGraphConfig {
+    float HorizontalBaseWeight;
+    float VerticalBaseWeight;
+    float CurveLeftBias;
+    float CurveRightBias;
+    float CurveDistanceBias;
+    float SharedTrackBias;
+    float ElevationBias;
+    int32_t ElevationCap;
+    float BlockedBias;
+};
+
 struct FTrackedWorkplace {
     FIntVector Location;
     int32_t workerCount;
@@ -96982,6 +97165,7 @@ class ATrain : public AActor {
     float m_brake_acceleration;
     float gravityStrength;
     float m_windResistanceCoeff;
+    float m_collisionRestitution;
     ETrainState m_state;
     float m_currentVelocity;
     int32_t m_owningRailNetwork;
@@ -97286,6 +97470,11 @@ class UUI_NauticalRaftDock : public UArcoView {
     void EndRaftAssignment();
 };
 
+class UUI_NavalOffice : public UArcoView {
+
+    FNavalOfficeState_UI CalcState();
+};
+
 class UUI_NotificationPanel : public UArcoWidgetBase {
 };
 
@@ -97439,10 +97628,12 @@ class UUI_TriageView : public UArcoView {
 class UUI_WorkDockView : public UArcoView {
     bool m_stockpileSelectorOpen;
     bool m_traderSelectorOpen;
+    bool m_targetPoiSelectorOpen;
 
     FWorkDock_UIData CalcHudState();
     void CycleTabs(bool tabRight);
     void EndStockpileSelection();
+    void EndTargetPoiSelection();
     void EndTraderSelection();
 };
 
@@ -97577,6 +97768,8 @@ struct FWeatherPreset : public FTableRowBase {
 };
 
 class UWorkDock : public UActorComponent {
+    bool m_autoDepart;
+    bool m_autoDepartRepeat;
     FResourceCollection m_requiredEmbarkSupplies_dockSpecific;
     FResourceCollection m_requiredEmbarkSupplies_live;
     TSet<ENauticalAction> m_supportedNauticalActions;
@@ -97589,6 +97782,7 @@ class UWorkDock : public UActorComponent {
     FIntVector m_entranceInternalCell;
     UStockpileRender* m_stockpileVisual;
     int32_t activeTradePartnerId;
+    int32_t m_targetPoiId;
 
     void DockSlotChanged(FName newBoatId, EWorkShipState NewState);
     void ShipArrivedFromSea(FName newBoatId);
@@ -97645,6 +97839,19 @@ struct FWorkDock_UIData {
     int32_t fishPerCatch_withNet;
     int32_t fishPerCatch_noNet;
     int32_t netsConsumedPerCatch;
+    bool supportsTargetPoi;
+    ENauticalPoiType targetPoiType;
+    TMap<int32_t, FTargetPoiInfo> targetPois;
+    bool targetPoiIsAuto;
+    FTargetPoiInfo activeTargetPoi;
+    FTargetPoiInfo autoTargetPoi;
+    FName targetPoiAutoTextKey;
+    bool targetPoiFoodInsufficient;
+    bool harbormasterResearched;
+    bool autoDepartUnlocked;
+    bool harbormasterExists;
+    bool autoDepart;
+    bool autoDepartRepeat;
     int32_t dockActorId;
     bool showCheatMenu;
     bool cheatAllowSpawn;
@@ -97818,6 +98025,7 @@ struct FWorldMeta {
     TSet<AGridActor*> m_elevatorSegments;
     TSet<UInfiniteResourceSourceOrDrain*> m_infiniteResourceSourceOrDrains_components;
     TSet<UCoordinationOffice*> m_coordinationOffices;
+    TSet<UNavalOffice*> m_navalOffices;
     TMap<AGridActor*, UDecorativeSlot*> m_decorativeSlots;
     TSet<AGridActor*> m_decoratives;
     TSet<UOceanVoid*> m_oceanVoids;
@@ -106230,6 +106438,42 @@ class UActivityTracker : public UActorComponent {
     void SetActivityEntry(UActorComponent* Source, FActivityEntry Entry);
 };
 
+class UArcoUiStyle : public UDataAsset {
+    FLinearColor Surface;
+    FLinearColor surfaceRaised;
+    FLinearColor ink;
+    FLinearColor inkMuted;
+    FLinearColor accent;
+    FLinearColor Positive;
+    FLinearColor Warning;
+    FLinearColor danger;
+    TMap<FName, FLinearColor> resourceCategoryColors;
+    FSlateFontInfo fontDisplay;
+    FSlateFontInfo fontHeading;
+    FSlateFontInfo fontBody;
+    FSlateFontInfo fontNumber;
+    FSlateFontInfo fontCaption;
+    float spacingXSmall;
+    float spacingSmall;
+    float spacingMedium;
+    float spacingLarge;
+    float spacingXLarge;
+    float cornerRadiusSmall;
+    float cornerRadiusLarge;
+    FSlateBrush frameBrush;
+    FSlateBrush dividerBrush;
+    FButtonStyle ButtonStyle;
+};
+
+class UArcoUiStyleLibrary : public UBlueprintFunctionLibrary {
+
+    static FLinearColor GetArcoUiColor(EArcoUiColor Color);
+    static FSlateFontInfo GetArcoUiFont(EArcoUiTextRole Role);
+    static FLinearColor GetArcoUiResourceCategoryColor(FName Category);
+    static float GetArcoUiSpacing(EArcoUiSpacing Step);
+    static UArcoUiStyle* GetArcoUiStyle();
+};
+
 class UAssetBook : public UObject {
     TMap<FString, FBookPage> pages;
 
@@ -106289,6 +106533,7 @@ class UBackbone : public UGameInstance {
     UPixelFed* PixelFed;
     UModManager* ModManager;
     UModAPI* ModAPI;
+    URuntimePatcher* RuntimePatcher;
 
     static UObject* GetAsset(const UObject* WorldContext, FString bookName, FString AssetName);
     static UClass* GetAssetClass(const UObject* WorldContext, FString bookName, FString AssetName);
@@ -106929,6 +107174,36 @@ enum class EActivityPriority {
     EActivityPriority_MAX = 5,
 };
 
+enum class EArcoUiColor {
+    Surface = 0,
+    SurfaceRaised = 1,
+    Ink = 2,
+    InkMuted = 3,
+    Accent = 4,
+    Positive = 5,
+    Warning = 6,
+    Danger = 7,
+    EArcoUiColor_MAX = 8,
+};
+
+enum class EArcoUiSpacing {
+    XSmall = 0,
+    Small = 1,
+    Medium = 2,
+    Large = 3,
+    XLarge = 4,
+    EArcoUiSpacing_MAX = 5,
+};
+
+enum class EArcoUiTextRole {
+    Display = 0,
+    Heading = 1,
+    Body = 2,
+    Number = 3,
+    Caption = 4,
+    EArcoUiTextRole_MAX = 5,
+};
+
 enum class EBackingLocation {
     PlaySaves = 0,
     Maps = 1,
@@ -107456,7 +107731,8 @@ enum class EPixelFedBackendId {
     FSR = 6,
     XeSS = 7,
     Switch2 = 8,
-    EPixelFedBackendId_MAX = 9,
+    MetalFX = 9,
+    EPixelFedBackendId_MAX = 10,
 };
 
 enum class EPollutionUpdate {
@@ -108931,18 +109207,23 @@ class UModAPI : public UObject {
     FMulticastInlineDelegate onWhiskerSpawned;
     FMulticastInlineDelegate onOptionChanged;
     FMulticastInlineDelegate onDayStart;
+    FMulticastInlineDelegate onLogisticsWorkerIdle;
 
     void AddDataTable(UObject* WorldContext, FName datatableName, UDataTable* Table);
     bool AddDataTableRow(UObject* WorldContext, FName datatableName, FName rowId);
     bool AddNewStrings(UObject* WorldContext, FName langId, TMap<FName, FString> idStringPairs);
     bool AddNewTranslation(UObject* WorldContext, FString modId, FString translationName);
+    bool DeleteModSaveData(UObject* WorldContext, FString modId, FString Key);
     void DumpAllDataTablesToLogFolder(UObject* WorldContext);
     void DumpDataTableToLogFolder(UObject* WorldContext, FName datatableName);
     void DumpEnglishToLogFolder(UObject* WorldContext);
     static UModAPI* GetModAPI(const UObject* WorldContext);
     bool HasDataTable(UObject* WorldContext, FName datatableName);
+    bool HasModSaveData(UObject* WorldContext, FString modId, FString Key);
+    bool IssueLogisticsDelivery(UObject* WorldContext, AActor* worker, AActor* Source, AActor* destination, FName Resource, int32_t amount);
     TArray<FName> ListDataTables(UObject* WorldContext);
     TArray<FName> ListLanguageIds(UObject* WorldContext);
+    TArray<FString> ListModSaveDataKeys(UObject* WorldContext, FString modId);
     UObject* LoadCdoOfClass(UObject* WorldContext, UClass* targetClass);
     UObject* LoadComponentTemplateOfClass(UObject* WorldContext, UClass* targetClass, FString ComponentName);
     UObject* LoadDefaultSubojectOfClass(UObject* WorldContext, UClass* targetClass, FString ComponentName);
@@ -108950,10 +109231,12 @@ class UModAPI : public UObject {
     void MarkObjectTemplateForRetainedEditing(UObject* WorldContext, UObject* ObjectTemplate);
     FString ReadDataTableValue(UObject* WorldContext, FName datatableName, FName rowId, FName ColumnName);
     FString ReadModOptionValue(UObject* WorldContext, FString optionId, FString fallbackValue);
+    FString ReadModSaveData(UObject* WorldContext, FString modId, FString Key, FString fallbackValue);
     FString ReadModTextFile(UObject* WorldContext, FString modName, FString Filename);
     bool RegisterModOptions(UObject* WorldContext, FString optionId, FString optionDisplayName, TArray<FString> Values, FString DefaultValue, FString optionDescription);
     void SetWhiskerNamePool(TArray<FString> Names);
     bool WriteDataTableValue(UObject* WorldContext, FName datatableName, FName rowId, FName ColumnName, FString valueStringified);
+    bool WriteModSaveData(UObject* WorldContext, FString modId, FString Key, FString Value);
 };
 
 struct FModApiState {
@@ -109206,6 +109489,7 @@ class UNaviUi : public UUserWidget {
     static UWidget* FindFirstParentOfClasses(UWidget* searchRoot, TArray<UClass*> candidateClasses, int32_t maxDepth);
     static UWidget* FindFirstParentWithTooltip(UWidget* searchRoot, int32_t maxDepth);
     static void ForceFocusCombobox(UComboBoxString* ComboBox);
+    static void ForceLayoutPrepassAndInvalidateParent(UWidget* Widget);
     static void ForceOpenVirtualKeyboard(UEditableText* EditableText);
     static void ForcePressButton(UButton* buttonWidget);
     bool ForceTooltipShown(UNaviUi* searchRoot, bool showTooltip, int32_t searchDepth);
@@ -109214,6 +109498,7 @@ class UNaviUi : public UUserWidget {
     UNaviUi* GetNaviParent() const;
     UNaviUi* GetNextPriorityChild(int32_t Offset) const;
     UNaviUi* GetPriorityChild() const;
+    static ESlateVisibility GetVisibilityDeferred(const UWidget* Widget);
     ENaviHandleMethod HandleInput(ENaviUiIntent Key);
     FString HandleInternalEvent(FName eventId, FString StringInput, int32_t IntInput);
     ENaviResultHandleMethod HandleResult(FNaviUiResult Result);
@@ -109225,6 +109510,7 @@ class UNaviUi : public UUserWidget {
     bool IsEmpty();
     static bool IsEnabledWithinSearchDepth(UWidget* searchRoot, int32_t maxDepth);
     bool IsRoot() const;
+    static bool IsVisibleDeferred(const UWidget* Widget);
     void OnChildAdded(UNaviUi* newChild);
     void OnChildRemoved(UNaviUi* lostChild);
     void OnFocusChanged(bool nowHasFocus);
@@ -109232,14 +109518,17 @@ class UNaviUi : public UUserWidget {
     void OnSelfRemoved();
     void RemoveAllChildren();
     void RemoveChild(UNaviUi* childMenu);
+    static void RemoveFromParentSafe(UWidget* Widget);
     void ResetToDefaultPriorityChild();
     void RotatePriorityChild(int32_t Offset);
     void SendInput(ENaviUiIntent Key);
     void SendMovement(FVector2D diff);
     void SendResult(FNaviUiResult Result);
     void SendTabShift(int32_t tabDelta);
+    static void SetIsEnabledAndRepaint(UWidget* Widget, bool bInIsEnabled);
     void SetNaviFocus(bool nowHasFocus);
     void SetPriorityChild(UNaviUi* nextPriorityChild);
+    static void SetVisibilityDeferred(UWidget* Widget, ESlateVisibility InVisibility);
     void StealFocus();
     bool WantsAllInput();
 };
@@ -109445,6 +109734,8 @@ class AOceanPlane : public AActor {
     int32_t ChunkSize;
     int32_t SeaMeshSize;
     int32_t SeaMeshExtent;
+    int32_t SeaMeshExtentLow;
+    int32_t SeaMeshExtentStandard;
     UMaterialInstanceDynamic* DynamicSurfaceMaterial;
     UMaterialInstanceDynamic* DynamicSurfaceMaterialLOD;
     UMaterialInstanceDynamic* DynamicSurfaceMaterialNoMetaData;
@@ -109624,6 +109915,7 @@ class AOrbitalCamera : public AControllablePawn {
 
 class UOreDistributor : public UActorComponent {
     FRandomXorshiftWrapper Randomizer;
+    TArray<UNoise*> NoiseInstances;
 };
 
 struct FOreDistributorConfig {
@@ -110133,6 +110425,9 @@ class URestlessMotionComponent : public USceneComponent {
 struct FRuntimeLang {
     FName Language;
     TMap<FName, FString> keyToWord;
+};
+
+class URuntimePatcher : public UObject {
 };
 
 class USaveLibrary : public UObject {
@@ -110865,6 +111160,7 @@ class UTerrainGenerator : public UActorComponent {
     UNoise* LoadedIslandNoise1024;
     UNoise* LoadedModificationNoise;
     UNoise* LoadedOceanFloorNoise;
+    FRandomXorshiftWrapper Randomizer;
 };
 
 struct FTerrainGeneratorConfig {
