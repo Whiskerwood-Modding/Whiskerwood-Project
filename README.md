@@ -400,6 +400,13 @@ Finally, you can quickly launch Whiskerwood by clicking the Mod Tools button and
 </details>
 
 <details>
+<summary><span style="font-size: 1.5em">Making materials that work on Mac (and in heat view)</span><hr></summary>
+
+[Please follow the guide](Docs/Materials.md)
+
+</details>
+
+<details>
 <summary><span style="font-size: 1.5em">Extra notes (please read!)</span><hr></summary>
 
 If you want to run the same or similar logic in both `BP_Startup` and `BP_MapLoad`, it is recommended to create a third blueprint which the first two can spawn. 
