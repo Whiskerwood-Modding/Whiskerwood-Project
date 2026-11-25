@@ -42,7 +42,7 @@ There is a bonus: the game's building materials carry the **heat overlay**. If y
 Some notes on these:
 
 - **Start with the Bonfire parent if you can.** So far it is the only one a Mac player has confirmed, on a Nanite mesh. Every parent in the table has Metal shaders in the Mac build, but I haven't seen the others on a Mac yet.
-- **How far each row is tested:** in the game on Windows I've seen the Bonfire, `M_Opaque` (skinned), `M_BargeMat` and `LightningBolt_ParticleMat` working, and Bonfire children showing heat view. `MI_VividBasis_Building`, `MI_VividBasis_Stoneslab`, `M_Fire`, `N_NauticalSymbol_Base` and `M_Ghost_Base` I've only checked in the editor so far.
+- **How far each row is tested:** in the game on Windows I've seen the Bonfire, `M_Opaque` (skinned), `M_BargeMat`, `LightningBolt_ParticleMat`, `M_Fire` (an additive glow) and `M_Ghost_Base` (a range ring) working, and Bonfire children showing heat view. `MI_VividBasis_Building`, `MI_VividBasis_Stoneslab` and `N_NauticalSymbol_Base` I've only checked in the editor so far.
 - **`M_Opaque`** has the skeletal usage, but the game never draws it on a skinned mesh itself. My creatures draw fine with it in the game on Windows, but check yours before you rely on it.
   - It has snow turned on, so creatures that use it may get a snow layer in winter.
   - Its `Roughness` scalar made no visible difference for me. Use the G channel instead.
