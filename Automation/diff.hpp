@@ -60977,6 +60977,32 @@ struct FAsyncMeshBuilderMeshConfig {
     UMaterialInterface* Material;
     bool bVisible;
     bool bCastShadow;
+    bool bCastHiddenShadow;
+    FLightingChannels LightingChannels;
+};
+
+struct FBakedGridChunk {
+    TMap<FIntVector, FBakedGridInstance> Instances;
+    TArray<UMaterialInterface*> Materials;
+    TArray<UAsyncMeshBuilder*> Builders;
+};
+
+struct FBakedGridInstance {
+    UStaticMesh* Mesh;
+    FTransform Transform;
+    double Ground;
+};
+
+struct FBakedGridMesh {
+    USceneComponent* Parent;
+    FVector GridScale;
+    FVector Offset;
+    EGridInstaMeshShadow Shadow;
+    EGridInstaMeshVisibility Visibility;
+    int32_t ChunkSize;
+    bool bCullBuried;
+    double CullMargin;
+    TMap<FIntPoint, FBakedGridChunk> Chunks;
 };
 
 class UCustomBoundsMeshComponent : public UStaticMeshComponent {
@@ -61085,6 +61111,7 @@ struct FInstaMeshConfig {
     FName CollisionProfileName;
     int32_t CullDistance;
     bool CastShadow;
+    bool castHiddenShadow;
     int32_t NumCustomDataFloats;
 };
 
@@ -73065,7 +73092,8 @@ enum class ENauticalAction {
     Smuggle = 29,
     LaborTransport = 30,
     Extortion = 31,
-    ENauticalAction_MAX = 32,
+    AssumePosition = 32,
+    ENauticalAction_MAX = 33,
 };
 
 enum class ENauticalCannonBallMode {
@@ -73872,8 +73900,7 @@ struct FOceanVisionState {
 };
 
 struct FShipSchedulingContext {
-    int32_t nPirateThreatLevel;
-    bool areClawsMad;
+    int32_t nEscorts;
 };
 
 struct FSyncCargoState {
@@ -74376,7 +74403,7 @@ class UNavigationSystemV1 : public UNavigationSystemBase {
     static UNavigationPath* FindPathToLocationSynchronously(UObject* WorldContextObject, const FVector& PathStart, const FVector& PathEnd, AActor* PathfindingContext, UClass* FilterClass);
     static UNavigationSystemV1* GetNavigationSystem(UObject* WorldContextObject);
     static uint8_t GetPathCost(UObject* WorldContextObject, const FVector& PathStart, const FVector& PathEnd, double& PathCost, ANavigationData* NavData, UClass* FilterClass);
-    static uint8_t GetPathLength(UObject* WorldContextObject, const FVector& PathStart, const FVector& PathEnd, double& PathLength, ANavigationData* NavData, UClass* FilterClass);
+    static uint8_t GetPathLength(UObject* WorldContextObject, const FVector& PathStart, const FVector& PathEnd, double& pathLength, ANavigationData* NavData, UClass* FilterClass);
     static bool IsNavigationBeingBuilt(UObject* WorldContextObject);
     static bool IsNavigationBeingBuiltOrLocked(UObject* WorldContextObject);
     static bool K2_GetRandomLocationInNavigableRadius(UObject* WorldContextObject, const FVector& Origin, FVector& RandomLocation, float Radius, ANavigationData* NavData, UClass* FilterClass);
@@ -90169,6 +90196,8 @@ class AAimTool : public AActor {
     FDir m_cursorFacing_player;
     FName beltSegKey;
     UClass* beltSegClass;
+    FRouteBuilderPieceOptions m_verticalPieces;
+    FRouteBuilderConfig m_routeBuilderConfig;
     FDetailedResourceCost currentCost;
     UWidgetComponent* m_placementUiWidget;
     UStaticMesh* m_beltPreviewMesh;
@@ -90949,6 +90978,27 @@ struct FCircularAverage {
 };
 
 class UCivicOffice : public UActorComponent {
+    FWorkerAssignment m_workers;
+    UWorkerViz* m_workerViz;
+
+    bool AssignWorkerToSlot(int32_t Slot, APrototype_Agent* Agent);
+    bool FireSpecificWorker(APrototype_Agent* Agent);
+};
+
+struct FCivicOfficeState_UI {
+    FWorkerAssignmentData agentsInfo;
+    bool isStaffed;
+    int32_t officeCount;
+    int32_t staffedOfficeCount;
+    int32_t policySlotCount;
+    int32_t initialPolicySlotCount;
+    int32_t maxPolicySlotCount;
+    int32_t activePolicyCount;
+    bool staffingAddsSlot;
+    bool unstaffingRemovesSlot;
+    FName policyCancelledIfUnstaffed;
+    TArray<FPolicyData_UI> policySlots;
+    TArray<FPolicySlotSource_UI> slotSources;
 };
 
 struct FClawsGiftChoice {
@@ -91791,8 +91841,10 @@ enum class EArco_PlayerVerb {
     NAVAL_TOGGLE_TO_NAVAL = 35,
     NAVAL_TOGGLE_TO_COLONY = 36,
     PICKUP_AGENT = 37,
-    INVALID = 38,
-    EArco_MAX = 39,
+    HIRE_WORKER = 38,
+    FIRE_WORKER = 39,
+    INVALID = 40,
+    EArco_MAX = 41,
 };
 
 enum class EAudioSoundPhase {
@@ -92285,7 +92337,8 @@ enum class EPlacementResponse {
     NOT_OCEAN_NAVIGABLE = 14,
     INSUFFICIENT_DOCKING_SPACE = 15,
     OVERLAPS_DOCKING_SPACE = 16,
-    EPlacementResponse_MAX = 17,
+    REPLACING_STAIRS = 17,
+    EPlacementResponse_MAX = 18,
 };
 
 enum class EPolicyCardType {
@@ -92294,6 +92347,12 @@ enum class EPolicyCardType {
     POLICY_OPTION_UNLOCKED = 2,
     POLICY_OPTION_LOCKED = 3,
     EPolicyCardType_MAX = 4,
+};
+
+enum class EPolicySlotSource_UI {
+    TOWN_HALL = 0,
+    CIVIC_OFFICE = 1,
+    EPolicySlotSource_MAX = 2,
 };
 
 enum class EProblemSummaryType {
@@ -92578,8 +92637,10 @@ enum class ESimAction {
     WORKDOCK_SET_TRADE_PARTNER = 171,
     WORKDOCK_SET_LOAD_REQUEST = 172,
     WORKDOCK_CLEAR_INCOMPATIBLE_REQUESTS = 173,
-    FINAL_ACTION = 174,
-    ESimAction_MAX = 175,
+    SET_NAVAL_SHORE_LEAVE = 174,
+    SET_POLICY_APPROVAL_RESERVE = 175,
+    FINAL_ACTION = 176,
+    ESimAction_MAX = 177,
 };
 
 enum class ESimPauseReason {
@@ -93147,6 +93208,8 @@ class AFloorTool : public AActor {
     FIntVector dragEndPos;
     FName floorSegKey;
     UClass* floorSeg;
+    TMap<FName, FRouteBuilderPieceOptions> m_stairsPerPathTile;
+    FRouteBuilderConfig m_routeBuilderConfig;
     FDetailedResourceCost currentCost;
     UWidgetComponent* m_placementUiWidget;
     UStaticMesh* m_arrowMesh_allDirs;
@@ -93886,6 +93949,8 @@ class UJumpPad : public UActorComponent {
     FMulticastInlineDelegate padLaunched;
     int32_t storedSteam;
     int32_t steamPerLaunch;
+    float traversalCost;
+    float traversalCostPerCell;
     UInstancedStaticMeshComponent* m_previewLandingPositions;
 };
 
@@ -93935,6 +94000,7 @@ class ULadder : public UActorComponent {
     float ladderSpeedMult;
     float timeBetweenClimbers;
     FLadderData m_data;
+    float m_keepDays;
     TArray<FTransform> m_ladderTransforms;
     int32_t nValidLadders;
     uint8_t m_shownFaces;
@@ -94041,6 +94107,9 @@ struct FMailStyleNotif {
 };
 
 class AMainMenuController : public APlayerController {
+};
+
+class UMainMenuInputMode : public UGameInstanceSubsystem {
 };
 
 class UMainMenuWidget : public UArcoWidgetBase {
@@ -94276,6 +94345,7 @@ class UNauticalRaftDock : public UActorComponent {
     float m_maxWaitWithPassengers;
     float m_timeWaitedWithPassengers;
     float m_timePerQueueLoad;
+    float m_riderWaitMean;
     TSet<FIntVector> m_passengerWaitingCells_relative;
     TSet<ENauticalAction> m_supportedNauticalActions;
 
@@ -94311,6 +94381,7 @@ struct FNauticalRaftRoute {
     int32_t routeDockB_id;
     bool lastPathGenFailed;
     TArray<FVector2D> lastPathCalculated;
+    float seaSecondsMean;
 };
 
 class UNauticalRaftRouteAssignments : public UObject {
@@ -94341,6 +94412,7 @@ struct FNavalOfficeDockRow_UI {
     bool heldByNavalProductionLimit;
     int32_t departureApprovalCost;
     bool heldByNavalApprovalReserve;
+    bool heldForShoreLeave;
 };
 
 struct FNavalOfficeDockSection_UI {
@@ -94360,6 +94432,7 @@ struct FNavalOfficeState_UI {
     bool controlsUnlocked;
     TMap<FName, FResourceStockpileSubcategory> m_resourcesByCategory_naval;
     int32_t navalApprovalReserve;
+    bool navalShoreLeave;
     int32_t approval;
     int32_t approvalCapacity;
     TArray<FNavalOfficeDockSection_UI> dockSections;
@@ -94385,6 +94458,9 @@ class UNavyHudBase : public UArcoWidgetBase {
     int32_t initRand;
     FNavyHudInterframe interframe;
     TSet<ENavyShipCardFilter> hiddenShipCardTypes;
+    TArray<FString> padWindowClassPrefixes;
+    TArray<FString> padFullscreenClassPrefixes;
+    UNavyPadGrid* padGrid;
 
     void ApplyWindowChoice(FNavyHudSubWindow windowData, FName choiceStirngId);
     FNavyHudState CalcState();
@@ -94529,6 +94605,10 @@ struct FNavyHudWindowPlanEntry {
     FName decisionId;
     bool isAttack;
     FString TargetName;
+};
+
+class UNavyPadGrid : public UNaviGrid {
+    UNavyHudBase* navyHud;
 };
 
 class UNavySystem : public UActorComponent {
@@ -94704,6 +94784,9 @@ struct FPackageDelivery_UiData {
     FServiceRangeCfg serviceRangeInfo;
 };
 
+class UPadPopupGrid : public UNaviGrid {
+};
+
 class UPartialDamageHandler : public UActorComponent {
     FMulticastInlineDelegate onHealthChanged;
 };
@@ -94865,6 +94948,7 @@ class APipeTool : public AActor {
     FIntVector dragStartPos;
     FIntVector dragEndPos;
     FIntVector derivedEndPos;
+    FRouteBuilderConfig m_routeBuilderConfig;
     TMap<EPipeCategory, FName> m_pipeTemplates;
     UStaticMesh* m_dragStartMesh;
     UStaticMesh* m_dragEndMesh;
@@ -94907,6 +94991,7 @@ class UPlayHud : public UArcoWidgetBase {
     UToolbar* m_toolbar;
     UArcoRadialMenu* M_RadialMenu;
     UArcoWidgetBase* m_submenu;
+    UWidget* m_padHudTooltip;
 
     void AnimateEnterNauticalUi();
     void AnimateRecentPolicyCosts(const TArray<FRecentPolicyCost>& recentPolicyCosts);
@@ -94987,6 +95072,8 @@ class UPlayerBank : public UObject {
     TMap<FName, int32_t> m_productionLimit;
     TMap<FName, int32_t> m_navalProductionLimit;
     int32_t m_navalApprovalReserve;
+    int32_t m_policyApprovalReserve;
+    bool m_navalShoreLeave;
     FResourceFlowTracker m_flowTracker;
     TMap<FName, FPlayerBankResource> m_bankResources;
     int32_t m_influenceCurrency;
@@ -95073,6 +95160,7 @@ class APlayerController_Play : public APlayerController {
     UClass* m_embarkContractView;
     UClass* m_mailboxView;
     UClass* m_agentManagementView;
+    UClass* m_saveErrorView;
     USoundClass* m_muteSoundClass;
     UClass* m_freecamPawnClass;
     UClass* m_playerCursorClass;
@@ -95120,6 +95208,7 @@ class APlayerController_Play : public APlayerController {
     bool m_autosavesEnabled;
     float m_timeUntilNextAutosave;
     float overrideZoomSpeed;
+    UPadPopupGrid* m_padPopupGrid;
 
     void Arco_AchievementDebugger(bool Show);
     void Arco_ClawsHappinessDelta(int32_t happiness);
@@ -95128,6 +95217,7 @@ class APlayerController_Play : public APlayerController {
     void Arco_DebugHighlightCell(int32_t X, int32_t Y, int32_t Z);
     void Arco_DockSelectedShip();
     void Arco_DumpStockpileStats();
+    void Arco_ForcePadMode(int32_t Mode);
     void Arco_GenTestShipSchedule(EShipType shipType);
     void Arco_GiveDiplomacy(int32_t diplomacy);
     void Arco_GiveInfluence(int32_t influence);
@@ -95136,11 +95226,14 @@ class APlayerController_Play : public APlayerController {
     void Arco_GiveUnlock(FName Unlock);
     void Arco_HoldKey(FString KeyName, int32_t Mode, float Axis);
     void Arco_KillSelectedWhisker();
+    void Arco_LookAtShallows(int32_t Index, float Zoom);
     void Arco_NoCost(bool actionsAreFree);
     void Arco_OpenBuildingPanel(FString Selector, int32_t Index);
     void Arco_PauseDayCycle(bool Pause);
+    void Arco_PlaceBuildingNear(FString prefab, FString nearSelector);
     void Arco_RemoveWorldEffect(FName effect);
     void Arco_RevokeUnlock(FName Unlock);
+    void Arco_SendHudAction(FString action, int32_t paramInt);
     void Arco_SetDayPhase(EDayPhase Phase);
     void Arco_SetLadderCullDistance(int32_t StartDistance, int32_t EndDistance);
     void Arco_SetMiscEventFlag(FName Flag);
@@ -95195,6 +95288,8 @@ struct FPoliciesState {
     TMap<FName, int32_t> m_policyCounts;
     int32_t influenceCount;
     int32_t maxInfluence;
+    int32_t policyApprovalReserve;
+    int32_t nPausedByApprovalReserve;
 };
 
 struct FPolicyData_UI {
@@ -95205,6 +95300,7 @@ struct FPolicyData_UI {
     bool canAfford;
     int32_t historicExpense;
     bool canAffordUnlockCost;
+    bool pausedByApprovalReserve;
 };
 
 struct FPolicyLookupRow : public FTableRowBase {
@@ -95219,8 +95315,21 @@ struct FPolicyLookupRow : public FTableRowBase {
     int32_t unlockCost;
 };
 
+struct FPolicySlotSource_UI {
+    EPolicySlotSource_UI SourceType;
+    FName LocKey;
+    int32_t gridActorId;
+    UTexture2D* buildingIcon;
+    FIntVector Location;
+    int32_t slotsAdded;
+    bool isStaffed;
+    bool isOverSlotCap;
+    bool isThisOffice;
+};
+
 struct FPolicySummary {
     int32_t nActivePolicies;
+    int32_t nPausedPolicies;
 };
 
 struct FPolicy_UiData {
@@ -95230,6 +95339,7 @@ struct FPolicy_UiData {
     bool policiesDirty;
     bool approvalDirty;
     int32_t officeCount;
+    int32_t staffedOfficeCount;
     bool showExpansionHint;
 };
 
@@ -95282,6 +95392,9 @@ class AProblemIndicator : public AActor {
     float zoomMaxShrink;
     float MinScale;
     UClass* m_problemWidgetClass;
+    UMaterialInterface* m_durationRingMaterial;
+    TMap<FName, FSlateBrush> m_batchIconBrushes;
+    TMap<int64_t, FSlateBrush> m_batchRingBrushes;
 
     void Event_ProblemsChanged(const TArray<FName>& Keys);
 };
@@ -95614,6 +95727,8 @@ struct FRaftRoute {
     int32_t routeDockB_id;
     bool lastPathGenFailed;
     TArray<FVector2D> lastPathCalculated;
+    float pathLength;
+    float rideSeconds;
 };
 
 class URaftRouteAssignments : public UObject {
@@ -95688,6 +95803,8 @@ class URailSteamBooster : public UActorComponent {
 class ARailSystem : public AActor {
     UClass* m_debugTrainTemplate;
     UClass* m_debugTrainCarTemplate;
+    float m_ghostMinCruiseSpeed;
+    float m_ghostBoardingSeconds;
 };
 
 class URailTile : public UActorComponent {
@@ -96014,6 +96131,44 @@ class ARoofSystem : public AActor {
     UMaterialInterface* m_transparentRoofMat;
 };
 
+struct FRouteBuilderConfig {
+    float MaxDistance;
+    int32_t NodeLimitPerStep;
+    int32_t PruningLimit;
+    int32_t IterationLimit;
+    bool bHeuristicOnlyPruning;
+    bool bPreventOneDistanceLoops;
+    FRouteBuilderGraphConfig GraphConfig;
+};
+
+struct FRouteBuilderGraphConfig {
+    float HorizontalBaseWeight;
+    float VerticalBaseWeight;
+    float TurnLeftBias;
+    float TurnRightBias;
+    float VerticalTurnBias;
+    float SharedBias;
+    float ReplaceBias;
+    float ElevationBias;
+    int32_t ElevationCap;
+    float BlockedBias;
+    float MachineLatencyWeight;
+    float MachineBottleneckWeight;
+};
+
+struct FRouteBuilderPieceOption {
+    FName Key;
+    float Bias;
+};
+
+struct FRouteBuilderPieceOptions {
+    TArray<FRouteBuilderPieceOption> Pieces;
+};
+
+class USaveErrorView : public UArcoView {
+    EGameSaveResult m_saveResult;
+};
+
 struct FSavedGridActor {
     FName Actor;
     FIntVector Pos;
@@ -96156,6 +96311,12 @@ struct FServiceRangeCfg {
     int32_t minGridRadius;
 };
 
+class USettingSelectorBase : public UArcoWidgetBase {
+    UWidget* Button_CycleLeft;
+    UWidget* Button_CycleRight;
+    UWidget* RebindButton;
+};
+
 struct FSettings_AudioTab {
     TArray<FOptionChoice> optionChoices;
 };
@@ -96253,6 +96414,7 @@ struct FShipTradeChoice {
     bool canAfford;
     FName changeItemName;
     int32_t changeItemQuantity;
+    FResourceCollection changeItems;
 };
 
 struct FShipTradeState {
@@ -96338,6 +96500,7 @@ class USlide : public UActorComponent {
     float slidePitch;
     float VerticalOffset;
     float traversalCost;
+    float traversalCostPerCell;
     FSlideData m_data;
     float m_maxSpeed;
     float m_accel;
@@ -97283,6 +97446,11 @@ class UUI_BathhouseView : public UArcoView {
     void CycleTabs(bool tabRight);
 };
 
+class UUI_CivicOffice : public UArcoView {
+
+    FCivicOfficeState_UI CalcState();
+};
+
 class UUI_ColonySignView : public UArcoView {
 
     FContractEmbarkHudState CalcState();
@@ -98052,6 +98220,7 @@ struct FWorldMeta {
 
 class AWorldTime : public AActor {
     UMaterialParameterCollection* commonTerrainParams;
+    UMaterialParameterCollection* m_coverClockParams;
     TArray<FName> m_seasonProgression;
     FName m_startingSeason;
     UClass* m_skyClass;
@@ -106719,10 +106888,12 @@ struct FBlockTerrainSlice {
     USceneComponent* Parent;
     FGridInstaMesh CliffMeshes;
     FGridInstaMesh SliceMeshes;
+    FGridInstaMesh SliceSideMeshes;
     FGridInstaMesh CoverMeshes;
     UAsyncMeshBuilder* FullCoverBuilder;
     FGridInstaMesh OreFullMeshes;
     FGridInstaMesh OreSliceMeshes;
+    FGridInstaMesh OreSliceSideMeshes;
     FGridInstaMesh OreTopMeshes;
     TArray<FGridInstaMesh> PlantMeshes;
     FGridInstaMesh GrassPropMeshes;
@@ -106731,6 +106902,8 @@ struct FBlockTerrainSlice {
     FGridInstaMesh DeepOceanPropMeshes;
     FGridInstaMesh GrassPropWithShadowMeshes;
     FGridInstaMesh RockPropWithShadowMeshes;
+    FChunkedGridInstaMesh SeaFloorBoulderMeshes;
+    FChunkedGridInstaMesh SeaFloorStoneMeshes;
     FGridInstaMesh ShallowOceanPropWithShadowMeshes;
     TArray<FGridInstaMesh> CropMeshes;
     FGridInstaMesh MineMeshes;
@@ -106888,6 +107061,18 @@ class UCheatDoer : public UBlueprintFunctionLibrary {
 
     static void EngineExec(UObject* WorldContext, FString Cmd);
     static void ToggleFps(UObject* WorldContext);
+};
+
+struct FChunkedGridInstaMesh {
+    USceneComponent* Parent;
+    FVector GridScale;
+    FVector Offset;
+    EGridInstaMeshShadow Shadow;
+    EGridInstaMeshVisibility Visibility;
+    int32_t ChunkSize;
+    TMap<FIntPoint, FGridInstaMesh> Chunks;
+    FBakedGridMesh Baked;
+    bool bBake;
 };
 
 class UCircus : public UActorComponent {
@@ -107667,7 +107852,8 @@ enum class ENaviFormType {
 enum class ENaviGridAttribute {
     None = 0,
     StealFocus = 1,
-    ENaviGridAttribute_MAX = 2,
+    GraphMembers = 2,
+    ENaviGridAttribute_MAX = 3,
 };
 
 enum class ENaviHandleMethod {
@@ -109340,6 +109526,12 @@ struct FNaviConfirm_Choice {
     FString Payload;
 };
 
+class UNaviFocusOutline : public UGameInstanceSubsystem {
+};
+
+class UNaviFocusShape : public UUserWidget {
+};
+
 class UNaviForm : public UNaviUi {
 
     void SetFormPlan(FNaviFormPlan plan);
@@ -109367,38 +109559,58 @@ struct FNaviFormPlan {
     TArray<FNaviFormItemPlan> Items;
 };
 
+struct FNaviGraphMember {
+    UNaviUi* UI;
+    FVector2D position;
+};
+
+class UNaviGrapher : public UBlueprintFunctionLibrary {
+
+    static TArray<FNaviGridLinkage> ComputeNaviGraph(const TArray<FNaviGraphMember>& graphMembers);
+};
+
 class UNaviGrid : public UNaviUi {
     FNaviGridState gridState;
-    FNaviGridConfig gridConfig;
+    FMulticastInlineDelegate OnTabReceiverChangeDelegate;
 
-    void AddGridChild(FVector cell, UNaviUi* newChild);
     bool AttemptNavigation(ENaviUiIntent intent);
-    int32_t ComputeMaxSearchDist() const;
     FNaviPrimeGridLayout ComputePrimeGridLayout();
-    FVector FindCurrentCell() const;
-    FVector FindNearestCell(FVector Start, FVector SearchDir) const;
+    UNaviUi* GetPriorityTabReceiver() const;
+    bool HasHotkey(ENaviUiIntent intent) const;
     bool IntegrateSubGrid(UNaviSubGrid* subGrid);
-    TArray<FVector> ListFilledCells() const;
     TArray<UNaviUi*> ListGridMembers() const;
     void OnSubGridChange();
     void RelayoutPrimeGrid();
     void RemoveAllGridChildren();
-    UNaviUi* RemoveGridChild(FVector cell);
+    bool RemoveGridMember(UNaviUi* Child);
     bool SetPriorityGridChild(UNaviUi* Child);
 };
 
-struct FNaviGridConfig {
-    bool ignoreHistory;
-    int32_t minSearchDistance;
-    int32_t nearSearchDistance;
+struct FNaviGridLinkage {
+    UNaviUi* Source;
+    ENaviUiIntent Direction;
+    UNaviUi* destination;
 };
 
 struct FNaviGridState {
-    TMap<FVector, UNaviUi*> Items;
-    TMap<UNaviUi*, FVector> itemToCell;
-    FVector preferedCell;
+    TSet<UNaviUi*> members;
     TMap<ENaviUiIntent, UNaviUi*> hotkeyRegistry;
     UNaviUi* priorityTabReceiver;
+    TMap<UNaviUi*, FNaviGridTeleport> teleports;
+    TMap<ENaviUiIntent, UNaviUi*> temporalTeleports;
+    TArray<FNaviGridLinkage> rescueLinks;
+    TMap<UNaviUi*, FVector2D> extentMultipliers;
+    TMap<UNaviUi*, int32_t> graphGroups;
+    TMap<UNaviUi*, int32_t> rowScopes;
+    TArray<float> rowBiases;
+    TMap<UNaviUi*, FBox2D> spatialRects;
+    TMap<UNaviUi*, FBox2D> lastSeenRects;
+    UNaviUi* defaultFocusGiven;
+    TMap<UNaviUi*, FNaviGridTeleport> spatialLinks;
+};
+
+struct FNaviGridTeleport {
+    TMap<ENaviUiIntent, UNaviUi*> links;
 };
 
 struct FNaviHotkeyRegistry {
@@ -109418,9 +109630,11 @@ struct FNaviList_Item {
 
 struct FNaviPrimeGridLayout {
     UNaviUi* defaultFocusedMember;
-    TMap<UNaviUi*, FVector> gridMembers;
+    TSet<UNaviUi*> members;
+    TMap<UNaviUi*, FVector2D> memberExtentMultipliers;
     TMap<ENaviUiIntent, UNaviUi*> hotkeyRegistry;
     int32_t tabReceptionPriority;
+    TArray<FNaviGridLinkage> teleports;
 };
 
 class UNaviSettings : public UNaviUi {
@@ -109456,8 +109670,11 @@ class UNaviSubGrid : public UNaviUi {
     UNaviGrid* hostGrid;
     bool isAlsoNaviUi;
 
+    FNaviSubGridLayout ComputeAutoSubGridLayout();
     FNaviSubGridLayout ComputeSubGridLayout();
+    UNaviUi* GetFocusedWidget() const;
     void ReportSubGridChanged();
+    void ReportSubGridRepopulated();
 };
 
 struct FNaviSubGridLayout {
@@ -109467,6 +109684,12 @@ struct FNaviSubGridLayout {
     TSet<ENaviGridAttribute> Attributes;
     TMap<ENaviUiIntent, UNaviUi*> hotkeyRegistry;
     int32_t tabReceptionPriority;
+    TSet<UNaviUi*> members;
+    TMap<UNaviUi*, FVector2D> memberExtentMultipliers;
+    float rowBias;
+    TArray<FNaviGridLinkage> teleports;
+    UWidget* focusTrap;
+    UNaviUi* focusTrapReturnTo;
 };
 
 class UNaviUi : public UUserWidget {
@@ -109509,6 +109732,7 @@ class UNaviUi : public UUserWidget {
     bool HasPriorityChild() const;
     bool IsEmpty();
     static bool IsEnabledWithinSearchDepth(UWidget* searchRoot, int32_t maxDepth);
+    static bool IsInComboboxContext();
     bool IsRoot() const;
     static bool IsVisibleDeferred(const UWidget* Widget);
     void OnChildAdded(UNaviUi* newChild);
@@ -109537,6 +109761,10 @@ struct FNaviUiResult {
     UNaviUi* Origin;
     FString Payload;
     FString Key;
+};
+
+class UNaviWidgetProxy : public UNaviUi {
+    UWidget* Target;
 };
 
 struct FNavigationPlan {
@@ -111289,9 +111517,13 @@ class UTheaterUi : public UNaviUi {
 };
 
 class ATiledBlockTerrain : public AActor {
+    TArray<UStaticMesh*> DressingMeshes;
+    TArray<UObject*> DressingTransients;
+    TArray<UMaterialInstanceDynamic*> DressingTintMaterials;
     FTiledTerrainConfig config;
     UClass* TerrainTiles;
     TArray<FBlockTerrainSlice> Slices;
+    TArray<UDirectionalLightComponent*> CutPlaneSuns;
     FIntVector Origin;
     int32_t SliceIndex;
     ATiledBlockTerrainHighlight* Highlight;
@@ -111343,6 +111575,7 @@ struct FTiledBlockTerrainOre {
 struct FTiledBlockTerrainOreVariant {
     UStaticMesh* Full;
     UStaticMesh* Slice;
+    UStaticMesh* SliceSide;
     UStaticMesh* Top;
 };
 
@@ -111364,6 +111597,7 @@ struct FTiledBlockTerrainPlantPart {
 struct FTiledBlockTerrainTile {
     TArray<FTiledBlockTerrainTileParts> Parts;
     UStaticMesh* Slice;
+    UStaticMesh* SliceSide;
 };
 
 struct FTiledBlockTerrainTileParts {

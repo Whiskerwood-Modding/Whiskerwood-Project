@@ -1,8 +1,8 @@
 {
-  "ExportDate": "2026-11-15 18:48:04",
+  "ExportDate": "2026-11-27 21:22:13",
   "TotalDataTables": 44,
   "TotalDataAssets": 20,
-  "TotalUniqueValues": 9779,
+  "TotalUniqueValues": 9785,
   "DataTables": {
     "Whiskerwood/Content/Data/AchievementsTables": {
       "ACH.010.EMBARK": {
@@ -4898,6 +4898,12 @@
       "constructionscaffold": {
         "Mesh": "StaticMesh'Whiskerwood/Content/Assets/Meshes/Kitbash_new/Scaffolds/constructionScaffold_thin.constructionScaffold_thin'"
       },
+      "engineerhat": {
+        "Mesh": "StaticMesh'Whiskerwood/Content/Assets/Meshes/Equipment/engineerhat/SKM_EngineerHat.SKM_EngineerHat'"
+      },
+      "explorerHat": {
+        "Mesh": "StaticMesh'Whiskerwood/Content/Assets/Meshes/Equipment/explorerhat/SKM_ExploreHat.SKM_ExploreHat'"
+      },
       "fishingrod": {
         "Mesh": "StaticMesh'Whiskerwood/Content/Assets/Characters/Meshes/Tools/fishingrod.fishingrod'"
       },
@@ -4906,6 +4912,9 @@
       },
       "hoe": {
         "Mesh": "StaticMesh'Whiskerwood/Content/Assets/Characters/Meshes/Tools/Hoe.Hoe'"
+      },
+      "minershat": {
+        "Mesh": "StaticMesh'Whiskerwood/Content/Assets/Meshes/Equipment/miningHat/SKM_MinerHat.SKM_MinerHat'"
       },
       "paddle": {
         "Mesh": "StaticMesh'Whiskerwood/Content/Assets/Meshes/Kitbash_new/SM_Paddle/SM_Paddle.SM_Paddle'"
@@ -12189,13 +12198,13 @@
         "prerequisiteUnlocks": [
           "unlock.townhall"
         ],
-        "researchTier": "3",
+        "researchTier": "2",
         "researchable": "True",
-        "scienceCost": "144",
+        "scienceCost": "89",
         "secretPrerequisite": "None",
         "showMailEvenAsChildUnlock": "False",
         "subCategory": "techCategory.housing",
-        "tierSortOrder": "20",
+        "tierSortOrder": "60",
         "unlockedByDefault": "False",
         "useGridActorForLoc": "True"
       },
@@ -13132,7 +13141,9 @@
         "giftable": "False",
         "giftableInDemo": "False",
         "isQuestRelated": "False",
-        "prerequisiteUnlocks": [],
+        "prerequisiteUnlocks": [
+          "unlock.smallshipyard"
+        ],
         "researchTier": "2",
         "researchable": "True",
         "scienceCost": "34",
@@ -30595,7 +30606,7 @@
         "FloatValue": "4"
       },
       "shipSmugglerTrader_timeOfDay": {
-        "FloatValue": "40"
+        "FloatValue": "10"
       },
       "shipSmugglerTrader_varianceRange": {
         "FloatValue": "1"
@@ -30616,7 +30627,7 @@
         "FloatValue": "0.15"
       },
       "shipTaxes_timeOfDay": {
-        "FloatValue": "60"
+        "FloatValue": "90"
       },
       "shipTaxes_varianceRange": {
         "FloatValue": "1"
